@@ -132,7 +132,6 @@ import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
-
 import {CountryService} from './demo/service/countryservice';
 import {CustomerService} from './demo/service/customerservice';
 import {EventService} from './demo/service/eventservice';
@@ -142,6 +141,10 @@ import {PhotoService} from './demo/service/photoservice';
 import {ProductService} from './demo/service/productservice';
 import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
+import { CourseComponent } from './course/course.component';
+import { DetailsComponent } from './course/details/details.component';
+
+
 
 @NgModule({
     imports: [
@@ -278,6 +281,8 @@ import {MenuService} from './app.menu.service';
         AppErrorComponent,
         AppTimelineDemoComponent,
         AppAccessdeniedComponent,
+        CourseComponent,
+        DetailsComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

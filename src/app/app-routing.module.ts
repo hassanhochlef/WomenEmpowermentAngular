@@ -37,14 +37,25 @@ import {TextComponent} from './utilities/text.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
+import {CourseComponent} from './course/course.component';
+import {DetailsComponent} from './course/details/details.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
+
             {
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
+                    {
+                        path: 'cour',
+                        component: CourseComponent,
+                    },
+                    {
+                        path: 'details/:id',
+                        component : DetailsComponent,
+                    },
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},

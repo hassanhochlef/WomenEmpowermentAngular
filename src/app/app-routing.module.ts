@@ -39,6 +39,9 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
+import {RegisterComponent} from './user/register/register.component';
+import {LoginComponent} from './user/login/login.component';
+import {HomeComponent} from './user/home/home.component';
 
 @NgModule({
     imports: [
@@ -56,6 +59,7 @@ import {DetailsComponent} from './course/details/details.component';
                         path: 'details/:id',
                         component : DetailsComponent,
                     },
+                    {path: 'home', component: HomeComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -92,7 +96,9 @@ import {DetailsComponent} from './course/details/details.component';
             {path: 'error', component: AppErrorComponent},
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
-            {path: 'login', component: AppLoginComponent},
+            //{path: 'login', component: AppLoginComponent},
+            {path: 'register', component: RegisterComponent},
+            {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

@@ -1,0 +1,48 @@
+<div class="login-body">
+    <div class="login-wrapper">
+        <div class="login-panel">
+            <img  [src]="'assets/layout/images/logo-'+ (app.colorScheme === 'light' ? 'dark' : 'white') + '.svg'" class="logo" alt="diamond-layout" />
+
+            <div class="login-form">
+                <h2>Login With</h2>
+                <div>
+                    <button pButton type="button" label="Facebook" icon="pi pi-facebook" class="p-button-info social-button" badge="8" badgeClass="p-badge-info" pRipple></button>
+                    <button pButton type="button" label="Google" icon="pi pi-google" class="p-button-secondary social-button" badge="8" badgeClass="p-badge-info" pRipple></button>
+                </div>
+                <hr/>
+
+                <hr/>
+
+                <form #f="ngForm" (ngSubmit)="f.form.valid && login()">
+                    <div class="login-form">
+                        <h2>Or Login With an Existing Account</h2>
+
+                        <input pInputText id="username" name="username" [(ngModel)]="user.username" #username="ngModel"   required placeholder="Username" />
+                        <input pInputText type="password" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required placeholder="Password" />
+                        <button pButton type="submit" label="Login" icon="pi pi-key" class="p-button-primary social-button" badge="8" badgeClass="p-badge-info" pRipple></button>
+                    </div>
+
+                </form>
+            </div>
+
+            <p>Don't have an account ? <a [routerLink]="['/register']">Register now</a></p>
+        </div>
+        <div class="login-image">
+            <div class="login-image-content">
+                <h1>Access to your</h1>
+                <h1>Diamond</h1>
+                <h1>Account</h1>
+                <h3>Lorem ipsum dolor sit amet, consectetur
+                    <br/> adipiscing elit. Donec posuere velit nec enim
+                    <br/> sodales, nec placerat erat tincidunt. </h3>
+            </div>
+            <div class="image-footer">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="icons">
+                    <i class="pi pi-github"></i>
+                    <i class="pi pi-twitter"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

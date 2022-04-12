@@ -14,5 +14,7 @@ export class CourseService {
   getCourse(id: string): Observable<Course>{
     return this.http.get<Course>('http://localhost:8087/SpringMVC/course/getCourse/' + id );
   }
-
+  addCourse(course: Course){
+    return this.http.post<Course>('http://localhost:8087/SpringMVC/course/addCourse/1', course);
+  }
 }

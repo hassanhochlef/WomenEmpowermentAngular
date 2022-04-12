@@ -3,11 +3,12 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Course} from '../../models/course.model';
 import {CourseService} from '../../shared/course.service';
+import HespLivePlayer from "@hesp.live/player";
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit, OnDestroy {
   courseId: string;
@@ -15,8 +16,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
   routeSub: Subscription;
   courseSub: Subscription;
   filtersLoaded: Promise<boolean>;
-  constructor(private activatedRoute: ActivatedRoute, private service: CourseService) { }
-
+  myScriptElement: HTMLScriptElement;
+  mydivElement: HTMLDivElement;
+  constructor(private activatedRoute: ActivatedRoute, private service: CourseService) {
+    this.myScriptElement = document.createElement('script');
+    this.myScriptElement.src = 'https://cdn.hesp.live/player/embed.js';
+    document.body.appendChild(this.myScriptElement);
+  }
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) =>
     { this.courseId = params.id;

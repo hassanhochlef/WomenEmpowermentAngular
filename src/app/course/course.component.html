@@ -1,21 +1,274 @@
+    <section class="card-area">
+        <section class="card-section wrapper">
+            <div *ngFor="let cour of listCours ">
+                <div *ngIf="cour.domain=='IT'">
+                    <div class="card p-mr-3 p-mb-3">
+                        <div class="flip-card">
+                            <div class="flip-card__container">
+                                <div class="card-front">
+                                    <div class="card-front__tp card-front__tp--city">
 
-<div class="games">
-    <ng-container *ngFor="let cour of listCours">
-        <div class="game" (click)="openGameDetails(cour.courseId.toString())">
-            <div class="game-thumb-container">
-                <img
-                        *ngIf="1==0"
-                        src="{{ cour.courseName }}"
-                        alt="thumbnail"
-                        class="game-thumbnail"
-                />
-                <p *ngIf="!1==0">No image</p>
-            </div>
-            <div class="game-description">
-                <p class="game-name">{{ cour.courseName }}</p>
+                                        <h2 class="card-front__heading">
+                                            {{cour.courseName}}
+                                        </h2>
+                                        <p class="card-front__text-price">
+                                            {{cour.domain}}
+                                        </p>
+                                    </div>
+
+                                    <div class="card-front__bt">
+                                        <p class="card-front__text-view card-front__text-view--city">
+                                            More
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <video class="video__container" autoplay muted loop>
+                                        <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2012-10/large_watermarked/hd0097-H264%2075_preview.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inside-page">
+                            <div class="inside-page__container">
+                                <h3 class="inside-page__heading inside-page__heading--city">
+                                    {{cour.courseName}}
+                                </h3>
+                                <p class="inside-page__text">
+                                   Starts on : {{cour.startDate}}
+                                    <br>
+                                   Ends : {{cour.endDate}}
+                                    <button (click)="openGameDetails(cour.courseId.toString())"  class="inside-page__btn inside-page__btn--city">Details</button>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="cour.domain=='TECH'">
+                    <div class="card p-mr-3 p-mb-3">
+                        <div class="flip-card">
+                            <div class="flip-card__container">
+                                <div class="card-front">
+                                    <div class="card-front__tp card-front__tp--ski">
+
+                                        <h2 class="card-front__heading">
+                                            {{cour.courseName}}
+                                        </h2>
+                                        <p class="card-front__text-price">
+                                            {{cour.domain}}
+                                        </p>
+                                    </div>
+
+                                    <div class="card-front__bt">
+                                        <p class="card-front__text-view card-front__text-view--ski">
+                                            More
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <video class="video__container" autoplay muted loop>
+                                        <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2016-08/large_watermarked/160708_CircuitBoards_098_1080p_preview.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inside-page">
+                            <div class="inside-page__container">
+                                <h3 class="inside-page__heading inside-page__heading--ski">
+                                    {{cour.courseName}}
+                                </h3>
+                                <p class="inside-page__text">
+                                    Starts on : {{cour.startDate}}
+                                    <br>
+                                    Ends : {{cour.endDate}}
+                                </p>
+                                <button (click)="openGameDetails(cour.courseId.toString())" class="inside-page__btn inside-page__btn--ski">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="cour.domain=='MEDICAL'">
+                    <div class="card p-mr-3 p-mb-3">
+                        <div class="flip-card">
+                            <div class="flip-card__container">
+                                <div class="card-front">
+                                    <div class="card-front__tp card-front__tp--beach">
+
+                                        <h2 class="card-front__heading">
+                                            {{cour.courseName}}
+                                        </h2>
+                                        <p class="card-front__text-price">
+                                            {{cour.domain}}
+                                        </p>
+                                    </div>
+
+                                    <div class="card-front__bt">
+                                        <p class="card-front__text-view card-front__text-view--beach">
+                                            More
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <video class="video__container" autoplay muted loop>
+                                        <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2020-09/large_watermarked/200813_03_Doctors_4k_010_preview.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inside-page">
+                            <div class="inside-page__container">
+                                <h3 class="inside-page__heading inside-page__heading--beach">
+                                    {{cour.courseName}}
+                                </h3>
+                                <p class="inside-page__text">
+                                    Starts on : {{cour.startDate}}
+                                    <br>
+                                    Ends : {{cour.endDate}}
+                                </p>
+                                <button (click)="openGameDetails(cour.courseId.toString())" class="inside-page__btn inside-page__btn--beach">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="cour.domain=='ARTISANAL'">
+                    <div class="card p-mr-3 p-mb-3">
+                        <div class="flip-card">
+                            <div class="flip-card__container">
+                                <div class="card-front">
+                                    <div class="card-front__tp card-front__tp--artisanal">
+
+                                        <h2 class="card-front__heading">
+                                            {{cour.courseName}}
+                                        </h2>
+                                        <p class="card-front__text-price">
+                                            {{cour.domain}}
+                                        </p>
+                                    </div>
+
+                                    <div class="card-front__bt">
+                                        <p class="card-front__text-view card-front__text-view--artisanal">
+                                            More
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <video class="video__container" autoplay muted loop>
+                                        <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2019-02/large_watermarked/181004_08_INDUSTRIAL_22_preview.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inside-page">
+                            <div class="inside-page__container">
+                                <h3 class="inside-page__heading inside-page__heading--artisanal">
+                                    {{cour.courseName}}
+                                </h3>
+                                <p class="inside-page__text">
+                                    Starts on : {{cour.startDate}}
+                                    <br>
+                                    Ends : {{cour.endDate}}
+                                </p>
+                                <button (click)="openGameDetails(cour.courseId.toString())" class="inside-page__btn inside-page__btn--artisanal">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="cour.domain=='AGRICULTURE'">
+                    <div class="card p-mr-3 p-mb-3">
+                        <div class="flip-card">
+                            <div class="flip-card__container">
+                                <div class="card-front">
+                                    <div class="card-front__tp card-front__tp--agriculture">
+
+                                        <h2 class="card-front__heading">
+                                            {{cour.courseName}}
+                                        </h2>
+                                        <p class="card-front__text-price">
+                                            {{cour.domain}}
+                                        </p>
+                                    </div>
+
+                                    <div class="card-front__bt">
+                                        <p class="card-front__text-view card-front__text-view--agriculture">
+                                            More
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <video class="video__container" autoplay muted loop>
+                                        <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2015-06/large_watermarked/vegetablepatch1_Videvo_preview.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inside-page">
+                            <div class="inside-page__container">
+                                <h3 class="inside-page__heading inside-page__heading--agriculture">
+                                    {{cour.courseName}}
+                                </h3>
+                                <p class="inside-page__text">
+                                    Starts on : {{cour.startDate}}
+                                    <br>
+                                    Ends : {{cour.endDate}}
+                                </p>
+                                <button (click)="openGameDetails(cour.courseId.toString())" class="inside-page__btn inside-page__btn--agriculture">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="cour.domain=='SOCIAL'">
+                    <div class="card p-mr-3 p-mb-3">
+                        <div class="flip-card">
+                            <div class="flip-card__container">
+                                <div class="card-front">
+                                    <div class="card-front__tp card-front__tp--social">
+
+                                        <h2 class="card-front__heading">
+                                            {{cour.courseName}}
+                                        </h2>
+                                        <p class="card-front__text-price">
+                                            {{cour.domain}}
+                                        </p>
+                                    </div>
+
+                                    <div class="card-front__bt">
+                                        <p class="card-front__text-view card-front__text-view--social">
+                                            More
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <video class="video__container" autoplay muted loop>
+                                        <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2020-01/large_watermarked/191126_2_HD_Party_Cropped_02_preview.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inside-page">
+                            <div class="inside-page__container">
+                                <h3 class="inside-page__heading inside-page__heading--social">
+                                    {{cour.courseName}}
+                                </h3>
+                                <p class="inside-page__text">
+                                    Starts on : {{cour.startDate}}
+                                    <br>
+                                    Ends : {{cour.endDate}}
+                                </p>
+                                <button (click)="openGameDetails(cour.courseId.toString())"  class="inside-page__btn inside-page__btn--social">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-        </div>
-    </ng-container>
-</div>
+        </section>
+    </section>
+
 <router-outlet></router-outlet>

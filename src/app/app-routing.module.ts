@@ -39,6 +39,7 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
+import {AddCourseComponent} from './course/add-course/add-course.component';
 
 @NgModule({
     imports: [
@@ -47,7 +48,6 @@ import {DetailsComponent} from './course/details/details.component';
             {
                 path: '', component: AppMainComponent,
                 children: [
-                    {path: '', component: DashboardDemoComponent},
                     {
                         path: 'cour',
                         component: CourseComponent,
@@ -56,6 +56,11 @@ import {DetailsComponent} from './course/details/details.component';
                         path: 'details/:id',
                         component : DetailsComponent,
                     },
+                    {
+                        path: 'addcourse',
+                        component : AddCourseComponent,
+                    },
+                    {path: '', component: DashboardDemoComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},

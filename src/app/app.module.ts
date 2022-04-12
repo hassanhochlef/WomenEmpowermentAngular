@@ -142,6 +142,7 @@ import {PhotoService} from './demo/service/photoservice';
 import {ProductService} from './demo/service/productservice';
 import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
+import { OffreComponent } from './pages/offre/offre.component';
 
 @NgModule({
     imports: [
@@ -278,6 +279,7 @@ import {MenuService} from './app.menu.service';
         AppErrorComponent,
         AppTimelineDemoComponent,
         AppAccessdeniedComponent,
+        OffreComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

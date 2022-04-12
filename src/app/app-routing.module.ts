@@ -37,6 +37,7 @@ import {TextComponent} from './utilities/text.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
+import {OffreComponent} from './pages/offre/offre.component';
 
 @NgModule({
     imports: [
@@ -75,7 +76,8 @@ import {AppHelpComponent} from './pages/app.help.component';
                     {path: 'pages/invoice', component: AppInvoiceComponent},
                     {path: 'pages/help', component: AppHelpComponent},
                     {path: 'pages/empty', component: EmptyDemoComponent},
-                    {path: 'documentation', component: DocumentationComponent}
+                    {path: 'documentation', component: DocumentationComponent},
+                    {path: 'offre' ,  component: OffreComponent}
                 ]
             },
             {path: 'error', component: AppErrorComponent},

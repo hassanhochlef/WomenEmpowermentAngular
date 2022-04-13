@@ -40,6 +40,12 @@ import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
 import {ForumComponent} from "./forum/forum.component";
+import {RegisterComponent} from './user/register/register.component';
+import {LoginComponent} from './user/login/login.component';
+import {HomeComponent} from './user/home/home.component';
+import {FrontLandingComponent} from './user/front-landing/front-landing.component';
+import {ProfilComponent} from './user/profil/profil.component';
+
 
 @NgModule({
     imports: [
@@ -60,6 +66,7 @@ import {ForumComponent} from "./forum/forum.component";
                         path: 'details/:id',
                         component : DetailsComponent,
                     },
+
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -93,10 +100,19 @@ import {ForumComponent} from "./forum/forum.component";
                     {path: 'documentation', component: DocumentationComponent}
                 ]
             },
+
+            {
+                path: 'test', component: HomeComponent,
+                children: [
+                    {path: 'landing', component: FrontLandingComponent},
+                    {path: 'profil', component: ProfilComponent}
+                ]
+            },
             {path: 'error', component: AppErrorComponent},
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
-            {path: 'login', component: AppLoginComponent},
+            {path: 'register', component: RegisterComponent},
+            {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

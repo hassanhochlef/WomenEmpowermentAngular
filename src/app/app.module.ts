@@ -143,7 +143,17 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
+<<<<<<< HEAD
 import { ForumComponent } from './forum/forum.component';
+=======
+import { RegisterComponent } from './user/register/register.component';
+import { LoginComponent } from './user/login/login.component';
+import { HomeComponent } from './user/home/home.component';
+import { NavbarComponent } from './user/navbar/navbar.component';
+import { FrontFooterComponent } from './user/front-footer/front-footer.component';
+import { FrontLandingComponent } from './user/front-landing/front-landing.component';
+import { ProfilComponent } from './user/profil/profil.component';
+>>>>>>> b1a7c5c73c4963d3bf06f4b7575d5896510595f9
 
 
 
@@ -284,7 +294,17 @@ import { ForumComponent } from './forum/forum.component';
         AppAccessdeniedComponent,
         CourseComponent,
         DetailsComponent,
+<<<<<<< HEAD
         ForumComponent,
+=======
+        RegisterComponent,
+        LoginComponent,
+        HomeComponent,
+        NavbarComponent,
+        FrontFooterComponent,
+        FrontLandingComponent,
+        ProfilComponent,
+>>>>>>> b1a7c5c73c4963d3bf06f4b7575d5896510595f9
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

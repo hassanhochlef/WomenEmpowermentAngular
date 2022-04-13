@@ -1,0 +1,148 @@
+<div class="login-body">
+    <div class="login-wrapper">
+        <div class="login-panel">
+            <img  [src]="'assets/layout/images/logo-'+ (app.colorScheme === 'light' ? 'dark' : 'white') + '.svg'" class="logo" alt="diamond-layout" />
+            <h2>It only takes few seconds to create your account !</h2>
+            <form #f="ngForm" (ngSubmit)="f.form.valid && register()">
+                <div class="p-formgroup-inline" *ngIf="step==1">
+
+                    <p>Since your are new to our platform, please specify your <u><code>Role</code></u></p>
+
+                            <div class="p-grid">
+
+                                <div class="p-col-12 p-md-4">
+                                    <div class="p-field-radiobutton">
+                                        <label class="card-radio-btn">
+                                            <input type="radio" class="card-input-element d-none" name="role" [(ngModel)]="middleRole" #role="ngModel" [value]="'USER'">
+                                            <div class="card card-body">
+                                                <div class="content_head">
+                                                    <i class="pi pi-user"></i>
+                                                </div>
+                                                <div class="content_sub">User</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-col-12 p-md-4">
+                                    <div class="p-field-radiobutton">
+                                        <label class="card-radio-btn">
+                                            <input type="radio" class="card-input-element d-none" name="role" [(ngModel)]="middleRole" #role="ngModel" [value]="'COMPANY'">
+                                            <div class="card card-body">
+                                                <div class="content_head">
+                                                    <i class="pi pi-desktop"></i>
+                                                </div>
+                                                <div class="content_sub">Company</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-col-12 p-md-4">
+                                    <div class="p-field-radiobutton">
+                                        <label class="card-radio-btn">
+                                            <input type="radio" class="card-input-element d-none" name="role" [(ngModel)]="middleRole" #role="ngModel" [value]="'EXPERT'">
+                                            <div class="card card-body">
+                                                <div class="content_head">
+                                                    <i class="pi pi-star"></i>
+                                                </div>
+                                                <div class="content_sub">Expert</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-col-12 p-md-6">
+                                    <div class="p-field-radiobutton">
+                                        <label class="card-radio-btn">
+                                            <input type="radio" class="card-input-element d-none" name="role" [(ngModel)]="middleRole" #role="ngModel" [value]="'FORMER'">
+                                            <div class="card card-body">
+                                                <div class="content_head">
+                                                    <i class="pi pi-directions"></i>
+                                                </div>
+                                                <div class="content_sub">Former</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-col-12 p-md-6">
+                                    <div class="p-field-radiobutton">
+                                        <label class="card-radio-btn">
+                                            <input type="radio" class="card-input-element d-none" name="role" [(ngModel)]="middleRole" #role="ngModel" [value]="'ASSOCIATION'">
+                                            <div class="card card-body">
+                                                <div class="content_head">
+                                                    <i class="pi pi-heart"></i>
+                                                </div>
+                                                <div class="content_sub">Association</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                <div class="login-form" *ngIf="step==2">
+                    <p>
+                        Almost ready, please fill out your <u><code>Personal Information</code></u>
+                    </p>
+                    <input pInputText id="name" name="name" [(ngModel)]="user.name" #username="ngModel"   required placeholder="Name or Company Tag" />
+
+                    <input pInputText id="email" name="email" [(ngModel)]="user.email" #username="ngModel"   required placeholder="Email" />
+
+                    <input pInputText id="phone" name="phone" [(ngModel)]="user.phoneNumber" #username="ngModel"   required placeholder="Phone Number" />
+
+                    <input pInputText id="activityDomain" name="activityDomain" [(ngModel)]="user.activityDomain" #username="ngModel"
+                           *ngIf=" middleRole == 'COMPANY' || middleRole=='ASSOCIATION'" required placeholder="Activity Domain" />
+
+
+                    <p-calendar id="birthDate" name="birthDate" [showIcon]="true" [(ngModel)]="user.birthDate" #username="ngModel" required placeholder="Birth Date Or Establishment Date" inputId="birthDate"></p-calendar>
+
+                    <input class="form-control" type="file" id="formFile" (change)="onFileSelcted($event)">
+
+                </div>
+
+                    <div class="login-form" *ngIf="step==3">
+                        <p>This is the final step, please provide your <u><code>Login Details</code></u></p>
+
+                        <input pInputText id="username" name="username" [(ngModel)]="user.username" #username="ngModel"   required placeholder="Username" />
+                        <input pInputText type="password" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required placeholder="Password" />
+                    </div>
+
+                <div class="p-formgroup-inline">
+                    <div class="p-field">
+                        <button pButton label="Previous" type="button" *ngIf="step != 1" (click)="previous()" ></button>
+                    </div>
+                    <div class="p-field">
+                        <button pButton label="Next" type="button" *ngIf="step != 3" (click)="next()" [disabled]="middleRole==''" ></button>
+                    </div>
+                    <div class="p-field">
+                        <button pButton label="Register" type="submit" *ngIf="step ==3" ></button>
+                    </div>
+                </div>
+            </form>
+
+            <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>
+        </div>
+        <div class="login-image">
+            <div class="login-image-content">
+                <h1>Access to your</h1>
+                <h1>Diamond</h1>
+                <h1>Account</h1>
+                <h3>Lorem ipsum dolor sit amet, consectetur
+                    <br/> adipiscing elit. Donec posuere velit nec enim
+                    <br/> sodales, nec placerat erat tincidunt. </h3>
+            </div>
+            <div class="image-footer">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="icons">
+                    <i class="pi pi-github"></i>
+                    <i class="pi pi-twitter"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

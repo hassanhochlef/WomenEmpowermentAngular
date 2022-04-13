@@ -39,11 +39,11 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
+import {ForumComponent} from "./forum/forum.component";
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
-
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -51,6 +51,10 @@ import {DetailsComponent} from './course/details/details.component';
                     {
                         path: 'cour',
                         component: CourseComponent,
+                    },
+                    {
+                        path: 'forum',
+                        component: ForumComponent,
                     },
                     {
                         path: 'details/:id',
@@ -97,6 +101,7 @@ import {DetailsComponent} from './course/details/details.component';
         ], {scrollPositionRestoration: 'enabled'})
     ],
     exports: [RouterModule]
-})
+}
+)
 export class AppRoutingModule {
 }

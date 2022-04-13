@@ -143,6 +143,7 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
+import { ForumComponent } from './forum/forum.component';
 
 
 
@@ -283,6 +284,7 @@ import { DetailsComponent } from './course/details/details.component';
         AppAccessdeniedComponent,
         CourseComponent,
         DetailsComponent,
+        ForumComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

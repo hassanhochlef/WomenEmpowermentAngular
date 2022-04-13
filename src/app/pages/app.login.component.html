@@ -4,15 +4,15 @@
             <img  [src]="'assets/layout/images/logo-'+ (app.colorScheme === 'light' ? 'dark' : 'white') + '.svg'" class="logo" alt="diamond-layout" />
 
             <div class="login-form">
-                <h2>Create Your Free Account</h2>
-                <p>Already have an account? <a href="#">Login</a></p>
+                <h2>Create Your Free Account Now</h2>
+
                 <input pInputText id="name" placeholder="Full Name" />
                 <input pInputText id="email" placeholder="Email" />
                 <input pPassword id="password" placeholder="Password" />
                 <button pButton label="CONTINUE" type="button" ></button>
             </div>
 
-            <p>A problem? <a href="#">Click here</a> and let us help you.</p>
+            <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>
         </div>
         <div class="login-image">
             <div class="login-image-content">

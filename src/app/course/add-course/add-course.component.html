@@ -5,7 +5,15 @@
 			</span>
     <p-calendar id="startDate" name="startDate" [showIcon]="true" [(ngModel)]="course.startDate" ></p-calendar>
     <p-calendar id="endDate" name="endDate" [showIcon]="true" [(ngModel)]="course.endDate" ></p-calendar>
-<p-dropdown [options]="domain"  placeholder="Select a field" [showClear]="true" name="domain"  [(ngModel)]="course.domain"   ></p-dropdown>
+
+	<select name="domain" id="domain" [(ngModel)]="course.domain" >
+		<option  value="IT" >IT</option>
+		<option value="MEDICAL">MEDICAL</option>
+		<option value="ARTISANAL">ARTISANAL</option>
+		<option value="TECH">TECH</option>
+		<option value="SOCIAL">SOCIAL</option>
+		<option value="AGRICULTURE">AGRICULTURE</option>
+	</select>
 <p-inputNumber mode="decimal" [showButtons]="true" [min]="1" [max]="200" [(ngModel)]="course.nbHours" name="nbHours"></p-inputNumber>
 <p-button  label="Submit"  type="submit" class="p-mr-2 p-mb-2"></p-button>
 </form>

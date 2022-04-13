@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, Sanitizer, SecurityContext} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Course} from '../../models/course.model';
 import {CourseService} from '../../shared/course.service';
-import HespLivePlayer from "@hesp.live/player";
+
 
 @Component({
   selector: 'app-details',
@@ -18,10 +18,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
   filtersLoaded: Promise<boolean>;
   myScriptElement: HTMLScriptElement;
   mydivElement: HTMLDivElement;
+  myLinkElement: HTMLLinkElement;
+    public xx: string = null;
   constructor(private activatedRoute: ActivatedRoute, private service: CourseService) {
     this.myScriptElement = document.createElement('script');
     this.myScriptElement.src = 'https://cdn.hesp.live/player/embed.js';
     document.body.appendChild(this.myScriptElement);
+
   }
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) =>
@@ -32,11 +35,15 @@ export class DetailsComponent implements OnInit, OnDestroy {
   getCourseDetails(id: string): void {
     this.courseSub = this.service
         .getCourse(id)
-        .subscribe((courseResp: Course) => { console.log(courseResp);
+        .subscribe(courseResp => {
                                              this.course = courseResp;
+                                             console.log(this.course.channelId);
+                                             this.xx = this.course.channelId;
+                                             console.log(this.xx);
                                              this.filtersLoaded = Promise.resolve(true);
         });
   }
+
   ngOnDestroy(): void{
     if (this.routeSub){
       this.routeSub.unsubscribe();

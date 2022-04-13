@@ -146,6 +146,10 @@ import { DetailsComponent } from './course/details/details.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './user/home/home.component';
+import { NavbarComponent } from './user/navbar/navbar.component';
+import { FrontFooterComponent } from './user/front-footer/front-footer.component';
+import { FrontLandingComponent } from './user/front-landing/front-landing.component';
+import { ProfilComponent } from './user/profil/profil.component';
 
 
 
@@ -289,6 +293,10 @@ import { HomeComponent } from './user/home/home.component';
         RegisterComponent,
         LoginComponent,
         HomeComponent,
+        NavbarComponent,
+        FrontFooterComponent,
+        FrontLandingComponent,
+        ProfilComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

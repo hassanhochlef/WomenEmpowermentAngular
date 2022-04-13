@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppComponent} from '../../app.component';
 import {User} from '../../models/user.model';
 import {AuthenticationService} from '../../shared/authentication.service';
@@ -9,12 +9,19 @@ import {Router} from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+
+  myLinkElement: HTMLLinkElement;
 
   user: User = new User();
   errorMessage: string = "";
 
   constructor(public app: AppComponent, private authenticationService: AuthenticationService, private router: Router) {
+    this.myLinkElement = document.createElement('link');
+    this.myLinkElement.href = "assets/css/material-kit.css?v=3.0.2";
+    this.myLinkElement.rel = "stylesheet";
+    document.body.appendChild(this.myLinkElement);
+
   }
 
   ngOnInit(): void {
@@ -23,6 +30,11 @@ export class LoginComponent implements OnInit {
       return;
     }
   }
+
+  ngOnDestroy() {
+    document.body.removeChild(this.myLinkElement);
+  }
+
 
   login(){
     this.authenticationService.login(this.user).subscribe( data => {

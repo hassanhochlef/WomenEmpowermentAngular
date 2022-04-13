@@ -1,0 +1,50 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/primeflex.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/themes/saga-blue.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/themes/arya-blue.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/themes/vela-blue.css">
+    <link rel="stylesheet" href="/assets/hover.css">
+</head>
+<Body style="background-color: #ffffff		 ">
+
+ <div class=" flex  justify-content-center card-container " style="margin-top: 40px;  	 ">
+<div class="card w-5"><h3>Add Post</h3>
+    <div class="p-fluid"><div class="p-field">
+        <label for="firstname1">title</label>
+        <input id="firstname1" type="text" pinputtext="" class="p-inputtext p-component"></div>
+        <div class="p-field"><label for="lastname1">Body</label>
+            <input id="lastname1" type="text" pinputtext="" class="p-inputtext p-component"></div>
+        <p-button label="Submit"></p-button>
+    </div></div>                 </div>
+
+
+
+<ng-container *ngFor="let p of listPost">
+    <div class=" flex  justify-content-center card-container " style="margin-top: 40px;  	 ">
+<div class="card widget-feature-box  w-5 hover:bg-pink-100 " style=" background-color:#FFDAB9; " id="grow">
+
+
+    <Div style="position: absolute ;">
+        <div _ngcontent-dnh-c92="" class="person-name" >Amy Elsner</div>
+
+
+
+    <img _ngcontent-jne-c92="" src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout">
+    </Div>
+    <h2>{{p.postTitle}}</h2>
+    <h5>{{p.createdAt}}</h5>
+    <h1>{{p.body}}</h1>
+
+    <span class="p-buttonset" style="margin-top: 20px">
+    <button class="btn btn-primary" type="button" label="Save" icon="pi pi-check" style="width: 150px; height: 30px">Like</button>
+    <button class="btn btn-primary" type="button" label="Delete" icon="pi pi-trash" style="width: 150px; height: 30px">Comment</button>
+    <button class="btn btn-primary" type="button" label="Cancel" icon="pi pi-times " style="width: 150px; height: 30px">Share</button>
+
+</span>
+
+</div>
+    </div>
+</ng-container>
+
+</Body>
+

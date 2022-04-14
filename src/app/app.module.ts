@@ -132,7 +132,6 @@ import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
-
 import {CountryService} from './demo/service/countryservice';
 import {CustomerService} from './demo/service/customerservice';
 import {EventService} from './demo/service/eventservice';
@@ -142,7 +141,18 @@ import {PhotoService} from './demo/service/photoservice';
 import {ProductService} from './demo/service/productservice';
 import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
-import { OffreComponent } from './pages/offre/offre.component';
+import { CourseComponent } from './course/course.component';
+import { DetailsComponent } from './course/details/details.component';
+import { ForumComponent } from './forum/forum.component';
+import { RegisterComponent } from './user/register/register.component';
+import { LoginComponent } from './user/login/login.component';
+import { HomeComponent } from './user/home/home.component';
+import { NavbarComponent } from './user/navbar/navbar.component';
+import { FrontFooterComponent } from './user/front-footer/front-footer.component';
+import { FrontLandingComponent } from './user/front-landing/front-landing.component';
+import { ProfilComponent } from './user/profil/profil.component';
+
+
 
 @NgModule({
     imports: [
@@ -279,7 +289,16 @@ import { OffreComponent } from './pages/offre/offre.component';
         AppErrorComponent,
         AppTimelineDemoComponent,
         AppAccessdeniedComponent,
-        OffreComponent,
+        CourseComponent,
+        DetailsComponent,
+        ForumComponent,
+        RegisterComponent,
+        LoginComponent,
+        HomeComponent,
+        NavbarComponent,
+        FrontFooterComponent,
+        FrontLandingComponent,
+        ProfilComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

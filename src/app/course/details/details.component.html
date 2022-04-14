@@ -1,0 +1,26 @@
+
+<div class="details">
+    <div class="game-banner">
+        <img
+                class="game-banner-img"
+                src="https://c1.wallpaperflare.com/preview/471/703/720/e-learning-training-school-online-learn-knowledge.jpg"
+                alt="background image"
+        />
+    </div>
+    <div *ngIf="filtersLoaded | async">
+        <div class="game-content">
+            <div class="details-wrapper">
+                <div class="game-header">
+                    <h1 class="game-header-title">{{ course.courseName }}</h1>
+                    <h2 class="game-header-release-date">
+                        Release: {{ course.startDate | date }}
+                    </h2>
+                    <p class="game-header-genres">
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

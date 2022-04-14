@@ -1,0 +1,21 @@
+
+<div class="games">
+    <ng-container *ngFor="let cour of listCours">
+        <div class="game" (click)="openGameDetails(cour.courseId.toString())">
+            <div class="game-thumb-container">
+                <img
+                        *ngIf="1==0"
+                        src="{{ cour.courseName }}"
+                        alt="thumbnail"
+                        class="game-thumbnail"
+                />
+                <p *ngIf="!1==0">No image</p>
+            </div>
+            <div class="game-description">
+                <p class="game-name">{{ cour.courseName }}</p>
+
+            </div>
+        </div>
+    </ng-container>
+</div>
+<router-outlet></router-outlet>

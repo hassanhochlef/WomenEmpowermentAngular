@@ -54,25 +54,7 @@ import {ProfilComponent} from './user/profil/profil.component';
             {
                 path: '', component: AppMainComponent,
                 children: [
-                    {
-                        path: 'cour',
-                        component: CourseComponent,
-                    },
-                    {
-                        path: 'forum',
-                        component: ForumComponent,
-                    },
-                    {
-                        path: 'details/:id',
-                        component : DetailsComponent,
-                    },
-
-                    {
-                        path: 'addcourse',
-                        component : AddCourseComponent,
-                    },
                     {path: '', component: DashboardDemoComponent},
-
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -111,7 +93,11 @@ import {ProfilComponent} from './user/profil/profil.component';
                 path: 'test', component: HomeComponent,
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
-                    {path: 'profil', component: ProfilComponent}
+                    {path: 'profil', component: ProfilComponent},
+                    {path: 'cour', component: CourseComponent},
+                    {path: 'forum', component: ForumComponent},
+                    {path: 'details/:id', component : DetailsComponent},
+                    {path: 'addcourse', component : AddCourseComponent},
                 ]
             },
             {path: 'error', component: AppErrorComponent},

@@ -1,5 +1,35 @@
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75" style="background-image: url('assets/img/bg9.jpg');">
+        <span class="mask bg-gradient-dark opacity-6"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mx-auto my-auto">
+                    <h1 class="text-white">Work with an amazing design</h1>
+                    <p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
+                    <button type="submit" class="btn bg-white text-dark">Create Account</button>
+                    <h6 class="text-white mb-2 mt-5">Find us on</h6>
+                    <div class="d-flex justify-content-center">
+                        <a href=""><i class="fab fa-facebook text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-instagram text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-twitter text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-google-plus text-lg text-white"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<center style="background-color:#1f2d40">
+<br>
+<br>
+<br>
+    <div class="twelve">
+        <h1 class="h11">Courses</h1>
+    </div>
+
     <section class="card-area">
         <section class="card-section wrapper">
+
             <div *ngFor="let cour of listCours ">
                 <div *ngIf="cour.domain=='IT'">
                     <div class="card p-mr-3 p-mb-3">
@@ -8,9 +38,9 @@
                                 <div class="card-front">
                                     <div class="card-front__tp card-front__tp--city">
 
-                                        <h2 class="card-front__heading">
+                                        <h1 class="card-front__heading" >
                                             {{cour.courseName}}
-                                        </h2>
+                                        </h1>
                                         <p class="card-front__text-price">
                                             {{cour.domain}}
                                         </p>
@@ -266,8 +296,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </section>
     </section>
+</center>
 <router-outlet></router-outlet>

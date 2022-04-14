@@ -19,6 +19,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   myScriptElement: HTMLScriptElement;
   mydivElement: HTMLDivElement;
   myLinkElement: HTMLLinkElement;
+  statuses: any[];
     public xx: string = null;
   constructor(private activatedRoute: ActivatedRoute, private service: CourseService) {
     this.myScriptElement = document.createElement('script');
@@ -31,6 +32,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
     { this.courseId = params.id;
       this.getCourseDetails(this.courseId);
     });
+    this.statuses = [
+      {label: 'Unqualified', value: 'unqualified'},
+      {label: 'Qualified', value: 'qualified'}
+    ];
   }
   getCourseDetails(id: string): void {
     this.courseSub = this.service

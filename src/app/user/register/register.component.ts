@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../../models/user.model';
 import {AuthenticationService} from '../../shared/authentication.service';
 import {Router} from '@angular/router';
@@ -10,7 +10,9 @@ import {AppComponent} from '../../app.component';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
+
+  myLinkElement: HTMLLinkElement;
 
   user: User = new User();
   errorMessage: string = "";
@@ -21,11 +23,19 @@ export class RegisterComponent implements OnInit {
   selectedFile!: File;
 
   constructor(public app: AppComponent, private authenticationService: AuthenticationService, private router: Router) {
-
+    this.myLinkElement = document.createElement('link');
+    this.myLinkElement.href = "assets/css/material-kit.css?v=3.0.2";
+    this.myLinkElement.rel = "stylesheet";
+    this.myLinkElement.id = "pagestyle";
+    document.body.appendChild(this.myLinkElement);
   }
 
   ngOnInit(): void {
     this.roles = [ Role.USER, Role.ADMIN, Role.EXPERT, Role.COMPANY, Role.FORMER ];
+  }
+
+  ngOnDestroy() {
+    document.body.removeChild(this.myLinkElement);
   }
 
   register(){
@@ -48,7 +58,9 @@ export class RegisterComponent implements OnInit {
     console.log(this.userParsed);
 
     this.authenticationService.register(this.userParsed, this.selectedFile).subscribe(data => {
-          this.router.navigate(['/login']);},
+          this.router.navigate(['/login']).then(() => {
+            window.location.reload();
+          }); },
         err => {
           if (err?.status === 409){
             this.errorMessage = 'Username already exists';
@@ -71,6 +83,13 @@ export class RegisterComponent implements OnInit {
 
   previous(){
     this.step = this.step - 1 ;
+  }
+
+  redirectTo(){
+    this.router.navigate(['/login'])
+        .then(() => {
+          window.location.reload();
+        });
   }
 
 

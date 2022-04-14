@@ -143,6 +143,9 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
+import { EventComponent } from './event/event.component';
+import { FilterPipe } from './event/filter.pipe';
+
 
 
 
@@ -283,6 +286,8 @@ import { DetailsComponent } from './course/details/details.component';
         AppAccessdeniedComponent,
         CourseComponent,
         DetailsComponent,
+        EventComponent,
+        FilterPipe,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -40,6 +40,8 @@ import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
 
+import {EventComponent} from './event/event.component';
+
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -86,7 +88,8 @@ import {DetailsComponent} from './course/details/details.component';
                     {path: 'pages/invoice', component: AppInvoiceComponent},
                     {path: 'pages/help', component: AppHelpComponent},
                     {path: 'pages/empty', component: EmptyDemoComponent},
-                    {path: 'documentation', component: DocumentationComponent}
+                    {path: 'documentation', component: DocumentationComponent},
+                    {path: 'pages/event', component: EventComponent},
                 ]
             },
             {path: 'error', component: AppErrorComponent},

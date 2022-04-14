@@ -46,4 +46,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
+  redirectTo(){
+    this.router.navigate(['/register'])
+        .then(() => {
+          window.location.reload();
+        });
+  }
+
 }

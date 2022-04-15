@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   constructor(public app: AppComponent, private authenticationService: AuthenticationService, private router: Router) {
     this.myLinkElement = document.createElement('link');
-    this.myLinkElement.href = "assets/css/material-kit.css?v=3.0.2";
+    this.myLinkElement.href = "assets/css/material-kit-pro.min3294.css?v=3.0.1";
     this.myLinkElement.rel = "stylesheet";
     this.myLinkElement.id = "pagestyle";
     document.body.appendChild(this.myLinkElement);

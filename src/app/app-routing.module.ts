@@ -47,11 +47,7 @@ import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
-
-
-
 import {EventComponent} from './event/event.component';
-
 
 @NgModule({
     imports: [

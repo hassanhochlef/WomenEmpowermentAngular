@@ -102,7 +102,7 @@ import {ProfilComponent} from './user/profil/profil.component';
             },
 
             {
-                path: 'test', component: HomeComponent,
+                path: 'user', component: HomeComponent,
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent}

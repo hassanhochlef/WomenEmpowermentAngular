@@ -20,13 +20,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.myLinkElement = document.createElement('link');
     this.myLinkElement.href = "assets/css/material-kit.css?v=3.0.2";
     this.myLinkElement.rel = "stylesheet";
+    this.myLinkElement.id = "pagestyle";
     document.body.appendChild(this.myLinkElement);
 
   }
 
   ngOnInit(): void {
     if (this.authenticationService.currentUserValue?.userId){
-      this.router.navigate(['']);
+      this.router.navigate(['user/landing']);
       return;
     }
   }
@@ -38,11 +39,18 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login(){
     this.authenticationService.login(this.user).subscribe( data => {
-      this.router.navigate(['']);
+      this.router.navigate(['user/landing']);
     }, err => {
       this.errorMessage = 'Username or password is incorrect';
       console.log(err);
     });
+  }
+
+  redirectTo(){
+    this.router.navigate(['/register'])
+        .then(() => {
+          window.location.reload();
+        });
   }
 
 }

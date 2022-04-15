@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Course} from '../../models/course.model';
 import {CourseService} from '../../shared/course.service';
+import {User} from "../../models/user.model";
 
 
 @Component({
@@ -11,6 +12,7 @@ import {CourseService} from '../../shared/course.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit, OnDestroy {
+  user: User[];
   courseId: string;
   course: Course;
   routeSub: Subscription;
@@ -31,11 +33,20 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) =>
     { this.courseId = params.id;
       this.getCourseDetails(this.courseId);
+      this.getCourseParticipant(this.courseId);
     });
     this.statuses = [
       {label: 'Unqualified', value: 'unqualified'},
       {label: 'Qualified', value: 'qualified'}
     ];
+  }
+  getCourseParticipant(id: string): void{
+   this.courseSub = this.service
+       .getCourseParticipants(id)
+       .subscribe(courseResp => {
+                                      this.user = courseResp;
+                                      this.filtersLoaded = Promise.resolve(true);
+                                    });
   }
   getCourseDetails(id: string): void {
     this.courseSub = this.service

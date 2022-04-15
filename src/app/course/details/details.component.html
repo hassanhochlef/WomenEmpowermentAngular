@@ -109,31 +109,21 @@
     </div>
 
        <center><button class="button1 learn-more">Participate</button></center>
+    <center><button class="button1 learn-more">Delete Course</button></center>
 <br>
 <br>
     <div class="list-wrapper" >
-        <ul class="list">
+        <ul class="list" *ngFor="let use of user">
             <li class="list-item">
                 <div>
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/488320/profile/profile-80.jpg" class="list-item-image">
                 </div>
                 <div class="list-item-content">
-                    <h4>Hitesh Kumar</h4>
-                    <p>@hk-skit</p>
+                    <h4>{{use.name}}</h4>
+                    <h6>@{{use.username}}</h6>
                     <div style="display:inline-flex"><button class="btn btn-facebook">Sanction</button><button class="btn btn-danger">KICK</button><button class="btn btn-warning">WARN</button></div>
                 </div>
             </li>
-            <li class="list-item">
-                <div>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/488320/profile/profile-80.jpg" class="list-item-image">
-                </div>
-                <div class="list-item-content">
-                    <h4>Hmed satour</h4>
-                    <p>@hk-skit</p>
-                    <div style="display:inline-flex"><button class="btn btn-facebook">Sanction</button><button class="btn btn-danger">KICK</button><button class="btn btn-warning">WARN</button></div>
-                </div>
-            </li>
-
         </ul>
     </div>
     <center><div [attr.data-hesp-live-id]="course.channelId"  style="width: 1200px; height: 420px ;loading:lazy ; padding-top: 10px"></div></center>

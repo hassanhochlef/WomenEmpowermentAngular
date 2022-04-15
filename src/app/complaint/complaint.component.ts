@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 
 import {ComplaintService} from '../shared/complaint.service';
 import {Subscription} from 'rxjs';
+import {compareNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 
 @Component({
@@ -25,7 +26,7 @@ listcomp: Complaint[];
     console.log("suppppppppppppppppppppppppppppp supprimé");
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
-      this.service.supprimerProduit(c.complaintId).subscribe(() => {
+      this.service.supprimerProduit(comp.complaintId).subscribe(() => {
         console.log("complaint delet");
         this.SuprimerProduitDuTableau(comp);
       });

@@ -16,7 +16,7 @@ export class OffreComponent implements OnInit {
       this.apiOffreService.getOffers().subscribe(res => {console.log(res);
                                                          this.listOffers = res ; });
   }
-addOfree(){
+  /*addOfree(){
     this.apiOffreService.createOffre(this.offre, 11).subscribe(
         data => {
           console.log( 'offre added successfully ' );
@@ -26,5 +26,5 @@ addOfree(){
           console.error(err);
         }
     );
-}
+   }*/
 }

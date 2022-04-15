@@ -41,11 +41,16 @@ import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
 import {ComplaintComponent} from './complaint/complaint.component';
 import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.component';
+import {ForumComponent} from "./forum/forum.component";
+import {RegisterComponent} from './user/register/register.component';
+import {LoginComponent} from './user/login/login.component';
+import {HomeComponent} from './user/home/home.component';
+import {FrontLandingComponent} from './user/front-landing/front-landing.component';
+import {ProfilComponent} from './user/profil/profil.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
-
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -61,11 +66,16 @@ import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.com
                     {
                         path: 'addcomplaint',
                         component: AddComplaintComponent,
+
+                        path: 'forum',
+                        component: ForumComponent,
+
                     },
                     {
                         path: 'details/:id',
                         component : DetailsComponent,
                     },
+
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -99,14 +109,24 @@ import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.com
                     {path: 'documentation', component: DocumentationComponent}
                 ]
             },
+
+            {
+                path: 'user', component: HomeComponent,
+                children: [
+                    {path: 'landing', component: FrontLandingComponent},
+                    {path: 'profil', component: ProfilComponent}
+                ]
+            },
             {path: 'error', component: AppErrorComponent},
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
-            {path: 'login', component: AppLoginComponent},
+            {path: 'register', component: RegisterComponent},
+            {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],
     exports: [RouterModule]
-})
+}
+)
 export class AppRoutingModule {
 }

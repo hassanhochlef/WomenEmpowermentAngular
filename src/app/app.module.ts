@@ -143,13 +143,11 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
-
 import { EventComponent } from './event/event.component';
 import { FilterPipe } from './event/filter.pipe';
 
 import { ComplaintComponent } from './complaint/complaint.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
-
 import { ForumComponent } from './forum/forum.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
@@ -300,6 +298,7 @@ import { ProfilComponent } from './user/profil/profil.component';
         ComplaintComponent,
         CourseComponent,
         DetailsComponent,
+        ForumComponent,
         EventComponent,
         FilterPipe,
         AddComplaintComponent,

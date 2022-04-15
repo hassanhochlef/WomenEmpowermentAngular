@@ -143,6 +143,8 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
+import { ComplaintComponent } from './complaint/complaint.component';
+import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 
 
 
@@ -281,8 +283,10 @@ import { DetailsComponent } from './course/details/details.component';
         AppErrorComponent,
         AppTimelineDemoComponent,
         AppAccessdeniedComponent,
+        ComplaintComponent,
         CourseComponent,
         DetailsComponent,
+        AddComplaintComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -39,6 +39,8 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
+import {ComplaintComponent} from './complaint/complaint.component';
+import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.component';
 
 @NgModule({
     imports: [
@@ -51,6 +53,14 @@ import {DetailsComponent} from './course/details/details.component';
                     {
                         path: 'cour',
                         component: CourseComponent,
+                    },
+                    {
+                        path: 'complaint',
+                        component: ComplaintComponent,
+                    },
+                    {
+                        path: 'addcomplaint',
+                        component: AddComplaintComponent,
                     },
                     {
                         path: 'details/:id',

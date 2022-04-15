@@ -1,0 +1,22 @@
+<h1>The list of complaint</h1>
+<div class="body table-responsive" >
+    <table class="table table-bordered" >
+        <thead>
+        <tr>
+            <th>title</th>
+            <th>contain</th>
+            <th>update</th>
+            <th>delete</th></tr>
+        </thead>
+    <tbody  *ngFor="let comp of listcomp ">
+    <tr>
+        <td> {{ comp.complaintTitle }} </td>
+        <td>  {{ comp.content }} </td>
+        <td><button type="button" class="btn btn-primary" (click)="supprimerProduit(comp)" >delete</button></td>
+        <td><button type="submit" >update</button></td>
+    </tr>
+    </tbody>
+    </table>
+    <button href='http://localhost:4200/#/addcomplaint'>add Complaint</button>
+</div>
+

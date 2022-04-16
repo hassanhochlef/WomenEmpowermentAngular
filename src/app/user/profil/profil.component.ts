@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../models/user.model';
+import {AuthenticationService} from '../../shared/authentication.service';
+import {UserService} from '../../shared/user.service';
 
 @Component({
   selector: 'app-profil',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
-  constructor() { }
+  friendList: Array<User> = [];
+
+  constructor(private authenticationService: AuthenticationService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getAllFriends().subscribe(data =>{
+      this.friendList = data;
+    });
   }
 
 }

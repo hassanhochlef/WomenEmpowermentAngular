@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Course} from '../models/course.model';
 import {User} from "../models/user.model";
+import {Certificate} from "../models/certificate.model";
 @Injectable({
   providedIn: 'root'
 })
@@ -23,5 +24,8 @@ export class CourseService {
   }
   deleteCourse(id: string){
     return this.http.delete('http://localhost:8087/SpringMVC/course/removeCourse/' + id );
+  }
+  getCertificate(idCourse: string): Observable<Certificate[]>{
+    return this.http.get<Certificate[]>('http://localhost:8087/SpringMVC/course/getuserCertif/' + idCourse);
   }
 }

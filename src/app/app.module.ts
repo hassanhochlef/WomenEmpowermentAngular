@@ -144,6 +144,10 @@ import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
 import { AddCourseComponent } from './course/add-course/add-course.component';
+import { EventComponent } from './event/event.component';
+import { FilterPipe } from './event/filter.pipe';
+import { ComplaintComponent } from './complaint/complaint.component';
+import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 import { ForumComponent } from './forum/forum.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
@@ -291,9 +295,14 @@ import { ProfilComponent } from './user/profil/profil.component';
         AppErrorComponent,
         AppTimelineDemoComponent,
         AppAccessdeniedComponent,
+        ComplaintComponent,
         CourseComponent,
         DetailsComponent,
         AddCourseComponent,
+        ForumComponent,
+        EventComponent,
+        FilterPipe,
+        AddComplaintComponent,
         ForumComponent,
         RegisterComponent,
         LoginComponent,
@@ -302,6 +311,7 @@ import { ProfilComponent } from './user/profil/profil.component';
         FrontFooterComponent,
         FrontLandingComponent,
         ProfilComponent,
+
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -22,10 +22,10 @@ listcomp: Complaint[];
 
   supprimerProduit(comp: Complaint)
   {
-    console.log("suppppppppppppppppppppppppppppp supprimé");
+    console.log('suppppppppppppppppppppppppppppp supprimé');
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
-      this.service.supprimerProduit(c.complaintId).subscribe(() => {
+      this.service.supprimerProduit(comp.complaintId).subscribe(() => {
         console.log("complaint delet");
         this.SuprimerProduitDuTableau(comp);
       });

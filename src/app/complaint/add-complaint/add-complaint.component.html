@@ -1,27 +1,13 @@
-<div class="container">
-    <div>
-        <h2>add complaint :</h2>
-    </div>
-
-    <form >
-
-
-        <div class="col-sm-4 col-md-4 col-lg-4" >
-            <label >title complaint</label>
-            <input type="text"[(ngModel)]= "newComplaint.complaintTitle" name="complaintTitle " class="form-control">
+<div _ngcontent-ktt-c178 class="p-col-12 p-md-6">
+    <div _ngcontent-jjq-c178 class="card">
+        <h5 _ngcontent-jgl-c178 >title complaint</h5>
+        <input _ngcontent-veo-c178="" type="text" pinputtext="" placeholder="Default" class="p-inputtext p-component" type="text"[(ngModel)]= "newComplaint.complaintTitle" name="complaintTitle ">
+         <h5 _ngcontent-jgl-c178> content</h5>
+        <textarea _ngcontent-qqd-c178="" rows="5" cols="30" placeholder="Your Message" pinputtextarea="" class="p-inputtextarea p-inputtext p-component" type="text" [(ngModel)]= "newComplaint.content" name="complainContent "></textarea>
+ <div class="mt-2">
+ <button type="submit" (click)="addComplaint()" class="btn btn-success" pbutton="" pripple="" label="Save" icon="pi pi-check" ng-reflect-label="Save" ng-reflect-icon="pi pi-check" class="p-ripple p-button p-component">
+         <span class="p-button-icon p-button-icon-left pi pi-check" aria-hidden="true"></span><span class="p-button-label">Save</span>
+         <span class="p-ink"></span></button>
         </div>
-
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <label > content</label>
-            <input type="text" [(ngModel)]= "newComplaint.content" name="content" class="form-control">
         </div>
-
-
-
-        <div class="mt-2">
-            <button type="submit" (click)="addComplaint()" class="btn btn-success">Ajouter</button>
-
-
         </div>
-    </form>
-</div>

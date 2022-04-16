@@ -47,6 +47,8 @@ import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
+import {ServicesComponent} from './services/services.component';
+import {AddServicesComponent} from './services/add-services/add-services.component';
 
 @NgModule({
     imports: [
@@ -66,7 +68,17 @@ import {ProfilComponent} from './user/profil/profil.component';
                     {
                         path: 'addcomplaint',
                         component: AddComplaintComponent,
+                    },
+                    {
+                        path: 'addServ',
+                        component: AddServicesComponent,
+                    },
+                    {
+                        path: 'service',
+                        component: ServicesComponent,
 
+                    },
+                    {
                         path: 'forum',
                         component: ForumComponent,
 

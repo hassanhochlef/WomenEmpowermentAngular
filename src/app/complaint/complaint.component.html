@@ -1,22 +1,38 @@
 <h1>The list of complaint</h1>
-<div class="body table-responsive" >
-    <table class="table table-bordered" >
-        <thead>
-        <tr>
+<div _ngcontent-tvm-c92 class="card">
+    <div class="p-datatable-header ng-star-inserted"><div _ngcontent-fwi-c180="" class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header ng-star-inserted"> Complaint <span _ngcontent-fwi-c180="" class="p-input-icon-left"><i _ngcontent-fwi-c180="" class="pi pi-search"></i><input _ngcontent-fwi-c180="" pinputtext="" type="text" placeholder="Global Search" class="p-inputtext p-component"></span></div><!--bindings={
+  "ng-reflect-ng-template-outlet": "[object Object]"
+}-->
+    </div>
+    <table>
+        <thead >
+        <tr _ngcontent-pdn-c180="" class="ng-star-inserted">
             <th>title</th>
             <th>contain</th>
-            <th>update</th>
-            <th>delete</th></tr>
+            <th>status</th>
+            <th>delete</th>
+            <th>update</th></tr>
         </thead>
-    <tbody  *ngFor="let comp of listcomp ">
+    <tbody class="p-datatable-tbody" *ngFor="let comp of listcomp ">
     <tr>
-        <td> {{ comp.complaintTitle }} </td>
-        <td>  {{ comp.content }} </td>
-        <td><button type="button" class="btn btn-primary" (click)="supprimerProduit(comp)" >delete</button></td>
-        <td><button type="submit" >update</button></td>
+        <td _ngcontent-gbj-c180><span _ngcontent-hos-c180 class="p-column-title"> {{ comp.complaintTitle }} </span></td>
+        <td _ngcontent-gbj-c180> <span _ngcontent-hos-c180 class="p-column-title"> {{ comp.content }}</span></td>
+        <td _ngcontent-gbj-c180> <span _ngcontent-hos-c180 class="p-column-title"> {{ comp.isTreated }}</span> </td>
+        <td _ngcontent-gbj-c180><button pbutton="" pripple="" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined p-mr-2 p-mb-2 p-ripple p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-times">
+            <span class="p-button-icon pi pi-times" aria-hidden="true"></span>
+            <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span>
+            <span class="p-ink"></span></button></td>
+        <td _ngcontent-gbj-c180><button (click)="supprimerProduit(comp)" _ngcontent-gyv-c180="" pbutton="" type="button" icon="pi pi-cog" class="p-button-secondary p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-cog">
+            <span class="p-button-icon pi pi-cog" aria-hidden="true"></span>
+            <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span></button></td>
     </tr>
     </tbody>
     </table>
-    <button href='http://localhost:4200/#/addcomplaint'>add Complaint</button>
+    <button  _ngcontent-afu-c112="" pbutton="" type="button" label="New" icon="pi pi-plus" ng-reflect-label="New" ng-reflect-icon="pi pi-plus" class="p-button p-component">
+        <span class="p-button-icon p-button-icon-left pi pi-plus" aria-hidden="true"></span>
+        <span href="http://localhost:4200/#/addcomplaint" class="p-button-label" >New</span>
+    </button>
+
+
 </div>
 

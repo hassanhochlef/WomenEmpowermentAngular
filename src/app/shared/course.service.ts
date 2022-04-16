@@ -22,6 +22,6 @@ export class CourseService {
     return this.http.get<User[]>('http://localhost:8087/SpringMVC/course/getAllParticipants/' + id );
   }
   deleteCourse(id: string){
-    return this.http.delete('http://localhost:8087/SpringMVC/course/getAllParticipants/' + id );
+    return this.http.delete('http://localhost:8087/SpringMVC/course/removeCourse/' + id );
   }
 }

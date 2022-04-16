@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit, Sanitizer, SecurityContext} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Course} from '../../models/course.model';
 import {CourseService} from '../../shared/course.service';
 import {User} from "../../models/user.model";
@@ -12,6 +12,7 @@ import {User} from "../../models/user.model";
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit, OnDestroy {
+  listCours: Course[];
   user: User[];
   courseId: string;
   course: Course;
@@ -23,7 +24,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   myLinkElement: HTMLLinkElement;
   statuses: any[];
     public xx: string = null;
-  constructor(private activatedRoute: ActivatedRoute, private service: CourseService) {
+  constructor(private activatedRoute: ActivatedRoute, private service: CourseService, private router: Router) {
     this.myScriptElement = document.createElement('script');
     this.myScriptElement.src = 'https://cdn.hesp.live/player/embed.js';
     document.body.appendChild(this.myScriptElement);
@@ -47,6 +48,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
                                       this.user = courseResp;
                                       this.filtersLoaded = Promise.resolve(true);
                                     });
+  }
+  deleteCourse(id: string): void{
+    this.service.deleteCourse(id).subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));
+
   }
   getCourseDetails(id: string): void {
     this.courseSub = this.service

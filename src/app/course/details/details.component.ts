@@ -4,6 +4,9 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Course} from '../../models/course.model';
 import {CourseService} from '../../shared/course.service';
 import {User} from "../../models/user.model";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
 
 
 @Component({
@@ -12,6 +15,17 @@ import {User} from "../../models/user.model";
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit, OnDestroy {
+  events: any[];
+
+  options: any;
+
+  header: any;
+
+  eventDialog: boolean;
+
+  changedEvent: any;
+
+  clickedEvent = null;
   listCours: Course[];
   user: User[];
   courseId: string;
@@ -36,6 +50,27 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.getCourseDetails(this.courseId);
       this.getCourseParticipant(this.courseId);
     });
+    this.changedEvent = {title: '', start: null, end: '', allDay: null};
+
+    this.options = {
+      plugins: [ dayGridPlugin, timeGridPlugin, interactionPlugin ],
+      defaultDate: '2017-02-01',
+      header: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      editable: true,
+      eventClick: (e) => {
+        this.eventDialog = true;
+
+        this.clickedEvent = e.event;
+
+        this.changedEvent.title = this.clickedEvent.title;
+        this.changedEvent.start = this.clickedEvent.start;
+        this.changedEvent.end = this.clickedEvent.end;
+      }
+    };
     this.statuses = [
       {label: 'Unqualified', value: 'unqualified'},
       {label: 'Qualified', value: 'qualified'}
@@ -63,6 +98,22 @@ export class DetailsComponent implements OnInit, OnDestroy {
                                              console.log(this.xx);
                                              this.filtersLoaded = Promise.resolve(true);
         });
+  }
+  save() {
+    this.eventDialog = false;
+
+    this.clickedEvent.setProp('title', this.changedEvent.title);
+    this.clickedEvent.setStart(this.changedEvent.start);
+    this.clickedEvent.setEnd(this.changedEvent.end);
+    this.clickedEvent.setAllDay(this.changedEvent.allDay);
+
+    this.changedEvent = {title: '', start: null, end: '', allDay: null};
+  }
+
+  reset() {
+    this.changedEvent.title = this.clickedEvent.title;
+    this.changedEvent.start = this.clickedEvent.start;
+    this.changedEvent.end = this.clickedEvent.end;
   }
 
   ngOnDestroy(): void{

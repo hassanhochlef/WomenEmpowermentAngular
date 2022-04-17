@@ -13,8 +13,8 @@ export class OffreComponent implements OnInit {
   constructor(private apiOffreService: OfferService) { }
 
   ngOnInit(): void {
-      this.apiOffreService.getOffers().subscribe(res => {console.log(res);
-                                                         this.listOffers = res ; });
+      this.apiOffreService.getAllOffers().subscribe(res => {console.log(res);
+                                                            this.listOffers = res ; });
   }
   /*addOfree(){
     this.apiOffreService.createOffre(this.offre, 11).subscribe(

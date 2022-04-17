@@ -1,8 +1,19 @@
 <p>offre works!</p>
 
 <ul>
-   <li >{{ listOffers|json }} </li>
+   <li *ngFor="let u of listOffers">{{ u }} </li>
 </ul>
+ <tr *ngFor="let offre of listOffers">
+     <td>{{offre.approxSalary}}</td>
+     <td>{{offre.title}}</td>
+     <td>{{offre.createdAt}}</td>
+     <td>{{offre.description}}</td>
+     <td>{{offre.location}}</td>
+     <td>{{offre.requiredCandidates}}</td>
+
+
+
+ </tr>
 <button (click)="addOfree()">
    create
 </button>

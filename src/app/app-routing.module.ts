@@ -48,6 +48,7 @@ import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
+import {OffreComponent} from './pages/offre/offre.component';
 
 @NgModule({
     imports: [
@@ -76,6 +77,10 @@ import {EventComponent} from './event/event.component';
                     {
                         path: 'details/:id',
                         component : DetailsComponent,
+                    },
+                    {
+                        path: 'offre',
+                        component : OffreComponent,
                     },
 
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},

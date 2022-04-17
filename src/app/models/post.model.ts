@@ -5,6 +5,6 @@ export class Post {
     nb_Signal: number;
     nb_etoil: number;
     postTitle: string;
-
+    postComments: Comment;
 
 }

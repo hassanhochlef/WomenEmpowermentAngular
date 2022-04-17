@@ -48,10 +48,16 @@ import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
+import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            {
+                path: 'profile',
+                component: UserPostsComponent,
+            },
+                    {path: '', component: DashboardDemoComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -67,11 +73,6 @@ import {EventComponent} from './event/event.component';
                     {
                         path: 'addcomplaint',
                         component: AddComplaintComponent,
-                    },
-                    {
-                        path: 'forum',
-                        component: ForumComponent,
-
                     },
                     {
                         path: 'details/:id',
@@ -117,7 +118,11 @@ import {EventComponent} from './event/event.component';
                 path: 'user', component: HomeComponent,
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
-                    {path: 'profil', component: ProfilComponent}
+                    {path: 'profil', component: ProfilComponent},
+                    {
+                        path: 'forum',
+                        component: ForumComponent,
+                    },
                 ]
             },
             {path: 'error', component: AppErrorComponent},

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../models/post.model';
 import {ForumService} from '../shared/forum.service';
-import {Subscription} from 'rxjs';import {Router} from '@angular/router';
+import {Observable, Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
+import {Comment} from '../models/comment.model';
 
 @Component({
   selector: 'app-forum',
@@ -13,8 +15,10 @@ export class ForumComponent implements OnInit {
   menuItems: MenuItem[];
   listPost: Post[];
   listComments: Comment[];
+  post: Post;
+  comment: Comment;
+  id: string;
   private routeSub: Subscription;
-  private id: number;
 
   constructor(private router: Router, private service: ForumService) {
   }
@@ -24,6 +28,12 @@ export class ForumComponent implements OnInit {
       console.log(res);
       this.listPost = res;
     });
-  }
 
+  }
+  getPostComment(id: string): void{
+   this.service.getComments(this.id).subscribe(ress => {
+      console.log(ress);
+      this.listComments = ress;
+    });
+  }
 }

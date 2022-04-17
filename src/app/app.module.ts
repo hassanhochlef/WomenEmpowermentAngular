@@ -5,7 +5,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
-
 import {AccordionModule} from 'primeng/accordion';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {AvatarModule} from 'primeng/avatar';
@@ -156,6 +155,9 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
+import { AddPostComponent } from './forum/add-post/add-post.component';
+import { UserPostsComponent } from './forum/user-posts/user-posts.component';
+import { PostDetailsComponent } from './forum/post-details/post-details.component';
 
 
 
@@ -310,6 +312,9 @@ import { ProfilComponent } from './user/profil/profil.component';
         FrontFooterComponent,
         FrontLandingComponent,
         ProfilComponent,
+        AddPostComponent,
+        UserPostsComponent,
+        PostDetailsComponent,
 
     ],
     providers: [

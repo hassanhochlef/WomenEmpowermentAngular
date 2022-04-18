@@ -19,4 +19,8 @@ export class UserService extends  RequestBaseService{
   getAllFriends(): Observable<any> {
     return this.http.get(API_URL + 'friends', {headers: this.getHeaders});
   }
+
+  getNotifications(): Observable<any> {
+    return this.http.get(API_URL + 'notifications', {headers: this.getHeaders});
+  }
 }

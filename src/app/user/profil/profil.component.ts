@@ -10,9 +10,14 @@ import {UserService} from '../../shared/user.service';
 })
 export class ProfilComponent implements OnInit {
 
+  currentUser: User = new User;
   friendList: Array<User> = [];
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService) { }
+  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
+    this.authenticationService.currentUser.subscribe( data => {
+      this.currentUser = data;
+    });
+  }
 
   ngOnInit(): void {
     this.userService.getAllFriends().subscribe(data =>{

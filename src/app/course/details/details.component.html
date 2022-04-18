@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-7 d-flex">
                     <div class="card card-body blur text-md-start text-center px-sm-5 shadow-lg mt-sm-5 py-sm-5">
-                        <center><h2 class="text-dark mb-0">{{course.courseName}}</h2>
+                       <h2 class="text-dark mb-0">{{course.courseName}}</h2>
                         <h2 class="text-dark mb-4">{{course.domain}}</h2>
                             <span>Start date : {{course.startDate | date:'fullDate'}} </span><br>
                             <span>End date : {{course.endDate | date:'fullDate'}}</span><br>
@@ -18,8 +18,9 @@
                         <div class="buttons">
                             <button type="button" class="btn btn-rounded bg-gradient-primary mt-4">Participate</button>
                             <button type="button" class="btn btn-rounded btn-outline-secondary mt-4 ms-2">Contact former</button>
+
                         </div>
-                        </center>
+
                     </div>
 
                 </div>
@@ -27,8 +28,99 @@
                     </div>
             </div>
 </header>
+<div *ngFor="let cc of ccCourses">
+    <div *ngIf="courseId === cc.courseId.toString() " class="row mt-5">
+        <div class="col-sm-3 col-6 mx-auto" >
+            <div  class="btn-group btn-group-lg">
+            <button type="button" style="font-size: 10px"  class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+                OwnerShip Panel
+            </button>
+            <button type="button" style="font-size: 10px"  class="btn btn-outline-dark"  data-bs-toggle="modal" data-bs-target="#exampleModalNotification">
+                Delete Course
+            </button>
+            <button type="button" style="font-size: 10px"  class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModalSignup">
+               Update Course
+            </button>
+            </div>
+            <div class="modal fade" id="exampleModalNotification" tabindex="-1" aria-labelledby="exampleModalNotification" aria-hidden="true">
+                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                    <div class="modal-content bg-gradient-danger">
+                        <div class="modal-header border-0">
+                            <h6 class="modal-title text-white" id="modal-title-notification">You are about to delete this course</h6>
+                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
+                        </div>
+                        <hr class="horizontal light mt-0">
+                        <div class="modal-body">
+                            <div class="py-3 text-center text-white">
+                                <i class="material-icons text-3xl">notifications_active</i>
+                                <h4 class="heading mt-4 text-white">You should read this!</h4>
+                                <p class="text-white opacity-8">Deleting this course will remove it permenantly and this process can not be undone ! </p>
+                            </div>
+                        </div>
+                        <hr class="horizontal light mb-0">
+                        <div class="modal-footer justify-content-between border-0">
+                            <button  (click)="deleteCourse(courseId.toString())" data-bs-dismiss="modal"  type="button" class="btn btn-white my-1">Delete</button>
+                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalSignup" tabindex="-1" aria-labelledby="exampleModalSignup" aria-hidden="true">
+            <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card card-plain">
+                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 text-center py-4">
+                                    <h4 class="font-weight-bolder text-white mt-1">Join us today</h4>
+                                    <p class="mb-1 text-white text-sm">Enter your email and password to register</p>
+                                </div>
+                            </div>
+                            <div class="card-body pb-3">
+                                <form role="form text-start">
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control">
+                                    </div>
+                                    <div class="form-check form-check-info d-flex float-start ps-0">
+                                        <input class="form-check-input mt-0" type="checkbox" value="" id="flexCheckDefault" checked="">
+                                        <label class="form-check-label mb-0 ms-3" for="flexCheckDefault">
+                                            I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
+                                        </label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn bg-gradient-primary w-100 mt-4 mb-0">Sign up</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer text-center pt-0 px-sm-4 px-1">
+                                <p class="mb-4 mx-auto">
+                                    Already have an account?
+                                    <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
 <section class="py-md-7 pb-5">
     <div class="container">
         <div class="row text-center">
@@ -108,7 +200,7 @@
                                     <span class="badge badge-sm badge-success" *ngIf="cert.aquired==true">AQUIRED</span>
                                     <span class="badge badge-sm badge-danger" *ngIf="cert.aquired==false">NOT AQUIRED</span>
                                 </td>
-                                <td class="align-middle">
+                                <td class="align-middle" >
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-outline-info">Sanction</button>
                                         <button type="button" class="btn btn-outline-warning">Warn</button>
@@ -116,6 +208,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                             </tbody>
 
                         </table>
@@ -174,5 +267,86 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div *ngFor="let cr of ccCourses">
+        <div *ngIf="cr.courseId.toString() === courseId">
+            <div class="container py-7">
+                <div class="row mt-5">
+                    <div class="col-sm-3 col-6 mx-auto">
+                        <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+                            OwnerShip Panel
+                        </button>
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLong" aria-hidden="true">
+                            <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body p-0">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">OwnerShip info</h5>
+                                                <button type="button" class="btn btn-link text-dark my-1" data-bs-dismiss="modal">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <section style="background-color: ghostwhite">
+                                                    <h2 class="text-gradient text-primary text-center">Banned Users</h2>
+                                                    <div class="container">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-lg-10">
+                                                                <div class="card">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table align-items-center mb-0">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                                                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Username</th>
+                                                                                <th class="text-secondary opacity-7"></th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody *ngFor="let u of bannedpart">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="d-flex px-2 py-1">
+                                                                                        <div>
+                                                                                            <img src="../../assets/img/team-2.jpg" class="avatar avatar-sm me-3">
+                                                                                        </div>
+                                                                                        <div class="d-flex flex-column justify-content-center">
+                                                                                            <h6 class="mb-0 text-xs">{{u.name}}</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <p class="text-xs font-weight-bold mb-0">{{u.username}}</p>
+                                                                                    <p class="text-xs text-secondary mb-0" ></p>
+                                                                                </td>
+
+                                                                            </tr>
+
+                                                                            </tbody>
+
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>

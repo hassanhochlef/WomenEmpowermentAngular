@@ -5,6 +5,10 @@ import {Course} from '../../models/course.model';
 import {CourseService} from '../../shared/course.service';
 import {User} from "../../models/user.model";
 import {Certificate} from "../../models/certificate.model";
+import {AuthenticationService} from "../../shared/authentication.service";
+import {RequestBaseService} from "../../shared/request-base.service";
+import {HttpClient} from "@angular/common/http";
+import {CreatedCourses} from '../../models/created-courses.model';
 
 
 
@@ -13,7 +17,7 @@ import {Certificate} from "../../models/certificate.model";
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
 })
-export class DetailsComponent implements OnInit, OnDestroy {
+export class DetailsComponent  extends RequestBaseService implements OnInit, OnDestroy{
   certificate: Certificate[];
   listCours: Course[];
   user: User[];
@@ -24,14 +28,24 @@ export class DetailsComponent implements OnInit, OnDestroy {
   courseSub: Subscription;
   filtersLoaded: Promise<boolean>;
   myScriptElement: HTMLScriptElement;
-  mydivElement: HTMLDivElement;
-  myLinkElement: HTMLLinkElement;
+  session: WindowSessionStorage;
+  onlineUser: User;
   statuses: any[];
-    public xx: string = null;
-  constructor(private activatedRoute: ActivatedRoute, private service: CourseService, private router: Router) {
-    this.myScriptElement = document.createElement('script');
-    this.myScriptElement.src = 'https://cdn.hesp.live/player/embed.js';
-    document.body.appendChild(this.myScriptElement);
+  ccCourses: Course[];
+  bannedpart: User[]
+  public xx: string = null;
+  constructor(private activatedRoute: ActivatedRoute,
+              authenticationService: AuthenticationService,
+              private service: CourseService,
+              private router: Router,
+              http: HttpClient)
+  {
+  super(authenticationService, http);
+  this.myScriptElement = document.createElement('script');
+  this.myScriptElement.src = 'https://cdn.hesp.live/player/embed.js';
+  document.body.appendChild(this.myScriptElement);
+  this.onlineUser = this.authenticationService.currentUserValue;
+
 
   }
   ngOnInit(): void {
@@ -40,6 +54,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.getCourseDetails(this.courseId);
       this.getCourseParticipant(this.courseId);
       this.getCertificate(this.courseId);
+      this.getCreatedCourses(this.onlineUser.userId.toString());
+      this.getBannedParticipants(this.courseId);
     });
     this.statuses = [
       {label: 'Unqualified', value: 'unqualified'},
@@ -61,10 +77,24 @@ export class DetailsComponent implements OnInit, OnDestroy {
           this.certificate = courseResp;
         });
   }
+  getCreatedCourses(idUser: string): void{
+    this.courseSub = this.service
+        .getCreatedCourse(idUser)
+        .subscribe(courseResp => {
+          this.ccCourses = courseResp;
+        });
+  }
+  getBannedParticipants(idcourse: string): void{
+    this.courseSub = this.service
+        .getBannedparticipant(idcourse)
+        .subscribe(courseResp => {
+          this.bannedpart = courseResp;
+        });
+  }
 
   deleteCourse(id: string): void{
     this.service.deleteCourse(id).subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));
-
+    this.router.navigate(['user/cour']);
   }
   getCourseDetails(id: string): void {
     this.courseSub = this.service

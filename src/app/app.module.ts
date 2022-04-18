@@ -157,6 +157,7 @@ import { FrontFooterComponent } from './user/front-footer/front-footer.component
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
 import {OffreComponent} from './pages/offre/offre.component';
+import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';
 
 
 
@@ -312,6 +313,7 @@ import {OffreComponent} from './pages/offre/offre.component';
         FrontLandingComponent,
         ProfilComponent,
         OffreComponent,
+        AddOfferComponent,
 
     ],
     providers: [

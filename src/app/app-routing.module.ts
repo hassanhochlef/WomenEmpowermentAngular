@@ -49,6 +49,7 @@ import {FrontLandingComponent} from './user/front-landing/front-landing.componen
 import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
 import {OffreComponent} from './pages/offre/offre.component';
+import {AddOfferComponent} from './pages/offre/add-offer/add-offer.component';
 
 @NgModule({
     imports: [
@@ -81,6 +82,10 @@ import {OffreComponent} from './pages/offre/offre.component';
                     {
                         path: 'offre',
                         component : OffreComponent,
+                    },
+                    {
+                        path: 'addoffer',
+                        component : AddOfferComponent,
                     },
 
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},

@@ -1,20 +1,16 @@
-<p>offre works!</p>
 
 <ul>
    <li *ngFor="let u of listOffers">{{ u }} </li>
 </ul>
  <tr *ngFor="let offre of listOffers">
-     <td>{{offre.approxSalary}}</td>
-     <td>{{offre.title}}</td>
-     <td>{{offre.createdAt}}</td>
-     <td>{{offre.description}}</td>
-     <td>{{offre.location}}</td>
-     <td>{{offre.requiredCandidates}}</td>
-
+     <td>{{offre.approxSalary | json}}</td>
+     <td>{{offre.title| json}}</td>
+     <td>{{offre.createdAt| json}}</td>
+     <td>{{offre.description| json}}</td>
+     <td>{{offre.location| json}}</td>
+     <td>{{offre.requiredCandidates| json}}</td>
 
 
  </tr>
-<button (click)="addOfree()">
-   create
-</button>
+
 

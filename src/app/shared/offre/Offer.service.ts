@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Offre} from '../../models/offre';
 
@@ -9,13 +9,24 @@ import {Offre} from '../../models/offre';
 })
 export class OfferService {
     // protected baseurl = environment.api_url;
-    offersUrl = 'http://localhost:8081/SpringMVC/offer/retrieve-all-Offers';
+    offersUrl = 'http://localhost:8087/SpringMVC/offer/retrieve-all-Offers';
+    // tslint:disable-next-line:variable-name
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+            'Access-Control-Allow-Origin': '*',
+
+        } ), responseType: 'text' as 'json'
+    };
+
     constructor(private _http: HttpClient) { }
     getAllOffers(): Observable<Offre[]> {
-        return this._http.get<Offre[]>(this.offersUrl);
+        return this._http.get<Offre[]>(this.offersUrl, this.httpOptions);
     }
 
-
+    addOffer(offre: Offre){
+        return this._http.post<Offre>('http://localhost:8087/SpringMVC/offer/add-Offer', offre);
+    }
 
     /**
      * add offre

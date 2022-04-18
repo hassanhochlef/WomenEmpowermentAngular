@@ -9,6 +9,7 @@ import {Offre} from '../../models/offre';
 })
 export class OffreComponent implements OnInit {
     offre: Offre = new Offre();
+    // tslint:disable-next-line:ban-types
     listOffers: Offre[];
   constructor(private apiOffreService: OfferService) { }
 

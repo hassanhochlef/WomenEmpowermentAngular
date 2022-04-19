@@ -158,6 +158,7 @@ import { ProfilComponent } from './user/profil/profil.component';
 
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
+import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
 
 
 
@@ -316,6 +317,8 @@ import { DonationComponent } from './event/donation/donation.component';
         EventFrontComponent,
 
         DonationComponent,
+
+        PaymentDonationComponent,
 
     ],
     providers: [

@@ -11,7 +11,7 @@ import {DonationService} from "../../shared/donation.service";
 
 })
 export class DonationComponent implements OnInit {
-  donations: any[];
+  donations: Donation[];
 
 
   constructor(private donationService: DonationService) { }

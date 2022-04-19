@@ -52,7 +52,7 @@ export class EventComponent implements OnInit {
     this.eventService.getStatistic().subscribe(data => {
       this.eventsStat = data;
       this.barData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','aout','sept','oct','nov'],
         datasets: [
           {
             label: 'EVENMENT 2022 FREQUENCE',

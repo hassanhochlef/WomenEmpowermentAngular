@@ -18,7 +18,7 @@
             <p-table #dt [value]="events">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
-                        <h5 class="p-m-0">Manage Products</h5>
+                        <h5 class="p-m-0">Manage event</h5>
                         <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
                         <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
@@ -57,9 +57,7 @@
                         <td><span class="p-column-title"></span>
                             {{event.description}}
                         </td>
-                        <td><span class="p-column-title"></span>
-                            {{event.createdAt}}
-                        </td>
+
                         <td><span class="p-column-title"></span>
                             {{event.startAt}}
                         </td>
@@ -179,10 +177,10 @@
                 <ul class="widget-person-list">
                     <li>
                         <div class="person-item">
-                            <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
+
                             <div class="person-info">
-                                <div class="person-name">Amy Elsner</div>
-                                <div class="person-subtext">Accounting</div>
+                                <div class="person-name">zajfbzfb</div>
+
                             </div>
                         </div>
                         <div class="person-actions">
@@ -191,45 +189,9 @@
                         </div>
                     </li>
 
-                    <li>
-                        <div class="person-item">
-                            <img src="assets/demo/images/avatar/bernardodominic.png" alt="diamond-layout" />
-                            <div class="person-info">
-                                <div class="person-name">Bernardo Dominic</div>
-                                <div class="person-subtext">Finance</div>
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope" ></button>
-                            <button type="button" class="p-button-rounded p-button-warning" pButton icon="pi pi-cog" ></button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="person-item">
-                            <img src="assets/demo/images/avatar/ivanmagalhaes.png" alt="diamond-layout" />
-                            <div class="person-info">
-                                <div class="person-name">Ivan Magalhaes</div>
-                                <div class="person-subtext">Sales</div>
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope" ></button>
-                            <button type="button" class="p-button-rounded p-button-warning" pButton icon="pi pi-cog"></button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="person-item">
-                            <img src="assets/demo/images/avatar/xuxuefeng.png" alt="diamond-layout" />
-                            <div class="person-info">
-                                <div class="person-name">Xuxue Feng</div>
-                                <div class="person-subtext">Management</div>
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope" ></button>
-                            <button type="button" class="p-button-rounded p-button-warning" pButton icon="pi pi-cog" ></button>
-                        </div>
-                    </li>
+
+
+
                 </ul>
             </div>
         </div>

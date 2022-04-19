@@ -79,14 +79,8 @@ import {AddOfferComponent} from './pages/offre/add-offer/add-offer.component';
                         path: 'details/:id',
                         component : DetailsComponent,
                     },
-                    {
-                        path: 'offre',
-                        component : OffreComponent,
-                    },
-                    {
-                        path: 'addoffer',
-                        component : AddOfferComponent,
-                    },
+
+
 
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
@@ -127,7 +121,9 @@ import {AddOfferComponent} from './pages/offre/add-offer/add-offer.component';
                 path: 'user', component: HomeComponent,
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
-                    {path: 'profil', component: ProfilComponent}
+                    {path: 'profil', component: ProfilComponent},
+                    {path: 'offre', component : OffreComponent},
+                    {path: 'addoffer', component : AddOfferComponent},
                 ]
             },
             {path: 'error', component: AppErrorComponent},

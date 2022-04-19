@@ -11,17 +11,17 @@ export class OfferService {
     // protected baseurl = environment.api_url;
     offersUrl = 'http://localhost:8087/SpringMVC/offer/retrieve-all-Offers';
     // tslint:disable-next-line:variable-name
-    httpOptions = {
+   /* httpOptions = {
         headers: new HttpHeaders({
             'Content-Type':  'application/json',
             'Access-Control-Allow-Origin': '*',
 
         } ), responseType: 'text' as 'json'
-    };
+    };*/
 
     constructor(private _http: HttpClient) { }
     getAllOffers(): Observable<Offre[]> {
-        return this._http.get<Offre[]>(this.offersUrl, this.httpOptions);
+        return this._http.get<Offre[]>(this.offersUrl);
     }
 
     addOffer(offre: Offre){

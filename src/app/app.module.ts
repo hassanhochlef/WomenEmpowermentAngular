@@ -158,6 +158,8 @@ import { FrontLandingComponent } from './user/front-landing/front-landing.compon
 import { ProfilComponent } from './user/profil/profil.component';
 import {OffreComponent} from './pages/offre/offre.component';
 import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';
+import {PostDetailsComponent} from './forum/post-details/post-details.component';
+import {AddPostComponent} from './forum/add-post/add-post.component';
 
 
 
@@ -314,6 +316,8 @@ import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';
         ProfilComponent,
         OffreComponent,
         AddOfferComponent,
+        PostDetailsComponent,
+        AddPostComponent,
 
     ],
     providers: [

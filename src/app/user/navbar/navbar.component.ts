@@ -28,9 +28,14 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  isAdmin(){
-    return this.currentUser?.role === Role.ADMIN;
+  markAsRead(notifId: number){
+    this.userService.markNotificationAsRead(notifId).subscribe();
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
+
 
   logOut(){
     this.authenticationService.logOut();
@@ -46,5 +51,7 @@ export class NavbarComponent implements OnInit {
           window.location.reload();
         });
 }
+
+
 
 }

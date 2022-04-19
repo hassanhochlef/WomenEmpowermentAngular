@@ -84,6 +84,7 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TreeModule} from 'primeng/tree';
 import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import { LazyLoadEvent } from 'primeng/api';
 
 import {AppCodeModule} from './app.code.component';
 import {AppComponent} from './app.component';
@@ -157,6 +158,10 @@ import { ProfilComponent } from './user/profil/profil.component';
 import { AddPostComponent } from './forum/add-post/add-post.component';
 import { UserPostsComponent } from './forum/user-posts/user-posts.component';
 import { PostDetailsComponent } from './forum/post-details/post-details.component';
+
+import { EventFrontComponent } from './event/event-front/event-front.component';
+import { DonationComponent } from './event/donation/donation.component';
+import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
 
 
 
@@ -247,7 +252,7 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        AppCodeModule
+        AppCodeModule,
     ],
     declarations: [
         AppComponent,
@@ -314,6 +319,12 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
         AddPostComponent,
         UserPostsComponent,
         PostDetailsComponent,
+
+        EventFrontComponent,
+
+        DonationComponent,
+
+        PaymentDonationComponent,
 
     ],
     providers: [

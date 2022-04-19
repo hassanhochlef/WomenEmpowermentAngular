@@ -17,7 +17,6 @@ import {BreadcrumbService} from '../app.breadcrumb.service';
     `]
 })
 export class AppCalendarComponent implements OnInit{
-
     events: any[];
 
     options: any;
@@ -37,6 +36,7 @@ export class AppCalendarComponent implements OnInit{
     }
 
     ngOnInit() {
+        this.eventService.getEvents().then(events => {this.events = events; });
         this.changedEvent = {title: '', start: null, end: '', allDay: null};
 
         this.options = {

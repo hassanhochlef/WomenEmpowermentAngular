@@ -217,7 +217,7 @@ float: right;
                                         <h3 class="text-white mb-0">{{p.name}}</h3>
                                         <p class="text-white opacity-8">{{p.text}}</p>
                                         <div class="buttons-group">
-                                            <button type="button" class="btn btn-white btn-sm mt-3">Edit</button>
+                                            <button type="button" class="btn btn-white btn-sm mt-3">Details</button>
                                         </div>
                                     </div>
                                 </div>
@@ -300,8 +300,7 @@ float: right;
                     </div>
                     <button class="btn bg-gradient-primary btn-icon btn-" type="button">
                         <div class="d-flex align-items-center">
-                            <i class="material-icons me-2" aria-hidden="true">favorite</i>
-                            Likes
+                            Details
                         </div>
                     </button>
                 </div>
@@ -320,17 +319,17 @@ float: right;
             <div class="card-body text-center">
                 <div class=" mt-n6 ">
                     <button type="button" (click)="addLikePost(p.postId.toString())" class="btn btn-outline-primary  btn-icon-only rounded-circle" style="margin-left: 80px; margin-right: 10px">
-                        <span class="btn-inner--icon">  <i _ngcontent-igj-c227="" aria-hidden="true" class="material-icons me-2">favorite</i>  </span>
+                        <span class="btn-inner--icon">  <i class="fa fa-thumbs-up"></i>  </span>
                     </button>
 
                     <button type="button" (click)="addDisLikePost(p.postId.toString())" class="btn btn-vimeo btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
-                        <span class="btn-inner--icon"><i class="fab fa-vimeo-v"></i></span>
+                        <span class="btn-inner--icon"><i class="fa fa-thumbs-down"></i></span>
                     </button>
                     <button type="button" class="btn btn-twitter btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
-                        <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
+                        <span class="btn-inner--icon"><i class="fa fa-do-not-enter"></i></span>
                     </button>
                     <button type="button" class="btn  btn-slack btn-icon-only rounded-circle" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  style="margin-left: 20px; margin-right: 400px">
-                        <span class="btn-inner--icon"><i class="fab fa-slack"></i></span>
+                        <span class="btn-inner--icon"><i class="fa fa-comment"></i></span>
                     </button>
 
 

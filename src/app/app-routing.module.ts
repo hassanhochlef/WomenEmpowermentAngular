@@ -122,6 +122,13 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                     {
                         path: 'forum',
                         component: ForumComponent,
+                    },  {
+                        path: 'forum',
+                        component: ForumComponent,
+                    },
+                    {
+                        path: 'user-post',
+                        component: UserPostsComponent,
                     },
                 ]
             },

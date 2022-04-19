@@ -48,6 +48,8 @@ import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
+import {EventFrontComponent} from './event/event-front/event-front.component';
+import {DonationComponent} from "./event/donation/donation.component";
 
 @NgModule({
     imports: [
@@ -110,6 +112,8 @@ import {EventComponent} from './event/event.component';
                     {path: 'pages/empty', component: EmptyDemoComponent},
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
+                    {path: 'pages/donation', component: DonationComponent},
+
                 ]
             },
 
@@ -117,7 +121,8 @@ import {EventComponent} from './event/event.component';
                 path: 'user', component: HomeComponent,
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
-                    {path: 'profil', component: ProfilComponent}
+                    {path: 'profil', component: ProfilComponent},
+                    {path: 'eventFront', component: EventFrontComponent}
                 ]
             },
             {path: 'error', component: AppErrorComponent},

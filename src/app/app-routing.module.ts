@@ -50,10 +50,16 @@ import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
 import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from "./event/donation/donation.component";
+import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            {
+                path: 'profile',
+                component: UserPostsComponent,
+            },
+                    {path: '', component: DashboardDemoComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -69,11 +75,6 @@ import {DonationComponent} from "./event/donation/donation.component";
                     {
                         path: 'addcomplaint',
                         component: AddComplaintComponent,
-                    },
-                    {
-                        path: 'forum',
-                        component: ForumComponent,
-
                     },
                     {
                         path: 'details/:id',
@@ -123,6 +124,17 @@ import {DonationComponent} from "./event/donation/donation.component";
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
                     {path: 'eventFront', component: EventFrontComponent}
+                    {
+                        path: 'forum',
+                        component: ForumComponent,
+                    },  {
+                        path: 'forum',
+                        component: ForumComponent,
+                    },
+                    {
+                        path: 'user-post',
+                        component: UserPostsComponent,
+                    },
                 ]
             },
             {path: 'error', component: AppErrorComponent},

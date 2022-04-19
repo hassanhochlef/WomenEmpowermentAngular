@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.roles = [ Role.USER, Role.ADMIN, Role.EXPERT, Role.COMPANY, Role.FORMER ];
+    this.middleRole = Role.USER;
   }
 
   ngOnDestroy() {
@@ -64,6 +65,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
         err => {
           if (err?.status === 409){
             this.errorMessage = 'Username already exists';
+          }
+          else if (err?.status === 400){
+            this.errorMessage = 'Email already exists';
+          }
+          else if (err?.status === 406){
+            this.errorMessage = 'Password must:\n\tHave 8 or more characters' +
+                '\n\tContain 1 or more uppercase characters' +
+                '\n\tContain 1 or more digit characters\n\tContain 1 or more special characters';
           }
           else{
             this.errorMessage = 'Unexpected error occurred : ' + err?.errorMessage;

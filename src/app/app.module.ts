@@ -155,6 +155,9 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
+import { AddPostComponent } from './forum/add-post/add-post.component';
+import { UserPostsComponent } from './forum/user-posts/user-posts.component';
+import { PostDetailsComponent } from './forum/post-details/post-details.component';
 
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
@@ -313,6 +316,9 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
         FrontFooterComponent,
         FrontLandingComponent,
         ProfilComponent,
+        AddPostComponent,
+        UserPostsComponent,
+        PostDetailsComponent,
 
         EventFrontComponent,
 

@@ -12,6 +12,7 @@ import {Advertising} from '../models/Advertising.model';
 })
 export class ForumService {
   ForumUrl = 'http://localhost:8087/SpringMVC/forum/Get-all-Post';
+  aa = 'http://localhost:8087/SpringMVC/forum/add-Post-image/';
 
   constructor(private http: HttpClient) {
   }
@@ -47,5 +48,9 @@ export class ForumService {
   DeletePost(idPost: string) {
     return this.http.delete<Post>('http://localhost:8087/SpringMVC/forum/Delete-Post/' + idPost);
 
+  }
+
+  addImagePost(idPost: string, image: string) {
+    return this.http.post<Post>('http://localhost:8087/SpringMVC/forum/add-Post/' + idPost, image);
   }
 }

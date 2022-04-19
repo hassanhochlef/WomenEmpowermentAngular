@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {Post} from '../../models/post.model';
-import {Comment} from '../../models/postComment.model';
+import {PostComment} from '../../models/postComment.model';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {ForumService} from '../../shared/forum.service';

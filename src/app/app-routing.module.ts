@@ -46,7 +46,6 @@ import {RegisterComponent} from './user/register/register.component';
 import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
-import {ProfilComponent} from './user/profil/profil.component';
 import {ServicesComponent} from './services/services.component';
 import {AddServicesComponent} from './services/add-services/add-services.component';
 import {EventComponent} from './event/event.component';
@@ -133,8 +132,7 @@ import {UpdateComplaintComponent} from './complaint/update-complaint/update-comp
             {
                 path: 'user', component: HomeComponent,
                 children: [
-                    {path: 'landing', component: FrontLandingComponent},
-                    {path: 'profil', component: ProfilComponent}
+                    {path: 'landing', component: FrontLandingComponent}
                 ]
             },
             {path: 'error', component: AppErrorComponent},

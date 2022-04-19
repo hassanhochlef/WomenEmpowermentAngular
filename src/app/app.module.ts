@@ -154,7 +154,6 @@ import { HomeComponent } from './user/home/home.component';
 import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
-import { ProfilComponent } from './user/profil/profil.component';
 import { ServicesComponent } from './services/services.component';
 import { AddServicesComponent } from './services/add-services/add-services.component';
 import { UpdateComplaintComponent } from './complaint/update-complaint/update-complaint.component';
@@ -311,7 +310,6 @@ import { UpdateComplaintComponent } from './complaint/update-complaint/update-co
         NavbarComponent,
         FrontFooterComponent,
         FrontLandingComponent,
-        ProfilComponent,
         ServicesComponent,
         AddServicesComponent,
         UpdateComplaintComponent

@@ -20,8 +20,8 @@ listcomp: Complaint[];
   ngOnInit(): void {
     this.routeSub = this.service.getComplaints().subscribe(res => {console.log(res); this.listcomp = res; });
   }
-
-  supprimerProduit(c: Complaint)
+/*
+ supprimerProduit(c: Complaint)
   {
     console.log('suppppppppppppppppppppppppppppp supprimé');
     let conf = confirm("Etes-vous sûr ?");
@@ -42,8 +42,21 @@ listcomp: Complaint[];
     });
   }
 
-  /*
+ /*
   deleteComplaint(complaintId: number){
     this.service.deleteComplaintById(complaintId);
-  }*/
+    this.router.navigate(['complaint']).then(() => {
+      window.location.reload();
+    });
+  } */
+  deletePost(id: string) {
+    this.service.DeletePost(id).subscribe(p => {
+      console.log('delete');
+
+    });
+    this.router.navigate(['complaint']).then(() => {
+      window.location.reload();
+    });
+
+  }
 }

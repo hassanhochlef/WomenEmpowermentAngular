@@ -107,6 +107,28 @@
     </script>
 
 </head>
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75" style="background-image: url('assets/img/bg9.jpg');">
+        <span class="mask bg-gradient-dark opacity-6"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mx-auto my-auto">
+                    <h1 class="text-white">Work with an amazing design</h1>
+                    <p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
+                    <button type="submit" class="btn bg-white text-dark">Create Account</button>
+                    <h6 class="text-white mb-2 mt-5">Find us on</h6>
+                    <div class="d-flex justify-content-center">
+                        <a href=""><i class="fab fa-facebook text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-instagram text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-twitter text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-google-plus text-lg text-white"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
 <body>
 <section class="py-4">
     <div class="container">
@@ -140,5 +162,90 @@
             </div>
         </div>
     </div>
+</section>
+
+
+<section class="py-5" style="margin-top: 10px" >
+
+    <ng-container *ngFor="let p of listPost">
+        <div class="card" data-animation="true">
+            <div class="card-header p-0 position-relative mt-n2 mx-3 z-index-2">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 mx-auto">
+
+                            <div class="card-body ">
+                                <div class="row mt-6">
+                                    <div class="col-lg-8 col-md-10">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img src="../../assets/img/team-3.jpg" alt="..." class="avatar avatar-lg border-radius-lg shadow mt-n5">
+                                                <div class="author">
+                                                    <div class="name">
+                                                        <span>Mathew Glock</span>
+                                                        <div class="stats">
+                                                            <small><i class="far fa-clock"></i> {{p.createdAt}}</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr class="dark horizontal my-2 " style="background-color: #DF2689;">
+
+                                                <h3>{{p.postTitle}}</h3>
+                                                <h6 class="mt-4">{{p.body}}</h6>
+                                                <div class="rating mt-3">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+
+
+
+                                            </div>
+                                            <button class="btn bg-gradient-primary btn-icon btn-" type="button">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="material-icons me-2" aria-hidden="true">favorite</i>
+                                                    Likes
+                                                </div>
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="card-body text-center">
+                <div class=" mt-n6 ">
+
+                    <button type="button" class="btn btn-twitter btn-icon-only rounded-circle" style="margin-left: 80px; margin-right: 10px">
+                        <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
+                    </button>
+                    <button type="button" class="btn btn-vimeo btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
+                        <span class="btn-inner--icon"><i class="fab fa-vimeo-v"></i></span>
+                    </button>
+                    <button type="button" class="btn btn-slack btn-icon-only rounded-circle"style="margin-left: 20px; margin-right: 10px">
+                        <span class="btn-inner--icon"><i class="fab fa-slack"></i></span>
+                    </button>
+
+                    <button type="button" class="btn btn-outline-primary  btn-icon-only rounded-circle"style="margin-left: 20px; margin-right: 400px">
+                        <span class="btn-inner--icon">  <i _ngcontent-igj-c227="" aria-hidden="true" class="material-icons me-2">favorite</i>  </span>                  </button>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </ng-container>
+
 </section>
 </body>

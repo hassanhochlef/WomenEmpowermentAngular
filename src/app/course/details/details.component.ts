@@ -3,13 +3,12 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Course} from '../../models/course.model';
 import {CourseService} from '../../shared/course.service';
-import {User} from "../../models/user.model";
-import {Certificate} from "../../models/certificate.model";
-import {AuthenticationService} from "../../shared/authentication.service";
-import {RequestBaseService} from "../../shared/request-base.service";
-import {HttpClient} from "@angular/common/http";
-import {CreatedCourses} from '../../models/created-courses.model';
-
+import {User} from '../../models/user.model';
+import {Certificate} from '../../models/certificate.model';
+import {AuthenticationService} from '../../shared/authentication.service';
+import {RequestBaseService} from '../../shared/request-base.service';
+import {HttpClient} from '@angular/common/http';
+import {Penality} from '../../models/penality.enum';
 
 
 @Component({
@@ -32,7 +31,8 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   onlineUser: User;
   statuses: any[];
   ccCourses: Course[];
-  bannedpart: User[]
+  bannedpart: User[];
+  pen: Penality[] = [];
   public xx: string = null;
   constructor(private activatedRoute: ActivatedRoute,
               authenticationService: AuthenticationService,
@@ -56,11 +56,22 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
       this.getCertificate(this.courseId);
       this.getCreatedCourses(this.onlineUser.userId.toString());
       this.getBannedParticipants(this.courseId);
+      this.pen = [Penality.KICK, Penality.WARNING, Penality.SANCTION ];
     });
     this.statuses = [
       {label: 'Unqualified', value: 'unqualified'},
       {label: 'Qualified', value: 'qualified'}
     ];
+  }
+  addSanction(idUser: string, idCourse: string, pena: Penality){
+    this.service.addSanction(idUser, idCourse , pena).subscribe(res => (console.log('added')));
+  }
+  joinCourse(idCourse: string){
+    this.service.joinCourse(idCourse).subscribe(res => (console.log(res)));
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
   getCourseParticipant(id: string): void{
    this.courseSub = this.service
@@ -91,7 +102,6 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
           this.bannedpart = courseResp;
         });
   }
-
   deleteCourse(id: string): void{
     this.service.deleteCourse(id).subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));
     this.router.navigate(['user/cour']);

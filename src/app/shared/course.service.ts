@@ -6,6 +6,7 @@ import {User} from "../models/user.model";
 import {Certificate} from "../models/certificate.model";
 import {AuthenticationService} from "./authentication.service";
 import {RequestBaseService} from "./request-base.service";
+import { Penality } from '../models/penality.enum';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +24,16 @@ export class CourseService  extends  RequestBaseService{
   addCourse(course: Course){
     return this.http.post<Course>('http://localhost:8087/SpringMVC/course/addCourse/1', course);
   }
+  addSanction(idUser: string, idCourse: string, pena: Penality){
+    return this.http.post('http://localhost:8087/SpringMVC/api/SanctionLearner/addSanction/' + idUser + '/' + idCourse + '/' + pena
+        , null,
+        {headers: this.getHeaders} );
+  }
+  joinCourse(idCourse: string){
+      return this.http.post('http://localhost:8087/SpringMVC/course/joinCourse/' + idCourse, null, {headers: this.getHeaders});
+  }
+
+
   getCourseParticipants(id: string): Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8087/SpringMVC/course/getAllParticipants/' + id );
   }

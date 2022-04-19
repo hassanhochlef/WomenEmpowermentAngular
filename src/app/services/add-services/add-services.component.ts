@@ -15,12 +15,14 @@ newService = new Service();
 
   ngOnInit(): void {
   }
-  addService(){
+  addService() {
     this.servService.ajouterService(this.newService).subscribe(serv => {
       console.log(serv);
-    });}
-  /*  this.router.navigate(['sevice']).then(() => {
+    });
+    this.router.navigate(['service']).then(() => {
       window.location.reload();
     });
-*/
-}
+
+  }}
+
+

@@ -19,12 +19,20 @@ export class ComplaintService {
   ajouterComplaint( comp: Complaint): Observable<Complaint>{
     return this.http.post<Complaint>(this.addcUrl, comp, httpOptions);
   }
-deletcUrl = 'http://localhost:8087/SpringMVC/complaint/delet/{complaintId}';
+deletcUrl = 'http://localhost:8087/SpringMVC/complaint/delet/';
   supprimerProduit(complaintId : number) {
-    const url = '${this.complaintsUrl}/${complaintId}';
+    const url = '${this.deletcUrl}/${complaintId}';
     return this.http.delete(url, httpOptions);
   }
-
+  consulturl = 'http://localhost:8087/SpringMVC/complaint';
+  consulterComp(complaintId: number): Observable<Complaint> {
+    const url = `${this.consulturl}/${complaintId}`;
+    return this.http.get<Complaint>(url);
+  }
+  updateProduit(comp: Complaint): Observable<Complaint>
+  {
+    return this.http.put<Complaint>(this.consulturl, comp, httpOptions);
+  }
 /*
     deleteComplaintById(complaintId : number) {
     return

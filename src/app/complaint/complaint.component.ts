@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 
 import {ComplaintService} from '../shared/complaint.service';
 import {Subscription} from 'rxjs';
+import {compareNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 
 @Component({
@@ -20,20 +21,22 @@ listcomp: Complaint[];
     this.routeSub = this.service.getComplaints().subscribe(res => {console.log(res); this.listcomp = res; });
   }
 
-  supprimerProduit(comp: Complaint)
+  supprimerProduit(c: Complaint)
   {
     console.log('suppppppppppppppppppppppppppppp supprimé');
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
-      this.service.supprimerProduit(comp.complaintId).subscribe(() => {
+      this.service.supprimerProduit(c.complaintId).subscribe(() => {
         console.log("complaint delet");
-        this.SuprimerProduitDuTableau(comp);
+        this.SuprimerProduitDuTableau(c);
       });
-
+    this.router.navigate(['complaint']).then(() => {
+      window.location.reload();
+    });
   }
   SuprimerProduitDuTableau(comp: Complaint ) {
-    this.listcomp.forEach((comp, index) => {
-      if(comp.complaintId === comp.complaintId) {
+    this.listcomp.forEach((cur, index) => {
+      if(comp.complaintId === cur.complaintId) {
         this.listcomp.splice(index, 1);
       }
     });

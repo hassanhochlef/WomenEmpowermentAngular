@@ -1,0 +1,36 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Produit :</h2>
+    </div>
+
+    <form >
+        <div  class="col-sm-2 col-md-2 col-lg-2">
+            <label >complaintId</label>
+            <input readonly type="text" [(ngModel)]="currentComplaint.complaintId" name="complaintId" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4" >
+            <label >content</label>
+            <input type="text"[(ngModel)]= "currentComplaint.content" name="nomProduit" class="form-control">
+        </div>
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >complaint Title</label>
+            <input type="text" [(ngModel)]= "currentComplaint.complaintTitle" name="complaintTitle" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Date création</label>
+            <input type="date"
+                   [ngModel]= "currentComplaint.createdAt | date: 'yyyy-MM-dd'"
+                   (ngModelChange)=" currentComplaint.createdAt= $event"
+                   name="dateCreation" class="form-control">
+        </div>
+
+
+        <div class="mt-2">
+            <button type="submit" (click)="updateProduit()" class="btn btn-success">update</button>
+
+        </div>
+    </form>
+</div>

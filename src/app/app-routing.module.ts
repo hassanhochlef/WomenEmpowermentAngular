@@ -18,7 +18,6 @@ import {AppMainComponent} from './app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
-import {AppLoginComponent} from './pages/app.login.component';
 import {InputDemoComponent} from './demo/view/inputdemo.component';
 import {ButtonDemoComponent} from './demo/view/buttondemo.component';
 import {TableDemoComponent} from './demo/view/tabledemo.component';
@@ -39,9 +38,10 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
+
 import {ComplaintComponent} from './complaint/complaint.component';
 import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.component';
-import {ForumComponent} from "./forum/forum.component";
+import {ForumComponent} from './forum/forum.component';
 import {RegisterComponent} from './user/register/register.component';
 import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
@@ -49,6 +49,8 @@ import {FrontLandingComponent} from './user/front-landing/front-landing.componen
 import {ProfilComponent} from './user/profil/profil.component';
 import {ServicesComponent} from './services/services.component';
 import {AddServicesComponent} from './services/add-services/add-services.component';
+import {EventComponent} from './event/event.component';
+import {UpdateComplaintComponent} from './complaint/update-complaint/update-complaint.component';
 
 @NgModule({
     imports: [
@@ -70,12 +72,17 @@ import {AddServicesComponent} from './services/add-services/add-services.compone
                         component: AddComplaintComponent,
                     },
                     {
-                        path: 'addServ',
+                        path: 'addserv',
                         component: AddServicesComponent,
                     },
                     {
                         path: 'service',
                         component: ServicesComponent,
+
+                    },
+                    {
+                        path: 'updatecomp/:complaintId',
+                        component: UpdateComplaintComponent,
 
                     },
                     {
@@ -118,7 +125,8 @@ import {AddServicesComponent} from './services/add-services/add-services.compone
                     {path: 'pages/invoice', component: AppInvoiceComponent},
                     {path: 'pages/help', component: AppHelpComponent},
                     {path: 'pages/empty', component: EmptyDemoComponent},
-                    {path: 'documentation', component: DocumentationComponent}
+                    {path: 'documentation', component: DocumentationComponent},
+                    {path: 'pages/event', component: EventComponent},
                 ]
             },
 

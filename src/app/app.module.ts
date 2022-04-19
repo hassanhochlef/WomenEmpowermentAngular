@@ -143,6 +143,8 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
+import { EventComponent } from './event/event.component';
+import { FilterPipe } from './event/filter.pipe';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 import { ForumComponent } from './forum/forum.component';
@@ -155,6 +157,8 @@ import { FrontLandingComponent } from './user/front-landing/front-landing.compon
 import { ProfilComponent } from './user/profil/profil.component';
 import { ServicesComponent } from './services/services.component';
 import { AddServicesComponent } from './services/add-services/add-services.component';
+import { UpdateComplaintComponent } from './complaint/update-complaint/update-complaint.component';
+
 
 
 
@@ -296,6 +300,9 @@ import { AddServicesComponent } from './services/add-services/add-services.compo
         ComplaintComponent,
         CourseComponent,
         DetailsComponent,
+        ForumComponent,
+        EventComponent,
+        FilterPipe,
         AddComplaintComponent,
         ForumComponent,
         RegisterComponent,
@@ -307,6 +314,7 @@ import { AddServicesComponent } from './services/add-services/add-services.compo
         ProfilComponent,
         ServicesComponent,
         AddServicesComponent,
+        UpdateComplaintComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

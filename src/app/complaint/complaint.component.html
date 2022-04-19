@@ -7,30 +7,35 @@
     <table>
         <thead >
         <tr _ngcontent-pdn-c180="" class="ng-star-inserted">
-            <th>title</th>
-            <th>contain</th>
-            <th>status</th>
-            <th>delete</th>
-            <th>update</th></tr>
+            <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
+                <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>title</th>
+         <th>   <div _ngcontent-mrk-c180="" class="p-d-flex p-jc-between p-ai-center"> content
+</div></th>
+            <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
+                <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>status</th>
+            <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
+                <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>delete</th>
+            <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
+                <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>update</th>
         </thead>
     <tbody class="p-datatable-tbody" *ngFor="let comp of listcomp ">
     <tr>
-        <td _ngcontent-gbj-c180><span _ngcontent-hos-c180 class="p-column-title"> {{ comp.complaintTitle }} </span></td>
-        <td _ngcontent-gbj-c180> <span _ngcontent-hos-c180 class="p-column-title"> {{ comp.content }}</span></td>
-        <td _ngcontent-gbj-c180> <span _ngcontent-hos-c180 class="p-column-title"> {{ comp.isTreated }}</span> </td>
-        <td _ngcontent-gbj-c180><button pbutton="" pripple="" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined p-mr-2 p-mb-2 p-ripple p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-times">
+        <td _ngcontent-gbj-c180> {{ comp.complaintTitle }} </td>
+        <td _ngcontent-gbj-c180>  {{ comp.content }}</td>
+        <td _ngcontent-gbj-c180>  {{ comp.isTreated }} </td>
+        <td _ngcontent-gbj-c180><button (click)="supprimerProduit(comp)"  pbutton="" pripple="" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined p-mr-2 p-mb-2 p-ripple p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-times">
             <span class="p-button-icon pi pi-times" aria-hidden="true"></span>
             <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span>
             <span class="p-ink"></span></button></td>
-        <td _ngcontent-gbj-c180><button (click)="supprimerProduit(comp)" _ngcontent-gyv-c180="" pbutton="" type="button" icon="pi pi-cog" class="p-button-secondary p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-cog">
+        <td _ngcontent-gbj-c180><button [routerLink]="['/updatecomp',comp.complaintId]" _ngcontent-gyv-c180="" pbutton="" type="button" icon="pi pi-cog" class="p-button-secondary p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-cog">
             <span class="p-button-icon pi pi-cog" aria-hidden="true"></span>
             <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span></button></td>
     </tr>
     </tbody>
     </table>
-    <button  _ngcontent-afu-c112="" pbutton="" type="button" label="New" icon="pi pi-plus" ng-reflect-label="New" ng-reflect-icon="pi pi-plus" class="p-button p-component">
+    <button [routerLink]="['/addcomplaint']" _ngcontent-afu-c112="" pbutton="" type="button" label="New" icon="pi pi-plus" ng-reflect-label="New" ng-reflect-icon="pi pi-plus" class="p-button p-component">
         <span class="p-button-icon p-button-icon-left pi pi-plus" aria-hidden="true"></span>
-        <span href="http://localhost:4200/#/addcomplaint" class="p-button-label" >New</span>
+        <span  class="p-button-label" >New</span>
     </button>
 
 

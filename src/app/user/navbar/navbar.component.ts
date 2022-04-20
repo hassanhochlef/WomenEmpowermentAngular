@@ -20,12 +20,30 @@ export class NavbarComponent implements OnInit {
     this.authenticationService.currentUser.subscribe( data => {
       this.currentUser = data;
     });
+    if (this.currentUser == null){
+      this.currentUser = new User();
+      this.currentUser.name = "";
+      this.currentUser.userId = 0;
+      this.currentUser.username = "";
+      this.currentUser.activityDomain = "";
+      this.currentUser.password = "";
+      this.currentUser.accessToken = "";
+      this.currentUser.phoneNumber = "";
+      this.currentUser.birthDate = new Date();
+      this.currentUser.email = "";
+      this.currentUser.establishmentDate = new Date();
+      this.currentUser.refreshToken = "";
+
+    }
   }
 
   ngOnInit(): void {
-    this.userService.getNotifications().subscribe(data =>{
-      this.notificationList = data;
-    });
+    if (this.currentUser?.userId){
+      this.userService.getNotifications().subscribe(data => {
+        this.notificationList = data;
+      });
+    }
+
   }
 
   markAsRead(notifId: number){
@@ -34,6 +52,15 @@ export class NavbarComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
+  }
+
+  editProfile(){
+    this.userService.editProfil(this.currentUser).subscribe();
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser) );
+    this.router.navigate(['/user/profil'])
+        .then(() => {
+          window.location.reload();
+        });
   }
 
 

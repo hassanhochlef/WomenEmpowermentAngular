@@ -11,7 +11,7 @@
                         Home
                     </a>
 
-                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser.role == 'ADMIN'">
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'ADMIN'">
                         <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
                         Dashboard
                     </a>
@@ -585,17 +585,17 @@
 
 
 
-                            <li class="nav-item dropdown dropdown-hover mx-2">
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="!currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   (click)="redirectTo()" routerLinkActive="active" *ngIf="!currentUser?.userId">
+                                   (click)="redirectTo()" routerLinkActive="active" >
                                     <i class="material-icons opacity-6 me-2 text-md">login</i>
                                     Sign in
                                 </a>
                             </li>
 
-                            <li class="nav-item dropdown dropdown-hover mx-2">
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   data-bs-toggle="modal" data-bs-target="#editProfileModal" *ngIf="currentUser?.userId">
+                                   data-bs-toggle="modal" data-bs-target="#editProfileModal" >
                                     <i class="material-icons opacity-6 me-2 text-md">edit</i>
                                     Edit Profile
                                 </a>
@@ -603,9 +603,9 @@
 
 
 
-                            <li class="nav-item dropdown dropdown-hover mx-2">
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   routerLink="profil" *ngIf="currentUser?.userId">
+                                   routerLink="profil" >
                                     <img alt="Image placeholder" src="../../assets/img/team-1.jpg" class="avatar avatar-xs rounded-circle mx-2">
                                     {{currentUser.name}}
                                 </a>
@@ -654,9 +654,9 @@
 
 
 
-                            <li class="nav-item dropdown dropdown-hover mx-2">
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   (click)="logOut()" *ngIf="currentUser?.userId">
+                                   (click)="logOut()" >
                                     <i class="material-icons opacity-6 me-2 text-md">logout</i>
                                     Sign out
                                 </a>
@@ -692,7 +692,7 @@
 
 
                                 <div class="card-body">
-                                    <form role="form" #f="ngForm" (ngSubmit)="f.form.valid">
+                                    <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && editProfile()">
                                         <div class="row justify-space-between text-center py-2">
 
                                             <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
@@ -701,84 +701,47 @@
                                         </div>
 
 
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label" *ngIf="currentUser.role=='USER' || currentUser.role=='EXPERT' || currentUser.role=='FORMER' || currentUser.role=='ADMIN'">Name</label>
-                                            <label class="form-label" *ngIf="currentUser.role=='COMPANY'">Company Name</label>
-                                            <label class="form-label" *ngIf="currentUser.role=='ASSOCIATION'">Association Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="currentUser.name" #name="ngModel" required>
+                                        <div class="input-group input-group-static">
+                                            <label *ngIf="currentUser?.role=='USER' || currentUser?.role=='EXPERT' || currentUser?.role=='FORMER' || currentUser?.role=='ADMIN'">Name</label>
+                                            <label *ngIf="currentUser?.role=='COMPANY'">Company Name</label>
+                                            <label *ngIf="currentUser?.role=='ASSOCIATION'">Association Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="currentUser.name" #name="ngModel" required>
                                         </div>
 
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="currentUser.email" #email="ngModel" class="form-control" required autofocus>
+                                        <div class="input-group input-group-static">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="currentUser.email" #name="ngModel" >
                                         </div>
 
-                                        <div class="input-group input-group-outline mb-3" *ngIf="currentUser.role=='USER' || currentUser.role=='EXPERT' || currentUser.role=='FORMER'">
-                                            <label class="form-label">Birth Date</label>
-                                            <input type="date" id="birthDate" class="form-control" name="birthDate" [(ngModel)]="currentUser.birthDate" #birthDate="ngModel" required>
+                                        <div class="input-group input-group-static" *ngIf="currentUser?.role=='USER' || currentUser?.role=='EXPERT' || currentUser?.role=='FORMER'">
+                                            <label>Birth Date</label>
+                                            <input type="date" id="birthDate" class="form-control" name="birthDate" placeholder="Birth Date"  [(ngModel)]="currentUser.birthDate" #birthDate="ngModel" required>
                                         </div>
 
-                                        <div class="input-group input-group-outline mb-3" *ngIf=" currentUser.role == 'COMPANY' || currentUser.role=='ASSOCIATION'">
-                                            <label class="form-label">Establishment Date</label>
-                                            <input type="date" id="establishmentDate" class="form-control" name="establishmentDate" [(ngModel)]="user.establishmentDate" #establishmentDate="ngModel" required placeholder="">                                </div>
+                                        <div class="input-group input-group-static" *ngIf=" currentUser?.role == 'COMPANY' || currentUser?.role=='ASSOCIATION'">
+                                            <label>Establishment Date</label>
+                                            <input type="date" id="establishmentDate" class="form-control" name="establishmentDate" placeholder="Establishment Date"  [(ngModel)]="currentUser.establishmentDate" #establishmentDate="ngModel" required>                                </div>
 
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Phone Number</label>
-                                            <input type="phone" id="phone" name="phone" [(ngModel)]="currentUser.phoneNumber" #phone="ngModel" class="form-control" required>
+                                        <div class="input-group input-group-static">
+                                            <label>Phone Number</label>
+                                            <input type="phone" id="phone" name="phone" placeholder="Phone Number"  [(ngModel)]="currentUser.phoneNumber" #phone="ngModel" class="form-control" required>
                                         </div>
 
-                                        <div class="input-group input-group-outline mb-3" *ngIf=" currentUser.role == 'COMPANY' || currentUser.role=='ASSOCIATION'">
-                                            <label class="form-label">Activity Domain</label>
-                                            <input type="text" id="activityDomain" class="form-control" name="activityDomain" [(ngModel)]="user.activityDomain" #activityDomain="ngModel" required>
+                                        <div class="input-group input-group-static" *ngIf=" currentUser?.role == 'COMPANY' || currentUser?.role=='ASSOCIATION'">
+                                            <label>Activity Domain</label>
+                                            <input type="text" id="activityDomain" class="form-control" name="activityDomain" placeholder="Activity Domain"  [(ngModel)]="currentUser.activityDomain" #activityDomain="ngModel" required>
                                         </div>
 
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label"></label>
+                                        <div class="input-group input-group-static">
+                                            <label>Picture</label>
                                             <input class="form-control" type="file" id="formFile">
                                         </div>
 
-                                        <div class="row justify-space-between text-center py-2">
-                                            <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
-                                                Login Details
-                                            </p>
-                                        </div>
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Username</label>
-                                            <input type="text" id="username" class="form-control" name="username" [(ngModel)]="currentUser.username" #username="ngModel" required>
-                                        </div>
-
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Password</label>
-                                            <input type="password" id="password" class="form-control" name="password" [(ngModel)]="currentUser.password" #password="ngModel" required>
-                                        </div>
-
-
-
-
-                                        <div class="form-check form-check-info text-start ps-0">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                                            </label>
-                                        </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Edit</button>
                                         </div>
                                     </form>
 
-
-
-
-
-
-                                </div>
-
-
-                                <div class="card-footer text-center pt-0 px-sm-4 px-1">
-                                    <p class="mb-4 mx-auto">
-                                        Already have an account?
-                                        <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign in</a>
-                                    </p>
                                 </div>
                             </div>
                         </div>

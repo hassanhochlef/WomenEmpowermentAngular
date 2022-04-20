@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {Notification} from '../models/natification.model';
+import {User} from '../models/user.model';
 
 const API_URL = `${environment.BASE_URL}/api/user/`;
 
@@ -15,6 +16,10 @@ export class UserService extends  RequestBaseService{
 
   constructor(authenticationService: AuthenticationService, http: HttpClient) {
     super(authenticationService, http);
+  }
+
+  editProfil(user: User): Observable<any> {
+    return this.http.put(API_URL + 'update', user, {headers: this.getHeaders});
   }
 
   getAllFriends(): Observable<any> {

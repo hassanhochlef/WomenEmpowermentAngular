@@ -5,7 +5,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
-
 import {AccordionModule} from 'primeng/accordion';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {AvatarModule} from 'primeng/avatar';
@@ -85,6 +84,7 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TreeModule} from 'primeng/tree';
 import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import { LazyLoadEvent } from 'primeng/api';
 
 import {AppCodeModule} from './app.code.component';
 import {AppComponent} from './app.component';
@@ -157,6 +157,12 @@ import { FrontFooterComponent } from './user/front-footer/front-footer.component
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
 import { QuizComponent } from './course/quiz/quiz.component';
+import { AddPostComponent } from './forum/add-post/add-post.component';
+import { UserPostsComponent } from './forum/user-posts/user-posts.component';
+import { PostDetailsComponent } from './forum/post-details/post-details.component';
+import { EventFrontComponent } from './event/event-front/event-front.component';
+import { DonationComponent } from './event/donation/donation.component';
+import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
 
 
 
@@ -247,7 +253,7 @@ import { QuizComponent } from './course/quiz/quiz.component';
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        AppCodeModule
+        AppCodeModule,
     ],
     declarations: [
         AppComponent,
@@ -313,6 +319,17 @@ import { QuizComponent } from './course/quiz/quiz.component';
         FrontLandingComponent,
         ProfilComponent,
         QuizComponent,
+
+        AddPostComponent,
+        UserPostsComponent,
+        PostDetailsComponent,
+
+        EventFrontComponent,
+
+        DonationComponent,
+
+        PaymentDonationComponent,
+
 
     ],
     providers: [

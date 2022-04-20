@@ -49,14 +49,32 @@ import {FrontLandingComponent} from './user/front-landing/front-landing.componen
 import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
 import {QuizComponent} from "./course/quiz/quiz.component";
+import {EventFrontComponent} from './event/event-front/event-front.component';
+import {DonationComponent} from "./event/donation/donation.component";
+import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {
+                path: 'profile',
+                component: UserPostsComponent,
+            },
+                    {path: '', component: DashboardDemoComponent},
+            {
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
+
+                    {
+                        path: 'complaint',
+                        component: ComplaintComponent,
+                    },
+                    {
+                        path: 'addcomplaint',
+                        component: AddComplaintComponent,
+                    },
+                   
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -89,6 +107,8 @@ import {QuizComponent} from "./course/quiz/quiz.component";
                     {path: 'pages/empty', component: EmptyDemoComponent},
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
+                    {path: 'pages/donation', component: DonationComponent},
+
                 ]
             },
 
@@ -102,6 +122,18 @@ import {QuizComponent} from "./course/quiz/quiz.component";
                     {path: 'details/:id', component : DetailsComponent},
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},
+                    {path: 'eventFront', component: EventFrontComponent}
+                    {
+                        path: 'forum',
+                        component: ForumComponent,
+                    },  {
+                        path: 'forum',
+                        component: ForumComponent,
+                    },
+                    {
+                        path: 'user-post',
+                        component: UserPostsComponent,
+                    },
                 ]
             },
             {path: 'error', component: AppErrorComponent},

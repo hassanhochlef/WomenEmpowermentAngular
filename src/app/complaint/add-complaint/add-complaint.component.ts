@@ -11,7 +11,7 @@ import {Complaint} from '../../models/complaint.model';
 })
 export class AddComplaintComponent implements OnInit {
 newComplaint = new Complaint();
-  constructor(private router: Router , private ComplaintService : ComplaintService) { }
+  constructor(private router: Router , private ComplaintService: ComplaintService) { }
 
   ngOnInit(): void {
   }

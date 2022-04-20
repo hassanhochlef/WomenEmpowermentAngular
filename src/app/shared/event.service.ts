@@ -10,13 +10,14 @@ import { Event } from 'src/app/models/event.model';
     providedIn: 'root'
 })
 export class EventService {
-    private baseUrl = `http://localhost:8087/SpringMVC/Event/removeEvent`;
+    private baseUrl = `http://localhost:8087/SpringMVC/Event/findEventYear`;
     constructor(private httpClient: HttpClient) { }
 
 
     getEventList(): Observable<Event[]>{
         return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/Get-all-Event');
     }
+
     createEvent(event: Event): Observable<Event>{
         return this.httpClient.post(`http://localhost:8087/SpringMVC/Event/createEvenement`, event);
     }
@@ -25,6 +26,12 @@ export class EventService {
     }
     updateEmployee(id: number, value: any): Observable<Event> {
         return this.httpClient.put(`http://localhost:8087/SpringMVC/Event/editEventCreatedByUser/${id}`, value);
+    }
+    addUserEvent(userid: number): Observable<any> {
+        return this.httpClient.post(`http://localhost:8087/SpringMVC/Event/create-event/${userid}`, { responseType: 'text' });
+    }
+    getStatistic(): Observable<Event[]>{
+        return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/findEventYear');
     }
 
 }

@@ -365,6 +365,16 @@
         </div>
     </section>
 </div>
+<div *ngFor="let quiz of quizez">
+    {{quiz.theme}}
+    <div *ngFor="let ques of quiz.questions ">
+        {{ques.question}}
+       <div *ngFor="let ans of ques.answers">
+        {{ans.answerContent}}
+       </div>
+
+    </div>
+</div>
 <br>
 <br>
 <br>

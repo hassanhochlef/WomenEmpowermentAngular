@@ -156,6 +156,7 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
+import { QuizComponent } from './course/quiz/quiz.component';
 
 
 
@@ -311,6 +312,7 @@ import { ProfilComponent } from './user/profil/profil.component';
         FrontFooterComponent,
         FrontLandingComponent,
         ProfilComponent,
+        QuizComponent,
 
     ],
     providers: [

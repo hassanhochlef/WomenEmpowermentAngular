@@ -7,6 +7,7 @@ import {Certificate} from "../models/certificate.model";
 import {AuthenticationService} from "./authentication.service";
 import {RequestBaseService} from "./request-base.service";
 import { Penality } from '../models/penality.enum';
+import {Quiz} from "../models/Quiz.model";
 @Injectable({
   providedIn: 'root'
 })
@@ -48,5 +49,11 @@ export class CourseService  extends  RequestBaseService{
   }
   getBannedparticipant(idCourse: string): Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8087/SpringMVC/course/getBannedParticipants/' + idCourse);
+  }
+  getQuizez(idCourse: string): Observable<Quiz[]>{
+    return this.http.get<Quiz[]>('http://localhost:8087/SpringMVC/quiz/getQuizez/' + idCourse, {headers: this.getHeaders});
+  }
+  addAnswer(idAnswer: number){
+    return this.http.post('http://localhost:8087/SpringMVC/quiz/answerQuestion/' + idAnswer, null, {headers: this.getHeaders} );
   }
 }

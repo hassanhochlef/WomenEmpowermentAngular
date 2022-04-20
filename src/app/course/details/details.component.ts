@@ -9,6 +9,7 @@ import {AuthenticationService} from '../../shared/authentication.service';
 import {RequestBaseService} from '../../shared/request-base.service';
 import {HttpClient} from '@angular/common/http';
 import {Penality} from '../../models/penality.enum';
+import {Quiz} from "../../models/Quiz.model";
 
 
 @Component({
@@ -33,6 +34,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   ccCourses: Course[];
   bannedpart: User[];
   pen: Penality[] = [];
+  quizez: Quiz[];
   public xx: string = null;
   constructor(private activatedRoute: ActivatedRoute,
               authenticationService: AuthenticationService,
@@ -56,6 +58,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
       this.getCertificate(this.courseId);
       this.getCreatedCourses(this.onlineUser.userId.toString());
       this.getBannedParticipants(this.courseId);
+      this.getQuizez(this.courseId);
       this.pen = [Penality.KICK, Penality.WARNING, Penality.SANCTION ];
     });
     this.statuses = [
@@ -117,7 +120,13 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
                                              this.filtersLoaded = Promise.resolve(true);
         });
   }
-
+  getQuizez(idCourse: string): void {
+    this.courseSub = this.service
+        .getQuizez(idCourse)
+        .subscribe(quizResp => {
+          this.quizez = quizResp;
+        });
+  }
 
   ngOnDestroy(): void{
     if (this.routeSub){

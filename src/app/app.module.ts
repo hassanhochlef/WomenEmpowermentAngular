@@ -143,6 +143,7 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
+import { AddCourseComponent } from './course/add-course/add-course.component';
 import { EventComponent } from './event/event.component';
 import { FilterPipe } from './event/filter.pipe';
 import { ComplaintComponent } from './complaint/complaint.component';
@@ -155,10 +156,10 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
+import { QuizComponent } from './course/quiz/quiz.component';
 import { AddPostComponent } from './forum/add-post/add-post.component';
 import { UserPostsComponent } from './forum/user-posts/user-posts.component';
 import { PostDetailsComponent } from './forum/post-details/post-details.component';
-
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
@@ -304,6 +305,7 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
         ComplaintComponent,
         CourseComponent,
         DetailsComponent,
+        AddCourseComponent,
         ForumComponent,
         EventComponent,
         FilterPipe,
@@ -316,6 +318,8 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
         FrontFooterComponent,
         FrontLandingComponent,
         ProfilComponent,
+        QuizComponent,
+
         AddPostComponent,
         UserPostsComponent,
         PostDetailsComponent,
@@ -325,6 +329,7 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
         DonationComponent,
 
         PaymentDonationComponent,
+
 
     ],
     providers: [

@@ -38,16 +38,17 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
-
+import {AddCourseComponent} from './course/add-course/add-course.component';
+import {ForumComponent} from "./forum/forum.component";
 import {ComplaintComponent} from './complaint/complaint.component';
 import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.component';
-import {ForumComponent} from './forum/forum.component';
 import {RegisterComponent} from './user/register/register.component';
 import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
+import {QuizComponent} from "./course/quiz/quiz.component";
 import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
@@ -64,10 +65,7 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
-                    {
-                        path: 'cour',
-                        component: CourseComponent,
-                    },
+
                     {
                         path: 'complaint',
                         component: ComplaintComponent,
@@ -76,11 +74,7 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                         path: 'addcomplaint',
                         component: AddComplaintComponent,
                     },
-                    {
-                        path: 'details/:id',
-                        component : DetailsComponent,
-                    },
-
+                   
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -124,13 +118,13 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
                     {path: 'eventFront', component: EventFrontComponent},
-                    {
-                        path: 'forum',
-                        component: ForumComponent,
-                    },  {
-                        path: 'forum',
-                        component: ForumComponent,
-                    },
+                    {path: 'cour', component: CourseComponent},
+                    {path: 'forum', component: ForumComponent},
+                    {path: 'details/:id', component : DetailsComponent},
+                    {path: 'addcourse', component : AddCourseComponent},
+                    {path: 'quiz', component : QuizComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
+                   
                     {
                         path: 'user-post',
                         component: UserPostsComponent,

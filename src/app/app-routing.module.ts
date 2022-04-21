@@ -50,7 +50,7 @@ import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
 import {QuizComponent} from "./course/quiz/quiz.component";
 import {EventFrontComponent} from './event/event-front/event-front.component';
-import {DonationComponent} from "./event/donation/donation.component";
+import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 
 @NgModule({
@@ -117,19 +117,14 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
                     {path: 'details/:id', component : DetailsComponent},
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},
-                    {path: 'eventFront', component: EventFrontComponent}
-                    {
-                        path: 'forum',
-                        component: ForumComponent,
-                    },  {
-                        path: 'forum',
-                        component: ForumComponent,
-                    },
+                    {path: 'eventFront', component: EventFrontComponent},
+                   
                     {
                         path: 'user-post',
                         component: UserPostsComponent,

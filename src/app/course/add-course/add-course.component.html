@@ -1,16 +1,38 @@
+<header class="bg-gradient-dark">
+	<div class="page-header min-vh-75" style="background-image: url('assets/img/bg9.jpg');">
+		<span class="mask bg-gradient-dark opacity-6"></span>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center mx-auto my-auto">
+					<h1 class="text-white">Work with an amazing design</h1>
+					<p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
+					<button type="submit" class="btn bg-white text-dark">Create Account</button>
+					<h6 class="text-white mb-2 mt-5">Find us on</h6>
+					<div class="d-flex justify-content-center">
+						<a href=""><i class="fab fa-facebook text-lg text-white me-4"></i></a>
+						<a href=""><i class="fab fa-instagram text-lg text-white me-4"></i></a>
+						<a href=""><i class="fab fa-twitter text-lg text-white me-4"></i></a>
+						<a href=""><i class="fab fa-google-plus text-lg text-white"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
 
-
-<section class="card-area">
-	<section class="card-section wrapper">
-		<div class="card p-mr-3 p-mb-3">
-
-						<div class="card-front__tp card-front__tp--city">
+<section >
+	<section >
+		<div>
+						<div  class="card-body" >
 							<form #f="ngForm" (ngSubmit)="f.form.valid && addCourse() " xmlns="http://www.w3.org/1999/html">
 								<span class="p-float-label">
 									<input id="courseName" type="text" pInputText [(ngModel)]="course.courseName"  name="courseName">
 									<label  for="courseName" >course name</label>
 								</span>
-								<p-calendar id="startDate" name="startDate" [showIcon]="true" [(ngModel)]="course.startDate" ></p-calendar>
+								<div class="input-group input-group-outline mb-3">
+								<label class="form-label">Start date</label>
+								<input type="date" class="form-control" id="startDate" name="startDate"  [(ngModel)]="course.startDate" >
+								</div>
 								<p-calendar id="endDate" name="endDate" [showIcon]="true" [(ngModel)]="course.endDate" ></p-calendar>
 
 								<select class="custom-dropdown small" name="domain" id="domain" [(ngModel)]="course.domain" >

@@ -1,24 +1,48 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container">
-    <div class="col-md-9" *ngFor="let qui of quizez">
-        <div class="question-main" *ngFor="let quest of qui.questions; let i=index">
-            <div class="title"><span>{{quest.question}}</span>{{quest.questionId}}
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="answer" *ngFor="let ans of quest.answers" name="questionId" >
-                        <input type="radio" id="{{ans.answerId}}"  value="{{ans.answerId}}" name="konnect" (click)="getQuestionAnswer(quest.questionId,ans.answerId)">
-                        <label for="{{ans.answerId}}"><span>{{ans.answerContent}}</span></label>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75" style="background-image: url('assets/img/bg9.jpg');">
+        <span class="mask bg-gradient-dark opacity-6"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mx-auto my-auto">
+                    <h1 class="text-white">Work with an amazing design</h1>
+                    <p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
+                    <button type="submit" class="btn bg-white text-dark">Create Account</button>
+                    <h6 class="text-white mb-2 mt-5">Find us on</h6>
+                    <div class="d-flex justify-content-center">
+                        <a href=""><i class="fab fa-facebook text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-instagram text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-twitter text-lg text-white me-4"></i></a>
+                        <a href=""><i class="fab fa-google-plus text-lg text-white"></i></a>
                     </div>
                 </div>
-
             </div>
-
-         </div>
-        <button (click)="addAnswers()">VALIDE QUIZZ</button>
+        </div>
     </div>
+</header>
+<div class="quiz-container" *ngFor="let qui of quizez">
+    <h1>{{qui.theme}}</h1>
+    <hr>
+    <ul  *ngFor="let quest of qui.questions" style="padding-left: 20px ;padding-top:20px" >
+        <p>{{quest.question}} </p>
+        <div id="{{quest.questionId}}">
+            <ui *ngFor="let ans of quest.answers" name="questionId">
+            <input type="radio" name="{{quest.questionId}}"  checked (click)="getQuestionAnswer(quest.questionId,ans.answerId)">
+            <label  class="borough">{{ans.answerContent}}</label><br>
+            </ui>
+        </div>
+        <hr>
+    </ul>
 </div>
+<center><button type="button" class="btn bg-gradient-primary w-auto me-2" (click)="addAnswers()">Validate</button></center>
+
+
+
+
+
+
+
+
+
+

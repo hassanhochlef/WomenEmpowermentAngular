@@ -133,7 +133,6 @@
     </div>
 </header>
 
-
 <!-- End Navbar -->
 <div class="col-lg-3 mb-lg-0 mb-5 mt-8 mt-md-5 mt-lg-0" style="width: 250px;position: -webkit-sticky;
 float: left;
@@ -277,7 +276,7 @@ float: right;
 
                         <div class="author">
                             <div class="name">
-                                <span>Mathew Glock</span>
+                                <span>{{p.user.name}}</span>
                                 <div class="stats">
                                     <small><i class="far fa-clock"></i> {{p.createdAt}}</small>
                                 </div>
@@ -294,15 +293,22 @@ float: right;
                             <i class="fas fa-star"></i>
                             <i class="far fa-star"></i>
                         </div>
-
-
-
                     </div>
-                    <button class="btn bg-gradient-primary btn-icon btn-" type="button">
+                    <ng-container *ngFor="let l of p.postLikes">
+                        <ng-container *ngIf="l.user.userId == currentUser.userId">
+                    <button class="btn bg-gradient-primary btn-icon btn-" type="button" *ngIf="l.isLiked==true" >
                         <div class="d-flex align-items-center">
-                            Details
+                            Like
                         </div>
                     </button>
+                             <button class="btn bg-gradient-faded-dark btn-icon btn- text-white" type="button" *ngIf="l.isLiked==false" >
+                                <div class="d-flex align-items-center">
+                                    Dislike
+                                </div>
+                            </button>
+                        </ng-container>
+                    </ng-container>
+
                 </div>
 
             </div>
@@ -318,21 +324,27 @@ float: right;
             </div>
             <div class="card-body text-center">
                 <div class=" mt-n6 ">
-                    <button type="button" (click)="addLikePost(p.postId.toString())" class="btn btn-outline-primary  btn-icon-only rounded-circle" style="margin-left: 80px; margin-right: 10px">
+                    <button type="button"  (click)="addLikePost(p.postId.toString())" class="btn li zob btn-primary  btn-icon-only rounded-circle" style="margin-left: 80px; margin-right: 10px" >
                         <span class="btn-inner--icon">  <i class="fa fa-thumbs-up"></i>  </span>
                     </button>
 
-                    <button type="button" (click)="addDisLikePost(p.postId.toString())" class="btn btn-vimeo btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
+                    <button type="button" (click)="addDisLikePost(p.postId.toString())" class="btn zob btn-secondary btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
                         <span class="btn-inner--icon"><i class="fa fa-thumbs-down"></i></span>
                     </button>
-                    <button type="button" class="btn btn-twitter btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
-                        <span class="btn-inner--icon"><i class="fa fa-do-not-enter"></i></span>
+                    <button type="button" class="btn zob btn-dark btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
+                        <span class="btn-inner--icon"><i class="fa fa-skull-crossbones"></i></span>
                     </button>
-                    <button type="button" class="btn  btn-slack btn-icon-only rounded-circle" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  style="margin-left: 20px; margin-right: 400px">
-                        <span class="btn-inner--icon"><i class="fa fa-comment"></i></span>
+                    <button type="button" class="btn zob  bg-success btn-icon-only rounded-circle" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  style="margin-left: 20px; margin-right: 400px">
+                        <span class="btn-inner--icon"><i class="fa fa-comment" style="color: whitesmoke"></i></span>
                     </button>
 
+                    <style>
 
+
+                        .zob:hover {
+                            transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+                        }
+                    </style>
 
 
 
@@ -341,16 +353,62 @@ float: right;
 
                         <ng-container *ngFor="let c of p.postComments">
 
-                            <div class="col-lg-6 mt-lg-0 mt-5 ps-lg-0 ps-0">
+                            <div class="col-lg-6 mt-lg-0 mt-5 ps-lg-0 ps-0" >
                                 <div class="p-3 info-horizontal">
-                                    <div class="icon icon-shape  bg-gradient-primary shadow-primary text-center" style="height: 20px;width: 20px;">
+                                    <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
                                         <a href="javascript:;" class="avatar avatar-xs rounded-circle">
                                             <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
                                         </a>                                    </div>
                                     <div class="description ps-3">
-                                        <p class="mb-0">{{c.commentBody}}</p>
+                                        <small class="mb-0" style="font-size: 3mm">{{c.user.name}}</small>
+                                        <p class="mb-0" style="font-size: 3mm">{{c.commentBody}}</p>
+                                        <div><small class="txtsm"  type="button" data-bs-toggle="collapse" data-bs-target="#twoa" aria-expanded="true" aria-controls="twoa" style="margin-right: 30px; margin-left: 20px; font-size: 4mm"> replay</small>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
+                                        <style>
+                                            .txtsm:hover{color: #dd2567; }
+                                            .txtsm{text-decoration: underline;}
+                                        </style>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div id="twoa" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="width: 400px; height: 50px ">
+                                <div class="card card-body">
+
+                                    <ng-container *ngFor="let cc of c.Commentreply">
+
+                                        <div class="col-lg-6 mt-lg-0 mt-5 ps-lg-0 ps-0" >
+                                            <div class="p-3 info-horizontal">
+                                                <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
+                                                    <a href="javascript:;" class="avatar avatar-xs rounded-circle">
+                                                        <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                                                    </a>                                    </div>
+                                                <div class="description ps-3">
+                                                    <small class="mb-0" style="font-size: 3mm">{{cc.user.name}}</small>
+                                                    <p class="mb-0" style="font-size: 3mm">{{cc.commentBody}}</p>
+                                                    <div><a class="txtsm btn" style="margin-right: 30px; margin-left: 20px; font-size: 4mm" > replay</a>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
+                                                    <style>
+                                                        .txtsm:hover{color: #dd2567; }
+                                                        .txtsm{text-decoration: underline;}
+                                                    </style>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <div class="accordion-body text-sm opacity-8">
+                                        <form class="align-items-center">
+                                            <div class="input-group input-group-outline d-flex">
+                                                <label class="form-label">Type your Comment</label>
+                                                <input type="text" [(ngModel)]= "comment.commentBody" name="{{p.postId.toString()}}" class="form-control ">
+                                                <button class="btn bg-gradient-primary mb-0" (click)="addComment(p.postId.toString())" >
+                                                    <i class="material-icons">send</i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </ng-container>
                         <div class="accordion-body text-sm opacity-8">
@@ -369,6 +427,13 @@ float: right;
 
 
                     </div>
+
+
+
+
+
+
+
 
                 </div>
 

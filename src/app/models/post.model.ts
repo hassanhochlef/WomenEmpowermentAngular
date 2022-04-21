@@ -1,4 +1,6 @@
-import {PostComment} from "./postComment.model";
+import {PostComment} from './postComment.model';
+import {PostLike} from './postLike.model';
+import {User} from './user.model';
 
 export class Post {
     postId: string;
@@ -8,5 +10,6 @@ export class Post {
     nb_etoil: number;
     postTitle: string;
     postComments: PostComment[];
-
+    postLikes: PostLike[];
+    user: User;
 }

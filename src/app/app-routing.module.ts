@@ -49,7 +49,7 @@ import {FrontLandingComponent} from './user/front-landing/front-landing.componen
 import {ProfilComponent} from './user/profil/profil.component';
 import {EventComponent} from './event/event.component';
 import {EventFrontComponent} from './event/event-front/event-front.component';
-import {DonationComponent} from "./event/donation/donation.component";
+import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 
 @NgModule({
@@ -123,7 +123,7 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
-                    {path: 'eventFront', component: EventFrontComponent}
+                    {path: 'eventFront', component: EventFrontComponent},
                     {
                         path: 'forum',
                         component: ForumComponent,

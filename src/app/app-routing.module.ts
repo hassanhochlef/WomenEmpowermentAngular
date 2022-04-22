@@ -44,6 +44,8 @@ import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
+import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.component';
+import {NewPasswordComponent} from './user/new-password/new-password.component';
 
 @NgModule({
     imports: [
@@ -107,6 +109,8 @@ import {ProfilComponent} from './user/profil/profil.component';
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
             {path: 'register', component: RegisterComponent},
+            {path: 'reset-password', component: ForgotPasswordComponent},
+            {path: 'new-password', component: NewPasswordComponent},
             {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})

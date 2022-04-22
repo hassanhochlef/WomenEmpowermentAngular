@@ -150,6 +150,8 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './user/new-password/new-password.component';
 
 
 
@@ -239,7 +241,7 @@ import { ProfilComponent } from './user/profil/profil.component';
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        AppCodeModule
+        AppCodeModule,
     ],
     declarations: [
         AppComponent,
@@ -297,6 +299,8 @@ import { ProfilComponent } from './user/profil/profil.component';
         FrontFooterComponent,
         FrontLandingComponent,
         ProfilComponent,
+        ForgotPasswordComponent,
+        NewPasswordComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

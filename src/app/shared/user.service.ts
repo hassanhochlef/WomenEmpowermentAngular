@@ -18,8 +18,13 @@ export class UserService extends  RequestBaseService{
     super(authenticationService, http);
   }
 
+
   editProfil(user: User): Observable<any> {
     return this.http.put(API_URL + 'update', user, {headers: this.getHeaders});
+  }
+
+  getUserProfilPicture(): Observable<any> {
+    return this.http.get(API_URL + 'picture', {headers: this.getHeaders, responseType: 'text'});
   }
 
   getAllFriends(): Observable<any> {
@@ -32,5 +37,9 @@ export class UserService extends  RequestBaseService{
 
   markNotificationAsRead(notifId: number){
     return this.http.put(API_URL + 'notification/read', notifId, {headers: this.getHeaders});
+  }
+
+  markNotificationAsUnRead(notifId: number){
+    return this.http.put(API_URL + 'notification/unread', notifId, {headers: this.getHeaders});
   }
 }

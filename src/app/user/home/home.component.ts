@@ -14,11 +14,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.myLinkElement = document.createElement('link');
+    /*this.myLinkElement = document.createElement('link');
     this.myLinkElement.href = "assets/css/material-kit-pro.min3294.css?v=3.0.1";
     this.myLinkElement.rel = "stylesheet";
     this.myLinkElement.id = "pagestyle";
-    document.head.appendChild(this.myLinkElement);
+    document.head.appendChild(this.myLinkElement);*/
 
   }
 

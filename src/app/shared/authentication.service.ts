@@ -55,4 +55,15 @@ export class AuthenticationService {
     this.currentUserSubject.next(new User);
   }
 
+  forgotPassword(email: string){
+    let queryParams = {'email': email};
+    return this.http.post(API_URL + 'reset-password', email, {params: queryParams});
+
+  }
+
+  updatePassword(password: string, token: string){
+    let queryParams = {'token': token};
+    return this.http.post(API_URL + 'reset-password/new', password, {params: queryParams});
+  }
+
 }

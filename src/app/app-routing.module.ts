@@ -18,7 +18,6 @@ import {AppMainComponent} from './app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
-import {AppLoginComponent} from './pages/app.login.component';
 import {InputDemoComponent} from './demo/view/inputdemo.component';
 import {ButtonDemoComponent} from './demo/view/buttondemo.component';
 import {TableDemoComponent} from './demo/view/tabledemo.component';
@@ -39,6 +38,10 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
+import {AddCourseComponent} from './course/add-course/add-course.component';
+import {ForumComponent} from "./forum/forum.component";
+import {ComplaintComponent} from './complaint/complaint.component';
+import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.component';
 import {RegisterComponent} from './user/register/register.component';
 import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
@@ -46,24 +49,34 @@ import {FrontLandingComponent} from './user/front-landing/front-landing.componen
 import {ProfilComponent} from './user/profil/profil.component';
 import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.component';
 import {NewPasswordComponent} from './user/new-password/new-password.component';
+import {EventComponent} from './event/event.component';
+import {QuizComponent} from "./course/quiz/quiz.component";
+import {EventFrontComponent} from './event/event-front/event-front.component';
+import {DonationComponent} from './event/donation/donation.component';
+import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
-
+            {
+                path: 'profile',
+                component: UserPostsComponent,
+            },
+                    {path: '', component: DashboardDemoComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
-                    {
-                        path: 'cour',
-                        component: CourseComponent,
-                    },
-                    {
-                        path: 'details/:id',
-                        component : DetailsComponent,
-                    },
 
+                    {
+                        path: 'complaint',
+                        component: ComplaintComponent,
+                    },
+                    {
+                        path: 'addcomplaint',
+                        component: AddComplaintComponent,
+                    },
+                   
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -94,7 +107,10 @@ import {NewPasswordComponent} from './user/new-password/new-password.component';
                     {path: 'pages/invoice', component: AppInvoiceComponent},
                     {path: 'pages/help', component: AppHelpComponent},
                     {path: 'pages/empty', component: EmptyDemoComponent},
-                    {path: 'documentation', component: DocumentationComponent}
+                    {path: 'documentation', component: DocumentationComponent},
+                    {path: 'pages/event', component: EventComponent},
+                    {path: 'pages/donation', component: DonationComponent},
+
                 ]
             },
 
@@ -102,7 +118,19 @@ import {NewPasswordComponent} from './user/new-password/new-password.component';
                 path: 'user', component: HomeComponent,
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
-                    {path: 'profil', component: ProfilComponent}
+                    {path: 'profil', component: ProfilComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
+                    {path: 'cour', component: CourseComponent},
+                    {path: 'forum', component: ForumComponent},
+                    {path: 'details/:id', component : DetailsComponent},
+                    {path: 'addcourse', component : AddCourseComponent},
+                    {path: 'quiz', component : QuizComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
+                   
+                    {
+                        path: 'user-post',
+                        component: UserPostsComponent,
+                    },
                 ]
             },
             {path: 'error', component: AppErrorComponent},
@@ -116,6 +144,7 @@ import {NewPasswordComponent} from './user/new-password/new-password.component';
         ], {scrollPositionRestoration: 'enabled'})
     ],
     exports: [RouterModule]
-})
+}
+)
 export class AppRoutingModule {
 }

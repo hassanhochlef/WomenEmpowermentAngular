@@ -23,7 +23,7 @@ export class CourseComponent implements OnInit, OnDestroy {
 
   }
   openGameDetails(id: string): void {
-    this.router.navigate(['/details', id]);
+    this.router.navigate(['user/details', id]);
   }
   ngOnDestroy(): void {
     if (this.routeSub){

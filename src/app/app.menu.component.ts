@@ -53,7 +53,14 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Widgets', icon: 'pi pi-fw pi-star-o', routerLink: ['utilities/widgets']},
                     {label: 'Grid System', icon: 'pi pi-fw pi-th-large', routerLink: ['utilities/grid']},
                     {label: 'Spacing', icon: 'pi pi-fw pi-arrow-right', routerLink: ['utilities/spacing']},
-                    {label: 'Typography', icon: 'pi pi-fw pi-align-center', routerLink: ['utilities/typography']}
+                    {label: 'Typography', icon: 'pi pi-fw pi-align-center', routerLink: ['utilities/typography']},
+                    {label: 'CrudEvent', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/event']},
+                    {label: 'donationCrud', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/donation']},
+
+
+
+
+
                 ]
             },
             {separator: true},

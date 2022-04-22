@@ -20,11 +20,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.myLinkElement.id = "pagestyle";
     document.head.appendChild(this.myLinkElement);*/
 
+
   }
 
   ngOnDestroy() {
-   // document.head.removeChild(this.myLinkElement);
 
+    document.head.removeChild(this.myLinkElement);
+   // document.head.removeChild(this.myLinkElement);
   }
 
 }

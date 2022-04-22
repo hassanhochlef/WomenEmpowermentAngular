@@ -56,4 +56,7 @@ export class CourseService  extends  RequestBaseService{
   addAnswer(idAnswer: number){
     return this.http.post('http://localhost:8087/SpringMVC/quiz/answerQuestion/' + idAnswer, null, {headers: this.getHeaders} );
   }
+  updateCourse(idCourse: string, course: Course){
+    return this.http.put<Course>('http://localhost:8087/SpringMVC/course/editCourse/' + idCourse, course, {headers: this.getHeaders});
+  }
 }

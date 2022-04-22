@@ -9,7 +9,8 @@ import {AuthenticationService} from '../../shared/authentication.service';
 import {RequestBaseService} from '../../shared/request-base.service';
 import {HttpClient} from '@angular/common/http';
 import {Penality} from '../../models/penality.enum';
-import {Quiz} from "../../models/Quiz.model";
+import {Quiz} from '../../models/Quiz.model';
+import {StreamService} from '../../shared/stream.service';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   public xx: string = null;
   constructor(private activatedRoute: ActivatedRoute,
               authenticationService: AuthenticationService,
-              private service: CourseService,
+              private service: CourseService, private chanelService: StreamService,
               private router: Router,
               http: HttpClient)
   {
@@ -71,7 +72,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   }
   joinCourse(idCourse: string){
     this.service.joinCourse(idCourse).subscribe(res => (console.log(res)));
-    let currentUrl = this.router.url;
+    const currentUrl = this.router.url;
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
       this.router.navigate([currentUrl]);
     });
@@ -105,6 +106,9 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
           this.bannedpart = courseResp;
         });
   }
+  updateCourse(idCourse: string){
+    this.service.updateCourse(this.course.courseId.toString(), this.course).subscribe();
+  }
   deleteCourse(id: string): void{
     this.service.deleteCourse(id).subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));
     this.router.navigate(['user/cour']);
@@ -126,6 +130,20 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
         .subscribe(quizResp => {
           this.quizez = quizResp;
         });
+  }
+  addStream(idCourse: string){
+    this.chanelService.createChannel( idCourse).subscribe();
+  }
+  deleteStream(idCourse: string){
+    this.chanelService.deleteChannel( idCourse)
+        .subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));
+    console.log(this.course.channelId);
+  }
+  startSteam(idCourse: string){
+    this.chanelService.startChannel( idCourse).subscribe();
+  }
+  endStream(idCourse: string){
+    this.chanelService.endChannel( idCourse).subscribe();
   }
 
   ngOnDestroy(): void{

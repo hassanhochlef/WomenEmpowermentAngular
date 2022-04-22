@@ -31,7 +31,7 @@ deletcUrl = 'http://localhost:8087/SpringMVC/complaint/delet/';
   }
   updateProduit(comp: Complaint): Observable<Complaint>
   {
-    return this.http.put<Complaint>(this.consulturl, comp, httpOptions);
+    return this.http.put<Complaint>('http://localhost:8087/SpringMVC/complaint/update/complaintId', comp, httpOptions);
   }
 
   DeletePost(complaintId: string) {

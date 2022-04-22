@@ -67,24 +67,6 @@ import {UpdateComplaintComponent} from './complaint/update-complaint/update-comp
                         component: ComplaintComponent,
                     },
                     {
-                        path: 'addcomplaint',
-                        component: AddComplaintComponent,
-                    },
-                    {
-                        path: 'addserv',
-                        component: AddServicesComponent,
-                    },
-                    {
-                        path: 'service',
-                        component: ServicesComponent,
-
-                    },
-                    {
-                        path: 'updatecomp/:complaintId',
-                        component: UpdateComplaintComponent,
-
-                    },
-                    {
                         path: 'forum',
                         component: ForumComponent,
 
@@ -141,6 +123,23 @@ import {UpdateComplaintComponent} from './complaint/update-complaint/update-comp
             {path: 'register', component: RegisterComponent},
             {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
+            {
+                path: 'updatecomp/:complaintId',
+                component: UpdateComplaintComponent,
+            },
+            {
+                path: 'addserv',
+                component: AddServicesComponent,
+            },
+            {
+                path: 'addcomplaint',
+                component: AddComplaintComponent,
+            },
+            {
+                path: 'service',
+                component: ServicesComponent,
+
+            },
         ], {scrollPositionRestoration: 'enabled'})
     ],
     exports: [RouterModule]

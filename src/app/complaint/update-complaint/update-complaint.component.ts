@@ -20,6 +20,8 @@ export class UpdateComplaintComponent implements OnInit {
 updateProduit(){
   this.compalintService.updateProduit(this.currentComplaint).subscribe(() => {
         this.router.navigate(['complaint']);
-      },(error) => { alert("Problème lors de la modification !"); }
-  );
+      });
+  this.router.navigate(['complaint']).then(() => {
+    window.location.reload();
+  });
 }}

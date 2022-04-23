@@ -162,6 +162,8 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
+import { AddEventComponent } from './event/event-front/add-event/add-event.component';
+import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
 
 
 
@@ -325,6 +327,10 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
         DonationComponent,
 
         PaymentDonationComponent,
+
+        AddEventComponent,
+
+        DetailEventComponent,
 
     ],
     providers: [

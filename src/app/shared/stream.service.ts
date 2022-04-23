@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {RequestBaseService} from "./request-base.service";
 import {AuthenticationService} from "./authentication.service";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,9 @@ export class StreamService extends  RequestBaseService{
     return this.http.delete('http://localhost:8087/SpringMVC/api/ChannelStream/deleteStream/' + courseId,
         {headers: this.getHeaders});
   }
-  getChannel(courseId: string){
-
+  getChannel(courseId: string): Observable<string>{
+return this.http.get<string>('http://localhost:8087/SpringMVC/api/ChannelStream/getChannel/' + courseId,
+    {headers: this.getHeaders});
   }
   startChannel(courseId: string){
     return this.http.post('http://localhost:8087/SpringMVC/api/ChannelStream/startStream/' + courseId, null,

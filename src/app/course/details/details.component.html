@@ -28,6 +28,7 @@
                     </div>
             </div>
 </header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div *ngFor="let cc of ccCourses">
     <div *ngIf="courseId === cc.courseId.toString() " class="row mt-5">
         <div class="col-sm-3 col-6 mx-auto" >
@@ -78,7 +79,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <section style="background-color: ghostwhite">
-                                        <h2 class="text-gradient text-primary text-center">Banned Users</h2>
+                                        <h4 class="text-gradient text-primary text-center">Banned Users</h4>
                                         <div class="container">
                                             <div class="row justify-content-center">
                                                 <div class="col-lg-10">
@@ -120,15 +121,26 @@
                                             </div>
                                         </div>
                                         <hr class="flag-hr">
-                                        <h2 class="text-gradient text-primary text-center">Streaming Panel</h2>
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-primary" *ngIf="course.channelId===null" [disabled]="false" (click)="addStream(courseId)" >Create stream</button>
-                                            <button type="button" class="btn btn-primary" *ngIf="course.channelId!==null" [disabled]="true"  >Stream exists</button>
-                                            <button type="button" class="btn btn-primary" (click)="startSteam(courseId)">Start stream</button>
-                                            <button type="button" class="btn btn-primary" (click)="endStream(courseId)">Stop stream</button>
-                                            <button type="button" class="btn btn-primary" (click)="deleteStream(courseId)" *ngIf="course.channelId!==null" [disabled]="false">Delete stream</button>
-                                            <button type="button" class="btn btn-primary"  *ngIf="course.channelId===null" [disabled]="true">No channel </button>
-                                        </div>
+                                        <h4 class="text-gradient text-primary text-center">Streaming</h4>
+                                        <hr class="flag-hr">
+                                            <center>
+                                              <div style="display: inline-flex">
+                                                 <a  style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="startSteam(courseId)"><i class="material-icons"><span class="material-symbols-outlined">play_circle</span></i></a>
+                                                 <a style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="endStream(courseId)"><i class="material-icons"><span class="material-symbols-outlined">stop</span></i></a>
+                                                 <a style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="addStream(courseId)"><i class="material-icons"><span class="material-symbols-outlined">add_circle</span></i></a>
+                                                 <a style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="deleteStream(courseId)"><i class="material-icons"><span class="material-symbols-outlined">delete_sweep</span></i></a>
+
+                                              </div>
+                                                <br>
+                                                <div  *ngIf="course.channelId !==null">
+                                                    <h6>Stream key and Server</h6>
+                                                    <h6  *ngIf="fieldTextType">{{course.streamKey}} <br> rtmps://rtmp.europe-west.hesp.live/live </h6>
+                                                    <span>
+                                                              <i class="fa" [ngClass]="{'fa-eye-slash': fieldTextType,'fa-eye': !fieldTextType }"  (click)="changebutton()">Show/Hide</i>
+                                                </span>
+                                                </div>
+                                            </center>
+
                                     </section>
 
                                 </div>
@@ -362,3 +374,154 @@
     </div>
 </section>
 </div>
+
+<section>
+    <div class="container py-4">
+        <div class="row" >
+            <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+                <div class="card d-flex justify-content-center p-4 shadow-lg">
+                    <div class="text-center">
+                        <h3 class="text-gradient text-primary">Create quiz</h3>
+                    </div>
+                    <div class="card card-plain">
+                        <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addQuiz()" id="contact-form"  autocomplete="off" style="overflow-y: auto; max-height: 250px;">
+                            <div class="card-body pb-2">
+                                <div class="col-md-6">
+                                    <div class="input-group input-group-static mb-4">
+                                        <label>Quiz theme</label>
+                                        <input class="form-control" id="theme" name="theme" [(ngModel)]="quiz.theme" placeholder="eg. Women psychology" aria-label="Quiz theme" type="text" >
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-static mb-4">
+                                            <label>Question</label>
+                                            <input class="form-control" id="question" name="question" [(ngModel)]="question1.question" placeholder="eg. How to deal with?" aria-label="Question" type="text" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <div class="input-group input-group-static">
+                                            <label>Score</label>
+                                            <input type="number" id="score" name="score" [(ngModel)]="question1.score" class="form-control" placeholder="4" >
+                                        </div>
+                                    </div>
+
+
+                                     <div  class="input-group input-group-static mb-4">
+                                         <div class="col-md-6">
+                                         <label>Answer</label>
+                                        <textarea   [(ngModel)]="answer1.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                             <input type="boolean" name="correct" id="correct" [(ngModel)]="answer1.correct" class="form-control" placeholder="false" >
+                                         </div>
+
+                                      </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer2.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer2.correct"   class="form-control" placeholder="false" >
+                                        </div>
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer3.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer3.correct"   class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-static mb-4">
+                                            <label>Question</label>
+                                            <input class="form-control"  name="question" [(ngModel)]="question2.question" placeholder="eg. How to deal with?" aria-label="Question" type="text" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <div class="input-group input-group-static">
+                                            <label>Score</label>
+                                            <input type="number"  name="score" [(ngModel)]="question2.score" class="form-control" placeholder="4" >
+                                        </div>
+                                    </div>
+
+
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea   [(ngModel)]="answer4.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct"  [(ngModel)]="answer4.correct" class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer5.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer5.correct"   class="form-control" placeholder="false" >
+                                        </div>
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer6.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer6.correct"   class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-static mb-4">
+                                            <label>Question</label>
+                                            <input class="form-control"  name="question" [(ngModel)]="question3.question" placeholder="eg. How to deal with?" aria-label="Question" type="text" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <div class="input-group input-group-static">
+                                            <label>Score</label>
+                                            <input type="number"  name="score" [(ngModel)]="question3.score" class="form-control" placeholder="4" >
+                                        </div>
+                                    </div>
+
+
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea   [(ngModel)]="answer7.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct"  [(ngModel)]="answer7.correct" class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer8.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer8.correct"   class="form-control" placeholder="false" >
+                                        </div>
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer9.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer9.correct"   class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <button type="submit" class="btn bg-gradient-primary w-auto me-2">Add</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

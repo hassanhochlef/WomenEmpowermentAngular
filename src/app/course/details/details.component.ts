@@ -11,6 +11,8 @@ import {HttpClient} from '@angular/common/http';
 import {Penality} from '../../models/penality.enum';
 import {Quiz} from '../../models/Quiz.model';
 import {StreamService} from '../../shared/stream.service';
+import {QuizQuestion} from "../../models/QuizQuestion.model";
+import {Answer} from "../../models/Answer.model";
 
 
 @Component({
@@ -29,13 +31,32 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   courseSub: Subscription;
   filtersLoaded: Promise<boolean>;
   myScriptElement: HTMLScriptElement;
+  myDivElement: HTMLTextAreaElement;
   session: WindowSessionStorage;
   onlineUser: User;
   statuses: any[];
+  div: HTMLElement;
+  streamKey = '';
   ccCourses: Course[];
   bannedpart: User[];
   pen: Penality[] = [];
   quizez: Quiz[];
+  quiz: Quiz = new Quiz();
+  questions: QuizQuestion[] = [];
+  answers: Answer[] = [];
+  question1 = new QuizQuestion();
+  question2 = new QuizQuestion();
+  question3 = new QuizQuestion();
+  answer1 = new Answer();
+  answer2 = new Answer();
+  answer3 = new Answer();
+  answer4 = new Answer();
+  answer5 = new Answer();
+  answer6 = new Answer();
+  answer7 = new Answer();
+  answer8 = new Answer();
+  answer9 = new Answer();
+  fieldTextType: boolean;
   public xx: string = null;
   constructor(private activatedRoute: ActivatedRoute,
               authenticationService: AuthenticationService,
@@ -60,6 +81,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
       this.getCreatedCourses(this.onlineUser.userId.toString());
       this.getBannedParticipants(this.courseId);
       this.getQuizez(this.courseId);
+      this.getChannel(this.courseId);
       this.pen = [Penality.KICK, Penality.WARNING, Penality.SANCTION ];
     });
     this.statuses = [
@@ -67,8 +89,28 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
       {label: 'Qualified', value: 'qualified'}
     ];
   }
+  changebutton(){
+    this.fieldTextType = !this.fieldTextType;
+  }
   addSanction(idUser: string, idCourse: string, pena: Penality){
     this.service.addSanction(idUser, idCourse , pena).subscribe(res => (console.log('added')));
+  }
+  addQuiz(){
+    this.answers.push(this.answer1, this.answer2, this.answer3);
+    this.question1.answers = this.answers;
+    this.answers = [];
+    this.answers.push(this.answer5, this.answer5, this.answer6);
+    this.question2.answers = this.answers;
+    this.answers = [];
+    this.answers.push(this.answer7, this.answer8, this.answer9);
+    this.question3.answers = this.answers;
+    this.questions.push(this.question1, this.question2, this.question3);
+    this.quiz.questions = this.questions;
+    this.service.addQuiz(this.course.courseId.toString(), this.quiz).subscribe();
+    console.log(this.quiz);
+    this.answers = [];
+    this.questions = [];
+    console.log(this.quiz);
   }
   joinCourse(idCourse: string){
     this.service.joinCourse(idCourse).subscribe(res => (console.log(res)));
@@ -113,6 +155,13 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
     this.service.deleteCourse(id).subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));
     this.router.navigate(['user/cour']);
   }
+  getChannel(id: string): void {
+    this.chanelService.getChannel(id).subscribe(chanelResp =>
+    {
+      this.streamKey = chanelResp;
+      console.log(this.streamKey);
+    });
+  }
   getCourseDetails(id: string): void {
     this.courseSub = this.service
         .getCourse(id)
@@ -145,6 +194,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   endStream(idCourse: string){
     this.chanelService.endChannel( idCourse).subscribe();
   }
+
 
   ngOnDestroy(): void{
     if (this.routeSub){

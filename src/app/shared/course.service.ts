@@ -53,6 +53,9 @@ export class CourseService  extends  RequestBaseService{
   getQuizez(idCourse: string): Observable<Quiz[]>{
     return this.http.get<Quiz[]>('http://localhost:8087/SpringMVC/quiz/getQuizez/' + idCourse, {headers: this.getHeaders});
   }
+  addQuiz(idCourse: string, quiz: Quiz){
+    return this.http.post('http://localhost:8087/SpringMVC/quiz/createQuiz/' + idCourse, quiz, {headers: this.getHeaders});
+  }
   addAnswer(idAnswer: number){
     return this.http.post('http://localhost:8087/SpringMVC/quiz/answerQuestion/' + idAnswer, null, {headers: this.getHeaders} );
   }

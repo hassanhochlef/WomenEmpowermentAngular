@@ -165,6 +165,7 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
 
 
 
@@ -328,6 +329,7 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
         EventFrontComponent,
         DonationComponent,
         PaymentDonationComponent,
+        UserDetailsComponent,
 
     ],
     providers: [

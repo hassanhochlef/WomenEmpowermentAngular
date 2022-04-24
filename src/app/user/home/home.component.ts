@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
 
-    document.head.removeChild(this.myLinkElement);
+   // document.head.removeChild(this.myLinkElement);
    // document.head.removeChild(this.myLinkElement);
   }
 

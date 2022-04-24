@@ -54,15 +54,16 @@ import {QuizComponent} from "./course/quiz/quiz.component";
 import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
+import {UserDetailsComponent} from './user/user-details/user-details.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
-            {
+          /*  {
                 path: 'profile',
                 component: UserPostsComponent,
             },
-                    {path: '', component: DashboardDemoComponent},
+                    {path: '', component: DashboardDemoComponent},*/
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -119,6 +120,7 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
+                    {path: 'profil/:id', component: UserDetailsComponent},
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
@@ -126,7 +128,6 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},
                     {path: 'eventFront', component: EventFrontComponent},
-                   
                     {
                         path: 'user-post',
                         component: UserPostsComponent,

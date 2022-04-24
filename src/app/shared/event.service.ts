@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Event } from 'src/app/models/event.model';
 import {RequestBaseService} from './request-base.service';
 import {AuthenticationService} from './authentication.service';
+import {Course} from "../models/course.model";
 
 
 @Injectable({
@@ -44,6 +45,11 @@ export class EventService extends  RequestBaseService{
         const formData = new FormData();
         formData.append('multipartFile', imagen);
         return this.httpClient.post<any>('http://localhost:8087/SpringMVC/Event/addImageToEvent', formData);
+    }
+
+
+    getEventById(id: number): Observable<Event>{
+        return this.http.get<Event>(`http://localhost:8087/SpringMVC/Event/getEvent/${id}`);
     }
 
 }

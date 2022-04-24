@@ -12,6 +12,9 @@ export class Event {
     eventType?: string;
     maxPlace?: number;
     createurEvent?: User;
+    lang?: string;
+    latitude?: string;
+
     medias?: Media[];
 
 }

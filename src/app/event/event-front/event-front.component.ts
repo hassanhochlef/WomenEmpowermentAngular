@@ -53,4 +53,7 @@ export class EventFrontComponent implements OnInit {
     });
 
   }
+  openDetails(id: number): void {
+    this.router.navigate(['user/detailEvent/', id]);
+  }
 }

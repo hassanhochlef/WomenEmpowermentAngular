@@ -164,6 +164,7 @@ import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
 import { AddEventComponent } from './event/event-front/add-event/add-event.component';
 import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
+import { MapComponent } from './event/event-front/map/map.component';
 
 
 
@@ -331,6 +332,8 @@ import { DetailEventComponent } from './event/event-front/detail-event/detail-ev
         AddEventComponent,
 
         DetailEventComponent,
+
+        MapComponent,
 
     ],
     providers: [

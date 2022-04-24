@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class AddEventComponent implements OnInit {
   event: Event = new Event();
+  latLng;
   constructor( private eventService: EventService, private router: Router) { }
 
   ngOnInit(): void {
@@ -17,6 +18,7 @@ export class AddEventComponent implements OnInit {
   addNewEvent() {
     this.eventService.createEvent(this.event).subscribe(p => {
       console.log(p);
+      window.location.reload();
 
     });
     this.router.navigate(['user/eventFront']).then(() => {
@@ -26,9 +28,16 @@ export class AddEventComponent implements OnInit {
 
   }
   addEvent() {
+    this.event.lang = this.latLng.lng;
+    this.event.latitude = this.latLng.lat;
     this.eventService.createEvent2(this.event).subscribe(data => {
       console.log(data);
     });
+  }
+  getLatLng(event){
+    console.log('we are in parent component');
+    console.log(event);
+    this.latLng = event;
   }
 
 }

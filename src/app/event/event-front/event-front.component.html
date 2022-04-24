@@ -47,7 +47,7 @@
                     <div class="card mt-5 mt-md-0">
                         <div class="card-header p-0 mx-3 mt-n4 position-relative z-index-2">
                             <a class="d-block blur-shadow-image">
-                                <img src="../assets/img/products/product-2-min.jpg" alt="img-blur-shadow" class="img-fluid border-radius-lg" loading="lazy">
+                                <img [src]="event.medias[0]?.imagenUrl" alt="img-blur-shadow" class="img-fluid border-radius-lg" loading="lazy">
                             </a>
                             <div class="colored-shadow" style="background-image: url(&quot;../assets/img/products/product-2-min.jpg&quot;);"></div></div>
                         <div class="card-body pt-3">
@@ -60,7 +60,7 @@
                             <p>
                                short description
                             </p>
-                            <button type="button" class="btn btn-outline-primary btn-sm mb-0" routerLink="/user/detailEvent">more Detail</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm mb-0" (click)="openDetails(event.eventId)">more Detail</button>
                         </div>
                     </div>
                 </div>

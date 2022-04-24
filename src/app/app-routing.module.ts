@@ -53,6 +53,7 @@ import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 import {DetailEventComponent} from "./event/event-front/detail-event/detail-event.component";
 import {AddEventComponent} from "./event/event-front/add-event/add-event.component";
+import {MapComponent} from "./event/event-front/map/map.component";
 
 @NgModule({
     imports: [
@@ -126,7 +127,7 @@ import {AddEventComponent} from "./event/event-front/add-event/add-event.compone
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
                     {path: 'eventFront', component: EventFrontComponent},
-                    {path: 'detailEvent', component: DetailEventComponent},
+                    {path: 'detailEvent/:id', component: DetailEventComponent},
                     {path: 'addEvent', component: AddEventComponent},
                     {
                         path: 'forum',
@@ -139,6 +140,7 @@ import {AddEventComponent} from "./event/event-front/add-event/add-event.compone
                         path: 'user-post',
                         component: UserPostsComponent,
                     },
+                    {path: 'pages/map', component: MapComponent},
                 ]
             },
             {path: 'error', component: AppErrorComponent},

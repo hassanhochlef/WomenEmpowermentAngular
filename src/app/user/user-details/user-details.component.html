@@ -20,9 +20,10 @@
                     <div class="row py-5">
                         <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="mb-0">{{currentUser.name}}</h3>
+                                <h3 class="mb-0">{{user.name}}</h3>
                                 <div class="d-block">
-                                    <button type="button" class="btn btn-sm btn-outline-info text-nowrap mb-0">Follow</button>
+                                    <button type="button" class="btn btn-sm btn-outline-info text-nowrap mb-0" (click)="followUser()" *ngIf="!friendExists">Follow</button>
+                                    <button type="button" class="btn btn-sm btn-outline-info text-nowrap mb-0" (click)="unfollowUser()" *ngIf="friendExists">Unfollow</button>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -62,55 +63,7 @@
     <!-- END Testimonials w/ user image & text & info -->
 
 
-    <!-- START Blogs w/ 4 cards w/ image & text & link -->
-    <section class="py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3 class="mb-5">Friend Suggestion</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6" *ngFor="let friend of friendSuggestionList">
-                    <div class="card card-plain">
-                        <div class="card-header p-0 position-relative">
-                            <a class="d-block blur-shadow-image">
-                                <img src="assets/img/examples/testimonial-6-2.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="card-body px-0">
-                            <h5>
-                                <p class="text-dark font-weight-bold">{{friend.name}}</p>
-                            </h5>
-                            <a class="text-info text-sm icon-move-right" data-bs-toggle="modal" data-bs-target="#commonFriendsModal" (click)="getFriendsInCommon(friend.userId.toString())" style="cursor: pointer">Check friends in common
-                                <i class="fas fa-users text-xs ms-1"></i>
-                            </a>
-                            <br>
-                            <a routerLink="{{friend.userId}}" class="text-info text-sm icon-move-right">View Profile
-                                <i class="fas fa-arrow-right text-xs ms-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-12 col-12">
-                    <div class="card card-blog card-background cursor-pointer">
-                        <div class="full-background" style="background-image: url('../assets/img/examples/blog2.jpg')" loading="lazy"></div>
-                        <div class="card-body">
-                            <div class="content-left text-start my-auto py-4">
-                                <h2 class="card-title text-white">Want to see more ? </h2>
-                                <p class="card-description text-white">You can check the list of all the suggested friends and start following them ...</p>
-                                <a href="javascript:;" class="text-white text-sm icon-move-right">Check it out
-                                    <i class="fas fa-arrow-right text-xs ms-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END Blogs w/ 4 cards w/ image & text & link -->
 
 
 </div>
@@ -227,66 +180,7 @@
                 <div class="col-12">
                     <div class="table-responsive">
                         <table class="table align-items-center mb-0" *ngIf="friendList.length != 0">
-                                <tbody *ngFor="let friend of friendList; let i=index ">
-                            <tr>
-                                <td>
-                                    <div class="d-flex px-2 py-0">
-                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle">
-                                            <img alt="Image placeholder" src="../../assets/img/team-4.jpg"> &nbsp;
-                                        </a>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-sm">&nbsp;{{friend.name}}</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-center text-sm">
-                                    <a class="text-xs icon-move-left" style="cursor:pointer;">Check Profil
-                                        <i class="fas fa-arrow-left text-sm ms-1"></i></a>
-                                </td>
-                                <td class="align-middle text-center text-sm">
-                                    <a class="text-xs icon-move-left" style="cursor:pointer;">
-                                        <i class="fas fa-user-slash text-sm ms-1"></i>
-                                        Unfriend</a>
-                                </td>
-                            </tr>
-                                </tbody>
-                        </table>
-
-                        <table class="table align-items-center mb-0" *ngIf="friendList.length == 0">
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <span>You don't have any friends at the moment</span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="commonFriendsModal" tabindex="-1" aria-labelledby="commonFriendsModal" aria-hidden="true">
-    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="friendsModalLabel">Friends in common</h5>
-            </div>
-            <div class="modal-body p-0">
-                <div class="col-12">
-                    <div class="table-responsive">
-                        <table class="table align-items-center mb-0" *ngIf="friendList.length != 0">
-                            <tbody *ngFor="let friend of friendInCommon; let i=index ">
+                            <tbody *ngFor="let friend of friendList; let i=index ">
                             <tr>
                                 <td>
                                     <div class="d-flex px-2 py-0">
@@ -332,4 +226,6 @@
         </div>
     </div>
 </div>
+
+
 

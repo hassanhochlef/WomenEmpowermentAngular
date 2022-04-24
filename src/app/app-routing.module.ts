@@ -47,20 +47,23 @@ import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
+import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.component';
+import {NewPasswordComponent} from './user/new-password/new-password.component';
 import {EventComponent} from './event/event.component';
 import {QuizComponent} from "./course/quiz/quiz.component";
 import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
+import {UserDetailsComponent} from './user/user-details/user-details.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
-            {
+          /*  {
                 path: 'profile',
                 component: UserPostsComponent,
             },
-                    {path: '', component: DashboardDemoComponent},
+                    {path: '', component: DashboardDemoComponent},*/
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -117,6 +120,7 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
+                    {path: 'profil/:id', component: UserDetailsComponent},
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
@@ -124,7 +128,6 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},
                     {path: 'eventFront', component: EventFrontComponent},
-                   
                     {
                         path: 'user-post',
                         component: UserPostsComponent,
@@ -135,6 +138,8 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
             {path: 'register', component: RegisterComponent},
+            {path: 'reset-password', component: ForgotPasswordComponent},
+            {path: 'new-password', component: NewPasswordComponent},
             {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})

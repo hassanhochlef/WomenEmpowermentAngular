@@ -11,10 +11,8 @@ import {HttpClient} from '@angular/common/http';
 import {Penality} from '../../models/penality.enum';
 import {Quiz} from '../../models/Quiz.model';
 import {StreamService} from '../../shared/stream.service';
-import {QuizQuestion} from "../../models/QuizQuestion.model";
-import {Answer} from "../../models/Answer.model";
-
-
+import {QuizQuestion} from '../../models/QuizQuestion.model';
+import {Answer} from '../../models/Answer.model';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -31,6 +29,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   courseSub: Subscription;
   filtersLoaded: Promise<boolean>;
   myScriptElement: HTMLScriptElement;
+  myScriptElement2: HTMLScriptElement;
   myDivElement: HTMLTextAreaElement;
   session: WindowSessionStorage;
   onlineUser: User;
@@ -68,6 +67,9 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   this.myScriptElement = document.createElement('script');
   this.myScriptElement.src = 'https://cdn.hesp.live/player/embed.js';
   document.body.appendChild(this.myScriptElement);
+  this.myScriptElement2 = document.createElement('script');
+  this.myScriptElement2.src = 'https://unpkg.com/@nylas/components-agenda';
+  document.head.appendChild(this.myScriptElement2);
   this.onlineUser = this.authenticationService.currentUserValue;
 
 

@@ -62,4 +62,7 @@ export class CourseService  extends  RequestBaseService{
   updateCourse(idCourse: string, course: Course){
     return this.http.put<Course>('http://localhost:8087/SpringMVC/course/editCourse/' + idCourse, course, {headers: this.getHeaders});
   }
+  getEvents(calId: string): Observable<Event[]>{
+    return this.http.get<Event[]>('http://localhost:8087/SpringMVC/CourseEvent/getEvents/' + calId, {headers: this.getHeaders});
+  }
 }

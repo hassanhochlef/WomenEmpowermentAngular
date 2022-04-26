@@ -28,6 +28,11 @@ export class OfferService {
         return this._http.post<Offre>('http://localhost:8087/SpringMVC/offer/add-Offer', offre);
     }
 
+    deleteOfferById(id: number){
+        return this._http.delete('http://localhost:8087/SpringMVC/offer/delete-offer/' + id);
+    }
+
+
     /**
      * add offre
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.

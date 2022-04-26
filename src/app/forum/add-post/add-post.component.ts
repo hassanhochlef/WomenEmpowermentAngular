@@ -21,7 +21,9 @@ export class AddPostComponent implements OnInit {
   addnewpost() {
     this.cs.addPost(this.post).subscribe(p => {
       console.log(p);
-
+      this.router.navigate(['user/forum']).then(() => {
+        window.location.reload();
+      });
     });
 
 

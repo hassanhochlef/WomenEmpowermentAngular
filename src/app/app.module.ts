@@ -329,8 +329,8 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
         EventFrontComponent,
         DonationComponent,
         PaymentDonationComponent,
-        UserDetailsComponent,
-
+        ComplaintComponent,
+        UserDetailsComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

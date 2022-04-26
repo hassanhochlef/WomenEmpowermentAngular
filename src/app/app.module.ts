@@ -156,6 +156,8 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './user/new-password/new-password.component';
 import { QuizComponent } from './course/quiz/quiz.component';
 import { AddPostComponent } from './forum/add-post/add-post.component';
 import { UserPostsComponent } from './forum/user-posts/user-posts.component';
@@ -163,7 +165,7 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
-
+import { UserDetailsComponent } from './user/user-details/user-details.component';
 
 
 
@@ -318,21 +320,17 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
         FrontFooterComponent,
         FrontLandingComponent,
         ProfilComponent,
+        ForgotPasswordComponent,
+        NewPasswordComponent,
         QuizComponent,
-
         AddPostComponent,
         UserPostsComponent,
         PostDetailsComponent,
-
         EventFrontComponent,
-
         DonationComponent,
-
         PaymentDonationComponent,
-
         ComplaintComponent,
-
-
+        UserDetailsComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

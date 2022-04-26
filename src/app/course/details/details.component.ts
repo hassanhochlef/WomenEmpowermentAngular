@@ -13,6 +13,7 @@ import {Quiz} from '../../models/Quiz.model';
 import {StreamService} from '../../shared/stream.service';
 import {QuizQuestion} from '../../models/QuizQuestion.model';
 import {Answer} from '../../models/Answer.model';
+import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -33,6 +34,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   myDivElement: HTMLTextAreaElement;
   session: WindowSessionStorage;
   onlineUser: User;
+  eventHourcontrol: FormControl = new FormControl();
   statuses: any[];
   div: HTMLElement;
   streamKey = '';
@@ -55,8 +57,13 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   answer7 = new Answer();
   answer8 = new Answer();
   answer9 = new Answer();
+  eventName: string;
+  eventHour: number;
+  eventMinutes: number;
+  eventDate: Date;
   fieldTextType: boolean;
   public xx: string = null;
+  private certresp: Blob;
   constructor(private activatedRoute: ActivatedRoute,
               authenticationService: AuthenticationService,
               private service: CourseService, private chanelService: StreamService,
@@ -153,6 +160,17 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   updateCourse(idCourse: string){
     this.service.updateCourse(this.course.courseId.toString(), this.course).subscribe();
   }
+  getCert(idCertificate: number){
+    this.service.getAqCertificate(idCertificate).subscribe(blobres =>  {console.log(blobres); this.certresp = blobres; });
+    const file = this.certresp;
+    const url = window.URL.createObjectURL(new Blob([this.certresp as BlobPart], { type: 'application/pdf' }));
+    const link = document.createElement('a');
+    document.body.appendChild(link);
+    link.setAttribute('style', 'display: none');
+    link.href = url;
+    link.download = 'certificate.pdf';
+    link.click();
+  }
   deleteCourse(id: string): void{
     this.service.deleteCourse(id).subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));
     this.router.navigate(['user/cour']);
@@ -184,6 +202,9 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   }
   addStream(idCourse: string){
     this.chanelService.createChannel( idCourse).subscribe();
+  }
+  addEvent(){
+    this.service.addEvent(this.courseId, this.eventName, this.eventHour, this.eventMinutes, this.eventDate).subscribe();
   }
   deleteStream(idCourse: string){
     this.chanelService.deleteChannel( idCourse)

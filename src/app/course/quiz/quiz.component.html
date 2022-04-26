@@ -21,10 +21,11 @@
         </div>
     </div>
 </header>
+
 <div class="quiz-container" *ngFor="let qui of quizez">
     <h1>{{qui.theme}}</h1>
     <hr>
-    <ul  *ngFor="let quest of qui.questions" style="padding-left: 20px ;padding-top:20px" >
+    <ul *ngFor="let quest of qui.questions" style="padding-left: 20px ;padding-top:20px" >
         <p>{{quest.question}} </p>
         <div id="{{quest.questionId}}">
             <ui *ngFor="let ans of quest.answers" name="questionId">

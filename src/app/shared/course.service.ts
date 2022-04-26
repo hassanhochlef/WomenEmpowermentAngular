@@ -33,7 +33,9 @@ export class CourseService  extends  RequestBaseService{
   joinCourse(idCourse: string){
       return this.http.post('http://localhost:8087/SpringMVC/course/joinCourse/' + idCourse, null, {headers: this.getHeaders});
   }
-
+getAqCertificate(certificateId: number){
+    return this.http.post('http://localhost:8087/SpringMVC/Certificate/certifGen/' + certificateId, null, {headers: this.getHeaders, responseType: 'blob'});
+}
 
   getCourseParticipants(id: string): Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8087/SpringMVC/course/getAllParticipants/' + id );
@@ -64,5 +66,11 @@ export class CourseService  extends  RequestBaseService{
   }
   getEvents(calId: string): Observable<Event[]>{
     return this.http.get<Event[]>('http://localhost:8087/SpringMVC/CourseEvent/getEvents/' + calId, {headers: this.getHeaders});
+  }
+  addEvent(courseId: string, eventName: string, hour: number, minutes: number, date: Date ){
+    return this.http.post('http://localhost:8087/SpringMVC/CourseEvent/addEvent/' + courseId + '/' + eventName +  '/' +
+         hour + '/' + minutes + '/' + date,
+        null, {headers: this.getHeaders} );
+
   }
 }

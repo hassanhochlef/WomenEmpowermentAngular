@@ -52,6 +52,7 @@ import {QuizComponent} from "./course/quiz/quiz.component";
 import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
+import {PostDetailsComponent} from "./forum/post-details/post-details.component";
 
 @NgModule({
     imports: [
@@ -74,7 +75,6 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                         path: 'addcomplaint',
                         component: AddComplaintComponent,
                     },
-                   
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -120,11 +120,11 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
+                    {path: 'post-detais/:id', component: PostDetailsComponent},
                     {path: 'details/:id', component : DetailsComponent},
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},
                     {path: 'eventFront', component: EventFrontComponent},
-                   
                     {
                         path: 'user-post',
                         component: UserPostsComponent,

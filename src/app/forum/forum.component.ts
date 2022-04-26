@@ -25,12 +25,19 @@ export class ForumComponent implements OnInit {
   postLike: PostLike = new PostLike();
   private routeSub: Subscription;
   comment: PostComment = new PostComment();
+  comment1: PostComment = new PostComment();
+  comment2: PostComment = new PostComment();
+  post1: Post = new Post();
+  image!: File;
   currentUser: User = new User();
   aa: string;
+  comm2: PostComment = new PostComment();
+  post2: Post = new Post();
+
   constructor(private router: Router, private service: ForumService, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe( data => {
       this.currentUser = data;
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -38,7 +45,7 @@ export class ForumComponent implements OnInit {
       console.log(res);
       this.listPost = res;
     });
-
+    this.comm2.user = this.currentUser;
 
     this.routeSub = this.service.getAdversting().subscribe(ress => {
       console.log(ress);
@@ -54,27 +61,46 @@ export class ForumComponent implements OnInit {
   addLikePost(id: string) {
     this.service.addPostLike(id, this.postLike).subscribe(p => {
       console.log(this.postLike);
-
+      let currentUrl = this.router.url;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([currentUrl]);
     });
   }
   addDisLikePost(id: string) {
     this.service.addPostDisLike(id, this.postLike).subscribe(p => {
       console.log(this.postLike);
-
+      let currentUrl = this.router.url;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([currentUrl]);
     });
   }
   addComment(id: string) {
     this.service.addCommentPst(id, this.comment).subscribe(p => {
       console.log(this.comment);
-
+      let currentUrl = this.router.url;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([currentUrl]);
     });
   }
     addCommentReply(id: string) {
-      this.service.addCommentPst(id, this.comment).subscribe(p => {
-        console.log(this.comment);
-
+      this.service.addCommentReply(id, this.comment1).subscribe(p => {
+        console.log(this.comment1);
+        this.router.navigate(['user/forum']).then(() => {
+          window.location.reload();
+        });
       });
-
+  }
+  onFileSelcted(event: any){
+    console.log(event);
+    this.image = event.target.files[0];
+  }
+  addimagePost(id: string) {
+    this.service.addImagePost(id, this.image).subscribe(p => {
+      console.log(this.image);
+    });
   }
   Like_Dislike(id: string) {
     this.service.Like_Dislike(id).subscribe(p => {
@@ -94,4 +120,42 @@ export class ForumComponent implements OnInit {
     });
 
   }
+  deleteCom(id: string) {
+    this.service.DeleteCom(id).subscribe(p => {
+      console.log('delete');
+
+    });
+    this.router.navigate(['user/forum']).then(() => {
+      window.location.reload();
+    });
+
+  }
+  openPostDetails(id: string): void {
+  this.router.navigate(['user/post-detais', id]);
+}
+  openCom(cc: PostComment): void {
+    this.comm2 = cc;
+  }
+  openPost(cc: Post): void {
+    this.post2 = cc;
+  }
+
+  UpdateComm(id: string) {
+    this.service.UpdateCom(id, this.comment2).subscribe(p => {
+      console.log(this.comment2);
+      this.router.navigate(['user/forum']).then(() => {
+        window.location.reload();
+      });
+    });
+  }
+  UpdatePost(id: string) {
+    if (this.post1.body === ''){this.post1.body = this.post2.body; }
+    this.service.UpdatePost(id, this.post1).subscribe(p => {
+      console.log(this.post1);
+      this.router.navigate(['user/forum']).then(() => {
+        window.location.reload();
+      });
+    });
+  }
+
 }

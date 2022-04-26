@@ -27,11 +27,11 @@ export class ForumService extends  RequestBaseService{
   }
 
   getAdversting(): Observable<Advertising[]> {
-    return this.http.get<Advertising[]>('http://localhost:8087/SpringMVC/forum/Get-all-adversting');
+    return this.http.get<Advertising[]>('http://localhost:8087/SpringMVC/forum/Get-all-adversting', {headers: this.getHeaders});
   }
 
   getComments(id: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>('http://localhost:8087/SpringMVC/forum/Get-Post-Comments/' + id);
+    return this.http.get<Comment[]>('http://localhost:8087/SpringMVC/forum/Get-Post-Comments/' + id, {headers: this.getHeaders});
   }
 
   addPost(post: Post) {
@@ -54,15 +54,35 @@ export class ForumService extends  RequestBaseService{
   }
 
   DeletePost(idPost: string) {
-    return this.http.delete<Post>('http://localhost:8087/SpringMVC/forum/Delete-Post/' + idPost);
+    return this.http.delete<Post>('http://localhost:8087/SpringMVC/forum/Delete-Post/' + idPost , {headers: this.getHeaders});
 
   }
 
-  addImagePost(idPost: string, image: string) {
-    return this.http.post<Post>('http://localhost:8087/SpringMVC/forum/add-Post/' + idPost, image);
+  DeleteCom(idCom: string) {
+    return this.http.delete<PostComment>('http://localhost:8087/SpringMVC/forum/Delete-PostComment/' + idCom , {headers: this.getHeaders});
+
+  }
+  UpdateCom(idCom: string , c: PostComment) {
+    return this.http.put<PostComment>('http://localhost:8087/SpringMVC/forum/Update-Comment/' + idCom + '/' , c , {headers: this.getHeaders});
+
+  }
+    UpdatePost(idCom: string , c: Post) {
+      return this.http.put<PostComment>('http://localhost:8087/SpringMVC/forum/Update-Post/' + idCom + '/' , c , {headers: this.getHeaders});
+
+    }
+  addImagePost(idPost: string, image: File) {
+    const data: FormData = new FormData();
+    data.append('Image', image);
+
+    return this.http.post<Post>('localhost:8087/SpringMVC/forum/add-Post-image/' + idPost, data , {headers: this.getHeaders});
   }
 
   Like_Dislike(idPost: string): Observable<number> {
-    return this.http.get<number>('http://localhost:8087/SpringMVC/forum/get-user-islike-post/' + idPost);
+
+    return this.http.get<number>('http://localhost:8087/SpringMVC/forum/get-user-islike-post/' + idPost, {headers: this.getHeaders});
+  }
+
+  getpostByiD(id: string): Observable<Post>{
+    return this.http.get<Post>('http://localhost:8087/SpringMVC/forum/Get-Post-Details/' + id , {headers: this.getHeaders});
   }
 }

@@ -25,6 +25,8 @@
 
                                         </button>
                                     </div>
+                                    <ng-container *ngIf="post1.user.userId == currentUser.userId">
+
                                     <div class="col-1 my-auto">
                                         <div class="dropdown">
                                             <button class="btn btn-icon-only text-white mb-0" type="button" data-bs-toggle="dropdown">
@@ -52,54 +54,39 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    </ng-container>
                                 </div>
+
                             </div>
                         </div>
+
                         <h4 style="text-align: center; margin-top: 10px">{{post1.postTitle}}</h4>
                         <h5 style="margin-left: 30px">{{post1.body}}</h5>
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner ">
-                                <div class="carousel-item">
-                                    <div class="page-header min-vh-40 m-3 border-radius-xl" style="background-image: url('https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-3-min.jpg');">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-lg-6 my-auto">
-                                                    <h4 class="text-white mb-0 fadeIn1 fadeInBottom">Pricing Plans</h4>
-                                                    <h1 class="text-white fadeIn2 fadeInBottom">Work with the rockets</h1>
-                                                    <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">Wealth creation is an evolutionarily recent positive-sum game. Status is an old zero-sum game. Those attacking wealth creation are often just seeking status.</p>
-                                                </div>
+                        <div class="container">
+
+                            <div class="row " style="margin-bottom: 20px">
+                                <ng-container *ngFor="let m of post1.medias">
+
+                                    <div class="col-lg-5 col-sm-6" style="margin-top: 20px">
+                                        <div class="card card-plain">
+                                            <div class="">
+                                                <a class="d-block blur-shadow-image">
+                                                    <img src="{{m.imagenUrl}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg" loading="lazy">
+                                                </a>
                                             </div>
+
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item active">
-                                    <div class="page-header min-vh-45 m-3 border-radius-xl" style="background-image: url('https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/products/product-1-min.jpg');">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-lg-6 my-auto">
-                                                    <h4 class="text-white mb-0 fadeIn1 fadeInBottom">Office Places</h4>
-                                                    <h1 class="text-white fadeIn2 fadeInBottom">Work from home</h1>
-                                                    <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">You’re spending time to save money when you should be spending money to save time.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="min-vh-50 position-absolute w-100 top-0">
-                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon position-absolute bottom-50" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon position-absolute bottom-50" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </a>
+                                </ng-container>
+
+
+
+
                             </div>
                         </div>
                         <ng-container *ngFor="let l of post1.postLikes">
                             <ng-container *ngIf="l.user.userId == currentUser.userId">
-                                <button class="btn bg-gradient-primary btn-icon btn-" type="button" *ngIf="l.isLiked==true" >
+                                <button class="btn bg-gradient-primary btn-icon btn-" type="button" *ngIf="l.isLiked==true" style="margin-top: 20px">
                                     <div class="d-flex align-items-center">
                                         Like
                                     </div>
@@ -154,7 +141,7 @@
                                 <div class="d-flex p-2">
                                     <img alt="Image" src="../assets/img/team-1.jpg" class="avatar shadow">
                                     <div class="ms-3 " >
-                                        <small class="mb-0">{{c.user.name}}</small><a  class=" dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink222" style="float: right;"></a>
+                                        <small class="mb-0">{{c.user.name}}</small><a  class=" dropdown-toggle " data-bs-toggle="dropdown" id="" style="float: right;"></a>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" aria-labelledby="navbarDropdownMenuLink222">
                                             <li><a class="dropdown-item "  type="button" (click)="deleteCom(c.postCommentId.toString())" style="color: darkred">Delete</a></li>
                                             <li><a class="dropdown-item" type="button"  (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: darkgreen">Update</a></li>

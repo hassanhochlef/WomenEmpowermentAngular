@@ -256,6 +256,8 @@ float: right;
 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                <ng-container *ngIf="p.user.userId == currentUser.userId">
+
                                 <li>
                                     <a class="dropdown-item" (click)="deletePost(p.postId.toString())" style="color: darkred">
                                         <img  /> Delete
@@ -266,6 +268,8 @@ float: right;
                                         <img src="" /> Update
                                     </a>
                                 </li>
+                                </ng-container>
+
                                 <li>
                                     <a class="dropdown-item" (click)="openPostDetails(p.postId.toString())" >
                                         <img src="" /> Show details
@@ -314,11 +318,11 @@ float: right;
                     </div>
 
                     <div class="rating mt-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
+                       <a type="button" (click)="ratePost(p.postId.toString(),'1')"> <i class="fas fa-star"></i></a>
+                        <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
+                                <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
+                                    <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="far fa-star"></i></a>
                     </div>
                     </div>
                     <ng-container *ngFor="let l of p.postLikes">
@@ -351,7 +355,7 @@ float: right;
             </div>
             <div class="card-body text-center">
                 <div class=" mt-n6 ">
-                    <button type="button"  (click)="addLikePost(p.postId.toString())" class="btn li zob btn-primary  btn-icon-only rounded-circle" style="margin-left: 17%; margin-right: 10px" >
+                    <button type="button"  (click)="addLikePost(p.postId.toString())" class="btn li zob btn-primary  btn-icon-only rounded-circle" style="margin-left: 15%; margin-right: 10px" >
                         <span class="btn-inner--icon">  <i class="fa fa-thumbs-up"></i>  </span>
                     </button>
 
@@ -388,11 +392,14 @@ float: right;
                                         </a>                                    </div>
                                     <div class="description ps-3">
 
-                                        <small class="mb-0" style="font-size: 5mm">{{c.user.name}}</small> <a href="#" class="btn dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink22" style="float: right;"></a>
+                                        <small class="mb-0" style="font-size: 5mm">{{c.user.name}}</small>                                         <ng-container *ngIf="p.user.userId == currentUser.userId">
+                                        <a href="#" class="btn dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink22" style="float: right;"></a>
+
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" aria-labelledby="navbarDropdownMenuLink22">
                                             <li><a class="dropdown-item" type="button" (click)="deleteCom(c.postCommentId.toString())" style="color: darkred">Delete</a></li>
                                             <li><a class="dropdown-item" type="button"  (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: darkgreen">Update</a></li>
                                         </ul>
+                                        </ng-container>
                                         <p class="mb-0" style="font-size: 4mm">{{c.commentBody}}</p>
                                         <div><small class="txtsm" (click)="openCom(c)"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-right: 30px; margin-left: 20px; font-size: 4mm"> replay</small>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
                                         <style>
@@ -484,11 +491,12 @@ float: right;
                                         <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
                                     </a>                                    </div>
                                 <div class="description ps-3">
-                                    <small class="mb-0" style="font-size: 3mm">{{c.user.name}}</small><a href="#" class="btn dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink222" style="float: right;"></a>
+                                    <small class="mb-0" style="font-size: 3mm">{{c.user.name}}</small>                                        <ng-container *ngIf="c.user.userId == currentUser.userId">
+                                    <a href="#" class="btn dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink222" style="float: right;"></a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" aria-labelledby="navbarDropdownMenuLink222">
                                         <li><a class="dropdown-item " type="button" (click)="deleteCom(c.postCommentId.toString())" style="color: darkred">Delete</a></li>
                                         <li><a class="dropdown-item" type="button"  (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: darkgreen">Update</a></li>
-                                    </ul>
+                                    </ul></ng-container>
                                     <p class="mb-0" style="font-size: 3mm">{{c.commentBody}}</p>
                                     <div><small class="txtsm" (click)="openCom(c)"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-right: 30px; margin-left: 20px; font-size: 4mm"> replay</small>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
                                     <style>

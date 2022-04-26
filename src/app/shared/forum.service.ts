@@ -85,4 +85,9 @@ export class ForumService extends  RequestBaseService{
   getpostByiD(id: string): Observable<Post>{
     return this.http.get<Post>('http://localhost:8087/SpringMVC/forum/Get-Post-Details/' + id , {headers: this.getHeaders});
   }
+
+  ratePost(idp: string , x: string) {
+    return this.http.put<PostComment>('http://localhost:8087/SpringMVC/forum/Give-post-etoile/' + idp + '/'  + x , {headers: this.getHeaders});
+
+  }
 }

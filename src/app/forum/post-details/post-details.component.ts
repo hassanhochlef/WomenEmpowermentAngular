@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AuthenticationService} from "../../shared/authentication.service";
-import {CourseService} from "../../shared/course.service";
 import {HttpClient} from "@angular/common/http";
 import {ForumService} from "../../shared/forum.service";
 import {Subscription} from "rxjs";

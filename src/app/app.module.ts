@@ -330,6 +330,8 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
 
         PaymentDonationComponent,
 
+        ComplaintComponent,
+
 
     ],
     providers: [

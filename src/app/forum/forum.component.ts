@@ -157,5 +157,12 @@ export class ForumComponent implements OnInit {
       });
     });
   }
-
+  ratePost(id: string, x: string) {
+    this.service.ratePost(id, x).subscribe(p => {
+      console.log(this.post1);
+      this.router.navigate(['user/forum']).then(() => {
+        window.location.reload();
+      });
+    });
+  }
 }

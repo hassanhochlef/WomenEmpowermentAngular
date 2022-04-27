@@ -77,7 +77,6 @@ import {UserDetailsComponent} from './user/user-details/user-details.component';
                         path: 'addcomplaint',
                         component: AddComplaintComponent,
                     },
-                   
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -124,6 +123,7 @@ import {UserDetailsComponent} from './user/user-details/user-details.component';
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
+                    {path: 'post-detais/:id', component: PostDetailsComponent},
                     {path: 'details/:id', component : DetailsComponent},
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},

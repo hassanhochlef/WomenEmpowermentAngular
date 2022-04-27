@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./event-front.component.scss']
 })
 export class EventFrontComponent implements OnInit {
+
   events: Event[];
   event: Event = new Event();
 
@@ -28,7 +29,7 @@ export class EventFrontComponent implements OnInit {
   }
 
   addEvent() {
-    this.eventService.createEvent2(this.event).subscribe(() => this.router.navigateByUrl('/eventFront'));
+    this.eventService.createEvent2(this.event).subscribe(() => this.router.navigateByUrl('user/eventFront'));
     console.log();
   }
 
@@ -56,4 +57,6 @@ export class EventFrontComponent implements OnInit {
   openDetails(id: number): void {
     this.router.navigate(['user/detailEvent/', id]);
   }
+
+
 }

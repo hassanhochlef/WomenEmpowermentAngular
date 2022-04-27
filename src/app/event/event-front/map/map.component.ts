@@ -46,7 +46,7 @@ export class MapComponent implements AfterViewInit  {
   }
 
   revertToParent(latlng: any){
-    console.log('We are at chiel component');
+    console.log('W chiel component');
     this.longLat.emit(latlng);
   }
 

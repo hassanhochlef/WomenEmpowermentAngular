@@ -4,8 +4,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-white text-center">
-                    <h2 class="text-white">Book your next trip</h2>
-                    <p class="lead">An arrangement you make to have a hotel room, tickets, etc. at a particular time in the future</p>
+                    <h2 class="text-white">Event and donation</h2>
+                    <p class="lead"> HELP WOMEN</p>
                 </div>
             </div>
         </div>
@@ -17,15 +17,15 @@
     <div class="container">
         <div class="row border-radius-md pb-4 p-3 mx-sm-0 mx-1 position-relative">
             <div class="col-lg-3 mt-lg-n2 mt-2">
-                <label class="ms-0">Leave From</label>
-                <div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false"><div class="choices__inner"><select class="form-control choices__input" name="choices-button" id="choices-button" hidden="" tabindex="-1" data-choice="active"><option value="Choice 1">Brazil</option></select><div class="choices__list choices__list--single"><div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="Choice 1" data-custom-properties="null" aria-selected="true">Brazil</div></div></div><div class="choices__list choices__list--dropdown" aria-expanded="false"><div class="choices__list" role="listbox"><div id="choices--choices-button-item-choice-1" class="choices__item choices__item--choice is-selected choices__item--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="Choice 1" data-select-text="Press to select" data-choice-selectable="" aria-selected="true">Brazil</div><div id="choices--choices-button-item-choice-2" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="2" data-value="Choice 2" data-select-text="Press to select" data-choice-selectable="">Bucharest</div><div id="choices--choices-button-item-choice-3" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="3" data-value="Choice 3" data-select-text="Press to select" data-choice-selectable="">London</div><div id="choices--choices-button-item-choice-4" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="4" data-value="Choice 4" data-select-text="Press to select" data-choice-selectable="">USA</div></div></div></div>
+                <label class="ms-0"></label>
+
             </div>
             <div class="col-lg-3 mt-lg-n2 mt-2">
-                <label class="ms-0">To</label>
-                <div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false"><div class="choices__inner"><select class="form-control choices__input" name="choices-remove-button" id="choices-remove-button" hidden="" tabindex="-1" data-choice="active"><option value="Choice 1">Italy</option></select><div class="choices__list choices__list--single"><div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="Choice 1" data-custom-properties="null" aria-selected="true">Italy</div></div></div><div class="choices__list choices__list--dropdown" aria-expanded="false"><div class="choices__list" role="listbox"><div id="choices--choices-remove-button-item-choice-1" class="choices__item choices__item--choice choices__item--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="Choice 3" data-select-text="Press to select" data-choice-selectable="" aria-selected="true">Denmark</div><div id="choices--choices-remove-button-item-choice-2" class="choices__item choices__item--choice is-selected choices__item--selectable" role="option" data-choice="" data-id="2" data-value="Choice 1" data-select-text="Press to select" data-choice-selectable="">Italy</div><div id="choices--choices-remove-button-item-choice-3" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="3" data-value="Choice 4" data-select-text="Press to select" data-choice-selectable="">Poland</div><div id="choices--choices-remove-button-item-choice-4" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="4" data-value="Choice 2" data-select-text="Press to select" data-choice-selectable="">Spain</div></div></div></div>
+                <label class="ms-0"></label>
+
             </div>
             <div class="col-lg-3 mt-lg-n2 mt-2">
-                <label class="ms-0">Depart</label>
+                <label class="ms-0"></label>
                 <div class="input-group input-group-static">
                     <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                     <input class="form-control datepicker flatpickr-input" placeholder="Please select date" type="text" readonly="readonly">
@@ -47,7 +47,7 @@
                     <div class="card mt-5 mt-md-0">
                         <div class="card-header p-0 mx-3 mt-n4 position-relative z-index-2">
                             <a class="d-block blur-shadow-image">
-                                <img [src]="event.medias[0]?.imagenUrl" alt="img-blur-shadow" class="img-fluid border-radius-lg" loading="lazy">
+                                <img  [src]="event.medias[0]?.imagenUrl" alt="img-blur-shadow" class="img-fluid border-radius-lg" loading="lazy">
                             </a>
                             <div class="colored-shadow" style="background-image: url(&quot;../assets/img/products/product-2-min.jpg&quot;);"></div></div>
                         <div class="card-body pt-3">
@@ -61,6 +61,7 @@
                                short description
                             </p>
                             <button type="button" class="btn btn-outline-primary btn-sm mb-0" (click)="openDetails(event.eventId)">more Detail</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm mb-0" (click)="deleteEvent(event.eventId)">delete</button>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ export class Event {
     createurEvent?: User;
     lang?: string;
     latitude?: string;
-
+    image?: string;
     medias?: Media[];
 
 }

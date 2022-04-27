@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -168,7 +168,6 @@ import { MapComponent } from './event/event-front/map/map.component';
 
 
 
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -256,6 +255,8 @@ import { MapComponent } from './event/event-front/map/map.component';
         TreeTableModule,
         VirtualScrollerModule,
         AppCodeModule,
+        ReactiveFormsModule,
+
     ],
     declarations: [
         AppComponent,

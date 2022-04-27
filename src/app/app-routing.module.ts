@@ -54,6 +54,7 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 import {DetailEventComponent} from "./event/event-front/detail-event/detail-event.component";
 import {AddEventComponent} from "./event/event-front/add-event/add-event.component";
 import {MapComponent} from "./event/event-front/map/map.component";
+import {PaymentDonationComponent} from "./event/event-front/payment-donation/payment-donation.component";
 
 @NgModule({
     imports: [
@@ -129,6 +130,7 @@ import {MapComponent} from "./event/event-front/map/map.component";
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'detailEvent/:id', component: DetailEventComponent},
                     {path: 'addEvent', component: AddEventComponent},
+                    {path: 'payment', component: PaymentDonationComponent},
                     {
                         path: 'forum',
                         component: ForumComponent,

@@ -337,6 +337,7 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService, MenuService, BreadcrumbService
     ],
+
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
   currentUser: User = new User;
   notificationList: Array<Notification> = [];
-  profilPic: string = "";
+  profilPicture!: string;
 
   constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
     this.authenticationService.currentUser.subscribe( data => {
@@ -43,12 +43,11 @@ export class NavbarComponent implements OnInit {
       this.userService.getNotifications().subscribe(data => {
         this.notificationList = data;
       });
-      this.userService.getUserProfilPicture().subscribe(data => {
-        this.profilPic = data;
-      }, err=>{
-        this.profilPic = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
+      this.userService.getUserProfilPicture().subscribe(pic => {
+        this.profilPicture = pic.split('\\').pop();
+      }, err => {
+        this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
       });
-      console.log(this.profilPic);
     }
 
   }

@@ -28,6 +28,14 @@ export class UserService extends  RequestBaseService{
     return this.http.get(userUrl, {headers: this.getHeaders});
   }
 
+  getAllUser(): Observable<any> {
+    return this.http.get(API_URL + 'all', {headers: this.getHeaders});
+  }
+
+  getMyPosts(): Observable<any>{
+    return this.http.get(API_URL + 'myPosts', {headers: this.getHeaders});
+  }
+
   followUser(username: string): Observable<any> {
     const userUrl = `http://localhost:8087/SpringMVC/api/user/friend/follow/${username}`;
     return this.http.post(userUrl, null, {headers: this.getHeaders});
@@ -40,6 +48,11 @@ export class UserService extends  RequestBaseService{
 
   getUserProfilPicture(): Observable<any> {
     return this.http.get(API_URL + 'picture', {headers: this.getHeaders, responseType: 'text'});
+  }
+
+  getUserProfilPicture2(userId: string): Observable<any> {
+    let queryParams = {'userId': userId};
+    return this.http.get(API_URL + 'picture2', {headers: this.getHeaders, params: queryParams, responseType: 'text'});
   }
 
   getAllFriends(): Observable<any> {

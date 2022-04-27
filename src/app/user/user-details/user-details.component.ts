@@ -16,6 +16,7 @@ export class UserDetailsComponent implements OnInit {
   friendList: Array<User> = [];
   currentUserFriendList: Array<User> = [];
   friendExists!: boolean;
+  profilPicture!: string;
 
 
   constructor(private authenticationService: AuthenticationService, private userService: UserService, private route: ActivatedRoute, private router: Router) {
@@ -30,7 +31,6 @@ export class UserDetailsComponent implements OnInit {
     });
     this.userService.getAllFriends().subscribe(data => {
       this.currentUserFriendList = data;
-      console.log(data);
   });
   }
 
@@ -41,6 +41,11 @@ export class UserDetailsComponent implements OnInit {
       this.userService.getAllFriends2(String(this.user.userId)).subscribe(data2 => {
         this.friendList = data2;
         this.friendExists = this.currentUserFriendList.some(e => e.userId === this.user.userId);
+      });
+      this.userService.getUserProfilPicture2(this.user.userId.toString()).subscribe(pic => {
+        this.profilPicture = pic.split('\\').pop();
+      }, err => {
+        this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
       });
 
     });

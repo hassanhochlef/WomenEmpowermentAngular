@@ -3,11 +3,17 @@
         <div class="col-12">
             <nav class="navbar navbar-expand-lg  blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                 <div class="container-fluid px-0">
-                    <a class="navbar-brand font-weight-bolder ms-sm-3  d-none d-md-block" href="../index-2.html" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
+                    <span class="navbar-brand ms-sm-3  d-none d-md-block" data-placement="bottom">
                         Women Empowerment
+                    </span>
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/user/landing" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+                        <i class="material-icons opacity-6 me-1 text-md">home</i>
+                        Home
                     </a>
-                    <a class="navbar-brand font-weight-bolder ms-sm-3  d-block d-md-none" href="../index-2.html" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
-                        Material Design
+
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'ADMIN'">
+                        <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
+                        Dashboard
                     </a>
                     <a href="https://www.creative-tim.com/product/material-kit-pro#pricingCard" class="btn btn-sm  bg-gradient-primary  mb-0 ms-auto d-lg-none d-block">Buy Now</a>
                     <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -231,163 +237,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown dropdown-hover mx-2">
-                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuAccount" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="material-icons opacity-6 me-2 text-md">contacts</i>
-                                    Account
-                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none">
-                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-animation dropdown-md border-radius-xl p-3 mt-0 mt-lg-3" aria-labelledby="dropdownMenuAccount">
-                                    <div class="d-none d-lg-flex">
-                                        <ul class="list-group w-100">
-                                            <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
-                                                <a class="dropdown-item border-radius-md text-dark ps-3 d-flex align-items-center mb-1" id="dropdownSignIn">
-                                                    <span>Sign In</span>
-                                                    <img src="assets/img/down-arrow.svg" alt="down-arrow" class="arrow ms-auto">
-                                                </a>
-                                                <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdownSignIn">
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="sign-in/sign-in-cover.html">
-                                                        <span>Cover</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="sign-in/sign-in-illustration.html">
-                                                        <span>Illustration</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="sign-in/sign-in-basic.html">
-                                                        <span>Basic</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md" href="sign-in/sign-in-simple.html">
-                                                        <span>Simple</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
-                                                <a class="dropdown-item border-radius-md text-dark ps-3 d-flex align-items-center mb-1" id="dropdownSignUp">
-                                                    <span>Sign Up</span>
-                                                    <img src="assets/img/down-arrow.svg" alt="down-arrow" class="arrow ms-auto">
-                                                </a>
-                                                <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdownSignUp">
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="sign-up/sign-up-cover.html">
-                                                        <span>Cover</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="sign-up/sign-up-illustration.html">
-                                                        <span>Illustration</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="sign-up/sign-up-basic.html">
-                                                        <span>Basic</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="sign-up/sign-up-simple.html">
-                                                        <span>Simple</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
-                                                <a class="dropdown-item border-radius-md text-dark ps-3 d-flex align-items-center mb-1" id="dropdownPasswordReset">
-                                                    <span>Password Reset</span>
-                                                    <img src="assets/img/down-arrow.svg" alt="down-arrow" class="arrow ms-auto">
-                                                </a>
-                                                <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdownPasswordReset">
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="reset/reset-cover.html">
-                                                        <span>Cover</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="reset/reset-illustration.html">
-                                                        <span>Illustration</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="reset/reset-basic.html">
-                                                        <span>Basic</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
-                                                <a class="dropdown-item border-radius-md text-dark ps-3 d-flex align-items-center mb-1" id="dropdownError">
-                                                    <span>Error Pages</span>
-                                                    <img src="assets/img/down-arrow.svg" alt="down-arrow" class="arrow ms-auto">
-                                                </a>
-                                                <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdownError">
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="error-404.html">
-                                                        <span>404</span>
-                                                    </a>
-                                                    <a class="dropdown-item ps-3 border-radius-md mb-1" href="error-500.html">
-                                                        <span>500</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item list-group-item border-0 p-0">
-                                                <a href="coming-soon.html" class="dropdown-item border-radius-md text-dark ps-3 d-flex align-items-center mb-1">
-                                                    <span>Coming Soon</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item list-group-item border-0 p-0">
-                                                <a href="2fa-security.html" class="dropdown-item border-radius-md text-dark ps-3 d-flex align-items-center mb-1">
-                                                    <span>2FA Security</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="row d-lg-none">
-                                        <div class="col-12 d-flex justify-content-center flex-column">
-                                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center px-0">
-                                                Sign In
-                                            </h6>
-                                            <a href="sign-in/sign-in-cover.html" class="dropdown-item border-radius-md">
-                                                Cover
-                                            </a>
-                                            <a href="sign-in/sign-in-illustration.html" class="dropdown-item border-radius-md">
-                                                Illustration
-                                            </a>
-                                            <a href="sign-in/sign-in-basic.html" class="dropdown-item border-radius-md">
-                                                Basic
-                                            </a>
-                                            <a href="sign-in/sign-in-simple.html" class="dropdown-item border-radius-md">
-                                                Simple
-                                            </a>
-                                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center mt-3 px-0">
-                                                Sign Up
-                                            </h6>
-                                            <a href="sign-up/sign-up-cover.html" class="dropdown-item border-radius-md">
-                                                Cover
-                                            </a>
-                                            <a href="sign-up/sign-up-illustration.html" class="dropdown-item border-radius-md">
-                                                Illustration
-                                            </a>
-                                            <a href="sign-up/sign-up-basic.html" class="dropdown-item border-radius-md">
-                                                Basic
-                                            </a>
-                                            <a href="sign-up/sign-up-simple.html" class="dropdown-item border-radius-md">
-                                                Simple
-                                            </a>
-                                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center mt-3 px-0">
-                                                Password Reset
-                                            </h6>
-                                            <a href="reset/reset-cover.html" class="dropdown-item border-radius-md">
-                                                Cover
-                                            </a>
-                                            <a href="reset/reset-illustration.html" class="dropdown-item border-radius-md">
-                                                Illustration
-                                            </a>
-                                            <a href="reset/reset-basic.html" class="dropdown-item border-radius-md">
-                                                Basic
-                                            </a>
-                                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center mt-3 px-0">
-                                                Error Pages
-                                            </h6>
-                                            <a href="error-404.html" class="dropdown-item border-radius-md">
-                                                404
-                                            </a>
-                                            <a href="error-500.html" class="dropdown-item border-radius-md">
-                                                500
-                                            </a>
-                                            <hr class="horizontal dark">
-                                            <a href="coming-soon.html" class="dropdown-item border-radius-md">
-                                                Coming Soon
-                                            </a>
-                                            <a href="2fa-security.html" class="dropdown-item border-radius-md">
-                                                2FA Security
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">view_day</i>
@@ -732,96 +582,84 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown dropdown-hover mx-2">
-                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="material-icons opacity-6 me-2 text-md">article</i>
-                                    Docs
-                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none">
-                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs">
-                                    <div class="d-none d-lg-block">
-                                        <ul class="list-group">
-                                            <li class="nav-item list-group-item border-0 p-0">
-                                                <a class="dropdown-item py-2 ps-3 border-radius-md" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit">
-                                                    <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Getting Started</h6>
-                                                    <span class="text-sm">All about overview, quick start, license and contents</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item list-group-item border-0 p-0">
-                                                <a class="dropdown-item py-2 ps-3 border-radius-md" href="https://www.creative-tim.com/learning-lab/bootstrap/colors/material-kit">
-                                                    <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Foundation</h6>
-                                                    <span class="text-sm">See our colors, icons and typography</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item list-group-item border-0 p-0">
-                                                <a class="dropdown-item py-2 ps-3 border-radius-md" href="https://www.creative-tim.com/learning-lab/bootstrap/alerts/material-kit">
-                                                    <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Components</h6>
-                                                    <span class="text-sm">Explore our collection of fully designed components</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item list-group-item border-0 p-0">
-                                                <a class="dropdown-item py-2 ps-3 border-radius-md" href="https://www.creative-tim.com/learning-lab/bootstrap/datepicker/material-kit">
-                                                    <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Plugins</h6>
-                                                    <span class="text-sm">Check how you can integrate our plugins</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item list-group-item border-0 p-0">
-                                                <a class="dropdown-item py-2 ps-3 border-radius-md" href="https://www.creative-tim.com/learning-lab/bootstrap/utilities/material-kit">
-                                                    <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Utility Classes</h6>
-                                                    <span class="text-sm">For those who want flexibility, use our utility classes</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="row d-lg-none">
-                                        <div class="col-md-12 g-0">
-                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="about-us.html">
-                                                <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Getting Started</h6>
-                                                <span class="text-sm">All about overview, quick start, license and contents</span>
-                                            </a>
-                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="about-us.html">
-                                                <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Foundation</h6>
-                                                <span class="text-sm">See our colors, icons and typography</span>
-                                            </a>
-                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="about-us.html">
-                                                <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Components</h6>
-                                                <span class="text-sm">Explore our collection of fully designed components</span>
-                                            </a>
-                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="about-us.html">
-                                                <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Plugins</h6>
-                                                <span class="text-sm">Check how you can integrate our plugins</span>
-                                            </a>
-                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="about-us.html">
-                                                <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Utility Classes</h6>
-                                                <span class="text-sm">For those who want flexibility, use our utility classes</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
 
 
-                            <li class="nav-item dropdown dropdown-hover mx-2">
+
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="!currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   (click)="redirectTo()" routerLinkActive="active" *ngIf="!currentUser?.userId">
+                                   (click)="redirectTo()" routerLinkActive="active" >
                                     <i class="material-icons opacity-6 me-2 text-md">login</i>
                                     Sign in
                                 </a>
                             </li>
 
-                            <li class="nav-item dropdown dropdown-hover mx-2">
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   routerLink="profil" *ngIf="currentUser?.userId">
-                                    <img alt="Image placeholder" src="../../assets/img/team-1.jpg" class="avatar avatar-xs rounded-circle mx-2">
-                                    {{currentUser.name}}
+                                   data-bs-toggle="modal" data-bs-target="#editProfileModal" >
+                                    <i class="material-icons opacity-6 me-2 text-md">edit</i>
+                                    Edit Profile
                                 </a>
-
                             </li>
 
-                            <li class="nav-item dropdown dropdown-hover mx-2">
+
+
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   (click)="logOut()" *ngIf="currentUser?.userId">
+                                   routerLink="profil" >
+                                    <img alt="Profil Picture" src="assets/img/{{profilPicture}}" class="avatar avatar-xs rounded-circle mx-2">
+                                    {{currentUser.name}}
+                                </a>
+                            </li>
+
+
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
+                                <a role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="material-icons opacity-6">notifications</i>
+                                    <span class="badge rounded-pill bg-dark" *ngIf="notificationList.length != 0">{{notificationList.length}}</span>
+                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs" *ngIf="notificationList.length != 0">
+
+                                    <!--Big Screen Notifications-->
+                                    <div class="d-none d-lg-block">
+                                        <ul class="list-group">
+                                            <li class="nav-item list-group-item border-0 p-0" *ngFor="let notif of notificationList">
+
+                                                <span class="dropdown-item py-2 ps-3 border-radius-md" >
+
+                                                    <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-center align-items-center p-0"><i class="fa fa-circle fa-xs me-3 mt-3" style="color: #1770e6" *ngIf="!notif.read"></i>{{notif.message}}</h6>
+                                                    <span class="text-sm ms-4">{{notif.createdAt}} <i class="fa fa-clock ms-1"></i>
+                                                        <a (click)="markAsRead(notif.notificationId)" *ngIf="!notif.read"><i class="fa fa-eye ms-5 me-2"></i>Mark as read</a>
+                                                        <a (click)="markAsUnRead(notif.notificationId)" *ngIf="notif.read"><i class="fa fa-eye-slash ms-5 me-2"></i>Mark as Unread</a>
+                                                    </span>
+
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <!--Big Screen Notifications-->
+
+
+                                    <!--Small Screen Notifications-->
+                                    <div class="row d-lg-none">
+                                        <div class="col-md-12 g-0">
+                                            <a class="dropdown-item py-2 ps-3 border-radius-md" *ngFor="let notif of notificationList">
+                                                <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">{{notif.message}}</h6>
+                                                <i class="material-icons opacity-6 me-2">access_alarm</i>
+                                                <span class="text-sm">{{notif.createdAt}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!--Small Screen Notifications-->
+                                </div>
+                            </li>
+
+
+
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
+                                <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                                   (click)="logOut()" >
                                     <i class="material-icons opacity-6 me-2 text-md">logout</i>
                                     Sign out
                                 </a>
@@ -838,3 +676,79 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModal" aria-hidden="true">
+                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body p-0">
+                            <div class="card card-plain">
+                                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                    <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 text-center py-4">
+                                        <h4 class="font-weight-bolder text-white mt-1">Edit Profile</h4>
+                                        <p class="mb-1 text-white text-sm">Change your account information</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="card-body">
+                                    <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && editProfile()">
+                                        <div class="row justify-space-between text-center py-2">
+
+                                            <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
+                                                Personal informations
+                                            </p>
+                                        </div>
+
+
+                                        <div class="input-group input-group-static">
+                                            <label *ngIf="currentUser?.role=='USER' || currentUser?.role=='EXPERT' || currentUser?.role=='FORMER' || currentUser?.role=='ADMIN'">Name</label>
+                                            <label *ngIf="currentUser?.role=='COMPANY'">Company Name</label>
+                                            <label *ngIf="currentUser?.role=='ASSOCIATION'">Association Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="currentUser.name" #name="ngModel" required>
+                                        </div>
+
+                                        <div class="input-group input-group-static">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="currentUser.email" #name="ngModel" >
+                                        </div>
+
+                                        <div class="input-group input-group-static" *ngIf="currentUser?.role=='USER' || currentUser?.role=='EXPERT' || currentUser?.role=='FORMER'">
+                                            <label>Birth Date</label>
+                                            <input type="date" id="birthDate" class="form-control" name="birthDate" placeholder="Birth Date"  [(ngModel)]="currentUser.birthDate" #birthDate="ngModel" required>
+                                        </div>
+
+                                        <div class="input-group input-group-static" *ngIf=" currentUser?.role == 'COMPANY' || currentUser?.role=='ASSOCIATION'">
+                                            <label>Establishment Date</label>
+                                            <input type="date" id="establishmentDate" class="form-control" name="establishmentDate" placeholder="Establishment Date"  [(ngModel)]="currentUser.establishmentDate" #establishmentDate="ngModel" required>                                </div>
+
+                                        <div class="input-group input-group-static">
+                                            <label>Phone Number</label>
+                                            <input type="phone" id="phone" name="phone" placeholder="Phone Number"  [(ngModel)]="currentUser.phoneNumber" #phone="ngModel" class="form-control" required>
+                                        </div>
+
+                                        <div class="input-group input-group-static" *ngIf=" currentUser?.role == 'COMPANY' || currentUser?.role=='ASSOCIATION'">
+                                            <label>Activity Domain</label>
+                                            <input type="text" id="activityDomain" class="form-control" name="activityDomain" placeholder="Activity Domain"  [(ngModel)]="currentUser.activityDomain" #activityDomain="ngModel" required>
+                                        </div>
+
+                                        <div class="input-group input-group-static">
+                                            <label>Picture</label>
+                                            <input class="form-control" type="file" id="formFile">
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Edit</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+

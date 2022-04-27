@@ -8,19 +8,25 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 export class HomeComponent implements OnInit, OnDestroy {
   myLinkElement: HTMLLinkElement;
 
+
   constructor() {
-    this.myLinkElement = document.createElement('link');
-    this.myLinkElement.href = "assets/css/material-kit-pro.min3294.css?v=3.0.1";
-    this.myLinkElement.rel = "stylesheet";
-    this.myLinkElement.id = "pagestyle";
-    document.body.appendChild(this.myLinkElement);
+
   }
 
   ngOnInit(): void {
+    /*this.myLinkElement = document.createElement('link');
+    this.myLinkElement.href = "assets/css/material-kit-pro.min3294.css?v=3.0.1";
+    this.myLinkElement.rel = "stylesheet";
+    this.myLinkElement.id = "pagestyle";
+    document.head.appendChild(this.myLinkElement);*/
+
+
   }
 
   ngOnDestroy() {
-    document.body.removeChild(this.myLinkElement);
+
+   // document.head.removeChild(this.myLinkElement);
+   // document.head.removeChild(this.myLinkElement);
   }
 
 }

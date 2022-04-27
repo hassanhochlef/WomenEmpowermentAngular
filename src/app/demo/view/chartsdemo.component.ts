@@ -62,7 +62,7 @@ export class ChartsDemoComponent implements OnInit {
         };
 
         this.pieData = {
-            labels: ['A', 'B', 'C'],
+            labels: ['', 'B', 'C'],
             datasets: [
                 {
                     data: [540, 325, 702, 421],

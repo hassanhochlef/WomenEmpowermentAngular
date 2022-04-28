@@ -85,6 +85,7 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TreeModule} from 'primeng/tree';
 import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import { LazyLoadEvent } from 'primeng/api';
 
 import {AppCodeModule} from './app.code.component';
 import {AppComponent} from './app.component';
@@ -143,6 +144,7 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
+import { AddCourseComponent } from './course/add-course/add-course.component';
 import { EventComponent } from './event/event.component';
 import { FilterPipe } from './event/filter.pipe';
 
@@ -160,6 +162,16 @@ import {OffreComponent} from './pages/offre/offre.component';
 import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {AddPostComponent} from './forum/add-post/add-post.component';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './user/new-password/new-password.component';
+import { QuizComponent } from './course/quiz/quiz.component';
+import { AddPostComponent } from './forum/add-post/add-post.component';
+import { UserPostsComponent } from './forum/user-posts/user-posts.component';
+import { PostDetailsComponent } from './forum/post-details/post-details.component';
+import { EventFrontComponent } from './event/event-front/event-front.component';
+import { DonationComponent } from './event/donation/donation.component';
+import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
 
 
 
@@ -250,7 +262,7 @@ import {AddPostComponent} from './forum/add-post/add-post.component';
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        AppCodeModule
+        AppCodeModule,
     ],
     declarations: [
         AppComponent,
@@ -302,6 +314,7 @@ import {AddPostComponent} from './forum/add-post/add-post.component';
         ComplaintComponent,
         CourseComponent,
         DetailsComponent,
+        AddCourseComponent,
         ForumComponent,
         EventComponent,
         FilterPipe,
@@ -318,6 +331,17 @@ import {AddPostComponent} from './forum/add-post/add-post.component';
         AddOfferComponent,
         PostDetailsComponent,
         AddPostComponent,
+        ForgotPasswordComponent,
+        NewPasswordComponent,
+        QuizComponent,
+        AddPostComponent,
+        UserPostsComponent,
+        PostDetailsComponent,
+        EventFrontComponent,
+        DonationComponent,
+        PaymentDonationComponent,
+        UserDetailsComponent,
+
 
     ],
     providers: [

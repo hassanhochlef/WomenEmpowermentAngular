@@ -12,7 +12,7 @@ export class AddPostComponent implements OnInit {
   post: Post = new Post();
   constructor(private cs: ForumService, private router: Router) { }
   addPost(){
-    this.cs.addPost(this.post).subscribe(() => this.router.navigateByUrl('/forum'));
+    this.cs.addPost(this.post).subscribe(() => this.router.navigateByUrl('/eventFront'));
     console.log(this.post.postTitle);
   }
 
@@ -21,7 +21,9 @@ export class AddPostComponent implements OnInit {
   addnewpost() {
     this.cs.addPost(this.post).subscribe(p => {
       console.log(p);
-
+      this.router.navigate(['user/forum']).then(() => {
+        window.location.reload();
+      });
     });
 
 

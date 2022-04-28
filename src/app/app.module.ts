@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -165,6 +165,9 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
+import { AddEventComponent } from './event/event-front/add-event/add-event.component';
+import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
+import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 
 
@@ -256,6 +259,8 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
         TreeTableModule,
         VirtualScrollerModule,
         AppCodeModule,
+        ReactiveFormsModule,
+
     ],
     declarations: [
         AppComponent,
@@ -329,6 +334,13 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
         EventFrontComponent,
         DonationComponent,
         PaymentDonationComponent,
+
+        AddEventComponent,
+
+        DetailEventComponent,
+
+        MapComponent,
+
         ComplaintComponent,
         UserDetailsComponent
     ],

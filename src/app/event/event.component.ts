@@ -86,14 +86,14 @@ export class EventComponent implements OnInit {
     this.eventDialog = true;
   }
 
-  eventsave() {
+  /*eventsave() {
     this.eventService
         .createEvent(this.event).subscribe(data => {
           console.log(data);
           this.gotoList();
         },
         error => console.log(error));
-  }
+  }*/
   gotoList() {
     this.router.navigate(['/pages/event']);
   }

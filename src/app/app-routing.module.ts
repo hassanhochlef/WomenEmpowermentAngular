@@ -61,10 +61,11 @@ import {DetailEventComponent} from "./event/event-front/detail-event/detail-even
 import {AddEventComponent} from "./event/event-front/add-event/add-event.component";
 import {MapComponent} from "./event/event-front/map/map.component";
 import {PaymentDonationComponent} from "./event/event-front/payment-donation/payment-donation.component";
-
 import {UserDetailsComponent} from './user/user-details/user-details.component';
-import { PostDetailsComponent } from './forum/post-details/post-details.component';
 import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
+import {PostDetailsComponent} from './forum/post-details/post-details.component';
+import {SubscriptionComponent} from './user/subscription/subscription.component';
+
 
 @NgModule({
     imports: [
@@ -152,6 +153,7 @@ import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/cour
 
                     {path: 'profil/:id', component: UserDetailsComponent},
                     {path: 'eventFront', component: EventFrontComponent},
+                    {path: 'subscribe', component: SubscriptionComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
                     {path: 'post-detais/:id', component: PostDetailsComponent},

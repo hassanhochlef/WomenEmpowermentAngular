@@ -98,7 +98,7 @@
                             <h4 class="text-white mb-1">Subscriptions</h4>
                             <p class="text-white opacity-8">Not subscribed yet ? Check our subscription offers and benefit from the various premium functionalities of our platform !</p>
                             <p class="text-white opacity-8">Follow the link below to manage your subscriptions</p>
-                            <button class="btn btn-white btn-sm" type="button" name="button">Read More</button>
+                            <button class="btn btn-white btn-sm" type="button" name="button" routerLink="/user/subscribe">Check it out</button>
                         </div>
                         <span class="mask bg-gradient-primary border-radius-xl z-index-2 opacity-7"></span>
                     </div>
@@ -107,11 +107,11 @@
                     <div class="card h-100 card-background align-items-start">
                         <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/indian.jpg&#39;)"></div>
                         <div class="card-body z-index-3">
-                            <i class="material-icons text-white text-3xl">import_contacts</i>
+                            <i class="material-icons text-white text-3xl">forum</i>
                         </div>
                         <div class="card-footer pb-3 pt-2 z-index-3">
-                            <h4 class="text-white mb-1 cursor-pointer">Forums</h4>
-                            <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">257 posts</p>
+                            <a class="text-white mb-1 cursor-pointer" routerLink="/user/forum">Forums</a>
+                            <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">{{allPosts.length}} posts</p>
                         </div>
                         <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
                     </div>
@@ -121,8 +121,8 @@
                             <i class="material-icons text-white text-3xl">volunteer_activism</i>
                         </div>
                         <div class="card-footer pb-3 pt-2 z-index-3">
-                            <h4 class="text-white mb-1 cursor-pointer">Events</h4>
-                            <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">363 events</p>
+                            <a class="text-white mb-1 cursor-pointer" routerLink="/user/eventFront">Events</a>
+                            <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">{{allEvents.length}} events</p>
                         </div>
                         <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
                     </div>
@@ -131,7 +131,7 @@
                     <div class="card card-background align-items-start">
                         <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/city.jpg&#39;)"></div>
                         <div class="card-body z-index-3">
-                            <i class="material-icons text-white text-3xl">festival</i>
+                            <i class="material-icons text-white text-3xl">work</i>
                         </div>
                         <div class="card-footer pb-3 pt-5 z-index-3">
                             <h4 class="text-white mb-1 cursor-pointer">Job offers</h4>
@@ -142,11 +142,11 @@
                     <div class="card card-background mt-4 align-items-start">
                         <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/laught.jpg&#39;)"></div>
                         <div class="card-body z-index-3">
-                            <i class="material-icons text-white text-3xl">theater_comedy</i>
+                            <i class="material-icons text-white text-3xl">cast_for_education</i>
                         </div>
                         <div class="card-footer pb-3 pt-2 z-index-3">
-                            <h4 class="text-white mb-1 cursor-pointer">Contacts</h4>
-                            <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">215 friends</p>
+                            <a class="text-white mb-1 cursor-pointer" routerLink="/user/cour">Courses</a>
+                            <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">{{allCourses.length}} courses</p>
                         </div>
                         <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
                     </div>

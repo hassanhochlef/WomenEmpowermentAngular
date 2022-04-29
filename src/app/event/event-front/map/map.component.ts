@@ -1,4 +1,5 @@
 import {Component, AfterViewInit, Output, EventEmitter, Input} from '@angular/core';
+
 import * as L from 'leaflet';
 @Component({
   selector: 'app-map',

@@ -62,6 +62,7 @@ import {AddEventComponent} from "./event/event-front/add-event/add-event.compone
 import {MapComponent} from "./event/event-front/map/map.component";
 import {PaymentDonationComponent} from "./event/event-front/payment-donation/payment-donation.component";
 import {UserDetailsComponent} from './user/user-details/user-details.component';
+import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
 
@@ -123,6 +124,7 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
+                    {path: 'pages/cour', component: CourseBackHomeComponent},
 
                 ]
             },
@@ -132,6 +134,12 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
+                    {path: 'cour', component: CourseComponent},
+                    {path: 'forum', component: ForumComponent},
+                    {path: 'details/:id', component : DetailsComponent},
+                    {path: 'addcourse', component : AddCourseComponent},
+                    {path: 'quiz/:id', component : QuizComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
                     {path: 'offre', component : OffreComponent},
                     {path: 'addoffer', component : AddOfferComponent},
                     {path: 'eventFront', component: EventFrontComponent},

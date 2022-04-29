@@ -1,28 +1,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 <header class="bg-gradient-dark">
-    <div class="page-header min-vh-75" style="background-image: url('assets/img/bg9.jpg');">
-        <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="page-header min-vh-75" style="background-image: url('assets/img/examples/quiz-bnr-feb18-2.jpg');">
+
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center mx-auto my-auto">
-                    <h1 class="text-white">Work with an amazing design</h1>
-                    <p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
-                    <button type="submit" class="btn bg-white text-dark">Create Account</button>
-                    <h6 class="text-white mb-2 mt-5">Find us on</h6>
-                    <div class="d-flex justify-content-center">
-                        <a href=""><i class="fab fa-facebook text-lg text-white me-4"></i></a>
-                        <a href=""><i class="fab fa-instagram text-lg text-white me-4"></i></a>
-                        <a href=""><i class="fab fa-twitter text-lg text-white me-4"></i></a>
-                        <a href=""><i class="fab fa-google-plus text-lg text-white"></i></a>
-                    </div>
+                    <h1  style="color: #d91f46">Pass this Quiz for a Certificate</h1>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
+<div style="background-color:rgb(217,31,70)">
+    <br>
 <div class="quiz-container" *ngFor="let qui of quizez">
+    <br>
     <h1>{{qui.theme}}</h1>
     <hr>
     <ul *ngFor="let quest of qui.questions" style="padding-left: 20px ;padding-top:20px" >
@@ -36,8 +29,9 @@
         <hr>
     </ul>
     <button type="button" class="btn bg-gradient-primary w-auto me-2" (click)="addAnswers()">Validate</button>
+    <br>
 </div>
-
+</div>
 
 
 

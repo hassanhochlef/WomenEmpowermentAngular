@@ -7,7 +7,7 @@ import {User} from '../../models/user.model';
 import {Certificate} from '../../models/certificate.model';
 import {AuthenticationService} from '../../shared/authentication.service';
 import {RequestBaseService} from '../../shared/request-base.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Penality} from '../../models/penality.enum';
 import {Quiz} from '../../models/Quiz.model';
 import {StreamService} from '../../shared/stream.service';
@@ -62,8 +62,10 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   eventMinutes: number;
   eventDate: Date;
   fieldTextType: boolean;
+  fileToUpload: File | null = null;
   public xx: string = null;
-  private certresp: Blob;
+  fileName = '';
+  private certresp: object;
   constructor(private activatedRoute: ActivatedRoute,
               authenticationService: AuthenticationService,
               private service: CourseService, private chanelService: StreamService,
@@ -170,6 +172,18 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
     link.href = url;
     link.download = 'certificate.pdf';
     link.click();
+  }
+  onFileSelcted(event: any){
+        this.fileToUpload = event.target.files[0];
+        console.log(event.target.result);
+      }
+      onSaveFile(){
+        const formData: FormData = new FormData();
+        formData.append('file', this.fileToUpload, this.fileToUpload.name);
+        return this.service.postFile(this.courseId, this.fileToUpload).toPromise();
+      }
+  gotoQuiz(id: string){
+    this.router.navigate(['user/quiz', id]);
   }
   deleteCourse(id: string): void{
     this.service.deleteCourse(id).subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));

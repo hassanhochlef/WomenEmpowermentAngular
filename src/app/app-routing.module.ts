@@ -120,7 +120,7 @@ import {UserPostsComponent} from './forum/user-posts/user-posts.component';
                     {path: 'forum', component: ForumComponent},
                     {path: 'details/:id', component : DetailsComponent},
                     {path: 'addcourse', component : AddCourseComponent},
-                    {path: 'quiz', component : QuizComponent},
+                    {path: 'quiz/:id', component : QuizComponent},
                     {path: 'eventFront', component: EventFrontComponent},
                     {
                         path: 'forum',

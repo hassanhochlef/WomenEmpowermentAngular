@@ -1,19 +1,12 @@
 <header class="bg-gradient-dark">
-	<div class="page-header min-vh-75" style="background-image: url('assets/img/bg9.jpg');">
+	<div class="page-header min-vh-75" style="background-image: url('assets/img/examples/women1.jpg');">
 		<span class="mask bg-gradient-dark opacity-6"></span>
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center mx-auto my-auto">
-					<h1 class="text-white">Work with an amazing design</h1>
+					<h1 class="text-white">Find out our courses</h1>
 					<p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
-					<button type="submit" class="btn bg-white text-dark">Create Account</button>
-					<h6 class="text-white mb-2 mt-5">Find us on</h6>
-					<div class="d-flex justify-content-center">
-						<a href=""><i class="fab fa-facebook text-lg text-white me-4"></i></a>
-						<a href=""><i class="fab fa-instagram text-lg text-white me-4"></i></a>
-						<a href=""><i class="fab fa-twitter text-lg text-white me-4"></i></a>
-						<a href=""><i class="fab fa-google-plus text-lg text-white"></i></a>
-					</div>
+
 				</div>
 			</div>
 		</div>
@@ -22,7 +15,9 @@
 
 <section class="py-5 bg-gradient-white">
 	<section >
+
 		<div>
+
 						<div  class="container" >
 							<h2 class="text-black-50 mb-3">Add course</h2>
 							<form #f1="ngForm" (ngSubmit)="f1.form.valid && addCourse() " xmlns="http://www.w3.org/1999/html">
@@ -39,13 +34,13 @@
 									<input type="date" class="form-control" id="endDate" name="endDate"  [(ngModel)]="course.endDate" >
 								</div>
 								<div class="input-group input-group-outline mb-3">
-									<label class="form-label">Number</label>
+									<label class="form-label">Hours charge</label>
 									<input class="form-control" type="number"  mode="decimal"  name="nbHours" [(ngModel)]="course.nbHours"/>
 								</div>
 								<br>
 								<div class="input-group input-group-outline mb-3">
 								<div class="select">
-								<select class="select-text" name="domain" id="domain" [(ngModel)]="course.domain" >
+								<select  class="select-text" name="domain" id="domain" [(ngModel)]="course.domain" >
 									<option  value="IT" >IT</option>
 									<option  value="MEDICAL">MEDICAL</option>
 									<option value="ARTISANAL">ARTISANAL</option>
@@ -62,6 +57,8 @@
 								<button type="submit" class="btn bg-gradient-primary w-auto me-2">Add</button>
 							</form>
 						</div>
+
 		</div>
+
 	</section>
 </section>

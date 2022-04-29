@@ -123,7 +123,7 @@
                                         <hr class="flag-hr">
                                         <h4 class="text-gradient text-primary text-center">Streaming</h4>
                                         <hr class="flag-hr">
-                                            <center>
+
                                               <div style="display: inline-flex">
                                                  <a  style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="startSteam(courseId)"><i class="material-icons"><span class="material-symbols-outlined">play_circle</span></i></a>
                                                  <a style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="endStream(courseId)"><i class="material-icons"><span class="material-symbols-outlined">stop</span></i></a>
@@ -139,7 +139,7 @@
                                                               <i class="fa" [ngClass]="{'fa-eye-slash': fieldTextType,'fa-eye': !fieldTextType }"  (click)="changebutton()">Show/Hide</i>
                                                 </span>
                                                 </div>
-                                            </center>
+
 
                                     </section>
 
@@ -178,7 +178,9 @@
                                             <input type="date" class="form-control" id="endDate" name="endDate"  [(ngModel)]="course.endDate" >
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Number</label>
+                                            <label class="form-label" *ngIf="course.nbHours === null">Number</label>
+                                            <label class="form-label" *ngIf="course.nbHours !== null"></label>
+
                                             <input class="form-control" type="number"  mode="decimal"  name="nbHours" [(ngModel)]="course.nbHours"/>
                                         </div>
                                         <br>
@@ -210,6 +212,9 @@
         </div>
     </div>
 </div>
+
+<button (click)="onSaveFile()"></button>
+<input type="file" id="formFile" (change)="onFileSelcted($event)" >
 <section class="py-md-7 pb-5">
     <div class="container">
         <div class="row text-center">
@@ -290,8 +295,8 @@
                                     <span class="badge badge-sm badge-success" *ngIf="cert.aquired==true">AQUIRED</span>
                                     <span class="badge badge-sm badge-danger" *ngIf="cert.aquired==false">NOT AQUIRED</span>
                                 </td>
-                                <td class="align-middle text-center text-sm">
-                                    <button (click)="getCert(cert.certificateId)">Get certificate</button>
+                                <td *ngIf="cert.aquired==true" class="align-middle text-center text-sm">
+                                    <a style="cursor: pointer" (click)="getCert(cert.certificateId)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
                                 </td>
                                 <td class="align-middle" >
                                     <div class="btn-group btn-group-sm" aria-label="Basic example">
@@ -373,7 +378,7 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <center>
+
                     <div class="row mt-5">
 
                         <div class="col-lg-3 col-md-4">
@@ -412,7 +417,7 @@
                                                         </div>
                                                         <div class="input-group input-group-outline mb-3">
                                                             <label class="form-label">Event Date</label>
-                                                            <input type="date" class="form-control" id="eventDate" name="eventDate"  [(ngModel)]="eventDate" >
+                                                            <input type="date" class="form-control box" id="eventDate" name="eventDate" placeholder="hello" aria-placeholder=""  [pattern]="'hello1'" [(ngModel)]="eventDate" >
                                                         </div>
                                                         <div class="input-group input-group-outline mb-3">
                                                             <label class="form-label">Start Hour</label>
@@ -456,7 +461,7 @@
                         </div>
 
                     </div>
-                </center>
+
                 <div class="col-md-4 ms-auto my-auto">
                     <div class="cursor-pointer">
                         <div class="card card-background">
@@ -470,7 +475,8 @@
                 <div class="col-md-5 me-auto my-auto ms-md-5">
                     <div class="p-3 info-horizontal d-flex">
                         <div class="app" style="height: 400px;width: 300px">
-                            <nylas-agenda id="603e306d-12ca-4e3e-8ae5-156b50e032d0"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>
+                            <nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>
+
                         </div>
                 </div>
             </div>
@@ -647,3 +653,4 @@
         </div>
     </div>
 </section>
+<button (click)="gotoQuiz(courseId.toString())">ANSWER QUIZZ</button>

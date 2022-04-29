@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Course} from '../models/course.model';
 import {User} from "../models/user.model";
@@ -11,6 +11,7 @@ import {Quiz} from "../models/Quiz.model";
 @Injectable({
   providedIn: 'root'
 })
+
 export class CourseService  extends  RequestBaseService{
   coursesUrl = 'http://localhost:8087/SpringMVC/course/getAllCourses';
   constructor(authenticationService: AuthenticationService, http: HttpClient) {
@@ -33,9 +34,14 @@ export class CourseService  extends  RequestBaseService{
   joinCourse(idCourse: string){
       return this.http.post('http://localhost:8087/SpringMVC/course/joinCourse/' + idCourse, null, {headers: this.getHeaders});
   }
-getAqCertificate(certificateId: number){
-    return this.http.post('http://localhost:8087/SpringMVC/Certificate/certifGen/' + certificateId, null, {headers: this.getHeaders, responseType: 'blob'});
+  getAqCertificate(certificateId: number){
+    return this.http.post('http://localhost:8087/SpringMVC/Certificate/certifGen/' + certificateId, null, {headers: this.getHeaders});
 }
+  postFile(courseId: string, file: File){
+    const formParams = new FormData();
+    formParams.append('file', file);
+    return this.http.post('http://localhost:8087/SpringMVC/file/upload/' + courseId, formParams, {headers: this.getHeaders, responseType: 'blob'});
+  }
 
   getCourseParticipants(id: string): Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8087/SpringMVC/course/getAllParticipants/' + id );

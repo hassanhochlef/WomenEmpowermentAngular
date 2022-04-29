@@ -64,6 +64,7 @@ import {PaymentDonationComponent} from "./event/event-front/payment-donation/pay
 
 import {UserDetailsComponent} from './user/user-details/user-details.component';
 import { PostDetailsComponent } from './forum/post-details/post-details.component';
+import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
 
 @NgModule({
     imports: [
@@ -122,6 +123,7 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
+                    {path: 'pages/cour', component: CourseBackHomeComponent},
 
                 ]
             },

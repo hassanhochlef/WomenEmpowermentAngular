@@ -172,6 +172,7 @@ import { AddEventComponent } from './event/event-front/add-event/add-event.compo
 import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
 import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 
 @NgModule({
     imports: [
@@ -347,7 +348,8 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
         MapComponent,
 
         ComplaintComponent,
-        UserDetailsComponent
+        UserDetailsComponent,
+        CourseBackHomeComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

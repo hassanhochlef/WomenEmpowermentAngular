@@ -62,10 +62,12 @@ import {AddEventComponent} from "./event/event-front/add-event/add-event.compone
 import {MapComponent} from "./event/event-front/map/map.component";
 import {PaymentDonationComponent} from "./event/event-front/payment-donation/payment-donation.component";
 import {UserDetailsComponent} from './user/user-details/user-details.component';
+import {PostDetailsComponent} from "./forum/post-details/post-details.component";
+import {ChatboxComponent} from "./chatbox/chatbox.component";
+import {ChatComponent} from "./forum/chat/chat.component";
 import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
-
 
 @NgModule({
     imports: [
@@ -165,6 +167,11 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                         path: 'user-post',
                         component: UserPostsComponent,
                     },
+                    {
+                        path: 'chat',
+                        component: ChatboxComponent,
+                    },
+
                     {path: 'pages/map', component: MapComponent},
                 ]
             },

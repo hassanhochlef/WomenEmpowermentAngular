@@ -1,0 +1,99 @@
+<div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 ms-auto me-auto">
+                    <h6 class="opacity-7 text-uppercase font-weight-bolder text-sm">The Idea</h6>
+                    <h3 class="title mb-4">{{event.eventName}}</h3>
+                    <p class="text-dark">
+                        This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if
+                        you want the user to see more. We are here to make life better.
+                        <br> <br>
+                        And now I look and look around and there’s so many Kanyes I've been trying to figure out the bed design for the master bedroom at our Hidden Hills compound... and thank you for turning my personal jean jacket into a couture piece.
+                        <br> <br>
+                        The way to survive in modern society is to be an ascetic. It is to retreat from society. There’s too much society everywhere you go…The only solution is turn it off.
+                    </p>
+                </div>
+
+            </div>
+
+            <section class="py-3">
+                <div class="container">
+                    <div class="row">
+
+                    </div>
+                    <div class="row mb-6 ">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-background align-items-start h-100">
+                                <div class="full-background" style="background-image: url(https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/beach.jpg)"></div>
+                                <div class="card-body text-center z-index-3">
+                                    <p class="text-uppercase font-weight-bold opacity-8 text-xs mt-7">Landscape</p>
+                                    <h4 class="text-white mb-1">help women with a donation</h4>
+                                    <p class="text-white opacity-8"> you don't worry your money will be in good hands</p>
+                                    <button class="btn btn-white btn-sm" type="button" name="button" href="http://localhost:4200/#/user/payment">make Don</button>
+                                </div>
+                                <span class="mask bg-gradient-primary border-radius-xl z-index-2 opacity-7"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 d-flex flex-column">
+                            <div class="card h-100 card-background align-items-start">
+                                <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/indian.jpg&#39;)"></div>
+                                <div class="card-body z-index-3">
+                                    <i class="material-icons text-white text-3xl">import_contacts</i>
+                                </div>
+                                <div class="card-footer pb-3 pt-2 z-index-3">
+                                    <h4 class="text-white mb-1 cursor-pointer">join us</h4>
+                                    <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">257 spots</p>
+                                </div>
+                                <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
+                            </div>
+                            <div class="card h-100 card-background mt-4 align-items-start">
+                                <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/greece.jpg&#39;)"></div>
+                                <div class="card-body z-index-3">
+                                    <i class="material-icons text-white text-3xl">volunteer_activism</i>
+                                </div>
+                                <div class="card-footer pb-3 pt-2 z-index-3">
+                                    <h4 class="text-white mb-1 cursor-pointer">participation</h4>
+                                    <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">363 spots</p>
+                                </div>
+                                <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <section class="py-7">
+        <div class="container">
+            <div *ngIf="display" style="height: 500px">
+                <div style="height: 500px">
+                    <app-map [forCreate]="false" [event]="event"></app-map>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-lg-5 py-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 class="mb-1">Thank you for your support!</h4>
+                    <p class="lead mb-0">Delivering the best products</p>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-4 d-lg-flex align-items-center justify-content-end">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   errorMessage: string = "";
   middleRole: string = "";
   roles: Role[] = [];
-  step: number = 1;
   userParsed: string = "";
   selectedFile!: File;
 
@@ -82,17 +81,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     );
   }
   onFileSelcted(event: any){
-    console.log(event);
+    console.log(event.target.result);
     this.selectedFile = event.target.files[0];
   }
 
-  next(){
-    this.step = this.step + 1 ;
-  }
 
-  previous(){
-    this.step = this.step - 1 ;
-  }
+
 
   redirectTo(){
     this.router.navigate(['/login'])

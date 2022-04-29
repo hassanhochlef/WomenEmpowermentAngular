@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
+
 import {AccordionModule} from 'primeng/accordion';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {AvatarModule} from 'primeng/avatar';
@@ -85,7 +86,6 @@ import {TreeModule} from 'primeng/tree';
 import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import { LazyLoadEvent } from 'primeng/api';
-
 import {AppCodeModule} from './app.code.component';
 import {AppComponent} from './app.component';
 import {AppMainComponent} from './app.main.component';
@@ -146,6 +146,7 @@ import { DetailsComponent } from './course/details/details.component';
 import { AddCourseComponent } from './course/add-course/add-course.component';
 import { EventComponent } from './event/event.component';
 import { FilterPipe } from './event/filter.pipe';
+
 import { ComplaintComponent } from './complaint/complaint.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 import { ForumComponent } from './forum/forum.component';
@@ -156,6 +157,8 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ProfilComponent } from './user/profil/profil.component';
+import {OffreComponent} from './pages/offre/offre.component';
+import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './user/new-password/new-password.component';
 import { QuizComponent } from './course/quiz/quiz.component';
@@ -165,10 +168,14 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
+import { AddEventComponent } from './event/event-front/add-event/add-event.component';
+import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
+import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import {ChatComponent} from "./forum/chat/chat.component";
 import {ChatboxComponent} from "./chatbox/chatbox.component";
-
+import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
+import { SubscriptionComponent } from './user/subscription/subscription.component';
 
 
 @NgModule({
@@ -258,6 +265,7 @@ import {ChatboxComponent} from "./chatbox/chatbox.component";
         TreeTableModule,
         VirtualScrollerModule,
         AppCodeModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         AppComponent,
@@ -322,6 +330,10 @@ import {ChatboxComponent} from "./chatbox/chatbox.component";
         FrontFooterComponent,
         FrontLandingComponent,
         ProfilComponent,
+        OffreComponent,
+        AddOfferComponent,
+        PostDetailsComponent,
+        AddPostComponent,
         ForgotPasswordComponent,
         NewPasswordComponent,
         QuizComponent,
@@ -331,16 +343,27 @@ import {ChatboxComponent} from "./chatbox/chatbox.component";
         EventFrontComponent,
         DonationComponent,
         PaymentDonationComponent,
+
+
+        AddEventComponent,
+
+        DetailEventComponent,
+
+        MapComponent,
+
         ComplaintComponent,
         UserDetailsComponent,
         ChatComponent,
         ChatboxComponent
+        CourseBackHomeComponent
+        SubscriptionComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService, MenuService, BreadcrumbService
     ],
+
     bootstrap: [AppComponent]
 })
 export class AppModule {

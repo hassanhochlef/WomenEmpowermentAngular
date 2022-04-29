@@ -28,12 +28,13 @@
                     </div>
             </div>
 </header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div *ngFor="let cc of ccCourses">
     <div *ngIf="courseId === cc.courseId.toString() " class="row mt-5">
         <div class="col-sm-3 col-6 mx-auto" >
             <div  class="btn-group btn-group-lg">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
-                    OwnerShip Panel
+                <button type="button" style="font-size: 10px" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+                    Course Panel
                 </button>
             <button type="button" style="font-size: 10px"  class="btn btn-outline-dark"  data-bs-toggle="modal" data-bs-target="#exampleModalNotification">
                 Delete Course
@@ -78,7 +79,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <section style="background-color: ghostwhite">
-                                        <h2 class="text-gradient text-primary text-center">Banned Users</h2>
+                                        <h4 class="text-gradient text-primary text-center">Banned Users</h4>
                                         <div class="container">
                                             <div class="row justify-content-center">
                                                 <div class="col-lg-10">
@@ -119,7 +120,29 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr class="flag-hr">
+                                        <h4 class="text-gradient text-primary text-center">Streaming</h4>
+                                        <hr class="flag-hr">
+
+                                              <div style="display: inline-flex">
+                                                 <a  style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="startSteam(courseId)"><i class="material-icons"><span class="material-symbols-outlined">play_circle</span></i></a>
+                                                 <a style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="endStream(courseId)"><i class="material-icons"><span class="material-symbols-outlined">stop</span></i></a>
+                                                 <a style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="addStream(courseId)"><i class="material-icons"><span class="material-symbols-outlined">add_circle</span></i></a>
+                                                 <a style="cursor:pointer; margin-right: 10px" class="btn-floating btn-large waves-effect waves-light red" (click)="deleteStream(courseId)"><i class="material-icons"><span class="material-symbols-outlined">delete_sweep</span></i></a>
+
+                                              </div>
+                                                <br>
+                                                <div  *ngIf="course.channelId !==null">
+                                                    <h6>Stream key and Server</h6>
+                                                    <h6  *ngIf="fieldTextType">{{course.streamKey}} <br> rtmps://rtmp.europe-west.hesp.live/live </h6>
+                                                    <span>
+                                                              <i class="fa" [ngClass]="{'fa-eye-slash': fieldTextType,'fa-eye': !fieldTextType }"  (click)="changebutton()">Show/Hide</i>
+                                                </span>
+                                                </div>
+
+
                                     </section>
+
                                 </div>
 
                                 <div class="modal-footer">
@@ -137,42 +160,49 @@
                             <div class="card card-plain">
                                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                     <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 text-center py-4">
-                                        <h4 class="font-weight-bolder text-white mt-1">Join us today</h4>
-                                        <p class="mb-1 text-white text-sm">Enter your email and password to register</p>
+                                        <h4 class="font-weight-bolder text-white mt-1">Update Course</h4>
                                     </div>
                                 </div>
                                 <div class="card-body pb-3">
-                                    <form role="form text-start">
+                                    <form #f="ngForm" role="form text-start" (ngSubmit)="f.form.valid && updateCourse(courseId.toString())" xmlns="http://www.w3.org/1999/html">
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Name</label>
-                                            <input type="text" class="form-control">
+                                            <label class="form-label">Course name</label>
+                                            <input type="text" class="form-control" id="courseName" name="courseName"  [(ngModel)]="course.courseName" class="form-control" required>
+                                        </div>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label">Start date</label>
+                                            <input type="date" class="form-control" id="startDate" name="startDate"  [(ngModel)]="course.startDate" >
+                                        </div>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label">End date</label>
+                                            <input type="date" class="form-control" id="endDate" name="endDate"  [(ngModel)]="course.endDate" >
+                                        </div>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label" *ngIf="course.nbHours === null">Number</label>
+                                            <label class="form-label" *ngIf="course.nbHours !== null"></label>
+
+                                            <input class="form-control" type="number"  mode="decimal"  name="nbHours" [(ngModel)]="course.nbHours"/>
+                                        </div>
+                                        <br>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <div class="select">
+                                                <select class="select-text" name="domain" id="domain" [(ngModel)]="course.domain" >
+                                                    <option  value="IT" >IT</option>
+                                                    <option  value="MEDICAL">MEDICAL</option>
+                                                    <option value="ARTISANAL">ARTISANAL</option>
+                                                    <option value="TECH">TECH</option>
+                                                    <option value="SOCIAL">SOCIAL</option>
+                                                    <option value="AGRICULTURE">AGRICULTURE</option>
+                                                </select>
+                                                <span class="select-highlight"></span>
+                                                <span class="select-bar"></span>
+                                                <label class="select-label">Field</label>
+                                            </div>
                                         </div>
 
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input type="email" class="form-control">
-                                        </div>
-
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Password</label>
-                                            <input type="password" class="form-control">
-                                        </div>
-                                        <div class="form-check form-check-info d-flex float-start ps-0">
-                                            <input class="form-check-input mt-0" type="checkbox" value="" id="flexCheckDefault" checked="">
-                                            <label class="form-check-label mb-0 ms-3" for="flexCheckDefault">
-                                                I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                                            </label>
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="button" class="btn bg-gradient-primary w-100 mt-4 mb-0">Sign up</button>
-                                        </div>
+                                        <button type="submit" data-bs-dismiss="modal" class="btn bg-gradient-primary w-auto me-2">Update</button>
+                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
                                     </form>
-                                </div>
-                                <div class="card-footer text-center pt-0 px-sm-4 px-1">
-                                    <p class="mb-4 mx-auto">
-                                        Already have an account?
-                                        <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign in</a>
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -181,12 +211,10 @@
             </div>
         </div>
     </div>
-
-
-
-        <!-- Modal -->
-
 </div>
+
+<button (click)="onSaveFile()"></button>
+<input type="file" id="formFile" (change)="onFileSelcted($event)" >
 <section class="py-md-7 pb-5">
     <div class="container">
         <div class="row text-center">
@@ -243,6 +271,7 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Username</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Certificate status</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Download certificate</th>
                                 <th class="text-secondary opacity-7"></th>
                             </tr>
                             </thead>
@@ -265,6 +294,9 @@
                                 <td class="align-middle text-center text-sm">
                                     <span class="badge badge-sm badge-success" *ngIf="cert.aquired==true">AQUIRED</span>
                                     <span class="badge badge-sm badge-danger" *ngIf="cert.aquired==false">NOT AQUIRED</span>
+                                </td>
+                                <td *ngIf="cert.aquired==true" class="align-middle text-center text-sm">
+                                    <a style="cursor: pointer" (click)="getCert(cert.certificateId)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
                                 </td>
                                 <td class="align-middle" >
                                     <div class="btn-group btn-group-sm" aria-label="Basic example">
@@ -334,7 +366,126 @@
             </div>
         </div>
     </div>
+    <section class="py-7">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 ms-auto me-auto text-center">
+                    <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                        <i class="material-icons opacity-10">calendar_today</i>
+                    </div>
+                    <h3 class="text-dark mb-0 mt-3">Course Events</h3>
+                    <p>Here you can find today's event and also previous and incoming events</p>
+                </div>
+            </div>
+            <div class="row mt-5">
 
+                    <div class="row mt-5">
+
+                        <div class="col-lg-3 col-md-4">
+                            <div class="info">
+                            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                                <a  style="cursor:pointer; " data-bs-toggle="tooltip" data-bs-placement="top" title="add event" data-bs-toggle="modal" data-bs-target="#exampleModalForm"> <i class="material-icons opacity-10">add</i></a>
+                            </div>
+                                <h5 class="mt-3">Add Event</h5>
+                                <p>Add live events and webinars schedules</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="info">
+                            <div   class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                                <a  style="cursor:pointer; " data-bs-toggle="tooltip" data-bs-placement="top" title="delete event" data-bs-toggle="modal" data-bs-target="#exampleModalForm"> <i class="material-icons opacity-10">delete</i></a>
+                            </div>
+                                <h5 class="mt-3">Delete Event</h5>
+                                <p>Delete canceled events</p>
+                            </div>
+                                <div class="modal fade" id="exampleModalForm" tabindex="-1" aria-labelledby="exampleModalForm" aria-hidden="true">
+                                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <div class="card bg-gray-200 shadow border-0 mb-0">
+                                                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                                    <div class="bg-gradient-info shadow-info border-radius-lg py-3 pe-1 text-center py-4">
+                                                        <h4 class="font-weight-bolder text-white mt-1 mb-0">Add event</h4>
+                                                        <p class="mb-1 text-sm text-white">Enter your event details for this course</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form #f="ngForm" role="form text-start">
+                                                        <div class="input-group input-group-outline mb-3">
+                                                            <label class="form-label">Event name</label>
+                                                            <input type="text" class="form-control" id="eventName" name="eventName"  [(ngModel)]="eventName" class="form-control" required>
+                                                        </div>
+                                                        <div class="input-group input-group-outline mb-3">
+                                                            <label class="form-label">Event Date</label>
+                                                            <input type="date" class="form-control box" id="eventDate" name="eventDate" placeholder="hello" aria-placeholder=""  [pattern]="'hello1'" [(ngModel)]="eventDate" >
+                                                        </div>
+                                                        <div class="input-group input-group-outline mb-3">
+                                                            <label class="form-label">Start Hour</label>
+                                                            <input class="form-control" [formControl]="eventHourcontrol"  pattern="([0-1]{1}[0-9]{1}|20|21|22|23)" type="number"  mode="decimal"  name="eventHour" [(ngModel)]="eventHour"/>
+                                                        </div>
+                                                        <div class="input-group input-group-outline mb-3">
+                                                            <label class="form-label">Start Minutes</label>
+                                                            <input class="form-control" ngModel pattern="[0..59]" type="number"  mode="decimal"  name="eventMinutes" [(ngModel)]="eventMinutes"/>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="card-footer text-center pt-0">
+                                                    <div *ngIf="eventHourcontrol.errors?.pattern">
+                                                        Hour format should be 2 digit number
+                                                    </div>
+                                                    <button type="submit" (click)="addEvent()">add</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="info">
+                                <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                                    <a  style="cursor:pointer; " data-bs-toggle="tooltip" data-bs-placement="top" title="add event" data-bs-toggle="modal" data-bs-target="#exampleModalForm"> <i class="material-icons opacity-10">update</i></a>
+                                </div>
+                                <h5 class="mt-3">Update Event</h5>
+                                <p>Update an event in case of mistakes made</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="info">
+                                <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                                   <i class="material-icons opacity-10">info</i>
+                                </div>
+                                <h5 class="mt-3">More info</h5>
+                                <p> if you want to find out previous or upcoming events press the arrow button on the calendar</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                <div class="col-md-4 ms-auto my-auto">
+                    <div class="cursor-pointer">
+                        <div class="card card-background">
+                            <div class="full-background" style="background-image: url('https://www.onecalendar.nl/images/onecalendar.jpg')"></div>
+                            <div class="card-body pt-7 text-center" style="height: 400px">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 me-auto my-auto ms-md-5">
+                    <div class="p-3 info-horizontal d-flex">
+                        <div class="app" style="height: 400px;width: 300px">
+                            <nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+    </section>
 
 </section>
 <div *ngFor="let certif of certificate">
@@ -351,30 +502,155 @@
     </div>
 </section>
 </div>
-<div *ngFor="let cre of ccCourses">
-    <section *ngIf="cre.courseId == courseId ">
-        <h2 class="text-gradient text-primary text-center">Live stream</h2>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card">
-                        <div [attr.data-hesp-live-id]="course.channelId"  style="width: 1000px; height: 700px ;"></div>
+
+<section>
+    <div class="container py-4">
+        <div class="row" >
+            <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+                <div class="card d-flex justify-content-center p-4 shadow-lg">
+                    <div class="text-center">
+                        <h3 class="text-gradient text-primary">Create quiz</h3>
+                    </div>
+                    <div class="card card-plain">
+                        <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addQuiz()" id="contact-form"  autocomplete="off" style="overflow-y: auto; max-height: 250px;">
+                            <div class="card-body pb-2">
+                                <div class="col-md-6">
+                                    <div class="input-group input-group-static mb-4">
+                                        <label>Quiz theme</label>
+                                        <input class="form-control" id="theme" name="theme" [(ngModel)]="quiz.theme" placeholder="eg. Women psychology" aria-label="Quiz theme" type="text" >
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-static mb-4">
+                                            <label>Question</label>
+                                            <input class="form-control" id="question" name="question" [(ngModel)]="question1.question" placeholder="eg. How to deal with?" aria-label="Question" type="text" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <div class="input-group input-group-static">
+                                            <label>Score</label>
+                                            <input type="number" id="score" name="score" [(ngModel)]="question1.score" class="form-control" placeholder="4" >
+                                        </div>
+                                    </div>
+
+
+                                     <div  class="input-group input-group-static mb-4">
+                                         <div class="col-md-6">
+                                         <label>Answer</label>
+                                        <textarea   [(ngModel)]="answer1.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                             <input type="boolean" name="correct" id="correct" [(ngModel)]="answer1.correct" class="form-control" placeholder="false" >
+                                         </div>
+
+                                      </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer2.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer2.correct"   class="form-control" placeholder="false" >
+                                        </div>
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer3.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer3.correct"   class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-static mb-4">
+                                            <label>Question</label>
+                                            <input class="form-control"  name="question" [(ngModel)]="question2.question" placeholder="eg. How to deal with?" aria-label="Question" type="text" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <div class="input-group input-group-static">
+                                            <label>Score</label>
+                                            <input type="number"  name="score" [(ngModel)]="question2.score" class="form-control" placeholder="4" >
+                                        </div>
+                                    </div>
+
+
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea   [(ngModel)]="answer4.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct"  [(ngModel)]="answer4.correct" class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer5.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer5.correct"   class="form-control" placeholder="false" >
+                                        </div>
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer6.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer6.correct"   class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-static mb-4">
+                                            <label>Question</label>
+                                            <input class="form-control"  name="question" [(ngModel)]="question3.question" placeholder="eg. How to deal with?" aria-label="Question" type="text" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <div class="input-group input-group-static">
+                                            <label>Score</label>
+                                            <input type="number"  name="score" [(ngModel)]="question3.score" class="form-control" placeholder="4" >
+                                        </div>
+                                    </div>
+
+
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea   [(ngModel)]="answer7.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct"  [(ngModel)]="answer7.correct" class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer8.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer8.correct"   class="form-control" placeholder="false" >
+                                        </div>
+                                    </div>
+                                    <div  class="input-group input-group-static mb-4">
+                                        <div class="col-md-6">
+                                            <label>Answer</label>
+                                            <textarea  [(ngModel)]="answer9.answerContent" name="answerContent" class="form-control"  rows="2" placeholder="Answer"></textarea>
+                                            <input type="boolean" name="correct" [(ngModel)]="answer9.correct"   class="form-control" placeholder="false" >
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <button type="submit" class="btn bg-gradient-primary w-auto me-2">Add</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-</div>
-<div *ngFor="let quiz of quizez">
-    {{quiz.theme}}
-    <div *ngFor="let ques of quiz.questions ">
-        {{ques.question}}
-       <div *ngFor="let ans of ques.answers">
-        {{ans.answerContent}}
-       </div>
-
     </div>
-</div>
-<br>
-<br>
-<br>
+</section>
+<button (click)="gotoQuiz(courseId.toString())">ANSWER QUIZZ</button>

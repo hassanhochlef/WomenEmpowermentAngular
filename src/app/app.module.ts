@@ -162,7 +162,9 @@ import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './user/new-password/new-password.component';
 import { QuizComponent } from './course/quiz/quiz.component';
+import { AddPostComponent } from './forum/add-post/add-post.component';
 import { UserPostsComponent } from './forum/user-posts/user-posts.component';
+import { PostDetailsComponent } from './forum/post-details/post-details.component';
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
@@ -339,17 +341,12 @@ import { SubscriptionComponent } from './user/subscription/subscription.componen
         EventFrontComponent,
         DonationComponent,
         PaymentDonationComponent,
-
-
         AddEventComponent,
-
         DetailEventComponent,
-
         MapComponent,
-
         ComplaintComponent,
         UserDetailsComponent,
-        CourseBackHomeComponent
+        CourseBackHomeComponent,
         SubscriptionComponent
     ],
     providers: [

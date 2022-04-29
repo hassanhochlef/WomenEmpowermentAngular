@@ -55,6 +55,9 @@ import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
+import {PostDetailsComponent} from "./forum/post-details/post-details.component";
+import {ChatboxComponent} from "./chatbox/chatbox.component";
+import {ChatComponent} from "./forum/chat/chat.component";
 
 @NgModule({
     imports: [
@@ -132,6 +135,11 @@ import {UserDetailsComponent} from './user/user-details/user-details.component';
                         path: 'user-post',
                         component: UserPostsComponent,
                     },
+                    {
+                        path: 'chat',
+                        component: ChatboxComponent,
+                    },
+
                 ]
             },
             {path: 'error', component: AppErrorComponent},

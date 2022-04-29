@@ -55,6 +55,8 @@ import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
+import {PostDetailsComponent} from './forum/post-details/post-details.component';
+import {SubscriptionComponent} from './user/subscription/subscription.component';
 
 @NgModule({
     imports: [
@@ -121,6 +123,7 @@ import {UserDetailsComponent} from './user/user-details/user-details.component';
                     {path: 'profil', component: ProfilComponent},
                     {path: 'profil/:id', component: UserDetailsComponent},
                     {path: 'eventFront', component: EventFrontComponent},
+                    {path: 'subscribe', component: SubscriptionComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
                     {path: 'post-detais/:id', component: PostDetailsComponent},

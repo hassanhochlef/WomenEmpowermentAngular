@@ -3,8 +3,10 @@ import {User} from '../../models/user.model';
 import {AuthenticationService} from '../../shared/authentication.service';
 import {UserService} from '../../shared/user.service';
 import {Post} from '../../models/post.model';
+import {Event} from '../../models/event.model';
 import {Router} from '@angular/router';
 import {stringify} from '@angular/compiler/src/util';
+import {Course} from '../../models/course.model';
 
 @Component({
   selector: 'app-profil',
@@ -19,6 +21,10 @@ export class ProfilComponent implements OnInit {
   friendSuggestionList: Array<User> = [];
   friendInCommon: Array<User> = [];
   myPosts: Array<Post> = [];
+  allPosts: Array<Post> = [];
+  allEvents: Array<Event> = [];
+  allCourses: Array<Course> = [];
+  //allOffers: Array<> = []
   profilPicture!: string;
 
   constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router ) {
@@ -49,6 +55,31 @@ export class ProfilComponent implements OnInit {
     this.userService.getAllUser().subscribe(users => {
       this.allUsers = users;
     });
+
+    this.userService.getAllPosts().subscribe(posts => {
+      this.allPosts = posts;
+    });
+
+    this.userService.getAllCourses().subscribe(courses => {
+      this.allCourses = courses;
+    });
+
+    this.userService.getAllEvents().subscribe(events => {
+      this.allEvents = events;
+    });
+
+    if (this.authenticationService.NotLoggedIn()){
+      this.router.navigate(['/login']).then(() => {
+        window.location.reload();
+      });
+    }
+
+    if (this.authenticationService.tokenValid()) {
+      this.authenticationService.logOut();
+      this.router.navigate(['/login']).then(() => {
+        window.location.reload();
+      });
+    }
 
   }
 

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';
+import {AuthenticationService} from './shared/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -17,7 +19,7 @@ export class AppComponent implements OnInit {
 
     ripple: boolean;
 
-    constructor(private primengConfig: PrimeNGConfig) {
+    constructor(private primengConfig: PrimeNGConfig, private authenticationService: AuthenticationService, private router: Router) {
     }
 
     ngOnInit() {

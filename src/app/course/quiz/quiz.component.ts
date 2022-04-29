@@ -33,7 +33,7 @@ export class QuizComponent extends RequestBaseService implements OnInit {
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) =>
     { this.courseId = params.id;
-      this.getQuizez('2');
+      this.getQuizez(this.courseId);
 
     });
   }

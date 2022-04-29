@@ -86,7 +86,6 @@ import {TreeModule} from 'primeng/tree';
 import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import { LazyLoadEvent } from 'primeng/api';
-
 import {AppCodeModule} from './app.code.component';
 import {AppComponent} from './app.component';
 import {AppMainComponent} from './app.main.component';
@@ -160,8 +159,6 @@ import { FrontLandingComponent } from './user/front-landing/front-landing.compon
 import { ProfilComponent } from './user/profil/profil.component';
 import {OffreComponent} from './pages/offre/offre.component';
 import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';
-import {PostDetailsComponent} from './forum/post-details/post-details.component';
-import {AddPostComponent} from './forum/add-post/add-post.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './user/new-password/new-password.component';
 import { QuizComponent } from './course/quiz/quiz.component';
@@ -173,9 +170,8 @@ import { AddEventComponent } from './event/event-front/add-event/add-event.compo
 import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
 import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 import { SubscriptionComponent } from './user/subscription/subscription.component';
-
-
 
 
 @NgModule({
@@ -266,7 +262,6 @@ import { SubscriptionComponent } from './user/subscription/subscription.componen
         VirtualScrollerModule,
         AppCodeModule,
         ReactiveFormsModule,
-
     ],
     declarations: [
         AppComponent,
@@ -354,6 +349,7 @@ import { SubscriptionComponent } from './user/subscription/subscription.componen
 
         ComplaintComponent,
         UserDetailsComponent,
+        CourseBackHomeComponent
         SubscriptionComponent
     ],
     providers: [

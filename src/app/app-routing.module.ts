@@ -18,6 +18,7 @@ import {AppMainComponent} from './app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
+import {AppLoginComponent} from './pages/app.login.component';
 import {InputDemoComponent} from './demo/view/inputdemo.component';
 import {ButtonDemoComponent} from './demo/view/buttondemo.component';
 import {TableDemoComponent} from './demo/view/tabledemo.component';
@@ -50,22 +51,31 @@ import {ProfilComponent} from './user/profil/profil.component';
 import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.component';
 import {NewPasswordComponent} from './user/new-password/new-password.component';
 import {EventComponent} from './event/event.component';
+import {OffreComponent} from './pages/offre/offre.component';
+import {AddOfferComponent} from './pages/offre/add-offer/add-offer.component';
 import {QuizComponent} from "./course/quiz/quiz.component";
 import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
+import {DetailEventComponent} from "./event/event-front/detail-event/detail-event.component";
+import {AddEventComponent} from "./event/event-front/add-event/add-event.component";
+import {MapComponent} from "./event/event-front/map/map.component";
+import {PaymentDonationComponent} from "./event/event-front/payment-donation/payment-donation.component";
 import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
 
+
 @NgModule({
     imports: [
         RouterModule.forRoot([
+
           /*  {
                 path: 'profile',
                 component: UserPostsComponent,
             },
                     {path: '', component: DashboardDemoComponent},*/
+
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -79,6 +89,7 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                         path: 'addcomplaint',
                         component: AddComplaintComponent,
                     },
+
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -121,6 +132,17 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
+                    {path: 'offre', component : OffreComponent},
+                    {path: 'addoffer', component : AddOfferComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
+                    {path: 'detailEvent/:id', component: DetailEventComponent},
+                    {path: 'addEvent', component: AddEventComponent},
+                    {path: 'payment', component: PaymentDonationComponent},
+                    {
+                        path: 'forum',
+                        component: ForumComponent,
+                    },
+
                     {path: 'profil/:id', component: UserDetailsComponent},
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'subscribe', component: SubscriptionComponent},
@@ -135,6 +157,7 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                         path: 'user-post',
                         component: UserPostsComponent,
                     },
+                    {path: 'pages/map', component: MapComponent},
                 ]
             },
             {path: 'error', component: AppErrorComponent},

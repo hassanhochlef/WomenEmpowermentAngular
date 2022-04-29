@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../models/event.model';
 import {EventService} from '../../shared/event.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-event-front',
@@ -8,10 +9,11 @@ import {EventService} from '../../shared/event.service';
   styleUrls: ['./event-front.component.scss']
 })
 export class EventFrontComponent implements OnInit {
-  events: Event[];
-  event: Event;
 
-  constructor(private eventService: EventService) {
+  events: Event[];
+  event: Event = new Event();
+
+  constructor(private eventService: EventService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,4 +27,36 @@ export class EventFrontComponent implements OnInit {
       console.log(this.events);
     });
   }
+
+  addEvent() {
+    this.eventService.createEvent2(this.event).subscribe(() => this.router.navigateByUrl('user/eventFront'));
+    console.log();
+  }
+
+  addNewEvent() {
+    this.eventService.createEvent2(this.event).subscribe(p => {
+      console.log(p);
+
+    });
+    this.router.navigate(['user/eventFront']).then(() => {
+      window.location.reload();
+    });
+
+
+  }
+  deleteEvent(id: number) {
+    this.eventService.deletEvent(id).subscribe(p => {
+      console.log('delete');
+
+    });
+    this.router.navigate(['user/eventFront']).then(() => {
+      window.location.reload();
+    });
+
+  }
+  openDetails(id: number): void {
+    this.router.navigate(['user/detailEvent/', id]);
+  }
+
+
 }

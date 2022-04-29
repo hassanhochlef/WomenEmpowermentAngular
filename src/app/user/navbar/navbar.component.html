@@ -606,7 +606,7 @@
                             <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
                                    routerLink="profil" >
-                                    <img alt="Image placeholder" src="../../assets/img/team-1.jpg" class="avatar avatar-xs rounded-circle mx-2">
+                                    <img alt="Profil Picture" src="assets/img/{{profilPicture}}" class="avatar avatar-xs rounded-circle mx-2">
                                     {{currentUser.name}}
                                 </a>
                             </li>
@@ -625,12 +625,15 @@
                                         <ul class="list-group">
                                             <li class="nav-item list-group-item border-0 p-0" *ngFor="let notif of notificationList">
 
-                                                <a class="dropdown-item py-2 ps-3 border-radius-md" (click)="markAsRead(notif.notificationId)">
+                                                <span class="dropdown-item py-2 ps-3 border-radius-md" >
 
                                                     <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-center align-items-center p-0"><i class="fa fa-circle fa-xs me-3 mt-3" style="color: #1770e6" *ngIf="!notif.read"></i>{{notif.message}}</h6>
-                                                    <span class="text-sm ms-4">{{notif.createdAt}} <i class="fa fa-clock ms-1"></i></span>
+                                                    <span class="text-sm ms-4">{{notif.createdAt}} <i class="fa fa-clock ms-1"></i>
+                                                        <a (click)="markAsRead(notif.notificationId)" *ngIf="!notif.read"><i class="fa fa-eye ms-5 me-2"></i>Mark as read</a>
+                                                        <a (click)="markAsUnRead(notif.notificationId)" *ngIf="notif.read"><i class="fa fa-eye-slash ms-5 me-2"></i>Mark as Unread</a>
+                                                    </span>
 
-                                                </a>
+                                                </span>
                                             </li>
 
                                         </ul>

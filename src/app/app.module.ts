@@ -343,19 +343,14 @@ import { SubscriptionComponent } from './user/subscription/subscription.componen
         EventFrontComponent,
         DonationComponent,
         PaymentDonationComponent,
-
-
         AddEventComponent,
-
         DetailEventComponent,
-
         MapComponent,
-
         ComplaintComponent,
         UserDetailsComponent,
         ChatComponent,
-        ChatboxComponent
-        CourseBackHomeComponent
+        ChatboxComponent,
+        CourseBackHomeComponent,
         SubscriptionComponent
     ],
     providers: [

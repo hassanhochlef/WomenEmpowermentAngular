@@ -212,6 +212,41 @@
         </div>
     </div>
 </div>
+<section class="pt-5 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Document name</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Download</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let fi of courseFiles">
+                                <td>
+                                    <div class="d-flex px-2">
+                                        <div class="my-auto">
+                                            <h6 class="mb-0 text-xs">{{ fi.name }}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a style="cursor: pointer" (click)="getFile(fi.url.slice(38,fi.url.length).toString(), fi.name)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <button (click)="onSaveFile()"></button>
 <input type="file" id="formFile" (change)="onFileSelcted($event)" >

@@ -1,7 +1,7 @@
 import {Certificate} from './certificate.model';
 import {Domain} from './domain.enum';
-import {User} from "./user.model";
-
+import {User} from './user.model';
+import {cFile} from './file.model';
 
 export class Course {
     courseId: number;
@@ -14,7 +14,7 @@ export class Course {
     calendarId: string;
     nbHours: number;
     certificates: Certificate;
-    files: [];
+    files: cFile;
     buser: User[];
     streamKey: string;
 

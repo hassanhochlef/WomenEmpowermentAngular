@@ -8,6 +8,7 @@ import {AuthenticationService} from "./authentication.service";
 import {RequestBaseService} from "./request-base.service";
 import { Penality } from '../models/penality.enum';
 import {Quiz} from "../models/Quiz.model";
+import {cFile} from "../models/file.model";
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +32,9 @@ export class CourseService  extends  RequestBaseService{
         , null,
         {headers: this.getHeaders} );
   }
+  getfile(id: string){
+    return this.http.get('http://localhost:8087/SpringMVC/file/file/' + id);
+  }
   joinCourse(idCourse: string){
       return this.http.post('http://localhost:8087/SpringMVC/course/joinCourse/' + idCourse, null, {headers: this.getHeaders});
   }
@@ -39,10 +43,18 @@ export class CourseService  extends  RequestBaseService{
 }
   postFile(courseId: string, file: File){
     const formParams = new FormData();
+    // @ts-ignore
     formParams.append('file', file);
-    return this.http.post('http://localhost:8087/SpringMVC/file/upload/' + courseId, formParams, {headers: this.getHeaders, responseType: 'blob'});
+    const options: { headers: HttpHeaders } = {
+      headers: new HttpHeaders({
+        'Content-Type': 'multipart/form-data'
+      })
+    };
+    return this.http.post('http://localhost:8087/SpringMVC/file/upload/' + courseId, formParams);
   }
-
+getCourseFiles(): Observable<cFile[]> {
+    return this.http.get<cFile[]>('http://localhost:8087/SpringMVC/file/files');
+}
   getCourseParticipants(id: string): Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8087/SpringMVC/course/getAllParticipants/' + id );
   }

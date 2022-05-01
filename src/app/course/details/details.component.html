@@ -212,6 +212,24 @@
         </div>
     </div>
 </div>
+
+
+<div class="file-input">
+    <table>
+
+   <td>
+    <input type="file" id="file" class="file" (change)="onFileSelcted($event)">
+    <label for="file">
+        Select file
+        <p class="file-name"></p>
+    </label>
+   </td>
+        <td>
+    <button class="file" (click)="onSaveFile()">Upload </button>
+        </td>
+    </table>
+</div>
+
 <section class="pt-5 mt-5">
     <div class="container">
         <div class="row justify-content-center">
@@ -247,9 +265,6 @@
         </div>
     </div>
 </section>
-
-<button (click)="onSaveFile()"></button>
-<input type="file" id="formFile" (change)="onFileSelcted($event)" >
 <section class="py-md-7 pb-5">
     <div class="container">
         <div class="row text-center">

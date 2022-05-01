@@ -13,6 +13,7 @@ import {EventcommentModel} from '../../../models/eventcomment.model';
   styleUrls: ['./detail-event.component.scss']
 })
 export class DetailEventComponent implements OnInit {
+  myDate = Date.now();
   id: number;
   comment: EventcommentModel = new EventcommentModel();
   event: Event;
@@ -40,6 +41,4 @@ export class DetailEventComponent implements OnInit {
       this.router.navigate([currentUrl]);
     });
   }
-
-
 }

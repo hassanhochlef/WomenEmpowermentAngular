@@ -1,20 +1,35 @@
-<header>
-    <div class="page-header min-vh-50" style="background-image: url('https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2378&amp;q=80');" loading="lazy">
-        <span class="mask bg-gradient-dark opacity-4"></span>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-white text-center">
-                    <h2 class="text-white">Event and donation</h2>
-                    <p class="lead"> HELP WOMEN</p>
-                </div>
+
+
+
+
+
+
+
+<body>
+
+<div class="container p-0">
+    <div class="card px-4">
+        <p class="h8 py-3">Payment Details</p>
+
+        <div class="row gx-3">
+            <div class="col-12">
+
+                   <div id="card">
+                          <div class="d-flex flex-column">
+                               <p class="text mb-1">Card Number</p> <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                          </div>
+                   </div>
+                   <div id="button">
+
+                       <div class="col-12">
+                           <div class="btn btn-primary mb-3"> <span class="ps-3">payer</span> <span class="fas fa-arrow-right"></span> </div>
+                       </div>
+
+                   </div>
+                <div id="card-errors" role="alert"></div>
             </div>
         </div>
     </div>
-</header>
-<div class="payment-box">
-    <div id="card"></div>
-        <button id="button">payer</button>
-        <div id="card-errors" role="alert"></div>
-
-
 </div>
+
+</body>

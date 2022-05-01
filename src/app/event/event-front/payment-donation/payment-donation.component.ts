@@ -13,29 +13,68 @@ import { PaymentModel } from '../../../models/payment.model';
 export class PaymentDonationComponent implements OnInit {
   private stripe: Stripe;
 
- /* error: any;
+  /* error: any;
 
-  elements: Elements;
-  card: StripeElement;
+   elements: Elements;
+   card: StripeElement;
 
 
 
-  elementsOptions: ElementsOptions = {
-    locale: 'es'
-  };
-  public stripeForm = new FormGroup({
-    name: new FormControl('', Validators.required)
-  });
-*/
-  constructor( private paymentservice: PaymentService,  private router: Router) { }
+   elementsOptions: ElementsOptions = {
+     locale: 'es'
+   };
+   public stripeForm = new FormGroup({
+     name: new FormControl('', Validators.required)
+   });
+ */
+  constructor(private paymentservice: PaymentService, private router: Router) {
+  }
 
   async ngOnInit() {
     this.stripe = await loadStripe('pk_test_51KcnSgEt84nrmr0uKGmPJxlTuNBD5RooExgbwmSKDJcO28jO2Q2mfEn8ab0tRj1wLNf3UGbL5lWGIZUJrB6yLzc100JIiw1tvN');
 
     console.log(this.stripe);
     const elements = this.stripe.elements();
-    const card = elements.create('card');
+    const card = elements.create('card', {
+      style: {
+        base: {
+          iconColor: '#666EE8',
+          color: '#31325F',
+          lineHeight: '40px',
+          fontWeight: 300,
+          fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+          fontSize: '18px',
+          '::placeholder': {
+            color: '#CFD7E0'
+          }
+        }
+      }
+    });
     card.mount('#card');
+
+    card.on('change', (event) => {
+      const displayError = document.getElementById('card-errors');
+      event.error ? displayError.textContent = event.error.message : displayError.textContent = '';
+    });
+
+    const button = document.getElementById('button');
+    button.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const ownerInfo = {
+        owner: {name: 'codexmaker'},
+        amount: 100 * 100,
+        currency: 'eur'
+      };
+      try {
+        const result = await this.stripe.createSource(card, ownerInfo);
+        console.log(result);
+      } catch (e) {
+        console.warn(e.message);
+      }
+    });
+  }
+}
+
     /*  this.stripeService.elements(this.elementsOptions)
         .subscribe(elements => {
           this.elements = elements;
@@ -59,7 +98,7 @@ export class PaymentDonationComponent implements OnInit {
             this.card.mount('#card-element');
           }
         });*/
-  }
+
 
  /* donation() {
     const name = this.stripeForm.get('name').value;
@@ -81,4 +120,4 @@ export class PaymentDonationComponent implements OnInit {
   }
 */
 
-}
+

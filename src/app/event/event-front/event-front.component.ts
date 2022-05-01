@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event } from '../../models/event.model';
 import {EventService} from '../../shared/event.service';
 import {Router} from "@angular/router";
+import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-event-front',
@@ -9,17 +10,26 @@ import {Router} from "@angular/router";
   styleUrls: ['./event-front.component.scss']
 })
 export class EventFrontComponent implements OnInit {
-
+  p: number = 1;
+  nameSearch: string= '';
   events: Event[];
   event: Event = new Event();
+  bestdonor: any[];
 
   constructor(private eventService: EventService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.getEvent();
+    this.getBestdONOR();
   }
 
+  private getBestdONOR(){
+    this.eventService.GETbESTdONOR().subscribe(eventsRslt => {
+      this.bestdonor = eventsRslt;
+      console.log( this.bestdonor);
+    });
+  }
 
   private getEvent() {
     this.eventService.getEventList().subscribe(eventsRslt => {

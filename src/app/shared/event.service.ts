@@ -6,6 +6,8 @@ import { Event } from 'src/app/models/event.model';
 import {RequestBaseService} from './request-base.service';
 import {AuthenticationService} from './authentication.service';
 import {Course} from "../models/course.model";
+import {PostComment} from "../models/postComment.model";
+import {EventcommentModel} from "../models/eventcomment.model";
 
 
 @Injectable({
@@ -18,7 +20,9 @@ export class EventService extends  RequestBaseService{
 
     }
 
-
+    GETbESTdONOR(): Observable<any[]>{
+        return this.httpClient.get<any[]>('http://localhost:8087/SpringMVC/Donation/bestDoner', {headers: this.getHeaders});
+    }
     getEventList(): Observable<Event[]>{
         return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/Get-all-Event', {headers: this.getHeaders});
     }
@@ -31,18 +35,20 @@ export class EventService extends  RequestBaseService{
     getStatistic(): Observable<Event[]>{
         return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/findEventYear');
     }
-    public uploadImage(imagen: File , id: string): Observable<any> {
-        const formData = new FormData();
-        formData.append('multipartFile', imagen);
-        return this.httpClient.post<any>('http://localhost:8087/SpringMVC/Event/upload/' + '1', formData);
-    }
-
-
-
     getEventById(id: number): Observable<Event>{
         return this.http.get<Event>(`http://localhost:8087/SpringMVC/Event/getEvent/${id}`);
     }
 
+
+    joindEvent(idEvent: string){
+        return this.http.post('http://localhost:8087/SpringMVC/Event/userparticipe-event/' + idEvent, null, {headers: this.getHeaders});
+    }
+
+
+
+    addCommentPst(IdCom: string, eventcomm: EventcommentModel) {
+         return this.http.post<Comment>('http://localhost:8087/SpringMVC/Event/add-Commentevent/' + IdCom + '/1'  , eventcomm, {headers: this.getHeaders});
+    }
 
 
 }

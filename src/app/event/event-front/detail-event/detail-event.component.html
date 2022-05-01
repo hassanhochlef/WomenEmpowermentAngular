@@ -31,7 +31,9 @@
                                     <p class="text-uppercase font-weight-bold opacity-8 text-xs mt-7">Landscape</p>
                                     <h4 class="text-white mb-1">help women with a donation</h4>
                                     <p class="text-white opacity-8"> you don't worry your money will be in good hands</p>
+                                    <input>
                                     <button class="btn btn-white btn-sm" type="button" name="button" href="http://localhost:4200/#/user/payment">make Don</button>
+
                                 </div>
                                 <span class="mask bg-gradient-primary border-radius-xl z-index-2 opacity-7"></span>
                             </div>
@@ -55,6 +57,7 @@
                                 </div>
                                 <div class="card-footer pb-3 pt-2 z-index-3">
                                     <h4 class="text-white mb-1 cursor-pointer">participation</h4>
+                                    <button (click)="particper(event.eventId.toString())" ></button>
                                     <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">363 spots</p>
                                 </div>
                                 <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
@@ -96,4 +99,37 @@
         </div>
     </div>
 
+</div>
+
+
+
+
+<div class="col-lg-4">
+    <div class="card max-height-vh-70 overflow-auto overflow-x-hidden mb-5 mb-lg-0">
+        <div class="card-body p-2">
+            <ng-container *ngFor="let Comment of event.eventcomment">
+                <a href="javascript:;" class="d-block p-2">
+                    <div class="d-flex p-2">
+                        <img alt="Image" src="../assets/img/team-3.jpg" class="avatar shadow">
+                        <div class="ms-3">
+                            <h6 class="mb-0">Mila Skylar</h6>
+                            <p class="text-muted text-xs mb-2">24 min ago</p>
+                            <span class="text-muted text-sm col-11 p-0 text-truncate d-block">{{Comment.commentBody}}</span>
+                        </div>
+                    </div>
+                </a>
+            </ng-container>
+            <div class="card-footer d-block">
+                <form class="align-items-center">
+                    <div class="input-group input-group-outline d-flex">
+                        <label class="form-label">Type your message</label>
+                        <input type="text" class="form-control form-control-lg" name="commentBody" [(ngModel)]= "comment.commentBody">
+                        <button class="btn bg-gradient-primary mb-0"  (click)="addCommentEvent(event.eventId.toString())">
+                            <i class="material-icons">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

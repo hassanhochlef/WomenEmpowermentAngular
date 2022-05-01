@@ -1,5 +1,6 @@
 import {User} from './user.model';
 import { Media } from './media.model';
+import {EventcommentModel} from './eventcomment.model';
 
 export class Event {
     eventId?: number;
@@ -16,6 +17,7 @@ export class Event {
     latitude?: string;
     image?: string;
     medias?: Media[];
+    eventcomment?: EventcommentModel[];
 
 }
 

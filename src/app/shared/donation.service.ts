@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Event} from "../models/event.model";
-import {Customer} from "../demo/domain/customer";
 import {Donation} from "../models/donation.model";
 
 @Injectable({

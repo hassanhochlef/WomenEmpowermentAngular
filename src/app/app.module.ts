@@ -169,6 +169,8 @@ import { AddEventComponent } from './event/event-front/add-event/add-event.compo
 import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
 import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 
@@ -260,6 +262,7 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
         VirtualScrollerModule,
         AppCodeModule,
         ReactiveFormsModule,
+        NgxPaginationModule
 
     ],
     declarations: [

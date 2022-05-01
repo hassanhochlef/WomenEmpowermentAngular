@@ -58,6 +58,7 @@ import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {PostDetailsComponent} from "./forum/post-details/post-details.component";
 import {ChatboxComponent} from "./chatbox/chatbox.component";
 import {ChatComponent} from "./forum/chat/chat.component";
+import {ChatPriveComponent} from "./forum/chat-prive/chat-prive.component";
 
 @NgModule({
     imports: [
@@ -138,6 +139,10 @@ import {ChatComponent} from "./forum/chat/chat.component";
                     {
                         path: 'chat',
                         component: ChatboxComponent,
+                    },
+                    {
+                        path: 'chatP',
+                        component: ChatPriveComponent,
                     },
 
                 ]

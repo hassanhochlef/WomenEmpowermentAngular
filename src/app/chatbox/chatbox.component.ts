@@ -17,7 +17,7 @@ export class ChatboxComponent {
   // Detect when the user clicked on 'START'
   isReady = false;
   currentUser: User = new User();
-  idchat = 'aa';
+
   // List of themes and avatars to pass one randomly to the chat component
   themes = ['primary', 'warning', 'info', 'success'];
   avatars = [

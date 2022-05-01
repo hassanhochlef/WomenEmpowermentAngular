@@ -1,33 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import {ChatService} from '../../shared/chat.service';
-import {Message} from "../../models/message";
-import {AuthenticationService} from "../../shared/authentication.service";
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../models/user.model";
+import {ChatService} from "../../shared/chat.service";
+import {AuthenticationService} from "../../shared/authentication.service";
+import {Message} from "../../models/message";
+import {PostComment} from "../../models/postComment.model";
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  selector: 'app-chat-prive',
+  templateUrl: './chat-prive.component.html',
+  styleUrls: ['./chat-prive.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatPriveComponent implements OnInit {
+
   // Holding the chat messages
   messages: string;
   username: string = '';
   theme: string = '';
   avatar: string = '';
   currentUser: User = new User();
-  m: string;
-  a: string;
-  @Input('m')
+  m = '2';
+  a = '1';
+  @Input('username')
   set setsender(value: string) {
     this.m = value;
   }
-  @Input('a')
+  @Input('username')
   set setreciver(value: string) {
     this.a = value;
   }
-
 
   constructor(public chatService: ChatService, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe( data => {
@@ -36,7 +36,6 @@ export class ChatComponent implements OnInit {
   }
   ngOnInit(): void {
     this.username = this.currentUser.username;
-    console.log(this.a, this.m);
   }
 
   // Prepare the chat message then call the chatService method 'sendMessage' to actually send the message
@@ -45,11 +44,14 @@ export class ChatComponent implements OnInit {
       text: this.messages,
       avatar: avatar,
       username: this.username,
-      sender: '1',
-      reciver: '2'
+      sender: '2',
+      reciver: '3'
     };
-    console.log(this.a, this.m);
 
     this.chatService.sendMessage(obj);
+  }
+  openChat(cc: string , dd: string): void {
+    this.a = cc;
+    this.m = dd;
   }
 }

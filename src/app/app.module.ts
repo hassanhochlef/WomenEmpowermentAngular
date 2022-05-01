@@ -168,6 +168,7 @@ import { PaymentDonationComponent } from './event/event-front/payment-donation/p
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import {ChatComponent} from "./forum/chat/chat.component";
 import {ChatboxComponent} from "./chatbox/chatbox.component";
+import { ChatPriveComponent } from './forum/chat-prive/chat-prive.component';
 
 
 
@@ -334,7 +335,8 @@ import {ChatboxComponent} from "./chatbox/chatbox.component";
         ComplaintComponent,
         UserDetailsComponent,
         ChatComponent,
-        ChatboxComponent
+        ChatboxComponent,
+        ChatPriveComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

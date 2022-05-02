@@ -133,8 +133,15 @@
     </div>
 </header>
 
+
+
+
 <!-- End Navbar -->
-<div class="col-lg-3 mb-lg-0 mb-5 mt-8 mt-md-5 mt-lg-0" style="width: 250px;position: -webkit-sticky;
+
+
+<div class=" z-index-5">
+<section class="py-3 z-index-5" >
+    <div class="col-lg-3 mb-lg-0 mb-5 mt-8 mt-md-5 mt-lg-0" style="width: 250px;position: -webkit-sticky;
 float: left;
   position: sticky;
   height:400px;
@@ -142,65 +149,64 @@ float: left;
   padding: 5px;
   z-index: 10;
           overflow-x: hidden;">
-    <ul class="nav flex-column bg-white border-radius-lg p-3 position-sticky top-10 shadow-lg">
-        <li class="nav-item">
-            <button style="width: 200px" type="button" class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
-Add Post            </button>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#cookies">
-                <i class="material-icons text-dark opacity-5 pe-2">cookie</i>
-                Cookies
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#license">
-                <i class="material-icons text-dark opacity-5 pe-2">description</i>
-                License
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#hyperlinking">
-                <i class="material-icons text-dark opacity-5 pe-2">insert_link</i>
-                Hyperlinking
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#iframes">
-                <i class="material-icons text-dark opacity-5 pe-2">filter_frames</i>
-                iFrames
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#liability">
-                <i class="material-icons text-dark opacity-5 pe-2">campaign</i>
-                Liability
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#disclaimer">
-                <i class="material-icons text-dark opacity-5 pe-2">wysiwyg</i>
-                Disclaimer
-            </a>
-        </li>
-    </ul>
-</div>
+        <ul class="nav flex-column bg-white border-radius-lg p-3 position-sticky top-10 shadow-lg">
+            <li class="nav-item">
+                <button style="width: 200px" type="button" class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                    Add Post            </button>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#cookies">
+                    <i class="material-icons text-dark opacity-5 pe-2">cookie</i>
+                    Cookies
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#license">
+                    <i class="material-icons text-dark opacity-5 pe-2">description</i>
+                    License
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#hyperlinking">
+                    <i class="material-icons text-dark opacity-5 pe-2">insert_link</i>
+                    Hyperlinking
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#iframes">
+                    <i class="material-icons text-dark opacity-5 pe-2">filter_frames</i>
+                    iFrames
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#liability">
+                    <i class="material-icons text-dark opacity-5 pe-2">campaign</i>
+                    Liability
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark d-flex align-items-center" data-scroll="" href="#disclaimer">
+                    <i class="material-icons text-dark opacity-5 pe-2">wysiwyg</i>
+                    Disclaimer
+                </a>
+            </li>
+        </ul>
+    </div>
 
-<div style="  position: -webkit-sticky;
+    <div style="  position: -webkit-sticky;
 float: right;
   position: sticky;
-  width: 600px;
+  width: 400px;
   height:400px;
   top: 0;
   padding: 5px;
   z-index: 10;
           overflow-x: hidden;
 ">
-        <section class="py-4" >
 
-            <ng-container *ngFor="let p of listAdversting">
+        <ng-container *ngFor="let p of listAdversting">
 
-            <div class="container">
+            <div class="container" style="">
                 <div class="row justify-space-between py-2">
                     <div class="col-6 mx-auto">
                         <div class="rotating-card-container">
@@ -211,8 +217,8 @@ float: right;
                                         <h4 class=" mb-0">{{p.name}}</h4>
                                     </div>
                                 </div>
-                                <div class="back back-background min-height-100" style="background-image: url(https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/toboshar.jpg);width: 250px; height: 250px">
-                                    <div class="card-body  text-center">
+                                <div class="back back-background min-height-100" style="background-image: url(https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/toboshar.jpg); background-size: cover ;width: 250px; height: 250px">
+                                    <div class="card-body  ">
                                         <h3 class="text-white mb-0">{{p.name}}</h3>
                                         <p class="text-white opacity-8">{{p.text}}</p>
                                         <div class="buttons-group">
@@ -225,48 +231,48 @@ float: right;
                     </div>
                 </div>
             </div>
-            </ng-container>
-        </section>
+        </ng-container>
 
-</div>
-
-<div class=" z-index-5">
-<section class="py-3 z-index-5" style="position: relative">
+    </div>
     <ng-container *ngFor="let p of listPost">
-        <div class="card z-index-2" data-animation="true" style="width: 100%;
-">
+            <div class="card z-index-2" data-animation="true" style="width: 100%; ">
             <div class="card-header p-0 position-relative mt-n2 mx-3 z-index-2">
     <div class="container">
 
-            <div class="row">
+            <div class="row" style="margin-left: 1%">
                 <div class="col-lg-10 col-md-10 mx-auto">
 
                         <div class="card-body ">
-        <div class="row mt-6">
+        <div class="row mt-8">
 
-            <div class="col-lg-8 col-md-10">
+            <div class="col-lg-10 col-md-10">
 
                 <div class="card">
                     <div class="card-body">
 
                         <div class=" dropdown z-index-2" style="float: right;width: 10px ;   position: sticky; margin-right: 20px">
-                            <a href="#" class="btn bg-gradient-dark  " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2" style="height: 2px; height: 3px">
-                                <img src="" />
+                            <a href="#" class="   " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2" style="height: 2px; height: 3px">
+                                <i class="material-icons">settings</i>
+
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                <ng-container *ngIf="p.user.userId == currentUser.userId">
+
                                 <li>
                                     <a class="dropdown-item" (click)="deletePost(p.postId.toString())" style="color: darkred">
                                         <img  /> Delete
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" type="button" (click)="openPost(p)" style="color: darkgreen" data-bs-toggle="modal" data-bs-target="#exampleModal231"(click)="openCom(p)">
                                         <img src="" /> Update
                                     </a>
                                 </li>
+                                </ng-container>
+
                                 <li>
-                                    <a class="dropdown-item" href="#">
-                                        <img src="" /> Sigale
+                                    <a class="dropdown-item" (click)="openPostDetails(p.postId.toString())" >
+                                        <img src="" /> Show details
                                     </a>
                                 </li>
                             </ul>
@@ -286,13 +292,38 @@ float: right;
 
                         <h5>{{p.postTitle}}</h5>
                         <h7 class="mt-4">{{p.body}}</h7>
-                        <div class="rating mt-3">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+
+
+                    <div class="container">
+
+                        <div class="row ">
+                            <ng-container *ngFor="let m of p.medias">
+
+                            <div class="col-lg-5 col-sm-6" style="margin-top: 20px">
+                                <div class="card card-plain">
+                                    <div class="">
+                                        <a class="d-block blur-shadow-image">
+                                            <img src="{{m.imagenUrl}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg" loading="lazy">
+                                        </a>
+                                        </div>
+
+                                </div>
+                            </div>
+                            </ng-container>
+
+
+
+
                         </div>
+                    </div>
+
+                    <div class="rating mt-3">
+                       <a type="button" (click)="ratePost(p.postId.toString(),'1')"> <i class="fas fa-star"></i></a>
+                        <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
+                                <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
+                                    <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="far fa-star"></i></a>
+                    </div>
                     </div>
                     <ng-container *ngFor="let l of p.postLikes">
                         <ng-container *ngIf="l.user.userId == currentUser.userId">
@@ -324,7 +355,7 @@ float: right;
             </div>
             <div class="card-body text-center">
                 <div class=" mt-n6 ">
-                    <button type="button"  (click)="addLikePost(p.postId.toString())" class="btn li zob btn-primary  btn-icon-only rounded-circle" style="margin-left: 80px; margin-right: 10px" >
+                    <button type="button"  (click)="addLikePost(p.postId.toString())" class="btn li zob btn-primary  btn-icon-only rounded-circle" style="margin-left: 15%; margin-right: 10px" >
                         <span class="btn-inner--icon">  <i class="fa fa-thumbs-up"></i>  </span>
                     </button>
 
@@ -348,72 +379,44 @@ float: right;
 
 
 
-                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="width: 550px; margin-left: 22% ">
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="width: 700px; margin-left: 24% ">
                         <div class="card card-body">
 
                         <ng-container *ngFor="let c of p.postComments">
 
-                            <div class="col-lg-6 mt-lg-0 mt-5 ps-lg-0 ps-0" >
+                            <div class="" >
                                 <div class="p-3 info-horizontal">
                                     <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
                                         <a href="javascript:;" class="avatar avatar-xs rounded-circle">
                                             <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
                                         </a>                                    </div>
                                     <div class="description ps-3">
-                                        <small class="mb-0" style="font-size: 3mm">{{c.user.name}}</small>
-                                        <p class="mb-0" style="font-size: 3mm">{{c.commentBody}}</p>
-                                        <div><small class="txtsm"  type="button" data-bs-toggle="collapse" data-bs-target="#twoa" aria-expanded="true" aria-controls="twoa" style="margin-right: 30px; margin-left: 20px; font-size: 4mm"> replay</small>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
+
+                                        <small class="mb-0" style="font-size: 5mm">{{c.user.name}}</small>                                         <ng-container *ngIf="p.user.userId == currentUser.userId">
+                                        <a href="#" class="btn dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink22" style="float: right;"></a>
+
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" aria-labelledby="navbarDropdownMenuLink22">
+                                            <li><a class="dropdown-item" type="button" (click)="deleteCom(c.postCommentId.toString())" style="color: darkred">Delete</a></li>
+                                            <li><a class="dropdown-item" type="button"  (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: darkgreen">Update</a></li>
+                                        </ul>
+                                        </ng-container>
+                                        <p class="mb-0" style="font-size: 4mm">{{c.commentBody}}</p>
+                                        <div><small class="txtsm" (click)="openCom(c)"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-right: 30px; margin-left: 20px; font-size: 4mm"> replay</small>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
                                         <style>
                                             .txtsm:hover{color: #dd2567; }
                                             .txtsm{text-decoration: underline;}
                                         </style>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div id="twoa" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="width: 400px; height: 50px ">
-                                <div class="card card-body">
-
-                                    <ng-container *ngFor="let cc of c.Commentreply">
-
-                                        <div class="col-lg-6 mt-lg-0 mt-5 ps-lg-0 ps-0" >
-                                            <div class="p-3 info-horizontal">
-                                                <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
-                                                    <a href="javascript:;" class="avatar avatar-xs rounded-circle">
-                                                        <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
-                                                    </a>                                    </div>
-                                                <div class="description ps-3">
-                                                    <small class="mb-0" style="font-size: 3mm">{{cc.user.name}}</small>
-                                                    <p class="mb-0" style="font-size: 3mm">{{cc.commentBody}}</p>
-                                                    <div><a class="txtsm btn" style="margin-right: 30px; margin-left: 20px; font-size: 4mm" > replay</a>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
-                                                    <style>
-                                                        .txtsm:hover{color: #dd2567; }
-                                                        .txtsm{text-decoration: underline;}
-                                                    </style>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ng-container>
-                                    <div class="accordion-body text-sm opacity-8">
-                                        <form class="align-items-center">
-                                            <div class="input-group input-group-outline d-flex">
-                                                <label class="form-label">Type your Comment</label>
-                                                <input type="text" [(ngModel)]= "comment.commentBody" name="{{p.postId.toString()}}" class="form-control ">
-                                                <button class="btn bg-gradient-primary mb-0" (click)="addComment(p.postId.toString())" >
-                                                    <i class="material-icons">send</i>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-
 
                             </div>
+
+
                         </ng-container>
+
                         <div class="accordion-body text-sm opacity-8">
                             <form class="align-items-center">
-                                <div class="input-group input-group-outline d-flex">
+                                <div class="input-group input-group-outline  is-filled">
                                     <label class="form-label">Type your Comment</label>
                                     <input type="text" [(ngModel)]= "comment.commentBody" name="{{p.postId.toString()}}" class="form-control ">
                                     <button class="btn bg-gradient-primary mb-0" (click)="addComment(p.postId.toString())" >
@@ -422,6 +425,7 @@ float: right;
                                 </div>
                             </form>
                         </div>
+
                     </div>
 
 
@@ -447,6 +451,147 @@ float: right;
 </div>
 
 <app-add-post></app-add-post>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Comment</h5>
+            </div>
+            <div class="modal-body">
+                <div class="card card-profile mt-4">
+                    <div class="row">
+                        <div class="col-lg-4 ">
+                            <a href="javascript:;">
+                                <div class="p-3 pe-md-0">
+                                    <img class="w-60 border-radius-md shadow-lg" src="../../assets/img/team-5.jpg" alt="image">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-12 my-auto">
+                            <div class="card-body ps-lg-0">
+
+                                <h5 class="mb-0">{{comm2.user.name}}</h5>
+                                <h6 class="text-info">{{comm2.commentedAt}}</h6>
+                                <p class="mb-0">{{comm2.commentBody}}</p>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+                </div>
+                <div class=" card max-height-vh-50 min-height-vh-50 overflow-auto overflow-x-hidden mb-5 mb-lg-0" style="margin-top: 10px; height: 450px">
+                    <ng-container *ngFor="let c of comm2.postComments">
+                        <div class="" >
+                            <div class="p-3 info-horizontal">
+                                <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
+                                    <a href="javascript:;" class="avatar avatar-xs rounded-circle">
+                                        <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                                    </a>                                    </div>
+                                <div class="description ps-3">
+                                    <small class="mb-0" style="font-size: 3mm">{{c.user.name}}</small>                                        <ng-container *ngIf="c.user.userId == currentUser.userId">
+                                    <a href="#" class="btn dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink222" style="float: right;"></a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" aria-labelledby="navbarDropdownMenuLink222">
+                                        <li><a class="dropdown-item " type="button" (click)="deleteCom(c.postCommentId.toString())" style="color: darkred">Delete</a></li>
+                                        <li><a class="dropdown-item" type="button"  (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: darkgreen">Update</a></li>
+                                    </ul></ng-container>
+                                    <p class="mb-0" style="font-size: 3mm">{{c.commentBody}}</p>
+                                    <div><small class="txtsm" (click)="openCom(c)"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-right: 30px; margin-left: 20px; font-size: 4mm"> replay</small>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
+                                    <style>
+                                        .txtsm:hover{color: #dd2567; }
+                                        .txtsm{text-decoration: underline;}
+                                    </style>
+                                </div>
+                            </div>
+
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="accordion-body text-sm opacity-8" style="width: 400px; margin-left: 50px">
+
+                <form class="align-items-center" name="ter">
+                    <div class="input-group input-group-outline d-flex">
+                        <label class="form-label">Reaply to this Comment</label>
+
+                        <input type="text" name="commentBody" [(ngModel)]= "comment1.commentBody"  class="form-control ">
+                        <button class="btn bg-gradient-primary mb-0" name="commentBodyb" (click)="addCommentReply(comm2.postCommentId.toString())" >
+                            <i class="material-icons">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Update post -->
+<div class="modal fade" id="exampleModal231" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel23">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="p-4">
+                    <form>
+                        <div class="input-group input-group-outline  is-filled">
+                            <label class="form-label">Title</label>
+                            <input name="postTitle1" value="{{post2.postTitle}}" [(ngModel)]= "post1.postTitle" type="text" class="form-control">
+                        </div>
+
+                        <div class="input-group input-group-dynamic" style="margin-top: 20px; " >
+
+                            <textarea  name="body1" value="{{post2.body}}" [(ngModel)]= "post1.body" type="text" class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" (click)="UpdatePost(post2.postId.toString())" class="btn bg-gradient-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal update Comm -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Comment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>{{comm2.commentBody}}</h5>
+                <form>
+                    <div class="input-group input-group-outline my-3">
+                        <label class="form-label">New</label>
+                        <input name="commentBody" [(ngModel)]= "comment2.commentBody" type="text" class="form-control">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn bg-gradient-primary" (click)="UpdateComm(comm2.postCommentId.toString())">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 </body>

@@ -4,6 +4,7 @@ import {User} from '../models/user.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 const API_URL = `${environment.BASE_URL}/api/authentication/`;
 
@@ -14,6 +15,10 @@ export class AuthenticationService {
 
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
+  helper = new JwtHelperService();
+  user: User = new User();
+
+
 
   constructor(private http: HttpClient) {
     let storageUser;
@@ -64,6 +69,26 @@ export class AuthenticationService {
   updatePassword(password: string, token: string){
     let queryParams = {'token': token};
     return this.http.post(API_URL + 'reset-password/new', password, {params: queryParams});
+  }
+
+  tokenValid(){
+    let storageUser;
+    const storageUserAsStr = localStorage.getItem('currentUser');
+    if (storageUserAsStr){
+      storageUser = JSON.parse(storageUserAsStr);
+      this.user = storageUser;
+      console.log(this.helper.isTokenExpired(this.user.accessToken));
+      return this.helper.isTokenExpired(this.user.accessToken);
+    }
+  }
+
+  NotLoggedIn(){
+    let storageUser;
+    const storageUserAsStr = localStorage.getItem('currentUser');
+    if (!storageUserAsStr){
+      return true;
+    }
+    return false;
   }
 
 }

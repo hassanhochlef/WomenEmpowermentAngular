@@ -9,13 +9,9 @@
                                 </span>
                     <span class="overview-title">Number of courses</span>
                     <div class="p-grid overview-detail">
-                        <div class="p-col-6">
+                        <div class="p-col-12">
                             <div class="overview-number">{{ courses.length }}</div>
                             <div class="overview-subtext">Created</div>
-                        </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">{{ onGoing }}</div>
-                            <div class="overview-subtext">On-Going</div>
                         </div>
                     </div>
                 </div>
@@ -97,6 +93,10 @@
             </li>
 
         </ul>
+    </div>
+    <div class="card">
+        <h5 class="centerText">Doughnut Chart</h5>
+        <p-chart type="doughnut" [data]="pieData"></p-chart>
     </div>
 </div>
 <iframe src="https://calendar.google.com/calendar/embed?src=flo9b3693avoitcsm8st7v1dbc%40group.calendar.google.com&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>

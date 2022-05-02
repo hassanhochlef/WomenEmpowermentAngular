@@ -22,7 +22,8 @@ certificate: Certificate[];
 Certifn: number;
   role: Role[] = [];
   CertificatesCount: number;
-  onGoing: number;
+  onGoing: number ;
+  private pieData: any;
   constructor(private activatedRoute: ActivatedRoute, authenticationService: AuthenticationService,
               private service: CourseService, private userservice: UserService,
               private router: Router,
@@ -34,31 +35,23 @@ Certifn: number;
     this.role = [Role.FORMER, Role.COMPANY, Role.ADMIN, Role.ASSOCIATION, Role.USER, Role.EXPERT];
     this.getlistOfUsers();
     this.getlistofCourses();
-    this.getonGoingCourses();
-    this.getsomething();
+    this.pieData = {
+      labels: [ 'Aquired', 'Not Aquired'],
+      datasets: [
+        {
+          data: [540, 325],
+          backgroundColor: [
+            'rgb(54, 162, 235)',
+            'rgb(255, 99, 132)',
+          ]
+        }]
+    };
   }
   getlistOfUsers(){
     this.userservice.getAllUser().subscribe(userresp => {this.users = userresp; console.log(userresp); });
   }
-  getonGoingCourses(): number{
-    this.onGoing = 0;
-    for (let i = 0 ; i <= this.courses.length.valueOf() ; i++){
-      if (this.courses[i].onGoing === true){
-        this.onGoing = this.onGoing + 1 ;
-      }
-    }
-    return this.onGoing;
-  }
   getlistofCourses(){
-    this.service.getCourses().subscribe(courseresp => {this.courses = courseresp; }) ;
-  }
-  getsomething(): number{
-    for (let i = 0 ; i <= this.courses.length.valueOf() ; i++){
-     this.service.getCertificate(this.courses[i].courseId.toString()).subscribe(
-         cerresp => {this.Certifn = this.Certifn + cerresp.length; }) ;
-     this.CertificatesCount = this.CertificatesCount + this.Certifn ;
-      }
-    return this.CertificatesCount;
+    this.service.getCourses().subscribe(courseresp => {this.courses = courseresp; console.log(courseresp); }) ;
   }
   ngOnDestroy() {
   }

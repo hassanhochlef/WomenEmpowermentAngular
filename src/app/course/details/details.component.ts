@@ -204,6 +204,9 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
         formData.append('reportProgress', true);
         return this.service.postFile(this.courseId, this.fileToUpload).subscribe();
       }
+  getCourseResult(idUser: string, idCourse: string){
+    this.service.getCourseResult(idUser, idCourse);
+  }
   gotoQuiz(id: string){
     this.router.navigate(['user/quiz', id]);
   }

@@ -44,7 +44,7 @@ export class EventComponent implements OnInit {
   submitted: boolean;
   dispalyChart = false;
 
-
+d: Donation;
 //donation bloc
   donations: Donation[];
   dialogVisible: boolean;

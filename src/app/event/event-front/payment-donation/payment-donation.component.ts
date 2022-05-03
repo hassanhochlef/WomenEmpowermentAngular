@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PaymentModel } from '../../../models/payment.model';
 import {DonationService} from "../../../shared/donation.service";
 import {Donation} from "../../../models/donation.model";
+import {Event} from "../../../models/event.model";
 
 @Component({
   selector: 'app-payment-donation',
@@ -13,6 +14,7 @@ import {Donation} from "../../../models/donation.model";
   styleUrls: ['./payment-donation.component.scss']
 })
 export class PaymentDonationComponent implements OnInit {
+  donation: Donation = new Donation();
   private stripe: Stripe;
   idUser;
   myDate = Date.now();
@@ -67,7 +69,7 @@ export class PaymentDonationComponent implements OnInit {
       event.preventDefault();
       const ownerInfo = {
         owner: {name: 'codexmaker'},
-        amount: 100 * 100,
+        amount: this.donation.amountForEvent,
         currency: 'eur'
       };
       try {

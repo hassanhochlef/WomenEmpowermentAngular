@@ -175,18 +175,18 @@
                     <th style="min-width:200px">donor</th>
                     <th style="min-width:200px">amount</th>
                     <th style="min-width:200px">code payment</th>
-                    <th style="min-width:200px">name Event</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-dontion>
+            <ng-template pTemplate="body" let-d>
                 <tr>
-                    <td style="min-width:200px">{{dontion.donor.username}}</td>
-                    <td style="min-width:200px">{{dontion.amountForEvent}}</td>
-                    <td style="min-width:200px">{{dontion.codePayement}}</td>
-                    <td style="min-width:200px">{{dontion.Event.eventName}}</td>
+                    <td style="min-width:200px">{{d.donor.username}}</td>
+                    <td style="min-width:200px">{{d.amountForEvent}}</td>
+                    <td style="min-width:200px">{{d.codePayement}}</td>
+
                 </tr>
             </ng-template>
         </p-table>
+
     </div>
 
 

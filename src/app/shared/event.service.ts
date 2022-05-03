@@ -55,12 +55,17 @@ export class EventService extends  RequestBaseService{
 
 
 
+
     //backoffice
     getListBackallEvent(): Observable<Event[]>{
         return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/Get-all-Event');
     }
     GetBestDonorOfEvent(): Observable<any[]>{
         return this.httpClient.get<any[]>('http://localhost:8087/SpringMVC/Donation/bestDoner');
+    }
+
+    getAdressByMAP(id: number): Observable<any>{
+        return this.http.get<any>(`http://localhost:8087/SpringMVC/Event/googleMapAdress/${id}`);
     }
 
 

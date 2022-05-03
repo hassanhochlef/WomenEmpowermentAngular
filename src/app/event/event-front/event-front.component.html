@@ -24,16 +24,22 @@
                 <label class="ms-0"></label>
 
             </div>
-            <div class="col-lg-3 mt-lg-n2 mt-2">
-                <label class="ms-0"></label>
-                <div class="input-group input-group-static">
-                    <span class="input-group-text"><i></i></span>
-                    <input type="text" id="search"  required
-                           minlength="4" maxlength="8" size="10" [(ngModel)]="nameSearch" >
-                </div>
-            </div>
 
-        </div>
+
+
+
+            <section class="py-7">
+                <div class="container">
+                    <div class="row justify-space-between py-2">
+                        <div class="col-lg-4 mx-auto">
+                            <div class="input-group input-group-dynamic mb-4">
+                                <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                <input class="form-control" [(ngModel)]="nameSearch" placeholder="Search" type="text" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
     </div>
 
     <section class="pt-7 pb-0">

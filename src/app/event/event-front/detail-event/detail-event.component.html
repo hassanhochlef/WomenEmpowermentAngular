@@ -1,3 +1,21 @@
+<header>
+    <div class="page-header min-vh-50" style="background-image: url('https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2378&amp;q=80');" loading="lazy">
+        <span class="mask bg-gradient-dark opacity-4"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-white text-center">
+                    <h2 class="text-white">Event and donation</h2>
+                    <p class="lead"> HELP WOMEN</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
 <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
 
     <section class="py-5 mt-5">
@@ -31,7 +49,7 @@
                                     <p class="text-uppercase font-weight-bold opacity-8 text-xs mt-7">Landscape</p>
                                     <h4 class="text-white mb-1">help women with a donation</h4>
                                     <p class="text-white opacity-8"> you don't worry your money will be in good hands</p>
-                                    <input>
+
                                     <button class="btn btn-white btn-sm" type="button" name="button" (click)="redirectToPayement()">faire donation</button>
 
                                 </div>
@@ -46,7 +64,7 @@
                                 </div>
                                 <div class="card-footer pb-3 pt-2 z-index-3">
                                     <h4 class="text-white mb-1 cursor-pointer">upload detail of event</h4>
-                                    <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">257 spots</p>
+
                                 </div>
                                 <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
                             </div>
@@ -57,9 +75,14 @@
                                 </div>
                                 <div class="card-footer pb-3 pt-2 z-index-3">
                                     <h4 class="text-white mb-1 cursor-pointer">participation</h4>
-                                    <button style="height: 40px" (click)="particper(event.eventId.toString())" >pariticper</button>
-                                    <button style="height: 40px" (click)="cancelParticipation(event.eventId.toString())" >cancel</button>
-                                    <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">363 spots</p>
+
+                                    <button style="width: 150px" type="button" class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                                         participation            </button>
+                                    <button  style="width: 200px" type="button" class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage1">
+                                        cancel particpation            </button>
+
+
+
                                 </div>
                                 <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
                             </div>
@@ -88,11 +111,13 @@
 
     <div class="py-lg-5 py-0">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h4 class="mb-1">Thank you for your support!</h4>
-                    <p class="lead mb-0">Delivering the best products</p>
-                </div>
+            <div class=" align-content-center">
+                <ngx-qrcode
+                        [elementType]="elementType"
+                        [value]="'nameofEvent: '+event.eventName+ '/       created By  : '+ event.createurEvent.username + '/                      description : '+ event.description  + '                /startAt  :       ' + event.startAt  +   '                / endAt   :      '+ event.endAt "
+                        cssClass="aclass"
+                        errorCorrectionLevel="correctionLevel">
+                </ngx-qrcode>
                 <div class="col-lg-6 mt-lg-0 mt-4 d-lg-flex align-items-center justify-content-end">
 
                 </div>
@@ -100,46 +125,93 @@
         </div>
     </div>
 
+    <div class="col-lg-15">
+        <div class="card max-height-vh-70 overflow-auto overflow-x-hidden mb-5 mb-lg-0">
+            <div class="card-body p-2">
+                <ng-container *ngFor="let Comment of event.eventcomment">
+                    <a href="javascript:;" class="d-block p-2">
+                        <div class="d-flex p-2">
+                            <img alt="Image" src="../assets/img/team-3.jpg" class="avatar shadow">
+                            <div class="ms-3">
+                                <h6 class="mb-0">{{Comment.user.username}}</h6>
+
+
+
+
+
+                                <p class="text-muted text-xs mb-2">{{myDate | date}} {{ myDate | date:'HH:mm:ss'}}</p>
+                                <span class="text-muted text-sm col-11 p-0 text-truncate d-block">{{Comment.commentBody}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </ng-container>
+                <div class="card-footer d-block">
+                    <form class="align-items-center">
+
+                        <div class="input-group input-group-outline d-flex">
+                            <label class="form-label">Type your message</label>
+                            <input type="text" class="form-control form-control-lg" name="commentBody" [(ngModel)]= "comment.commentBody">
+                            <button class="btn bg-gradient-primary mb-0"  (click)="addCommentEvent(event.eventId.toString())">
+                                <i class="material-icons">send</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
-<ngx-qrcode
-        [elementType]="elementType"
-        [value]="'nameofEvent: '+event.eventName+ '/       created By  : '+ event.createurEvent.username + '/                      description : '+ event.description  + '                /startAt  :       ' + event.startAt  +   '                / endAt   :      '+ event.endAt "
-        cssClass="aclass"
-        errorCorrectionLevel="correctionLevel">
-</ngx-qrcode>
 
 
 
-
-
-
-<div class="col-lg-4">
-    <div class="card max-height-vh-70 overflow-auto overflow-x-hidden mb-5 mb-lg-0">
-        <div class="card-body p-2">
-            <ng-container *ngFor="let Comment of event.eventcomment">
-                <a href="javascript:;" class="d-block p-2">
-                    <div class="d-flex p-2">
-                        <img alt="Image" src="../assets/img/team-3.jpg" class="avatar shadow">
-                        <div class="ms-3">
-                            <h6 class="mb-0">{{Comment.user.username}}</h6>
-                            <p class="text-muted text-xs mb-2">{{myDate | date}}</p>
-                            <span class="text-muted text-sm col-11 p-0 text-truncate d-block">{{Comment.commentBody}}</span>
-                        </div>
-                    </div>
-                </a>
-            </ng-container>
-            <div class="card-footer d-block">
-                <form class="align-items-center">
-                    <div class="input-group input-group-outline d-flex">
-                        <label class="form-label">Type your message</label>
-                        <input type="text" class="form-control form-control-lg" name="commentBody" [(ngModel)]= "comment.commentBody">
-                        <button class="btn bg-gradient-primary mb-0"  (click)="addCommentEvent(event.eventId.toString())">
-                            <i class="material-icons">send</i>
-                        </button>
-                    </div>
-                </form>
+<div class="col-md-4">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">confirmer Votre participation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button  type="button" class="btn bg-gradient-primary" (click)="particper(event.eventId.toString())" >confirmer</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+<div class="col-md-4">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalMessage1" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">confirmer Votre participation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button  type="button" class="btn bg-gradient-primary" (click)="cancelParticipation(event.eventId.toString())" >confirmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

@@ -38,11 +38,24 @@ export class DetailEventComponent implements OnInit {
   }
   cancelParticipation(id: string){
     this.eventService.cancelParticipation(id).subscribe();
+    this.router.navigate(['user/eventFront']).then(() => {
+      window.location.reload();
+    });
   }
+ /* getAdressMap(id: number){
+    this.eventService.getAdressByMAP(id).subscribe(data => {
+      this.event = data;
+      this.display = true;
+      console.log(data);
+    });
+  }*/
 
 
   particper(id: string){
   this.eventService.joindEvent(id).subscribe();
+  this.router.navigate(['user/eventFront']).then(() => {
+      window.location.reload();
+    });
   }
 
   addCommentEvent(id: string) {

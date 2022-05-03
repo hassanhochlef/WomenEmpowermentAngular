@@ -15,11 +15,16 @@ export class DonationComponent implements OnInit {
 
 
 
+
+
+
   constructor() { }
 
   ngOnInit() {
 
 
   }
+
+
 }
 

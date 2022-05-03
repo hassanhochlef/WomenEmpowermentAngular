@@ -8,53 +8,55 @@
                     <form id="contact-form" method="post" autocomplete="off">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="input-group input-group-static mb-4" >
-                                        <label>Event Name</label>
-                                        <input class="form-control"   name="eventName"  placeholder="Name OF EVENT" aria-label="First Name..." type="text"  [(ngModel)]= "event.eventName">
+                                <div class="col-md-5">
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Event Name</label>
+                                        <input type="text" class="form-control"  name="eventName" [(ngModel)]= "event.eventName"  required>
                                     </div>
                                 </div>
 
                             </div>
-                            <div>
-                                <div class="input-group input-group-static">
-                                    <label>short description</label>
-                                    <input name="description"[(ngModel)]= "event.description" >
+                            <div class="col-md-5">
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">short description</label>
+                                    <input type="text" class="form-control"  name="description"[(ngModel)]= "event.description" required>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5">
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">big description</label>
+                                    <input type="text" class="form-control"  name="bigDescription"[(ngModel)]= "event.bigDescription" required>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5">
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">targetdonation</label>
+                                    <input class="form-control" type="number"  mode="decimal"  name="TargetDonation"[(ngModel)]= "event.TargetDonation"/>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-5">
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Start date</label>
+                                    <input type="date" class="form-control" id="startAt" name="startAt" [(ngModel)]= "event.startAt" >
                                 </div>
                             </div>
-                            <div>
-                                <div class="input-group input-group-static">
-                                    <label>big description</label>
-                                    <input name="bigDescription"[(ngModel)]= "event.bigDescription" >
+
+
+                            <div class="col-md-5">
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">end at</label>
+                                    <input type="date" class="form-control"  name="endAt" [(ngModel)]= "event.endAt" >
                                 </div>
-                            </div>
-                            <div>
-                                <div class="input-group input-group-static">
-                                    <label>targetdonation</label>
-                                    <input name="TargetDonation"[(ngModel)]= "event.TargetDonation" >
-                                </div>
-                            </div>
-
-                            <div>
-
-                                <label for="start">Start date:</label>
-
-                                <input type="date" id="start" name="trip-start"
-                                       value="2018-07-22"
-                                       min="2018-01-01" max="2022-12-31"  name="startAt" [(ngModel)]= "event.startAt">
-
-
-                            </div>
-
-
-                            <div>
-
-                                <label for="start">end at:</label>
-
-                                <input type="date" id="endat" name="trip-start"
-                                       value="2018-07-22"
-                                       min="2018-01-01" max="2022-12-31" name="endAt" [(ngModel)]= "event.endAt">
-
 
                             </div>
                             <div style="height: 500px">
@@ -65,8 +67,14 @@
 
                             <div class="row mt-3">
 
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn bg-gradient-info mt-3" (click)="addEvent()">SAVE</button>
+                                <div class="col-md-6">
+
+
+                                        <button type="submit" class="btn bg-gradient-info mt-3" (click)="addEvent()">create</button>
+
+
+                                        <button type="submit" class="btn bg-gradient-info mt-3" (click)="redirectToDashborEvent()">return</button>
+
                                 </div>
                             </div>
                         </div>

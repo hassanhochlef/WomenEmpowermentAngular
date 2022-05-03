@@ -34,6 +34,9 @@ export class OffreComponent implements OnInit {
     updateOffer(){
         this.apiOffreService.updateOfferById(this.offre2).subscribe(() => this.router.navigateByUrl('/user/offre'));
     }
+    applyOffer(id: number){
+        this.apiOffreService.ApplyOffer(id).subscribe(() => this.router.navigateByUrl('/user/offre'));
+    }
   /*addOfree(){
     this.apiOffreService.createOffre(this.offre, 11).subscribe(
         data => {

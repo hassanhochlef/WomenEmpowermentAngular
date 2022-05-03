@@ -59,10 +59,10 @@
 
                                                         <div class="input-group input-group-outline mb-3">
                                                             <select class="form-control" name="name" [(ngModel)]="offre.location"  #name="ngModel" id="choice-button" placeholder="Language" required>
-                                                                <option value="Choice 1" selected>Brazil</option>
-                                                                <option value="Choice 2">Bucharest</option>
-                                                                <option value="Choice 3">London</option>
-                                                                <option value="Choice 4">Washington</option>
+                                                                <option value="Choice 1" selected>Tunis</option>
+                                                                <option value="Choice 2">Sousse</option>
+                                                                <option value="Choice 3">Sfax</option>
+                                                                <option value="Choice 4">Djerba</option>
                                                             </select>
                                                         </div>
 
@@ -132,147 +132,33 @@
                     <b>Required Candidates:</b> <span>{{offre.requiredCandidates}}</span>
                 </li>
                 <li class="align-items-center my-2">
-                    <b>Description :</b> <span>{{offre.description}}</span>
+                    <b>Description : </b> <span>{{offre.description}}</span>
                 </li>
 
             </ul>
 
-            <div class="job-source">
-                <img src="
-https://www.thispersondoesnotexist.com/image" alt="Founders">
-                <p><strong>Founders</strong>,{{offre.createdAt}}</p>
-            </div>
+
+                <strong>Founders : </strong> <span class="card-meta">{{offre.createdAt}}</span>
+
             <span class="card-meta">
-        Published: June 18th, 2015
                 <button (click)="deleteOffer(offre.offerId)" type="button" class="btn btn-primary">DELETE</button>
                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
                                    data-bs-toggle="modal" data-bs-target="#editOfferModal" (click)="getOfferById(offre)" >
                                     <i class="material-icons opacity-6 me-2 text-md">edit</i>
-                                    Edit Profile
+                                    Edit Offer
                                 </a>
+               </span>
 
 
-
-
-
-      </span>
-            <div class="container py-7">
-                <div class="row mt-5">
-                    <div class="col-sm-3 col-6 mx-auto">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#editoffre">
-                            Launch demo modal
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="editoffre" tabindex="-1" aria-labelledby="exampleModalSignup" aria-hidden="true">
-                            <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-body p-0">
-                                        <div class="card card-plain">
-                                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                                <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 text-center py-4">
-                                                    <h4 class="font-weight-bolder text-white mt-1">Join us today</h4>
-                                                    <p class="mb-1 text-white text-sm">Enter your email and password to register</p>
-                                                </div>
-                                            </div>
-                                            <div class="card-body pb-3">
-                                                <form role="form text-start">
-                                                    <div class="input-group input-group-outline mb-3">
-                                                        <label class="form-label">Name</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="input-group input-group-outline mb-3">
-                                                        <label class="form-label">Email</label>
-                                                        <input type="email" class="form-control">
-                                                    </div>
-
-                                                    <div class="input-group input-group-outline mb-3">
-                                                        <label class="form-label">Password</label>
-                                                        <input type="password" class="form-control">
-                                                    </div>
-                                                    <div class="form-check form-check-info d-flex float-start ps-0">
-                                                        <input class="form-check-input mt-0" type="checkbox" value="" id="flexCheckDefault" checked="">
-                                                        <label class="form-check-label mb-0 ms-3" for="flexCheckDefault">
-                                                            I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                                                        </label>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <button type="button" class="btn bg-gradient-primary w-100 mt-4 mb-0">Sign up</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="card-footer text-center pt-0 px-sm-4 px-1">
-                                                <p class="mb-4 mx-auto">
-                                                    Already have an account?
-                                                    <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign in</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
             <div>
-            <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+            <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Apply Now
                 <i class="fas fa-arrow-right ms-1"></i>
             </a>
             </div>
         </article>
     </div>
-    <div class="col-lg-4 mb-lg-0 mb-4">
-        <div class="card bg-gradient-dark shadow-lg">
-            <span class="badge rounded-pill bg-primary w-30 mx-auto">Premium</span>
-            <div class="card-header text-center pt-4 pb-3 bg-transparent">
-                <h1 class="font-weight-bold mt-2 text-white">
-                    <small class="text-lg align-top me-1">TND </small>159<small class="text-lg">/mo</small>
-                </h1>
-            </div>
 
-            <div class="card-body text-lg-start text-center pt-0">
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">done</i>
-                    <span class="ps-3 text-white">10 team members</span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">done</i>
-                    <span class="ps-3 text-white">40GB Cloud storage </span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">done</i>
-                    <span class="ps-3 text-white">Integration help </span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">done</i>
-                    <span class="ps-3 text-white">Sketch Files </span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">remove</i>
-                    <span class="ps-3 text-white">API Access </span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">remove</i>
-                    <span class="ps-3 text-white">Complete documentation </span>
-                </div>
-
-                <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
-                    Try Premium
-                    <i class="fas fa-arrow-right ms-1"></i>
-                </a>
-            </div>
-        </div>
-    </div>
 </section>
 <!-- Modal -->
 
@@ -342,4 +228,30 @@ https://www.thispersondoesnotexist.com/image" alt="Founders">
 </div>
 
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form role="form" #f="ngForm" (ngSubmit)="applyOffer(5) ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apply</h5>
+            </div>
+            <div>
+                <br>
+                <label> To confirm your application, you should send your Curriculum Vitae.
+                </label>
+                    <br>
+                <div class="input-group input-group-static">
+                    <div  class="modal-body">Your CV</div>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn bg-gradient-dark mb-0" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn bg-gradient-primary mb-0">Confirm Application</button>
+            </div>
+        </div>
+        </form>
 
+    </div>
+</div>

@@ -31,6 +31,9 @@ export class OfferService {
     deleteOfferById(id: number){
         return this._http.delete('http://localhost:8087/SpringMVC/offer/delete-offer/' + id);
     }
+   updateOfferById( x: Offre){
+        return this._http.put('http://localhost:8087/SpringMVC/offer/update-Offer/', x);
+    }
 
 
     /**

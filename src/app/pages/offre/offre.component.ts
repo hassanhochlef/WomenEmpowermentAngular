@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class OffreComponent implements OnInit {
     offre: Offre = new Offre();
+    offre2: Offre = new Offre();
     // tslint:disable-next-line:ban-types
     listOffers: Offre[];
   constructor(private apiOffreService: OfferService , private router: Router) { }
@@ -22,12 +23,17 @@ export class OffreComponent implements OnInit {
     deleteOffer(id: number): void {
         // tslint:disable-next-line:max-line-length
         this.apiOffreService.deleteOfferById(id).subscribe(() => this.apiOffreService.getAllOffers().subscribe(res => {console.log(res); this.listOffers = res ; }));
-        this.router.navigate(['/offre']);
+        this.router.navigate(['/user/offre']);
      }
     addOffer(){
-        this.apiOffreService.addOffer(this.offre).subscribe(() => this.router.navigateByUrl('/offre'));
+        this.apiOffreService.addOffer(this.offre).subscribe(() => this.router.navigateByUrl('/user/offre'));
     }
-
+    getOfferById(x: Offre){
+      this.offre2 = x;
+    }
+    updateOffer(){
+        this.apiOffreService.updateOfferById(this.offre2).subscribe(() => this.router.navigateByUrl('/user/offre'));
+    }
   /*addOfree(){
     this.apiOffreService.createOffre(this.offre, 11).subscribe(
         data => {

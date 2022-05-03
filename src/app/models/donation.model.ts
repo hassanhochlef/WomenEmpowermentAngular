@@ -5,7 +5,7 @@ export class Donation{
     donationId: number;
     donationDate: string;
     codePayement: string;
-    qrcode: string;
+    amountForEvent: number;
     donor?: User;
     event?: Event;
 

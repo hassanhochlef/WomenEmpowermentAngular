@@ -170,8 +170,7 @@ import { DetailEventComponent } from './event/event-front/detail-event/detail-ev
 import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-
-
+import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
 
 
 @NgModule({
@@ -262,7 +261,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
         VirtualScrollerModule,
         AppCodeModule,
         ReactiveFormsModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        NgxQRCodeModule
+
 
     ],
     declarations: [

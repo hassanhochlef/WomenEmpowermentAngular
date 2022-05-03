@@ -7,17 +7,17 @@ export class Event {
     eventName?: string;
     description?: string;
     address?: string;
-    createdAt?: string;
+    bigDescription?: string;
     startAt?: string;
     endAt?: string;
-    eventType?: string;
-    maxPlace?: number;
+    TargetDonation?: number;
     createurEvent?: User;
     lang?: string;
     latitude?: string;
-    image?: string;
     medias?: Media[];
     eventcomment?: EventcommentModel[];
+    montantCollecte?: number;
+    qrcode?: string;
 
 }
 

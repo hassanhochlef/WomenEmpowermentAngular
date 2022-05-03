@@ -25,6 +25,7 @@
         "@fullcalendar/interaction": "4.1.0",
         "@fullcalendar/timegrid": "4.1.0",
         "@stripe/stripe-js": "^1.29.0",
+        "@techiediaries/ngx-qrcode": "^9.1.0",
         "chart.js": "2.7.3",
         "leaflet": "^1.7.1",
         "ngx-pagination": "^5.1.1",

@@ -128,7 +128,7 @@ import { PostDetailsComponent } from './forum/post-details/post-details.componen
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'detailEvent/:id', component: DetailEventComponent},
                     {path: 'addEvent', component: AddEventComponent},
-                    {path: 'payment', component: PaymentDonationComponent},
+                    {path: 'payment/:id', component: PaymentDonationComponent},
                     {
                         path: 'forum',
                         component: ForumComponent,

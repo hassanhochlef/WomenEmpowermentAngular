@@ -6,6 +6,9 @@ import {Event} from '../models/event.model';
 import {EventService} from '../shared/event.service';
 import { Router } from '@angular/router';
 import {User} from "../models/user.model";
+import { Donation } from '../models/donation.model';
+import { DonationService } from '../shared/donation.service';
+
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -41,13 +44,31 @@ export class EventComponent implements OnInit {
   submitted: boolean;
   dispalyChart = false;
 
+
+//donation bloc
+  donations: Donation[];
+  dialogVisible: boolean;
+
+  scrollableCols: any[];
+
+  unlockedCustomers: any[];
+
+  lockedCustomers: any[];
+
+  balanceFrozen: boolean = false;
+
+  rowGroupMetadata: any;
+//fin
+
+
   cols: any[];
 
   constructor(private eventService: EventService, private messageService: MessageService,
-              private confirmationService: ConfirmationService, private router: Router) {
+              private confirmationService: ConfirmationService, private router: Router, private donationservice: DonationService ) {
   }
 
   ngOnInit() {
+    this.getDonation();
     this.getEvent();
     this.eventService.getStatistic().subscribe(data => {
       this.eventsStat = data;
@@ -65,15 +86,25 @@ export class EventComponent implements OnInit {
       };
       this.dispalyChart = true;
     });
+
+
   }
 
   private getStat(){
 
   }
 
-// affichage
+  //affichage donation
+  private getDonation(){
+    this.donationservice.getDonationList().subscribe(eventsRslt => {
+      this.donations = eventsRslt;
+      console.log(this.donations);
+    });
+  }
+
+// affichage event
   private getEvent() {
-    this.eventService.getEventList().subscribe(eventsRslt => {
+    this.eventService.getListBackallEvent().subscribe(eventsRslt => {
       this.events = eventsRslt;
       console.log(this.events);
     });

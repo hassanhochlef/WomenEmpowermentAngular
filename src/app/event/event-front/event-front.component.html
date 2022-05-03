@@ -49,14 +49,16 @@
                             </a>
                             </div>
                         <div class="card-body pt-3">
-                            <p class="text-dark mb-2 text-sm">date</p>
+                            <p class="text-dark mb-2 text-sm">start at : {{event.startAt}}</p>
+                            <p class="text-dark mb-2 text-sm">end at : {{event.endAt}}</p>
+                            <p class="text-dark mb-2 text-sm">createur event : {{event.createurEvent.username}}</p>
                             <a href="javascript:;">
                                 <h5>
                                     {{event.eventName}}
                                 </h5>
                             </a>
                             <p>
-                               short description
+                              {{event.description}}
                             </p>
                             <button type="button" class="btn btn-outline-primary btn-sm mb-0" (click)="openDetails(event.eventId)">more Detail</button>
                             <button type="button" class="btn btn-outline-primary btn-sm mb-0" (click)="deleteEvent(event.eventId)">delete</button>
@@ -117,7 +119,7 @@
 
                         <div class="card-body text-center pb-0">
                             <h4 class="mb-0">{{donor}}</h4>
-                            <p>@oliviaharper</p>
+
                             <p class="mt-2">
                                 The connections you make at Web Summit are unparalleled, we met users all over the world.
                             </p>
@@ -154,7 +156,7 @@
                         <div class="accordion-item mb-3">
                             <h5 class="accordion-header" id="headingOne">
                                 <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    How do I order?
+                                    How can I create Event
                                     <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
                                 </button>
@@ -169,7 +171,7 @@
                         <div class="accordion-item mb-3">
                             <h5 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How can i make the payment?
+                                    How can i make the donation?
                                     <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
                                 </button>
@@ -200,7 +202,7 @@
                         <div class="accordion-item mb-3">
                             <h5 class="accordion-header" id="headingFour">
                                 <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    Can I resell the products?
+                                    Can I participate in Event?
                                     <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
                                 </button>
@@ -216,7 +218,7 @@
                         <div class="accordion-item mb-3">
                             <h5 class="accordion-header" id="headingFifth">
                                 <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifth" aria-expanded="false" aria-controls="collapseFifth">
-                                    Where do I find the shipping details?
+                                    more information
                                     <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
                                 </button>

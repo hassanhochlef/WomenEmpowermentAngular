@@ -6,8 +6,8 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
-
+                    <button  pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+                    <button style="background-color: red" pButton pRipple label="delete All" icon="pi pi-trash" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
                 </ng-template>
 
                 <ng-template pTemplate="right">
@@ -106,10 +106,7 @@
                     <label for="description">Description</label>
                     <textarea  [(ngModel)]="event.description" id="description" pInputTextarea  required rows="3" cols="20"></textarea>
                 </div>
-                <div>
-                    <label for="createdAt">createdAt</label>
-                <p-calendar id="createdAt" name="createdAt" [showIcon]="true" [(ngModel)]="event.createdAt" ></p-calendar>
-               </div>
+
                 <div>
                     <label for="startAt">startAt</label>
                     <p-calendar id="startAt" name="startAt" [showIcon]="true" [(ngModel)]="event.startAt" ></p-calendar>
@@ -118,17 +115,14 @@
                     <label for="endAt">endAt</label>
                     <p-calendar id="endAt" name="endAt" [showIcon]="true" [(ngModel)]="event.endAt" ></p-calendar>
                 </div>
-                <div>
-                    <label>maxPlace</label>
-                    <p-inputNumber mode="decimal" [showButtons]="true" [min]="1" [max]="200" [(ngModel)]="event.maxPlace" name="maxPlace"></p-inputNumber>
-                </div>
+
 
 
             </ng-template>
 
             <ng-template pTemplate="footer">
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" ></button>
-                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="eventsave()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"></button>
             </ng-template>
         </p-dialog>
 
@@ -164,38 +158,36 @@
 
 
         <div *ngIf="dispalyChart" class="card">
-            <h5 class="centerText">Bar Chart</h5>
+            <h5 class="centerText"> Chart</h5>
             <p-chart type="bar" [data]="barData"></p-chart>
         </div>
 
 
 
 
-        <div class="p-col-12 p-lg-4">
-            <div class="card">
-                <h4>best donor</h4>
-                <ul class="widget-person-list">
-                    <li>
-                        <div class="person-item">
-
-                            <div class="person-info">
-                                <div class="person-name">zajfbzfb</div>
-
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope"></button>
-                            <button type="button" class="p-button-rounded p-button-warning" pButton icon="pi pi-cog" ></button>
-                        </div>
-                    </li>
 
 
 
-
-                </ul>
-            </div>
-        </div>
-
+        <h5>Vertical</h5>
+        <p-table [value]="donations" [scrollable]="true" scrollHeight="400px">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="min-width:200px">donor</th>
+                    <th style="min-width:200px">amount</th>
+                    <th style="min-width:200px">code payment</th>
+                    <th style="min-width:200px">name Event</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-dontion>
+                <tr>
+                    <td style="min-width:200px">{{dontion.donor.username}}</td>
+                    <td style="min-width:200px">{{dontion.amountForEvent}}</td>
+                    <td style="min-width:200px">{{dontion.codePayement}}</td>
+                    <td style="min-width:200px">{{dontion.Event.eventName}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 
 
 
@@ -207,4 +199,4 @@
 
 
     </div>
-</div>
+

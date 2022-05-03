@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {PaymentService} from '../../../shared/payment.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { loadStripe, Stripe} from '@stripe/stripe-js';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PaymentModel } from '../../../models/payment.model';
+import {DonationService} from "../../../shared/donation.service";
+import {Donation} from "../../../models/donation.model";
 
 @Component({
   selector: 'app-payment-donation',
@@ -12,7 +14,8 @@ import { PaymentModel } from '../../../models/payment.model';
 })
 export class PaymentDonationComponent implements OnInit {
   private stripe: Stripe;
-
+  idUser;
+  myDate = Date.now();
   /* error: any;
 
    elements: Elements;
@@ -27,10 +30,12 @@ export class PaymentDonationComponent implements OnInit {
      name: new FormControl('', Validators.required)
    });
  */
-  constructor(private paymentservice: PaymentService, private router: Router) {
+  constructor(private paymentservice: PaymentService, private route: ActivatedRoute, private router: Router, private donationService: DonationService,
+              ) {
   }
 
   async ngOnInit() {
+    this.idUser = this.route.snapshot.params['id'];
     this.stripe = await loadStripe('pk_test_51KcnSgEt84nrmr0uKGmPJxlTuNBD5RooExgbwmSKDJcO28jO2Q2mfEn8ab0tRj1wLNf3UGbL5lWGIZUJrB6yLzc100JIiw1tvN');
 
     console.log(this.stripe);
@@ -68,6 +73,10 @@ export class PaymentDonationComponent implements OnInit {
       try {
         const result = await this.stripe.createSource(card, ownerInfo);
         console.log(result);
+        let donation = new Donation();
+        donation.amountForEvent = result.source.amount;
+        donation.codePayement = result.source.id;
+        this.donationService.donationEvent(this.idUser, donation).subscribe(data => console.log('success'));
       } catch (e) {
         console.warn(e.message);
       }

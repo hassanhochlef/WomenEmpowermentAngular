@@ -6,6 +6,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Event} from '../../../models/event.model';
 import {PostComment} from "../../../models/postComment.model";
 import {EventcommentModel} from '../../../models/eventcomment.model';
+import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediaries/ngx-qrcode";
 
 @Component({
   selector: 'app-detail-event',
@@ -13,6 +14,13 @@ import {EventcommentModel} from '../../../models/eventcomment.model';
   styleUrls: ['./detail-event.component.scss']
 })
 export class DetailEventComponent implements OnInit {
+
+  //QR
+  title = 'qrcode';
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  value = '';
+  //FIN
   myDate = Date.now();
   id: number;
   comment: EventcommentModel = new EventcommentModel();
@@ -28,6 +36,11 @@ export class DetailEventComponent implements OnInit {
       console.log(data);
     });
   }
+  cancelParticipation(id: string){
+    this.eventService.cancelParticipation(id).subscribe();
+  }
+
+
   particper(id: string){
   this.eventService.joindEvent(id).subscribe();
   }
@@ -40,5 +53,8 @@ export class DetailEventComponent implements OnInit {
       this.router.onSameUrlNavigation = 'reload';
       this.router.navigate([currentUrl]);
     });
+  }
+  redirectToPayement(){
+    this.router.navigate(['user/payment', this.id]);
   }
 }

@@ -30,7 +30,7 @@ export class EventService extends  RequestBaseService{
         return this.httpClient.post<Event>(`http://localhost:8087/SpringMVC/Event/create-event`, event, {headers: this.getHeaders});
     }
     deletEvent(id: number): Observable<any> {
-        return this.httpClient.delete(`http://localhost:8087/SpringMVC/Event/removeEvent/${id}`, { responseType: 'text' });
+        return this.http.delete('http://localhost:8087/SpringMVC/Event/remouveEvent/' + id, {headers: this.getHeaders} );
     }
     getStatistic(): Observable<Event[]>{
         return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/findEventYear');
@@ -38,7 +38,9 @@ export class EventService extends  RequestBaseService{
     getEventById(id: number): Observable<Event>{
         return this.http.get<Event>(`http://localhost:8087/SpringMVC/Event/getEvent/${id}`);
     }
-
+    cancelParticipation(id: string): Observable<any> {
+        return this.http.delete('http://localhost:8087/SpringMVC/Event/cancelParticipation/' + id, {headers: this.getHeaders} );
+    }
 
     joindEvent(idEvent: string){
         return this.http.post('http://localhost:8087/SpringMVC/Event/userparticipe-event/' + idEvent, null, {headers: this.getHeaders});
@@ -48,6 +50,17 @@ export class EventService extends  RequestBaseService{
 
     addCommentPst(IdCom: string, eventcomm: EventcommentModel) {
          return this.http.post<Comment>('http://localhost:8087/SpringMVC/Event/add-Commentevent/' + IdCom + '/1'  , eventcomm, {headers: this.getHeaders});
+    }
+
+
+
+
+    //backoffice
+    getListBackallEvent(): Observable<Event[]>{
+        return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/Get-all-Event');
+    }
+    GetBestDonorOfEvent(): Observable<any[]>{
+        return this.httpClient.get<any[]>('http://localhost:8087/SpringMVC/Donation/bestDoner');
     }
 
 

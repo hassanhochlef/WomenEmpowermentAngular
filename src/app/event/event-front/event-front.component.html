@@ -45,7 +45,7 @@
     <section class="pt-7 pb-0">
 
         <div class="container">
-            <div class="row">
+            <div class="row" style="overflow-y: scroll;">
                 <ng-container *ngFor="let event of events | filter:nameSearch  | paginate: { itemsPerPage: 3, currentPage: p }">
                 <div class="col-lg-4 col-md-6">
                     <div class="card mt-5 mt-md-0">
@@ -243,7 +243,9 @@
     </section>
 
     <div class="min-vh-90">
-        <img class="w-50 position-absolute end-0 border-radius-top-start-lg" src="https://images.unsplash.com/photo-1539803442075-48618f39bb3d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=963&amp;q=80" alt="lakeHouse" loading="lazy">
+        <div *ngIf="display" style="height: 500px">
+            <app-map using="displayAll" [events]="events"></app-map>
+        </div>
         <div class="container">
             <div class="row mt-8">
                 <div class="col-lg-7 d-flex justify-content-center flex-column">

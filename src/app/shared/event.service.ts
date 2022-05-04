@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Event } from 'src/app/models/event.model';
@@ -8,7 +8,7 @@ import {AuthenticationService} from './authentication.service';
 import {Course} from "../models/course.model";
 import {PostComment} from "../models/postComment.model";
 import {EventcommentModel} from "../models/eventcomment.model";
-
+import { EventFile} from "../models/eventFile";
 
 @Injectable({
     providedIn: 'root'
@@ -53,7 +53,17 @@ export class EventService extends  RequestBaseService{
     }
 
 
-
+    postFile(idEvent: number, file: File) {
+        const formParams = new FormData();
+        // @ts-ignore
+        formParams.append('file', file);
+        const options: { headers: HttpHeaders } = {
+            headers: new HttpHeaders({
+                'Content-Type': 'multipart/form-data'
+            })
+        };
+        return this.http.post('http://localhost:8087/SpringMVC/file/upload/' + idEvent, formParams);
+    }
 
 
     //backoffice
@@ -66,6 +76,9 @@ export class EventService extends  RequestBaseService{
 
     getAdressByMAP(id: number): Observable<any>{
         return this.http.get<any>(`http://localhost:8087/SpringMVC/Event/googleMapAdress/${id}`);
+    }
+    getEventFile(): Observable<EventFile[]> {
+        return this.http.get<EventFile[]>('http://localhost:8087/SpringMVC/file/files');
     }
 
 

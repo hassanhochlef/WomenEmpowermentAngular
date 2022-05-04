@@ -1,6 +1,7 @@
 import {User} from './user.model';
 import { Media } from './media.model';
 import {EventcommentModel} from './eventcomment.model';
+import {EventFile} from './eventFile';
 
 export class Event {
     eventId?: number;
@@ -18,6 +19,7 @@ export class Event {
     eventcomment?: EventcommentModel[];
     montantCollecte?: number;
     qrcode?: string;
+    files?: EventFile[];
 
 }
 

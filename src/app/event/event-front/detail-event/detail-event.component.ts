@@ -7,6 +7,7 @@ import {Event} from '../../../models/event.model';
 import {PostComment} from "../../../models/postComment.model";
 import {EventcommentModel} from '../../../models/eventcomment.model';
 import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediaries/ngx-qrcode";
+import {EventFile} from "../../../models/eventFile";
 
 @Component({
   selector: 'app-detail-event',
@@ -16,6 +17,7 @@ import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediar
 export class DetailEventComponent implements OnInit {
 
   //QR
+  eventid: number;
   title = 'qrcode';
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
@@ -26,6 +28,8 @@ export class DetailEventComponent implements OnInit {
   comment: EventcommentModel = new EventcommentModel();
   event: Event;
   display = false;
+  fileToUpload: File | null = null;
+  eventFiles: EventFile[];
   constructor(private eventService: EventService, private route: ActivatedRoute , private router: Router ) { }
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -70,4 +74,19 @@ export class DetailEventComponent implements OnInit {
   redirectToPayement(){
     this.router.navigate(['user/payment', this.id]);
   }
+
+  onFileSelcted(event: any){
+    this.fileToUpload = event.target.files[0];
+    console.log(this.fileToUpload.name);
+  }
+  onSaveFile(){
+    const formData = new FormData();
+    formData.append('file', this.fileToUpload);
+    // @ts-ignore
+    formData.append('reportProgress', true);
+    return this.eventService.postFile(this.event.eventId, this.fileToUpload).subscribe();
+  }
+
+
+
 }

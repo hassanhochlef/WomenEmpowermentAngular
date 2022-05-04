@@ -7,7 +7,7 @@ import {User} from "../../models/user.model";
 @Component({
   selector: 'app-event-front',
   templateUrl: './event-front.component.html',
-  styleUrls: ['./event-front.component.scss']
+  styleUrls: ['./event-front.component.scss'],
 })
 export class EventFrontComponent implements OnInit {
   p: number = 1;
@@ -15,7 +15,7 @@ export class EventFrontComponent implements OnInit {
   events: Event[];
   event: Event = new Event();
   bestdonor: any[];
-
+  display = false;
   constructor(private eventService: EventService, private router: Router) {
   }
 
@@ -35,6 +35,7 @@ export class EventFrontComponent implements OnInit {
     this.eventService.getEventList().subscribe(eventsRslt => {
       this.events = eventsRslt;
       console.log(this.events);
+      this.display = true;
     });
   }
 

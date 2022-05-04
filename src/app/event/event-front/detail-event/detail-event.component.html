@@ -103,26 +103,40 @@
         <div class="container">
             <div *ngIf="display" style="height: 500px">
                 <div style="height: 500px">
-                    <app-map [forCreate]="false" [event]="event"></app-map>
+                    <app-map using="displayOne" [event]="event"></app-map>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="py-lg-5 py-0">
-        <div class="container">
-            <div class=" align-content-center">
-                <ngx-qrcode
-                        [elementType]="elementType"
-                        [value]="'nameofEvent: '+event.eventName+ '/       created By  : '+ event.createurEvent.username + '/                      description : '+ event.description  + '                /startAt  :       ' + event.startAt  +   '                / endAt   :      '+ event.endAt "
-                        cssClass="aclass"
-                        errorCorrectionLevel="correctionLevel">
-                </ngx-qrcode>
-                <div class="col-lg-6 mt-lg-0 mt-4 d-lg-flex align-items-center justify-content-end">
 
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="py-lg-5 py-0">
+                <div class="container">
+                    <div class=" align-content-center">
+                        <ngx-qrcode
+                                [elementType]="elementType"
+                                [value]="'nameofEvent: '+event.eventName+ '/       created By  : '+ event.createurEvent.username + '/                      description : '+ event.description  + '                /startAt  :       ' + event.startAt  +   '                / endAt   :      '+ event.endAt "
+                                cssClass="aclass"
+                                errorCorrectionLevel="correctionLevel">
+                        </ngx-qrcode>
+                        <div class="col-lg-6 mt-lg-0 mt-4 d-lg-flex align-items-center justify-content-end">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-4"></div>
     </div>
 
     <div class="col-lg-15">
@@ -209,9 +223,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 
 

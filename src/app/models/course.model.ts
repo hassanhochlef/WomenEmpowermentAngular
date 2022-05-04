@@ -14,7 +14,7 @@ export class Course {
     calendarId: string;
     nbHours: number;
     certificates: Certificate;
-    files: cFile;
+    files: cFile[];
     buser: User[];
     streamKey: string;
 

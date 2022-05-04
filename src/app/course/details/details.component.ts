@@ -229,6 +229,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
                                              console.log(this.course.channelId);
                                              this.xx = this.course.channelId;
                                              console.log(this.xx);
+                                             console.log(this.course.files);
                                              this.filtersLoaded = Promise.resolve(true);
         });
   }

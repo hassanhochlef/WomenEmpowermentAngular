@@ -17,6 +17,7 @@ export class CourseComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
   listUsers: User[];
 
+
   constructor(private router: Router, private service: CourseService, private userservice: UserService  ) { }
 
   ngOnInit(): void {

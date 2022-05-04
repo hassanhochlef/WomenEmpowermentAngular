@@ -114,4 +114,10 @@ export class CourseService  extends  RequestBaseService {
     // tslint:disable-next-line:max-line-length
     return this.http.post('http://localhost:8087/SpringMVC/CourseEvent/addEvent/' + courseId + '/' + eventName + '/' + hour + '/' + minutes + '/' + date, null, {headers: this.getHeaders});
   }
+  getCertificates(): Observable<Certificate[]> {
+    return this.http.get<Certificate[]>('http://localhost:8087/SpringMVC/Certificate/certif/all', {headers: this.getHeaders});
+  }
+  getFormersNb(){
+    return this.http.get('localhost:8087/SpringMVC/course/course/FormersNb');
+  }
 }

@@ -1,13 +1,38 @@
 <header xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <div class="page-header min-vh-85">
-        <div>
-            <video autoplay muted loop>
-            <source class="position-absolute fixed-top ms-auto w-50 h-100 z-index-0 d-none d-sm-none d-md-block border-radius-section border-top-end-radius-0 border-top-start-radius-0 border-bottom-end-radius-0" src="https://cdn.videvo.net/videvo_files/video/free/2012-10/large_watermarked/hd0097-H264%2075_preview.mp4" alt="image" loading="lazy">
+        <div *ngIf="this.course.domain == 'IT' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2012-10/large_watermarked/hd0097-H264%2075_preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'MEDICAL' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2020-09/large_watermarked/200813_03_Doctors_4k_010_preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'TECH' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="http://localhost/Course/5/spring.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'ARTISANAL' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2019-02/large_watermarked/181004_08_INDUSTRIAL_22_preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'SOCIAL' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2020-01/large_watermarked/191126_2_HD_Party_Cropped_02_preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'AGRICULTURE' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2015-06/large_watermarked/vegetablepatch1_Videvo_preview.mp4" type="video/mp4">
             </video>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 d-flex">
+                <div class="col-lg-5 d-flex">
                     <div class="card card-body blur text-md-start text-center px-sm-5 shadow-lg mt-sm-5 py-sm-5">
                        <h2 class="text-dark mb-0">{{course.courseName}}</h2>
                         <h2 class="text-dark mb-4">{{course.domain}}</h2>
@@ -296,7 +321,7 @@
                                 <td *ngIf="cert.aquired==true" class="align-middle text-center text-sm">
                                     <a style="cursor: pointer" (click)="getCert(cert.certificateId)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
                                 </td>
-                                <td class="align-middle" >
+                                <td class="align-middle" *ngIf="ccCourses.includes(course)">
                                     <div class="btn-group btn-group-sm" aria-label="Basic example">
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[2])" class="btn btn-outline-info">Sanction</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[1])" class="btn btn-outline-warning">Warn</button>
@@ -348,7 +373,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let fi of courseFiles">
+                            <tr *ngFor="let fi of this.course.files">
                                 <td>
                                     <div class="d-flex px-2">
                                         <div class="my-auto">
@@ -356,12 +381,14 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+
+                                <td >
                                     <a style="cursor: pointer" (click)="getFile(fi.url.slice(38,fi.url.length).toString(), fi.name)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
@@ -528,7 +555,6 @@
                     <div class="p-3 info-horizontal d-flex">
                         <div class="app" style="height: 400px;width: 300px">
                             <nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>
-
                         </div>
                 </div>
             </div>
@@ -541,7 +567,7 @@
 
 </section>
 <div *ngFor="let certif of certificate">
-<section *ngIf="certif.user.userId == onlineUser.userId ">
+<section *ngIf="certif.user.userId == onlineUser.userId || ccCourses.includes(course)">
     <h2 class="text-gradient text-primary text-center">Live stream</h2>
     <div class="container">
         <div class="row justify-content-center">

@@ -9,6 +9,7 @@ import {User} from "../../../models/user.model";
 import {Role} from "../../../models/role.enum";
 import { Course } from 'src/app/models/course.model';
 import {Certificate} from "../../../models/certificate.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-course-back-home',
@@ -19,11 +20,12 @@ export class CourseBackHomeComponent extends RequestBaseService implements OnIni
 users: User[];
 courses: Course[];
 certificate: Certificate[];
-Certifn: number;
-  role: Role[] = [];
-  CertificatesCount: number;
-  onGoing: number ;
-  private pieData: any;
+certifiCates: Certificate[];
+Certifn = 0;
+role: Role[] = [];
+CertificatesCount: number;
+formers: number ;
+pieData: any;
   constructor(private activatedRoute: ActivatedRoute, authenticationService: AuthenticationService,
               private service: CourseService, private userservice: UserService,
               private router: Router,
@@ -34,7 +36,9 @@ Certifn: number;
   ngOnInit(): void {
     this.role = [Role.FORMER, Role.COMPANY, Role.ADMIN, Role.ASSOCIATION, Role.USER, Role.EXPERT];
     this.getlistOfUsers();
+    this.getlistofCertificates();
     this.getlistofCourses();
+    this.getFormersNb();
     this.pieData = {
       labels: [ 'Aquired', 'Not Aquired'],
       datasets: [
@@ -52,6 +56,12 @@ Certifn: number;
   }
   getlistofCourses(){
     this.service.getCourses().subscribe(courseresp => {this.courses = courseresp; console.log(courseresp); }) ;
+  }
+  getlistofCertificates(){
+  this.service.getCertificates().subscribe(certifResp => {this.certifiCates = certifResp ; } ) ;
+  }
+  getFormersNb(): Observable<object> {
+    return this.service.getFormersNb();
   }
   ngOnDestroy() {
   }

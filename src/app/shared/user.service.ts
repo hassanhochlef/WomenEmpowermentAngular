@@ -88,4 +88,20 @@ export class UserService extends  RequestBaseService{
   markNotificationAsUnRead(notifId: number){
     return this.http.put(API_URL + 'notification/unread', notifId, {headers: this.getHeaders});
   }
+
+  getAllCourses(): Observable<any>{
+    return this.http.get(API_URL + 'courses', {headers: this.getHeaders});
+  }
+
+  getAllEvents(): Observable<any>{
+    return this.http.get(API_URL + 'events', {headers: this.getHeaders});
+  }
+
+  getAllOffers(): Observable<any>{
+    return this.http.get(API_URL + 'offers', {headers: this.getHeaders});
+  }
+
+  getAllPosts(): Observable<any>{
+    return this.http.get(API_URL + 'posts', {headers: this.getHeaders});
+  }
 }

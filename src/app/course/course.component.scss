@@ -42,22 +42,22 @@ body {
   margin-top: .2rem;
 }
 .inside-page__heading--artisanal,
-.card-front__text-view--artisanal{ color: #9F2B90; }
+.card-front__text-view--artisanal{ color: #24829b; }
 .inside-page__heading--social,
-.card-front__text-view--social { color: #8227b6; }
+.card-front__text-view--social { color: #24829b; }
 .inside-page__heading--city,
-.card-front__text-view--city { color: #132b81; }
+.card-front__text-view--city { color: #24829b; }
 
 .inside-page__heading--agriculture,
-.card-front__text-view--agriculture { color: #57ca85; }
+.card-front__text-view--agriculture { color: #24829b; }
 .inside-page__heading--ski,
-.card-front__text-view--ski { color: #2aaac1; }
+.card-front__text-view--ski { color: #24829b; }
 
 .inside-page__heading--beach,
-.card-front__text-view--beach { color: #70c241; }
+.card-front__text-view--beach { color: #24829b; }
 
 .inside-page__heading--camping,
-.card-front__text-view--camping { color: #293b7c; }
+.card-front__text-view--camping { color: #24829b; }
 
 /* Front cover */
 
@@ -293,54 +293,54 @@ body {
 .card-front__tp--artisanal {
   background: linear-gradient(
                   to bottom,
-                  #d571c5,
-                  #c962bb
+                 rgb(80,175,195),
+                 rgb(80,175,195)
   );
 }
 
 .card-front__tp--city {
   background: linear-gradient(
                   to bottom,
-                  #4887a2,
-                  #374c8d
+                 rgb(80,175,195),
+                 rgb(80,175,195)
   );
 }
 .card-front__tp--social {
   background: linear-gradient(
                   to bottom,
-                  #b878ef,
-                  #923bc9
+                 rgb(80,175,195),
+                 rgb(80,175,195)
   );
 }
 .card-front__tp--agriculture {
   background: linear-gradient(
                   to bottom,
-                  #57ca85,
-                  #3ba870
+                 rgb(80,175,195),
+                 rgb(80,175,195)
   );
 }
 
 .card-front__tp--ski {
   background: linear-gradient(
                   to bottom,
-                  #47c2d7,
-                  #279eb2
+                  rgb(80,175,195),
+                  rgb(80,175,195)
   );
 }
 
 .card-front__tp--beach {
   background: linear-gradient(
                   to bottom,
-                  #8cfb88,
-                  #69af3b
+                 rgb(80,175,195),
+                 rgb(80,175,195)
   );
 }
 
 .card-front__tp--camping {
   background: linear-gradient(
                   to bottom,
-                  #5582d7,
-                  #293b7c
+                 rgb(80,175,195),
+                 rgb(80,175,195)
   );
 }
 

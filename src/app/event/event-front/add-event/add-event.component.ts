@@ -61,6 +61,9 @@ export class AddEventComponent implements OnInit {
       window.alert('Please select correct image format');
     }
   }
+  redirectToDashborEvent(){
+    this.router.navigate(['user/eventFront']);
+  }
 
 
 }

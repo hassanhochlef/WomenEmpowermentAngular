@@ -172,6 +172,8 @@ import { AddEventComponent } from './event/event-front/add-event/add-event.compo
 import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
 import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
 import {ChatComponent} from "./forum/chat/chat.component";
 import {ChatboxComponent} from "./chatbox/chatbox.component";
 import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
@@ -266,6 +268,9 @@ import { SubscriptionComponent } from './user/subscription/subscription.componen
         VirtualScrollerModule,
         AppCodeModule,
         ReactiveFormsModule,
+        NgxPaginationModule,
+        NgxQRCodeModule
+
     ],
     declarations: [
         AppComponent,

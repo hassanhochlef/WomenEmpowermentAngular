@@ -5,9 +5,9 @@ export class Donation{
     donationId: number;
     donationDate: string;
     codePayement: string;
-    qrcode: string;
-    donor?: User;
-    event?: Event;
+    amountForEvent: number;
+    donor?: User[];
+    event?: Event[];
 
 
 }

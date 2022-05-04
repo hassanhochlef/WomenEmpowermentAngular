@@ -146,7 +146,7 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'detailEvent/:id', component: DetailEventComponent},
                     {path: 'addEvent', component: AddEventComponent},
-                    {path: 'payment', component: PaymentDonationComponent},
+                    {path: 'payment/:id', component: PaymentDonationComponent},
                     {
                         path: 'forum',
                         component: ForumComponent,

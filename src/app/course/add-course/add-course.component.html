@@ -12,19 +12,55 @@
 		</div>
 	</div>
 </header>
+<div style="  position: -webkit-sticky;
+float: right;
+  position: sticky;
+  width: 400px;
+  height:400px;
+  top: 0;
+  padding: 50px;
+  z-index: 30;
+          overflow-x: hidden;
 
-<section class="py-5 bg-gradient-white">
+">
+<h5>Your courses</h5>
+	<ng-container *ngFor="let c of ccCourses" >
+
+		<div  >
+			<div class="container">
+				<div class="row justify-space-between py-2">
+					<div class="col-6 ">
+						<div class="card shadow-lg ">
+							<div class="card-body" >
+								<h4>{{c.courseName}}</h4>
+								<p>
+									{{ c.startDate }} <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i> {{ c.endDate}}
+								</p>
+								<a (click)="openGameDetails(c.courseId.toString())" style="cursor: pointer" class="text-primary icon-move-right">More
+									<i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
+
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+
+</div>
+<div style="width: 600px; " >
+<section class="py-5 bg-gradient-white" style="padding-left: 150px">
 	<section >
-
 		<div>
-
 						<div  class="container" >
-							<h2 class="text-black-50 mb-3">Add course</h2>
+							<h2 >Add course</h2>
 							<form #f1="ngForm" (ngSubmit)="f1.form.valid && addCourse() " xmlns="http://www.w3.org/1999/html">
-								<div class="input-group input-group-outline mb-3">
+								<div class="input-group input-group-outline mb-3" >
 									<label class="form-label">Course name</label>
-									<input type="text" class="form-control" id="courseName" name="courseName"  [(ngModel)]="course.courseName" class="form-control" required>
+									<input type="text"  class="form-control" id="courseName" #courseName="ngModel" name="courseName" minlength="1"  [(ngModel)]="course.courseName" class="form-control" required>
 								</div>
+
 								<div class="input-group input-group-outline mb-3">
 								<label class="form-label">Start date</label>
 								<input type="date" class="form-control" id="startDate" name="startDate"  [(ngModel)]="course.startDate" >
@@ -54,7 +90,7 @@
 								</div>
 								</div>
 
-								<button type="submit" class="btn bg-gradient-primary w-auto me-2">Add</button>
+								<button type="submit" class="btn bg-gradient-warning mb-0 ms-lg-3 ms-sm-2 mb-sm-0 mb-2 me-auto w-100 d-block">Add</button>
 							</form>
 						</div>
 
@@ -62,3 +98,4 @@
 
 	</section>
 </section>
+</div>

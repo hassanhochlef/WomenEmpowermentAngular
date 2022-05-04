@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, SchemaMetadata} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Course} from '../../models/course.model';
@@ -21,6 +21,7 @@ import {cFile} from "../../models/file.model";
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent  extends RequestBaseService implements OnInit, OnDestroy{
+
   certificate: Certificate[];
   listCours: Course[];
   user: User[];
@@ -83,8 +84,6 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   this.myScriptElement2.src = 'https://unpkg.com/@nylas/components-agenda';
   document.head.appendChild(this.myScriptElement2);
   this.onlineUser = this.authenticationService.currentUserValue;
-
-
   }
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) =>
@@ -103,6 +102,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
       {label: 'Unqualified', value: 'unqualified'},
       {label: 'Qualified', value: 'qualified'}
     ];
+    console.log(this.ccCourses);
   }
   changebutton(){
     this.fieldTextType = !this.fieldTextType;
@@ -156,6 +156,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
         .subscribe(courseResp => {
           this.ccCourses = courseResp;
         });
+
   }
   getBannedParticipants(idcourse: string): void{
     this.courseSub = this.service
@@ -168,7 +169,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
     this.service.updateCourse(this.course.courseId.toString(), this.course).subscribe();
   }
   getFiles(){
-    this.service.getCourseFiles().subscribe(fileresp => {this.courseFiles = fileresp; console.log(fileresp); });
+    this.service.getCourseFiles().subscribe(fileresp => {this.courseFiles = fileresp; });
 
   }
   getFile(id: string, filename: string){
@@ -195,7 +196,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   }
   onFileSelcted(event: any){
         this.fileToUpload = event.target.files[0];
-        console.log(this.fileToUpload.name);
+
       }
       onSaveFile(){
         const formData = new FormData();
@@ -226,10 +227,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
         .getCourse(id)
         .subscribe(courseResp => {
                                              this.course = courseResp;
-                                             console.log(this.course.channelId);
                                              this.xx = this.course.channelId;
-                                             console.log(this.xx);
-                                             console.log(this.course.files);
                                              this.filtersLoaded = Promise.resolve(true);
         });
   }

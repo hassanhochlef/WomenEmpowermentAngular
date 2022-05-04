@@ -293,7 +293,7 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Username</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Certificate status</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Download certificate</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Download certificate</th>
                                 <th class="text-secondary opacity-7"></th>
                             </tr>
                             </thead>
@@ -321,8 +321,8 @@
                                 <td *ngIf="cert.aquired==true" class="align-middle text-center text-sm">
                                     <a style="cursor: pointer" (click)="getCert(cert.certificateId)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
                                 </td>
-                                <td class="align-middle" *ngIf="ccCourses.includes(course)">
-                                    <div class="btn-group btn-group-sm" aria-label="Basic example">
+                                <td class="align-middle" *ngFor="let cc of ccCourses" >
+                                    <div class="btn-group btn-group-sm" aria-label="Basic example" *ngIf="courseId === cc.courseId.toString()">
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[2])" class="btn btn-outline-info">Sanction</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[1])" class="btn btn-outline-warning">Warn</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[0])" class="btn btn-outline-danger">Kick</button>
@@ -348,8 +348,8 @@
                     <div class="table-responsive">
                         <table class="table align-items-center mb-0">
                             <thead>
-                            <div class="file-input">
-                                <table>
+                            <div class="file-input" *ngFor="let cc of ccCourses">
+                                <table *ngIf="cc.courseId.toString() === courseId">
 
                                     <td>
                                         <input type="file" id="file" class="file" (change)="onFileSelcted($event)">
@@ -566,13 +566,22 @@
     </section>
 
 </section>
-<div *ngFor="let certif of certificate">
-<section *ngIf="certif.user.userId == onlineUser.userId || ccCourses.includes(course)">
+<div *ngFor="let certif of certificate" >
+    <div *ngFor="let cc of ccCourses">
+<section *ngIf="certif.user.userId == onlineUser.userId || cc.courseId.toString() === courseId ">
+    <div class="row">
+        <div class="col-md-5 ms-auto me-auto text-center">
+            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                <i class="material-icons opacity-10">smart_display</i>
+            </div>
+        </div>
+    </div>
     <h2 class="text-gradient text-primary text-center">Live stream</h2>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card">
+
                     <div [attr.data-hesp-live-id]="course.channelId"  style="width: 1000px; height: 700px ;"></div>
                 </div>
             </div>
@@ -580,15 +589,20 @@
     </div>
 </section>
 </div>
-
+</div>
 <section>
     <div class="container py-4">
         <div class="row" >
             <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
                 <div class="card d-flex justify-content-center p-4 shadow-lg">
-                    <div class="text-center">
-                        <h3 class="text-gradient text-primary">Create quiz</h3>
+                    <div class="row">
+                        <div class="col-md-5 ms-auto me-auto text-center">
+                            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                                <i class="material-icons opacity-10">quiz</i>
+                            </div>
+                        </div>
                     </div>
+                    <h2 class="text-gradient text-primary text-center">Quiz</h2>
                     <div class="card card-plain">
                         <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addQuiz()" id="contact-form"  autocomplete="off" style="overflow-y: auto; max-height: 250px;">
                             <div class="card-body pb-2">
@@ -731,4 +745,9 @@
         </div>
     </div>
 </section>
-<button (click)="gotoQuiz(courseId.toString())">ANSWER QUIZZ</button>
+<div id="deployform" class="deployform" (click)="gotoQuiz(courseId.toString())">
+    <h6 style="color: white; padding-left: 12px">Quiz</h6>
+    <i class="fa fa-question icon" aria-hidden="true"></i>
+
+
+</div>

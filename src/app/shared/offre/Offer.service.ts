@@ -40,10 +40,10 @@ export class OfferService extends  RequestBaseService{
    updateOfferById( x: Offre){
         return this.http.put('http://localhost:8087/SpringMVC/offer/update-Offer/', x);
     }
-    ApplyOffer(id: number, cvInfo: CvInfo){
+   /* ApplyOffer(id: number, cvInfo: CvInfo){
         return this.http.post<CvInfo>('http://localhost:8087/SpringMVC/Cv/upload/{userId}/{offerId}', +id , {headers: this.getHeaders});
 
-    }
+    }*/
 
 
 

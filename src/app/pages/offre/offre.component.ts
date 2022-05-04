@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-offre',
   templateUrl: './offre.component.html',
-  styleUrls: ['./offre.component.scss']
+  styleUrls: ['./offre.component.css']
 })
 export class OffreComponent implements OnInit {
     offre: Offre = new Offre();
@@ -35,7 +35,7 @@ export class OffreComponent implements OnInit {
         this.apiOffreService.updateOfferById(this.offre2).subscribe(() => this.router.navigateByUrl('/user/offre'));
     }
     applyOffer(id: number){
-        this.apiOffreService.ApplyOffer(id).subscribe(() => this.router.navigateByUrl('/user/offre'));
+   //     this.apiOffreService.ApplyOffer(id).subscribe(() => this.router.navigateByUrl('/user/offre'));
     }
   /*addOfree(){
     this.apiOffreService.createOffre(this.offre, 11).subscribe(

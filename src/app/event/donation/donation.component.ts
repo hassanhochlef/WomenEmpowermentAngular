@@ -3,6 +3,7 @@ import {Customer} from '../../demo/domain/customer';
 import {CustomerService} from '../../demo/service/customerservice';
 import {Donation} from "../../models/donation.model";
 import {DonationService} from "../../shared/donation.service";
+import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediaries/ngx-qrcode";
 
 @Component({
   selector: 'app-donation',
@@ -11,17 +12,19 @@ import {DonationService} from "../../shared/donation.service";
 
 })
 export class DonationComponent implements OnInit {
-  donations: Donation[];
 
 
-  constructor(private donationService: DonationService) { }
+
+
+
+
+  constructor() { }
 
   ngOnInit() {
-    this.donationService.getDonationList().subscribe(donation => {
-      this.donations = donation;
-      console.log(this.donations);
-    });
+
 
   }
+
+
 }
 

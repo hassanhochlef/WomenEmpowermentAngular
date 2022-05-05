@@ -1,24 +1,87 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container">
-    <div class="col-md-9" *ngFor="let qui of quizez">
-        <div class="question-main" *ngFor="let quest of qui.questions; let i=index">
-            <div class="title"><span>{{quest.question}}</span>{{quest.questionId}}
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75" style="background-image: url('assets/img/examples/quiz-bnr-feb18-2.jpg');">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mx-auto my-auto">
+                    <h1  style="color: #d91f46">Pass this Quiz for a Certificate</h1>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="answer" *ngFor="let ans of quest.answers" name="questionId" >
-                        <input type="radio" id="{{ans.answerId}}"  value="{{ans.answerId}}" name="konnect" (click)="getQuestionAnswer(quest.questionId,ans.answerId)">
-                        <label for="{{ans.answerId}}"><span>{{ans.answerContent}}</span></label>
+        </div>
+    </div>
+</header>
+<div style="  position: -webkit-sticky;
+float: right;
+  position: sticky;
+  width: 400px;
+  height:400px;
+  top: 0;
+  padding: 5px;
+  z-index: 10;
+          overflow-x: hidden;
+">
+
+    <ng-container *ngFor="let p of listAdversting">
+
+        <div class="container" style="">
+            <div class="row justify-space-between py-2">
+                <div class="col-6 mx-auto">
+                    <div class="rotating-card-container">
+                        <div class="card card-rotate card-background mt-md-0 mt-5">
+                            <div class="front front-background min-height-100" style="background-image: url(https://cdn3.vectorstock.com/i/1000x1000/05/52/women-empowerment-with-cartoons-from-side-vector-35080552.jpg); background-size: cover;width: 250px; height: 250px">
+                                <div class="card-body  text-center">
+                                    <p class="text-sm  text-uppercase font-weight-normal">Music</p>
+                                    <h4 class=" mb-0">{{p.name}}</h4>
+                                </div>
+                            </div>
+                            <div class="back back-background min-height-100" style="background-image: url(https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/toboshar.jpg); background-size: cover ;width: 250px; height: 250px">
+                                <div class="card-body  ">
+                                    <h3 class="text-white mb-0">{{p.name}}</h3>
+                                    <p class="text-white opacity-8">{{p.text}}</p>
+                                    <div class="buttons-group">
+                                        <button type="button" class="btn btn-white btn-sm mt-3">Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
+        </div>
+    </ng-container>
 
-         </div>
-        <button (click)="addAnswers()">VALIDE QUIZZ</button>
-    </div>
 </div>
+<div style="background-color:rgb(217,31,70)">
+    <br>
+<div class="quiz-container" *ngFor="let qui of quizez" style="margin-left: 20%">
+    <br>
+    <h1>{{qui.theme}}</h1>
+    <hr>
+    <ul *ngFor="let quest of qui.questions" style="padding-left: 20px ;padding-top:20px" >
+        <p>{{quest.question}} </p>
+        <div id="{{quest.questionId}}">
+            <ui *ngFor="let ans of quest.answers" name="questionId">
+            <input type="radio" name="{{quest.questionId}}"  checked (click)="getQuestionAnswer(quest.questionId,ans.answerId)">
+            <label  class="borough">{{ans.answerContent}}</label><br>
+            </ui>
+        </div>
+        <hr>
+    </ul>
+    <div style="margin-right: 10%;">
+    <button  type="button" class="btn bg-gradient-primary w-auto me-2" (click)="addAnswers()">Validate</button>
+</div>
+    <br>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+

@@ -18,6 +18,7 @@ import {AppMainComponent} from './app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
+import {AppLoginComponent} from './pages/app.login.component';
 import {InputDemoComponent} from './demo/view/inputdemo.component';
 import {ButtonDemoComponent} from './demo/view/buttondemo.component';
 import {TableDemoComponent} from './demo/view/tabledemo.component';
@@ -55,6 +56,31 @@ import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 import {ProfilComponent} from './user/profil/profil.component';
+import {ProfilComponent} from './user/profil/profil.component';
+import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.component';
+import {NewPasswordComponent} from './user/new-password/new-password.component';
+import {EventComponent} from './event/event.component';
+import {OffreComponent} from './pages/offre/offre.component';
+import {AddOfferComponent} from './pages/offre/add-offer/add-offer.component';
+import {QuizComponent} from "./course/quiz/quiz.component";
+import {EventFrontComponent} from './event/event-front/event-front.component';
+import {DonationComponent} from './event/donation/donation.component';
+import {UserPostsComponent} from './forum/user-posts/user-posts.component';
+import {DetailEventComponent} from "./event/event-front/detail-event/detail-event.component";
+import {AddEventComponent} from "./event/event-front/add-event/add-event.component";
+import {MapComponent} from "./event/event-front/map/map.component";
+import {PaymentDonationComponent} from "./event/event-front/payment-donation/payment-donation.component";
+import {UserDetailsComponent} from './user/user-details/user-details.component';
+import {ChatboxComponent} from "./chatbox/chatbox.component";
+import {ChatComponent} from "./forum/chat/chat.component";
+import {ChatPriveComponent} from "./forum/chat-prive/chat-prive.component";
+import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
+import {PostDetailsComponent} from './forum/post-details/post-details.component';
+import {SubscriptionComponent} from './user/subscription/subscription.component';
+import {AuthGuard} from './guards/auth.guard';
+import {Role} from './models/role.enum';
+import {Auth2Guard} from './guards/auth2.guard';
+import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -89,6 +115,46 @@ import {ProfilComponent} from './user/profil/profil.component';
                         component: ServicesComponent,
 
                     },
+                path: '', component: HomeComponent,
+                children: [
+                    {path: '', component: FrontLandingComponent},
+                    {path: 'profil', component: ProfilComponent, canActivate: [Auth2Guard]},
+                    {path: 'cour', component: CourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'forum', component: ForumComponent, canActivate: [Auth2Guard]},
+                    {path: 'details/:id', component : DetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'addcourse', component : AddCourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'quiz/:id', component : QuizComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'offre', component : OffreComponent, canActivate: [Auth2Guard]},
+                    {path: 'addoffer', component : AddOfferComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'detailEvent/:id', component: DetailEventComponent, canActivate: [Auth2Guard]},
+                    {path: 'addEvent', component: AddEventComponent, canActivate: [Auth2Guard]},
+                    {path: 'payment', component: PaymentDonationComponent, canActivate: [Auth2Guard]},
+                    {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'subscribe', component: SubscriptionComponent, canActivate: [Auth2Guard]},
+                    {path: 'cour', component: CourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'forum', component: ForumComponent, canActivate: [Auth2Guard]},
+                    {path: 'post-detais/:id', component: PostDetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'details/:id', component : DetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'addcourse', component : AddCourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'quiz', component : QuizComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'user-post', component: UserPostsComponent},
+                    {path: 'pages/map', component: MapComponent},
+                    {path: 'chat', component: ChatboxComponent},
+
+                ]
+            },
+
+            {
+                path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
+                children: [
+                    {path: '', component: DashboardDemoComponent},
+                    {path: 'user', component: AdminDashboardBackofficeComponent},
+                    {path: 'complaint', component: ComplaintComponent},
+                    {path: 'addcomplaint', component: AddComplaintComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -132,26 +198,42 @@ import {ProfilComponent} from './user/profil/profil.component';
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
+                    {path: 'profil/:id', component: UserDetailsComponent},
                     {path: 'eventFront', component: EventFrontComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
+                    {path: 'post-detais/:id', component: PostDetailsComponent},
                     {path: 'details/:id', component : DetailsComponent},
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},
                     {path: 'eventFront', component: EventFrontComponent},
              {
+
+                    {
                         path: 'user-post',
                         component: UserPostsComponent,
                     },
+                    {
+                        path: 'chat',
+                        component: ChatboxComponent,
+                    },
+                    {
+                        path: 'chatP',
+                        component: ChatPriveComponent,
+                    },
+
                 ]
             },
+
             {path: 'error', component: AppErrorComponent},
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
             {path: 'register', component: RegisterComponent},
+            {path: 'reset-password', component: ForgotPasswordComponent},
+            {path: 'new-password', component: NewPasswordComponent},
             {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
-        ], {scrollPositionRestoration: 'enabled'})
+        ])
     ],
     exports: [RouterModule]
 }

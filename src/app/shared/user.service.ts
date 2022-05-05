@@ -18,12 +18,67 @@ export class UserService extends  RequestBaseService{
     super(authenticationService, http);
   }
 
+
   editProfil(user: User): Observable<any> {
     return this.http.put(API_URL + 'update', user, {headers: this.getHeaders});
   }
 
+  getUser(userId: number): Observable<any> {
+    const userUrl = `http://localhost:8087/SpringMVC/api/user/${userId}`;
+    return this.http.get(userUrl, {headers: this.getHeaders});
+  }
+
+  getAllUser(): Observable<any> {
+    return this.http.get(API_URL + 'all', {headers: this.getHeaders});
+  }
+
+  getAllSubscribedUser(): Observable<any> {
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/subscribed', {headers: this.getHeaders});
+  }
+
+  getMyPosts(): Observable<any>{
+    return this.http.get(API_URL + 'myPosts', {headers: this.getHeaders});
+  }
+
+  followUser(username: string): Observable<any> {
+    const userUrl = `http://localhost:8087/SpringMVC/api/user/friend/follow/${username}`;
+    return this.http.post(userUrl, null, {headers: this.getHeaders});
+  }
+
+  unfollowUser(username: string): Observable<any> {
+    const userUrl = `http://localhost:8087/SpringMVC/api/user/friend/unfollow/${username}`;
+    return this.http.delete(userUrl, {headers: this.getHeaders});
+  }
+
+  getUserProfilPicture(): Observable<any> {
+    return this.http.get(API_URL + 'picture', {headers: this.getHeaders, responseType: 'text'});
+  }
+
+  getUserProfilPicture2(userId: string): Observable<any> {
+    let queryParams = {'userId': userId};
+    return this.http.get(API_URL + 'picture2', {headers: this.getHeaders, params: queryParams, responseType: 'text'});
+  }
+
   getAllFriends(): Observable<any> {
     return this.http.get(API_URL + 'friends', {headers: this.getHeaders});
+  }
+
+  getAllFriends2(userId: string): Observable<any> {
+    let queryParams = {'userId': userId};
+    return this.http.get(API_URL + 'friends2', {headers: this.getHeaders, params: queryParams});
+  }
+
+  getSuggestedFriends(): Observable<any> {
+    return this.http.get(API_URL + 'suggestions', {headers: this.getHeaders});
+  }
+
+  getSuggestedFriends2(): Observable<any> {
+    return this.http.get(API_URL + 'suggestions2', {headers: this.getHeaders});
+  }
+
+  getUsersInCommon(userId: string): Observable<any> {
+    let queryParams = {'userId2': userId};
+    return this.http.get(API_URL + 'common-friends', {headers: this.getHeaders, params: queryParams});
   }
 
   getNotifications(): Observable<any> {
@@ -32,5 +87,33 @@ export class UserService extends  RequestBaseService{
 
   markNotificationAsRead(notifId: number){
     return this.http.put(API_URL + 'notification/read', notifId, {headers: this.getHeaders});
+  }
+
+  markNotificationAsUnRead(notifId: number){
+    return this.http.put(API_URL + 'notification/unread', notifId, {headers: this.getHeaders});
+  }
+
+  getAllCourses(): Observable<any>{
+    return this.http.get(API_URL + 'courses', {headers: this.getHeaders});
+  }
+
+  getAllEvents(): Observable<any>{
+    return this.http.get(API_URL + 'events', {headers: this.getHeaders});
+  }
+
+  getAllOffers(): Observable<any>{
+    return this.http.get(API_URL + 'offers', {headers: this.getHeaders});
+  }
+
+  getAllPosts(): Observable<any>{
+    return this.http.get(API_URL + 'posts', {headers: this.getHeaders});
+  }
+
+  unlockUser(username: string){
+    return this.http.put('http://localhost:8087/SpringMVC/api/admin/unlock', username, {headers: this.getHeaders});
+  }
+
+  lockUser(username: string){
+    return this.http.put('http://localhost:8087/SpringMVC/api/admin/lock', username, {headers: this.getHeaders});
   }
 }

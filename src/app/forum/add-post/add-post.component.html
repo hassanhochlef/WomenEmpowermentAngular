@@ -10,9 +10,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="row">
+                        <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorMessage">
+                            {{errorMessage}}
+                        </div>
+                    </div>
                     <form>
                         <div class="input-group input-group-outline my-3">
+
                             <label class="form-label">Post Title</label>
+
                             <input type="text" [(ngModel)]= "post.postTitle" name="az" class="form-control">
                         </div>
                         <div class="input-group input-group-outline my-3">
@@ -33,6 +40,7 @@
         </div>
     </div>
 </div>
+
 
 
 

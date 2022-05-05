@@ -8,6 +8,9 @@ import {PostComment} from '../models/postComment.model';
 import {Advertising} from '../models/Advertising.model';
 import {RequestBaseService} from './request-base.service';
 import {AuthenticationService} from './authentication.service';
+import {Chatroom} from "../models/chatroom";
+import {User} from "../models/user.model";
+import {Message} from "../models/mess";
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +30,11 @@ export class ForumService extends  RequestBaseService{
   }
 
   getAdversting(): Observable<Advertising[]> {
-    return this.http.get<Advertising[]>('http://localhost:8087/SpringMVC/forum/Get-all-adversting');
+    return this.http.get<Advertising[]>('http://localhost:8087/SpringMVC/forum/Get-all-adversting', {headers: this.getHeaders});
   }
 
   getComments(id: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>('http://localhost:8087/SpringMVC/forum/Get-Post-Comments/' + id);
+    return this.http.get<Comment[]>('http://localhost:8087/SpringMVC/forum/Get-Post-Comments/' + id, {headers: this.getHeaders});
   }
 
   addPost(post: Post) {
@@ -54,15 +57,69 @@ export class ForumService extends  RequestBaseService{
   }
 
   DeletePost(idPost: string) {
-    return this.http.delete<Post>('http://localhost:8087/SpringMVC/forum/Delete-Post/' + idPost);
+    return this.http.delete<Post>('http://localhost:8087/SpringMVC/forum/Delete-Post/' + idPost , {headers: this.getHeaders});
 
   }
 
-  addImagePost(idPost: string, image: string) {
-    return this.http.post<Post>('http://localhost:8087/SpringMVC/forum/add-Post/' + idPost, image);
+  DeleteCom(idCom: string) {
+    return this.http.delete<PostComment>('http://localhost:8087/SpringMVC/forum/Delete-PostComment/' + idCom , {headers: this.getHeaders});
+
   }
+  UpdateCom(idCom: string , c: PostComment) {
+    return this.http.put<PostComment>('http://localhost:8087/SpringMVC/forum/Update-Comment/' + idCom + '/' , c , {headers: this.getHeaders});
+
+  }
+    UpdatePost(idCom: string , c: Post) {
+      return this.http.put<PostComment>('http://localhost:8087/SpringMVC/forum/Update-Post/' + idCom + '/' , c , {headers: this.getHeaders});
+
+    }
+  addImagePost(idPost: string, image: File): Observable<any> {
+    const data: FormData = new FormData();
+    data.append('image', image);
+
+    return this.http.post('localhost:8087/SpringMVC/forum/add-Post-image/' + idPost, data , {headers: this.getHeaders});
+  }
+
 
   Like_Dislike(idPost: string): Observable<number> {
-    return this.http.get<number>('http://localhost:8087/SpringMVC/forum/get-user-islike-post/' + idPost);
+
+    return this.http.get<number>('http://localhost:8087/SpringMVC/forum/get-user-islike-post/' + idPost, {headers: this.getHeaders});
+  }
+
+  getpostByiD(id: string): Observable<Post>{
+    return this.http.get<Post>('http://localhost:8087/SpringMVC/forum/Get-Post-Details/' + id , {headers: this.getHeaders});
+  }
+
+  ratePost(idp: string , x: string) {
+    return this.http.put<PostComment>('http://localhost:8087/SpringMVC/forum/Give-post-etoile/' + idp + '/'  + x , {headers: this.getHeaders});
+
+  }
+
+  reportPost(idp: string ) {
+    return this.http.get<any>('http://localhost:8087/SpringMVC/forum/Report-Post/' + idp , {headers: this.getHeaders});
+
+  }
+
+  getchatroom(ids: string , idr: string ) {
+    return this.http.get<Chatroom>('http://localhost:8087/SpringMVC/chat/Chatroom/' + ids + '/' + idr , {headers: this.getHeaders});
+
+  }
+
+  GetAllUser() {
+    return this.http.get<User[]>('http://localhost:8087/SpringMVC/chat/ListUser/', {headers: this.getHeaders});
+
+  }
+  sendmsg(id: string, m: Message) {
+    return this.http.post<Message>('http://localhost:8087/SpringMVC/chat/send/' + id, m , {headers: this.getHeaders});
+
+  }
+
+  allchat() {
+    return this.http.get<Chatroom[]>('http://localhost:8087/SpringMVC/chat/allchat' , {headers: this.getHeaders});
+
+  }
+  color(id: string , c: string) {
+    return this.http.post<string>('http://localhost:8087/SpringMVC/chat/color/' + id , c , {headers: this.getHeaders});
+
   }
 }

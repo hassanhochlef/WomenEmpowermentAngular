@@ -2,6 +2,9 @@
 import {PostComment} from './postComment.model';
 import {PostLike} from './postLike.model';
 import {User} from './user.model';
+
+import {PostMedia} from "./PostMedia.model";
+
 export class Post {
     postId: number;
     body: string;
@@ -12,4 +15,5 @@ export class Post {
     postComments: PostComment[];
     postLikes: PostLike[];
     user: User;
+    medias: PostMedia[];
 }

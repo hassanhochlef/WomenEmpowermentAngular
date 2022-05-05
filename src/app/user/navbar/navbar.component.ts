@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   currentUser: User = new User;
   notificationList: Array<Notification> = [];
+  profilPicture!: string;
 
   constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
     this.authenticationService.currentUser.subscribe( data => {
@@ -42,12 +43,25 @@ export class NavbarComponent implements OnInit {
       this.userService.getNotifications().subscribe(data => {
         this.notificationList = data;
       });
+      this.userService.getUserProfilPicture().subscribe(pic => {
+        this.profilPicture = pic.split('\\').pop();
+      }, err => {
+        this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
+      });
     }
 
   }
 
   markAsRead(notifId: number){
     this.userService.markNotificationAsRead(notifId).subscribe();
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
+
+  markAsUnRead(notifId: number){
+    this.userService.markNotificationAsUnRead(notifId).subscribe();
     let currentUrl = this.router.url;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';

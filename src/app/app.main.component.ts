@@ -9,6 +9,8 @@ import {AppComponent} from './app.component';
 })
 export class AppMainComponent implements OnInit, OnDestroy {
 
+    myLinkElement: HTMLLinkElement;
+
     myLinkElement1: HTMLLinkElement;
 
     myLinkElement2: HTMLLinkElement;
@@ -58,17 +60,26 @@ export class AppMainComponent implements OnInit, OnDestroy {
         this.myLinkElement2.id = "layout-css";
         //this.myLinkElement2.style = "text/css";
 
+        const myForm = document.getElementById('pagestyle');
 
-        document.body.appendChild(this.myLinkElement1);
-        document.body.appendChild(this.myLinkElement2);
+        document.head.removeChild(myForm);
+
+
+        document.head.appendChild(this.myLinkElement1);
+        document.head.appendChild(this.myLinkElement2);
     }
 
     ngOnInit() {
     }
 
     ngOnDestroy() {
-        document.body.removeChild(this.myLinkElement1);
-        document.body.removeChild(this.myLinkElement2);
+        document.head.removeChild(this.myLinkElement1);
+        document.head.removeChild(this.myLinkElement2);
+        this.myLinkElement = document.createElement('link');
+        this.myLinkElement.href = "assets/css/material-kit-pro.min3294.css?v=3.0.1";
+        this.myLinkElement.rel = "stylesheet";
+        this.myLinkElement.id = "pagestyle";
+        document.head.appendChild(this.myLinkElement);
     }
 
     onLayoutClick() {

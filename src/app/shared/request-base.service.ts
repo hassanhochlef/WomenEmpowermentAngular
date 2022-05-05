@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export abstract class RequestBaseService {
 
-  protected currentUser: User = new User;
+  protected currentUser: User = new User();
 
   protected constructor(protected authenticationService: AuthenticationService, protected http: HttpClient) {
     this.authenticationService.currentUser.subscribe( data => {

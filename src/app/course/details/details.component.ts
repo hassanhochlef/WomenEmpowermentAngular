@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, SchemaMetadata} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Course} from '../../models/course.model';
@@ -14,12 +14,14 @@ import {StreamService} from '../../shared/stream.service';
 import {QuizQuestion} from '../../models/QuizQuestion.model';
 import {Answer} from '../../models/Answer.model';
 import {FormControl} from '@angular/forms';
+import {cFile} from "../../models/file.model";
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent  extends RequestBaseService implements OnInit, OnDestroy{
+
   certificate: Certificate[];
   listCours: Course[];
   user: User[];
@@ -63,9 +65,11 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   eventDate: Date;
   fieldTextType: boolean;
   fileToUpload: File | null = null;
+  courseFiles: cFile[];
   public xx: string = null;
   fileName = '';
   private certresp: object;
+  private blobres: ArrayBufferView | ArrayBuffer | Blob | string;
   constructor(private activatedRoute: ActivatedRoute,
               authenticationService: AuthenticationService,
               private service: CourseService, private chanelService: StreamService,
@@ -80,8 +84,6 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   this.myScriptElement2.src = 'https://unpkg.com/@nylas/components-agenda';
   document.head.appendChild(this.myScriptElement2);
   this.onlineUser = this.authenticationService.currentUserValue;
-
-
   }
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) =>
@@ -93,12 +95,14 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
       this.getBannedParticipants(this.courseId);
       this.getQuizez(this.courseId);
       this.getChannel(this.courseId);
+      this.getFiles();
       this.pen = [Penality.KICK, Penality.WARNING, Penality.SANCTION ];
     });
     this.statuses = [
       {label: 'Unqualified', value: 'unqualified'},
       {label: 'Qualified', value: 'qualified'}
     ];
+    console.log(this.ccCourses);
   }
   changebutton(){
     this.fieldTextType = !this.fieldTextType;
@@ -106,6 +110,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   addSanction(idUser: string, idCourse: string, pena: Penality){
     this.service.addSanction(idUser, idCourse , pena).subscribe(res => (console.log('added')));
   }
+
   addQuiz(){
     this.answers.push(this.answer1, this.answer2, this.answer3);
     this.question1.answers = this.answers;
@@ -151,6 +156,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
         .subscribe(courseResp => {
           this.ccCourses = courseResp;
         });
+
   }
   getBannedParticipants(idcourse: string): void{
     this.courseSub = this.service
@@ -161,6 +167,21 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   }
   updateCourse(idCourse: string){
     this.service.updateCourse(this.course.courseId.toString(), this.course).subscribe();
+  }
+  getFiles(){
+    this.service.getCourseFiles().subscribe(fileresp => {this.courseFiles = fileresp; });
+
+  }
+  getFile(id: string, filename: string){
+    this.service.getfile(id).subscribe(blobres =>  {console.log(blobres); });
+    const file = this.blobres;
+    const url = window.URL.createObjectURL(new Blob([ this.blobres as BlobPart]));
+    const link = document.createElement('a');
+    document.body.appendChild(link);
+    link.setAttribute('style', 'display: none');
+    link.href = url;
+    link.download =  filename;
+    link.click();
   }
   getCert(idCertificate: number){
     this.service.getAqCertificate(idCertificate).subscribe(blobres =>  {console.log(blobres); this.certresp = blobres; });
@@ -175,13 +196,18 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   }
   onFileSelcted(event: any){
         this.fileToUpload = event.target.files[0];
-        console.log(event.target.result);
+
       }
       onSaveFile(){
-        const formData: FormData = new FormData();
-        formData.append('file', this.fileToUpload, this.fileToUpload.name);
-        return this.service.postFile(this.courseId, this.fileToUpload).toPromise();
+        const formData = new FormData();
+        formData.append('file', this.fileToUpload);
+        // @ts-ignore
+        formData.append('reportProgress', true);
+        return this.service.postFile(this.courseId, this.fileToUpload).subscribe();
       }
+  getCourseResult(idUser: string, idCourse: string){
+    this.service.getCourseResult(idUser, idCourse);
+  }
   gotoQuiz(id: string){
     this.router.navigate(['user/quiz', id]);
   }
@@ -201,9 +227,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
         .getCourse(id)
         .subscribe(courseResp => {
                                              this.course = courseResp;
-                                             console.log(this.course.channelId);
                                              this.xx = this.course.channelId;
-                                             console.log(this.xx);
                                              this.filtersLoaded = Promise.resolve(true);
         });
   }

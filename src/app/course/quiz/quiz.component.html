@@ -12,9 +12,50 @@
         </div>
     </div>
 </header>
+<div style="  position: -webkit-sticky;
+float: right;
+  position: sticky;
+  width: 400px;
+  height:400px;
+  top: 0;
+  padding: 5px;
+  z-index: 10;
+          overflow-x: hidden;
+">
+
+    <ng-container *ngFor="let p of listAdversting">
+
+        <div class="container" style="">
+            <div class="row justify-space-between py-2">
+                <div class="col-6 mx-auto">
+                    <div class="rotating-card-container">
+                        <div class="card card-rotate card-background mt-md-0 mt-5">
+                            <div class="front front-background min-height-100" style="background-image: url(https://cdn3.vectorstock.com/i/1000x1000/05/52/women-empowerment-with-cartoons-from-side-vector-35080552.jpg); background-size: cover;width: 250px; height: 250px">
+                                <div class="card-body  text-center">
+                                    <p class="text-sm  text-uppercase font-weight-normal">Music</p>
+                                    <h4 class=" mb-0">{{p.name}}</h4>
+                                </div>
+                            </div>
+                            <div class="back back-background min-height-100" style="background-image: url(https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/toboshar.jpg); background-size: cover ;width: 250px; height: 250px">
+                                <div class="card-body  ">
+                                    <h3 class="text-white mb-0">{{p.name}}</h3>
+                                    <p class="text-white opacity-8">{{p.text}}</p>
+                                    <div class="buttons-group">
+                                        <button type="button" class="btn btn-white btn-sm mt-3">Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+</div>
 <div style="background-color:rgb(217,31,70)">
     <br>
-<div class="quiz-container" *ngFor="let qui of quizez">
+<div class="quiz-container" *ngFor="let qui of quizez" style="margin-left: 20%">
     <br>
     <h1>{{qui.theme}}</h1>
     <hr>
@@ -28,11 +69,13 @@
         </div>
         <hr>
     </ul>
-    <button type="button" class="btn bg-gradient-primary w-auto me-2" (click)="addAnswers()">Validate</button>
+    <div style="margin-right: 10%;">
+    <button  type="button" class="btn bg-gradient-primary w-auto me-2" (click)="addAnswers()">Validate</button>
+</div>
     <br>
-</div>
-</div>
 
+</div>
+</div>
 
 
 

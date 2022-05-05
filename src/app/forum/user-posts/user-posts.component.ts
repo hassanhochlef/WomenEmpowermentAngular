@@ -5,6 +5,7 @@ import {PostComment} from '../../models/postComment.model';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {ForumService} from '../../shared/forum.service';
+import {ChatService} from "../../shared/chat.service";
 
 @Component({
   selector: 'app-user-posts',
@@ -19,7 +20,6 @@ export class UserPostsComponent implements OnInit {
   comment: Comment;
   id: string;
   private routeSub: Subscription;
-
   constructor(private router: Router, private service: ForumService) {
   }
 

@@ -62,6 +62,8 @@ import {AddEventComponent} from "./event/event-front/add-event/add-event.compone
 import {MapComponent} from "./event/event-front/map/map.component";
 import {PaymentDonationComponent} from "./event/event-front/payment-donation/payment-donation.component";
 import {UserDetailsComponent} from './user/user-details/user-details.component';
+import {ChatboxComponent} from "./chatbox/chatbox.component";
+import {ChatComponent} from "./forum/chat/chat.component";
 import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
@@ -69,7 +71,6 @@ import {AuthGuard} from './guards/auth.guard';
 import {Role} from './models/role.enum';
 import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
-
 
 @NgModule({
     imports: [
@@ -91,11 +92,6 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                     {path: 'detailEvent/:id', component: DetailEventComponent, canActivate: [Auth2Guard]},
                     {path: 'addEvent', component: AddEventComponent, canActivate: [Auth2Guard]},
                     {path: 'payment', component: PaymentDonationComponent, canActivate: [Auth2Guard]},
-                    {
-                        path: 'forum',
-                        component: ForumComponent,
-                    },
-
                     {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
                     {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
                     {path: 'subscribe', component: SubscriptionComponent, canActivate: [Auth2Guard]},
@@ -106,11 +102,10 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                     {path: 'addcourse', component : AddCourseComponent, canActivate: [Auth2Guard]},
                     {path: 'quiz', component : QuizComponent, canActivate: [Auth2Guard]},
                     {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
-                    {
-                        path: 'user-post',
-                        component: UserPostsComponent,
-                    },
+                    {path: 'user-post', component: UserPostsComponent},
                     {path: 'pages/map', component: MapComponent},
+                    {path: 'chat', component: ChatboxComponent},
+
                 ]
             },
 
@@ -157,6 +152,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
 
                 ]
             },
+
             {path: 'error', component: AppErrorComponent},
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},

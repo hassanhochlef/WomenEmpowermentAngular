@@ -5,17 +5,27 @@
             <div class="p-col-12 p-md-6 p-xl-3">
                 <div class="card no-gutter widget-overview-box widget-overview-box-1">
                                 <span class="overview-icon">
-                                    <i class="pi pi-shopping-cart"></i>
+                                    <i class="pi pi-book"></i>
                                 </span>
                     <span class="overview-title">Number of courses</span>
                     <div class="p-grid overview-detail">
-                        <div class="p-col-6">
-                            <div class="overview-number">640</div>
-                            <div class="overview-subtext">Pending</div>
+                        <div class="p-col-12">
+                            <div class="overview-number">{{ courses.length }}</div>
+                            <div class="overview-subtext">Created</div>
                         </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">1420</div>
-                            <div class="overview-subtext">Completed</div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-md-6 p-xl-3">
+                <div class="card no-gutter widget-overview-box widget-overview-box-2">
+                                <span class="overview-icon">
+                                    <i class="pi pi-user"></i>
+                                </span>
+                    <span class="overview-title">Participants</span>
+                    <div class="p-grid overview-detail">
+                        <div class="p-col-12">
+                            <div class="overview-number">$2,100</div>
+                            <div class="overview-subtext">Total</div>
                         </div>
                     </div>
                 </div>
@@ -25,15 +35,11 @@
                                 <span class="overview-icon">
                                     <i class="pi pi-dollar"></i>
                                 </span>
-                    <span class="overview-title">Revenue</span>
+                    <span class="overview-title">Formers</span>
                     <div class="p-grid overview-detail">
-                        <div class="p-col-6">
-                            <div class="overview-number">$2,100</div>
-                            <div class="overview-subtext">Expenses</div>
-                        </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">$9,640</div>
-                            <div class="overview-subtext">Income</div>
+                        <div class="p-col-12">
+                            <div class="overview-number">{{ this.getFormersNb()}}</div>
+                            <div class="overview-subtext">Total</div>
                         </div>
                     </div>
                 </div>
@@ -43,37 +49,42 @@
                                 <span class="overview-icon">
                                     <i class="pi pi-users"></i>
                                 </span>
-                    <span class="overview-title">Customers</span>
+                    <span class="overview-title">Certificates</span>
                     <div class="p-grid overview-detail">
-                        <div class="p-col-6">
-                            <div class="overview-number">8272</div>
-                            <div class="overview-subtext">Active</div>
-                        </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">25402</div>
-                            <div class="overview-subtext">Registered</div>
+                        <div class="p-col-12">
+                            <div class="overview-number">{{this.certifiCates.length}}</div>
+                            <div class="overview-subtext">Total</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="p-col-12 p-md-6 p-xl-3">
-                <div class="card no-gutter widget-overview-box widget-overview-box-4">
-                                <span class="overview-icon">
-                                    <i class="pi pi-comment"></i>
-                                </span>
-                    <span class="overview-title">Comments</span>
-                    <div class="p-grid overview-detail">
-                        <div class="p-col-6">
-                            <div class="overview-number">12</div>
-                            <div class="overview-subtext">New</div>
-                        </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">85</div>
-                            <div class="overview-subtext">Responded</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
+<div class="p-col-12 p-lg-4">
+    <div class="card">
+        <h4>Formers</h4>
+        <ul class="widget-person-list">
+            <li *ngFor="let u of users">
+                <div class="person-item" *ngIf="u.role === role[0]">
+                    <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
+                    <div class="person-info">
+                        <div class="person-name">{{ u.username }}</div>
+                        <div class="person-subtext">{{ u.phoneNumber }}</div>
+                    </div>
+                </div>
+                <div class="person-actions" *ngIf="u.role === role[0]">
+                    <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope"></button>
+                    <button type="button" class="p-button-rounded p-button-warning" pButton icon="pi pi-cog" ></button>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="card">
+        <h5 class="centerText">Doughnut Chart</h5>
+        <p-chart type="doughnut" [data]="pieData"></p-chart>
+    </div>
+</div>
+<iframe src="https://calendar.google.com/calendar/embed?src=flo9b3693avoitcsm8st7v1dbc%40group.calendar.google.com&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>

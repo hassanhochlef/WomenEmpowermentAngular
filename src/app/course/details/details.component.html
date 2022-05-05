@@ -1,13 +1,38 @@
 <header xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <div class="page-header min-vh-85">
-        <div>
-            <video autoplay muted loop>
-            <source class="position-absolute fixed-top ms-auto w-50 h-100 z-index-0 d-none d-sm-none d-md-block border-radius-section border-top-end-radius-0 border-top-start-radius-0 border-bottom-end-radius-0" src="https://cdn.videvo.net/videvo_files/video/free/2012-10/large_watermarked/hd0097-H264%2075_preview.mp4" alt="image" loading="lazy">
+        <div *ngIf="this.course.domain == 'IT' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2012-10/large_watermarked/hd0097-H264%2075_preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'MEDICAL' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2020-09/large_watermarked/200813_03_Doctors_4k_010_preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'TECH' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="http://localhost/Course/5/spring.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'ARTISANAL' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2019-02/large_watermarked/181004_08_INDUSTRIAL_22_preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'SOCIAL' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2020-01/large_watermarked/191126_2_HD_Party_Cropped_02_preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div *ngIf="this.course.domain == 'AGRICULTURE' ">
+            <video class="video__container" autoplay muted loop>
+                <source class="video__media" src="https://cdn.videvo.net/videvo_files/video/free/2015-06/large_watermarked/vegetablepatch1_Videvo_preview.mp4" type="video/mp4">
             </video>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 d-flex">
+                <div class="col-lg-5 d-flex">
                     <div class="card card-body blur text-md-start text-center px-sm-5 shadow-lg mt-sm-5 py-sm-5">
                        <h2 class="text-dark mb-0">{{course.courseName}}</h2>
                         <h2 class="text-dark mb-4">{{course.domain}}</h2>
@@ -212,9 +237,6 @@
         </div>
     </div>
 </div>
-
-<button (click)="onSaveFile()"></button>
-<input type="file" id="formFile" (change)="onFileSelcted($event)" >
 <section class="py-md-7 pb-5">
     <div class="container">
         <div class="row text-center">
@@ -271,11 +293,12 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Username</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Certificate status</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Download certificate</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Download certificate</th>
                                 <th class="text-secondary opacity-7"></th>
                             </tr>
                             </thead>
                             <tbody *ngFor="let cert of certificate">
+                            <div><button class="btn btn-light" (click)="getCourseResult(cert.user.userId.toString(), courseId)">Generate certificates</button></div>
                             <tr>
                                 <td>
                                     <div class="d-flex px-2 py-1">
@@ -298,8 +321,8 @@
                                 <td *ngIf="cert.aquired==true" class="align-middle text-center text-sm">
                                     <a style="cursor: pointer" (click)="getCert(cert.certificateId)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
                                 </td>
-                                <td class="align-middle" >
-                                    <div class="btn-group btn-group-sm" aria-label="Basic example">
+                                <td class="align-middle" *ngFor="let cc of ccCourses" >
+                                    <div class="btn-group btn-group-sm" aria-label="Basic example" *ngIf="courseId === cc.courseId.toString()">
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[2])" class="btn btn-outline-info">Sanction</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[1])" class="btn btn-outline-warning">Warn</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[0])" class="btn btn-outline-danger">Kick</button>
@@ -310,6 +333,62 @@
                             </tbody>
 
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pt-5 mt-5">
+    <h2 class="text-gradient text-primary text-center">Course documents</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                            <div class="file-input" *ngFor="let cc of ccCourses">
+                                <table *ngIf="cc.courseId.toString() === courseId">
+
+                                    <td>
+                                        <input type="file" id="file" class="file" (change)="onFileSelcted($event)">
+                                        <label for="file">
+                                            Select file
+                                            <p class="file-name"></p>
+                                        </label>
+
+                                    </td>
+                                    <td>
+                                        <a class="file"  id="upload"(click)="onSaveFile()"></a>
+                                        <label for="upload">Upload<p class="file-name"></p></label>
+                                    </td>
+
+                                </table>
+                            </div>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Document name</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Download</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let fi of this.course.files">
+                                <td>
+                                    <div class="d-flex px-2">
+                                        <div class="my-auto">
+                                            <h6 class="mb-0 text-xs">{{ fi.name }}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td >
+                                    <a style="cursor: pointer" (click)="getFile(fi.url.slice(38,fi.url.length).toString(), fi.name)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
             </div>
@@ -474,9 +553,11 @@
                 </div>
                 <div class="col-md-5 me-auto my-auto ms-md-5">
                     <div class="p-3 info-horizontal d-flex">
-                        <div class="app" style="height: 400px;width: 300px">
 
-                        </div>
+<!--                        <div class="app" style="height: 400px;width: 300px">-->
+<!--                            <nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>-->
+<!--                        </div>-->
+
                 </div>
             </div>
         </div>
@@ -487,13 +568,22 @@
     </section>
 
 </section>
-<div *ngFor="let certif of certificate">
-<section *ngIf="certif.user.userId == onlineUser.userId ">
+<div *ngFor="let certif of certificate" >
+    <div *ngFor="let cc of ccCourses">
+<section *ngIf="certif.user.userId == onlineUser.userId || cc.courseId.toString() === courseId ">
+    <div class="row">
+        <div class="col-md-5 ms-auto me-auto text-center">
+            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                <i class="material-icons opacity-10">smart_display</i>
+            </div>
+        </div>
+    </div>
     <h2 class="text-gradient text-primary text-center">Live stream</h2>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card">
+
                     <div [attr.data-hesp-live-id]="course.channelId"  style="width: 1000px; height: 700px ;"></div>
                 </div>
             </div>
@@ -501,15 +591,20 @@
     </div>
 </section>
 </div>
-
+</div>
 <section>
     <div class="container py-4">
         <div class="row" >
             <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
                 <div class="card d-flex justify-content-center p-4 shadow-lg">
-                    <div class="text-center">
-                        <h3 class="text-gradient text-primary">Create quiz</h3>
+                    <div class="row">
+                        <div class="col-md-5 ms-auto me-auto text-center">
+                            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                                <i class="material-icons opacity-10">quiz</i>
+                            </div>
+                        </div>
                     </div>
+                    <h2 class="text-gradient text-primary text-center">Quiz</h2>
                     <div class="card card-plain">
                         <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addQuiz()" id="contact-form"  autocomplete="off" style="overflow-y: auto; max-height: 250px;">
                             <div class="card-body pb-2">
@@ -652,4 +747,11 @@
         </div>
     </div>
 </section>
-<button (click)="gotoQuiz(courseId.toString())">ANSWER QUIZZ</button>
+
+<div id="deployform" class="deployform" (click)="gotoQuiz(courseId.toString())">
+    <h6 style="color: white; padding-left: 12px">Quiz</h6>
+    <i class="fa fa-question icon" aria-hidden="true"></i>
+
+
+</div>
+

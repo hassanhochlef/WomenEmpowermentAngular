@@ -28,6 +28,7 @@
         "@stripe/stripe-js": "^1.29.0",
         "@techiediaries/ngx-qrcode": "^9.1.0",
         "chart.js": "2.7.3",
+        "cors": "^2.8.5",
         "leaflet": "^1.7.1",
         "ngx-pagination": "^5.1.1",
         "primeflex": "^2.0.0",

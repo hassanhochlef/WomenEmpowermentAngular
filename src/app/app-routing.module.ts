@@ -64,6 +64,7 @@ import {PaymentDonationComponent} from "./event/event-front/payment-donation/pay
 import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {ChatboxComponent} from "./chatbox/chatbox.component";
 import {ChatComponent} from "./forum/chat/chat.component";
+import {ChatPriveComponent} from "./forum/chat-prive/chat-prive.component";
 import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
@@ -149,6 +150,36 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
+
+                ]
+            },
+
+            {
+                path: 'user', component: HomeComponent,
+                children: [
+                    {path: 'landing', component: FrontLandingComponent},
+                    {path: 'profil', component: ProfilComponent},
+                    {path: 'profil/:id', component: UserDetailsComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
+                    {path: 'cour', component: CourseComponent},
+                    {path: 'forum', component: ForumComponent},
+                    {path: 'post-detais/:id', component: PostDetailsComponent},
+                    {path: 'details/:id', component : DetailsComponent},
+                    {path: 'addcourse', component : AddCourseComponent},
+                    {path: 'quiz', component : QuizComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
+                    {
+                        path: 'user-post',
+                        component: UserPostsComponent,
+                    },
+                    {
+                        path: 'chat',
+                        component: ChatboxComponent,
+                    },
+                    {
+                        path: 'chatP',
+                        component: ChatPriveComponent,
+                    },
 
                 ]
             },

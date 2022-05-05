@@ -10,22 +10,36 @@ import {Router} from '@angular/router';
 })
 export class AddPostComponent implements OnInit {
   post: Post = new Post();
-  constructor(private cs: ForumService, private router: Router) { }
-  addPost(){
+  errorMessage: string = "";
+
+  constructor(private cs: ForumService, private router: Router) {
+  }
+
+  addPost() {
+    this.cs.addPost(this.post).subscribe(() => this.router.navigateByUrl('/forum'));
     this.cs.addPost(this.post).subscribe(() => this.router.navigateByUrl('/eventFront'));
     console.log(this.post.postTitle);
   }
 
   ngOnInit(): void {
   }
+
   addnewpost() {
-    this.cs.addPost(this.post).subscribe(p => {
-      console.log(p);
-      this.router.navigate(['user/forum']).then(() => {
-        window.location.reload();
-      });
-    });
-
-
+    this.cs.addPost(this.post).subscribe(data => {
+          this.router.navigate(['/user/forum']).then(() => {
+            window.location.reload();
+          });
+        },
+        err => {
+          if (err?.status === 424) {
+            this.errorMessage = 'Bad Word used';
+          } else if (err?.status === 400) {
+            this.errorMessage = 'Email already exists';
+          }
+        }
+        );
   }
+
+
 }
+

@@ -34,21 +34,31 @@ export class ChatService {
       that.stompClient.subscribe('/chat/messages', message => {
         if (message.body) {
           let obj = JSON.parse(message.body);
-          that.addMessage(obj.text, obj.username, obj.avatar);
+          that.addMessage(obj.text, obj.username, obj.avatar , obj.sender, obj.chatid );
+        }
+      });
+      that.stompClient.subscribe('/user/chat/private-messages', message => {
+        if (message.body) {
+          let obj = JSON.parse(message.body);
+          that.addMessage(obj.text, obj.username, obj.avatar, obj.sender , obj.chatid);
         }
       });
     });
   }
 
   // Prepare and push the chat messages into the messages array
-  addMessage(message: any, username: string, avatar: string) {
+  addMessage(message: any, username: string, avatar: string , chatid: string , sender: string) {
     this.messages.push({
       text: message,
       date: new Date(),
       user: {
         name: username,
         avatar: avatar
-      }
+      },
+      chatid: chatid,
+      sender: sender
+
+
     });
   }
 
@@ -56,4 +66,8 @@ export class ChatService {
   sendMessage(msg: Message) {
     this.stompClient.send('/app/sendmsg', {}, JSON.stringify(msg));
   }
+  sendMessagep(msg: Message) {
+    this.stompClient.send('/app/sendmsg', {}, JSON.stringify(msg));
+  }
+
 }

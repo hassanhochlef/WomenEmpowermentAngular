@@ -49,7 +49,7 @@
                                                     <hr class="dropdown-divider">
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item border-radius-md text-danger" (click)="deletePost(post1.postId.toString())" href="javascript:;">
+                                                    <a class="dropdown-item border-radius-md text-danger" class="" data-bs-toggle="modal" data-bs-target="#exampleModalNotification" href="javascript:;">
                                                         Delete post
                                                     </a>
                                                 </li>
@@ -285,5 +285,36 @@
         </div>
     </div>
 </div>
+<div class="container py-7">
+    <div class="row mt-5">
+        <div class="col-sm-3 col-6 mx-auto">
 
+
+            <!-- delete -->
+            <div class="modal fade" id="exampleModalNotification" tabindex="-1" aria-labelledby="exampleModalNotification" aria-hidden="true">
+                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                    <div class="modal-content bg-gradient-danger">
+                        <div class="modal-header border-0">
+                            <h6 class="modal-title text-white" id="modal-title-notification">Your attention is required</h6>
+                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
+                        </div>
+                        <hr class="horizontal light mt-0">
+                        <div class="modal-body">
+                            <div class="py-3 text-center text-white">
+                                <i class="material-icons text-3xl">notifications_active</i>
+                                <h4 class="heading mt-4 text-white">You should read this!</h4>
+                                <p class="text-white opacity-8">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                            </div>
+                        </div>
+                        <hr class="horizontal light mb-0">
+                        <div class="modal-footer justify-content-between border-0">
+                            <button type="button" (click)="deletePost(post1.postId.toString())" class="btn btn-white my-1">Ok, Got it</button>
+                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

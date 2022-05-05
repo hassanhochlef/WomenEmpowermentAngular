@@ -33,7 +33,9 @@ export class ForumComponent implements OnInit {
   aa: string;
   comm2: PostComment = new PostComment();
   post2: Post = new Post();
-
+  errorMessage: string = "";
+  errorComment: string = "";
+  commenttest: string = "";
   constructor(private router: Router, private service: ForumService, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe( data => {
       this.currentUser = data;
@@ -77,14 +79,28 @@ export class ForumComponent implements OnInit {
     });
   }
   addComment(id: string) {
-    this.service.addCommentPst(id, this.comment).subscribe(p => {
+    this.service.addCommentPst(id, this.comment).subscribe(data => {
+          this.router.navigate(['/user/forum']).then(() => {
+            window.location.reload();
+          });
+        },
+        err => {
+          if (err?.status === 424) {
+            this.errorComment = 'Bad Word used';
+          } else if (err?.status === 400) {
+            this.errorComment = 'Email already exists';
+          }
+        }
+    );
+  }
+  /*    .subscribe(p => {
       console.log(this.comment);
       let currentUrl = this.router.url;
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       this.router.onSameUrlNavigation = 'reload';
       this.router.navigate([currentUrl]);
     });
-  }
+  }*/
     addCommentReply(id: string) {
       this.service.addCommentReply(id, this.comment1).subscribe(p => {
         console.log(this.comment1);
@@ -139,6 +155,9 @@ export class ForumComponent implements OnInit {
   openPost(cc: Post): void {
     this.post2 = cc;
   }
+  openPostdel(cc: Post): void {
+    this.post2 = cc;
+  }
 
   UpdateComm(id: string) {
     this.service.UpdateCom(id, this.comment2).subscribe(p => {
@@ -150,16 +169,31 @@ export class ForumComponent implements OnInit {
   }
   UpdatePost(id: string) {
     if (this.post1.body === ''){this.post1.body = this.post2.body; }
-    this.service.UpdatePost(id, this.post1).subscribe(p => {
+    this.service.UpdatePost(id, this.post1).subscribe(data => {
+          this.router.navigate(['/user/forum']).then(() => {
+            window.location.reload();
+          });
+        },
+        err => {
+          if (err?.status === 424) {
+            this.errorMessage = 'Bad Word used';
+          } else if (err?.status === 400) {
+            this.errorMessage = 'Email already exists';
+          }
+        }
+    );
+  }
+  ratePost(id: string, x: string) {
+    this.service.ratePost(id, x).subscribe(p => {
       console.log(this.post1);
       this.router.navigate(['user/forum']).then(() => {
         window.location.reload();
       });
     });
   }
-  ratePost(id: string, x: string) {
-    this.service.ratePost(id, x).subscribe(p => {
-      console.log(this.post1);
+  reportPost(id: string) {
+    this.service.reportPost(id).subscribe(p => {
+      console.log("reporte");
       this.router.navigate(['user/forum']).then(() => {
         window.location.reload();
       });

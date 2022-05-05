@@ -9,6 +9,7 @@ import {RequestBaseService} from './request-base.service';
 import { Penality } from '../models/penality.enum';
 import {Quiz} from '../models/Quiz.model';
 import {cFile} from '../models/file.model';
+import { Domain } from "../models/domain.enum";
 @Injectable({
   providedIn: 'root'
 })
@@ -69,7 +70,18 @@ export class CourseService  extends  RequestBaseService {
   getCourseFiles(): Observable<cFile[]> {
     return this.http.get<cFile[]>('http://localhost:8087/SpringMVC/file/files');
   }
-
+ getCourseByDomain(domain: string): Observable<Course[]>{
+    return this.http.get<Course[]>('http://localhost:8087/SpringMVC/course/getCoursesByDomain/' + domain);
+ }
+ getAquiredCertif(): Observable<number>{
+      return this.http.get<number>('http://localhost:8087/SpringMVC/course/getAquiredCertifs');
+ }
+ getOngoingCourses(): Observable<Course[]>{
+      return this.http.get<Course[]>('http://localhost:8087/SpringMVC/course/getOnGoingCourses');
+ }
+    getEndedCourses(): Observable<Course[]>{
+        return this.http.get<Course[]>('http://localhost:8087/SpringMVC/course/getEndedCourses');
+    }
   getCourseParticipants(id: string): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:8087/SpringMVC/course/getAllParticipants/' + id);
   }

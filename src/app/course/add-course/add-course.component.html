@@ -1,37 +1,101 @@
+<header class="bg-gradient-dark">
+	<div class="page-header min-vh-75" style="background-image: url('assets/img/examples/women1.jpg');">
+		<span class="mask bg-gradient-dark opacity-6"></span>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center mx-auto my-auto">
+					<h1 class="text-white">Find out our courses</h1>
+					<p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
 
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<div style="  position: -webkit-sticky;
+float: right;
+  position: sticky;
+  width: 400px;
+  height:400px;
+  top: 0;
+  padding: 50px;
+  z-index: 30;
+          overflow-x: hidden;
 
-<section class="card-area">
-	<section class="card-section wrapper">
-		<div class="card p-mr-3 p-mb-3">
+">
+<h5>Your courses</h5>
+	<ng-container *ngFor="let c of ccCourses" >
 
-						<div class="card-front__tp card-front__tp--city">
-							<form #f="ngForm" (ngSubmit)="f.form.valid && addCourse() " xmlns="http://www.w3.org/1999/html">
-								<span class="p-float-label">
-									<input id="courseName" type="text" pInputText [(ngModel)]="course.courseName"  name="courseName">
-									<label  for="courseName" >course name</label>
-								</span>
-								<p-calendar id="startDate" name="startDate" [showIcon]="true" [(ngModel)]="course.startDate" ></p-calendar>
-								<p-calendar id="endDate" name="endDate" [showIcon]="true" [(ngModel)]="course.endDate" ></p-calendar>
+		<div  >
+			<div class="container">
+				<div class="row justify-space-between py-2">
+					<div class="col-6 ">
+						<div class="card shadow-lg ">
+							<div class="card-body" >
+								<h4>{{c.courseName}}</h4>
+								<p>
+									{{ c.startDate }} <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i> {{ c.endDate}}
+								</p>
+								<a (click)="openGameDetails(c.courseId.toString())" style="cursor: pointer" class="text-primary icon-move-right">More
+									<i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
 
-								<select class="custom-dropdown small" name="domain" id="domain" [(ngModel)]="course.domain" >
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+
+</div>
+<div style="width: 600px; " >
+<section class="py-5 bg-gradient-white" style="padding-left: 150px">
+	<section >
+		<div>
+						<div  class="container" >
+							<h2 >Add course</h2>
+							<form #f1="ngForm" (ngSubmit)="f1.form.valid && addCourse() " xmlns="http://www.w3.org/1999/html">
+								<div class="input-group input-group-outline mb-3" >
+									<label class="form-label">Course name</label>
+									<input type="text"  class="form-control" id="courseName" #courseName="ngModel" name="courseName" minlength="1"  [(ngModel)]="course.courseName" class="form-control" required>
+								</div>
+
+								<div class="input-group input-group-outline mb-3">
+								<label class="form-label">Start date</label>
+								<input type="date" class="form-control" id="startDate" name="startDate"  [(ngModel)]="course.startDate" >
+								</div>
+								<div class="input-group input-group-outline mb-3">
+									<label class="form-label">End date</label>
+									<input type="date" class="form-control" id="endDate" name="endDate"  [(ngModel)]="course.endDate" >
+								</div>
+								<div class="input-group input-group-outline mb-3">
+									<label class="form-label">Hours charge</label>
+									<input class="form-control" type="number"  mode="decimal"  name="nbHours" [(ngModel)]="course.nbHours"/>
+								</div>
+								<br>
+								<div class="input-group input-group-outline mb-3">
+								<div class="select">
+								<select  class="select-text" name="domain" id="domain" [(ngModel)]="course.domain" >
 									<option  value="IT" >IT</option>
-									<option value="MEDICAL">MEDICAL</option>
+									<option  value="MEDICAL">MEDICAL</option>
 									<option value="ARTISANAL">ARTISANAL</option>
 									<option value="TECH">TECH</option>
 									<option value="SOCIAL">SOCIAL</option>
 									<option value="AGRICULTURE">AGRICULTURE</option>
 								</select>
+									<span class="select-highlight"></span>
+									<span class="select-bar"></span>
+									<label class="select-label">Field</label>
+								</div>
+								</div>
 
-								<p-inputNumber mode="decimal" [showButtons]="true" [min]="1" [max]="200" [(ngModel)]="course.nbHours" name="nbHours"></p-inputNumber>
-								<p-button  label="Submit"  type="submit" class="p-mr-2 p-mb-2"></p-button>
+								<button type="submit" class="btn bg-gradient-warning mb-0 ms-lg-3 ms-sm-2 mb-sm-0 mb-2 me-auto w-100 d-block">Add</button>
 							</form>
-
 						</div>
 
-					</div>
-
+		</div>
 
 	</section>
 </section>
-<router-outlet></router-outlet>
-<app-root></app-root>
+</div>

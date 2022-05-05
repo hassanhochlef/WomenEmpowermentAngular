@@ -71,6 +71,18 @@
                                     <input type="date" id="birthDate" class="form-control" name="birthDate" [(ngModel)]="user.birthDate" #birthDate="ngModel" required>
                                 </div>
 
+                                <div class="input-group input-group-outline mb-3">
+                                    <select class="form-control" name="country" id="country" [(ngModel)]="user.country" #country="ngModel">
+                                        <option *ngFor="let country of countryKeys" [value]="country">{{country}}</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="address" name="address" class="form-control" [(ngModel)]="user.address" #address="ngModel" required>
+                                </div>
+
                                 <div class="input-group input-group-outline mb-3" *ngIf=" middleRole == 'COMPANY' || middleRole=='ASSOCIATION'">
                                     <label class="form-label">Establishment Date</label>
                                     <input type="date" id="establishmentDate" class="form-control" name="establishmentDate" [(ngModel)]="user.establishmentDate" #establishmentDate="ngModel" required placeholder="">                                </div>

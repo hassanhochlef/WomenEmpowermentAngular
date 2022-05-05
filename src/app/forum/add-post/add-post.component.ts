@@ -17,6 +17,7 @@ export class AddPostComponent implements OnInit {
 
   addPost() {
     this.cs.addPost(this.post).subscribe(() => this.router.navigateByUrl('/forum'));
+    this.cs.addPost(this.post).subscribe(() => this.router.navigateByUrl('/eventFront'));
     console.log(this.post.postTitle);
   }
 

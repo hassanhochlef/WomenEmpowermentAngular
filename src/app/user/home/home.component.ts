@@ -1,4 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AuthenticationService} from '../../shared/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   myLinkElement: HTMLLinkElement;
 
 
-  constructor() {
-
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -19,8 +20,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.myLinkElement.rel = "stylesheet";
     this.myLinkElement.id = "pagestyle";
     document.head.appendChild(this.myLinkElement);*/
-
-
+   /* if (this.authenticationService.tokenValid()) {
+      this.authenticationService.logOut();
+      this.router.navigate(['/login']).then(() => {
+        window.location.reload();
+      });
+    }*/
   }
 
   ngOnDestroy() {

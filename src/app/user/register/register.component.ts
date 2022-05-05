@@ -4,6 +4,7 @@ import {AuthenticationService} from '../../shared/authentication.service';
 import {Router} from '@angular/router';
 import {Role} from '../../models/role.enum';
 import {AppComponent} from '../../app.component';
+import {Country} from '../../models/country.enum';
 
 @Component({
   selector: 'app-register',
@@ -18,25 +19,29 @@ export class RegisterComponent implements OnInit, OnDestroy {
   errorMessage: string = "";
   middleRole: string = "";
   roles: Role[] = [];
-  step: number = 1;
   userParsed: string = "";
   selectedFile!: File;
 
+  countries = Country;
+  countryKeys = [];
+
   constructor(public app: AppComponent, private authenticationService: AuthenticationService, private router: Router) {
-    this.myLinkElement = document.createElement('link');
+   /* this.myLinkElement = document.createElement('link');
     this.myLinkElement.href = "assets/css/material-kit-pro.min3294.css?v=3.0.1";
     this.myLinkElement.rel = "stylesheet";
     this.myLinkElement.id = "pagestyle";
-    document.body.appendChild(this.myLinkElement);
+    document.body.appendChild(this.myLinkElement);*/
   }
 
   ngOnInit(): void {
     this.roles = [ Role.USER, Role.ADMIN, Role.EXPERT, Role.COMPANY, Role.FORMER ];
     this.middleRole = Role.USER;
+    this.countryKeys = Object.keys(this.countries);
+    this.user.country = this.countryKeys[226];
   }
 
   ngOnDestroy() {
-    document.body.removeChild(this.myLinkElement);
+    //document.body.removeChild(this.myLinkElement);
   }
 
   register(){
@@ -82,17 +87,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     );
   }
   onFileSelcted(event: any){
-    console.log(event);
+    console.log(event.target.result);
     this.selectedFile = event.target.files[0];
   }
 
-  next(){
-    this.step = this.step + 1 ;
-  }
 
-  previous(){
-    this.step = this.step - 1 ;
-  }
+
 
   redirectTo(){
     this.router.navigate(['/login'])

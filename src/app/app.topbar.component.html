@@ -73,8 +73,8 @@
 
             <li class="profile-item" [ngClass]="{'active-menuitem fadeInDown': appMain.topbarUserMenuActive}">
                 <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)">
-                    <img src="assets/demo/images/avatar/profile.jpg" alt="diamond-layout" class="profile-image"/>
-                    <span class="profile-name">Amelia Stone</span>
+                    <img src="assets/img/{{profilPicture}}" alt="diamond-layout" class="profile-image"/>
+                    <span class="profile-name">{{currentUser.name}}</span>
                 </a>
                 <ul class="profile-menu fade-in-up">
                     <li>

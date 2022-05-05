@@ -8,6 +8,8 @@ import {RequestBaseService} from "../../shared/request-base.service";
 import {User} from "../../models/user.model";
 import {Penality} from "../../models/penality.enum";
 import {Subscription} from "rxjs";
+import {Advertising} from "../../models/Advertising.model";
+import {ForumService} from "../../shared/forum.service";
 
 @Component({
   selector: 'app-quiz',
@@ -21,10 +23,11 @@ export class QuizComponent extends RequestBaseService implements OnInit {
   routeSub: Subscription;
   courseSub: Subscription;
   option: number[] = [];
+  listAdversting: Advertising[];
   constructor(private activatedRoute: ActivatedRoute,
               authenticationService: AuthenticationService,
               private service: CourseService,
-              private router: Router,
+              private router: Router, private advert: ForumService,
               http: HttpClient) {
     super(authenticationService, http);
     this.onlineUser = this.authenticationService.currentUserValue;
@@ -33,8 +36,12 @@ export class QuizComponent extends RequestBaseService implements OnInit {
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) =>
     { this.courseId = params.id;
-      this.getQuizez('2');
+      this.getQuizez(this.courseId);
 
+    });
+    this.routeSub = this.advert.getAdversting().subscribe(ress => {
+      console.log(ress);
+      this.listAdversting = ress;
     });
   }
   getQuizez(idCourse: string): void {

@@ -1,0 +1,68 @@
+
+<form>
+    <section>
+        <div class="page-header min-vh-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+                        <div class="card card-plain">
+                            <div class="card-header">
+                                <h4 class="font-weight-bolder">Add Offer</h4>
+
+                            </div>
+                            <div class="card-body">
+                                <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addOffer()">
+
+
+
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Offer Title</label>
+                                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="offre.title" #name="ngModel" required>
+                                    </div>
+
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" id="location" name="name" [(ngModel)]="offre.location" #email="ngModel" class="form-control" required>
+                                    </div>
+
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">description</label>
+                                        <input type="text" class="form-control" id="description" name="name" [(ngModel)]="offre.description" #email="ngModel" class="form-control" required>
+                                    </div>
+
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">requiredCandidates</label>
+                                        <input type="text" class="form-control" id="requiredCandidates" name="name" [(ngModel)]="offre.requiredCandidates" #email="ngModel" class="form-control" required>
+                                    </div>
+
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">approxSalary</label>
+                                        <input type="text" class="form-control" id="approxSalary" name="name" [(ngModel)]="offre.approxSalary" #email="ngModel" class="form-control" required>
+                                    </div>
+
+
+
+
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Create</button>
+                                    </div>
+                                </form>
+
+
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section></form>
+

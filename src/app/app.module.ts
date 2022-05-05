@@ -174,6 +174,7 @@ import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 import { SubscriptionComponent } from './user/subscription/subscription.component';
+import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 
 
 @NgModule({
@@ -347,7 +348,8 @@ import { SubscriptionComponent } from './user/subscription/subscription.componen
         ComplaintComponent,
         UserDetailsComponent,
         CourseBackHomeComponent,
-        SubscriptionComponent
+        SubscriptionComponent,
+        AdminDashboardBackofficeComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

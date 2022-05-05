@@ -67,31 +67,55 @@ import {ChatComponent} from "./forum/chat/chat.component";
 import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
+import {AuthGuard} from './guards/auth.guard';
+import {Role} from './models/role.enum';
+import {Auth2Guard} from './guards/auth2.guard';
+import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            {
+                path: '', component: HomeComponent,
+                children: [
+                    {path: '', component: FrontLandingComponent},
+                    {path: 'profil', component: ProfilComponent, canActivate: [Auth2Guard]},
+                    {path: 'cour', component: CourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'forum', component: ForumComponent, canActivate: [Auth2Guard]},
+                    {path: 'details/:id', component : DetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'addcourse', component : AddCourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'quiz/:id', component : QuizComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'offre', component : OffreComponent, canActivate: [Auth2Guard]},
+                    {path: 'addoffer', component : AddOfferComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'detailEvent/:id', component: DetailEventComponent, canActivate: [Auth2Guard]},
+                    {path: 'addEvent', component: AddEventComponent, canActivate: [Auth2Guard]},
+                    {path: 'payment', component: PaymentDonationComponent, canActivate: [Auth2Guard]},
+                    {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'subscribe', component: SubscriptionComponent, canActivate: [Auth2Guard]},
+                    {path: 'cour', component: CourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'forum', component: ForumComponent, canActivate: [Auth2Guard]},
+                    {path: 'post-detais/:id', component: PostDetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'details/:id', component : DetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'addcourse', component : AddCourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'quiz', component : QuizComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'user-post', component: UserPostsComponent},
+                    {path: 'pages/map', component: MapComponent},
+                    {path: 'chat', component: ChatboxComponent},
 
-          /*  {
-                path: 'profile',
-                component: UserPostsComponent,
+                ]
             },
-                    {path: '', component: DashboardDemoComponent},*/
 
             {
-                path: '', component: AppMainComponent,
+                path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
                 children: [
                     {path: '', component: DashboardDemoComponent},
-
-                    {
-                        path: 'complaint',
-                        component: ComplaintComponent,
-                    },
-                    {
-                        path: 'addcomplaint',
-                        component: AddComplaintComponent,
-                    },
-
+                    {path: 'user', component: AdminDashboardBackofficeComponent},
+                    {path: 'complaint', component: ComplaintComponent},
+                    {path: 'addcomplaint', component: AddComplaintComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -125,55 +149,10 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
-                    {path: 'pages/cour', component: CourseBackHomeComponent},
 
                 ]
             },
 
-            {
-                path: 'user', component: HomeComponent,
-                children: [
-                    {path: 'landing', component: FrontLandingComponent},
-                    {path: 'profil', component: ProfilComponent},
-                    {path: 'cour', component: CourseComponent},
-                    {path: 'forum', component: ForumComponent},
-                    {path: 'details/:id', component : DetailsComponent},
-                    {path: 'addcourse', component : AddCourseComponent},
-                    {path: 'quiz/:id', component : QuizComponent},
-                    {path: 'eventFront', component: EventFrontComponent},
-                    {path: 'offre', component : OffreComponent},
-                    {path: 'addoffer', component : AddOfferComponent},
-                    {path: 'eventFront', component: EventFrontComponent},
-                    {path: 'detailEvent/:id', component: DetailEventComponent},
-                    {path: 'addEvent', component: AddEventComponent},
-                    {path: 'payment/:id', component: PaymentDonationComponent},
-                    {
-                        path: 'forum',
-                        component: ForumComponent,
-                    },
-
-                    {path: 'profil/:id', component: UserDetailsComponent},
-                    {path: 'eventFront', component: EventFrontComponent},
-                    {path: 'subscribe', component: SubscriptionComponent},
-                    {path: 'cour', component: CourseComponent},
-                    {path: 'forum', component: ForumComponent},
-                    {path: 'post-detais/:id', component: PostDetailsComponent},
-                    {path: 'details/:id', component : DetailsComponent},
-                    {path: 'addcourse', component : AddCourseComponent},
-                    {path: 'quiz', component : QuizComponent},
-                    {path: 'eventFront', component: EventFrontComponent},
-                    {
-                        path: 'user-post',
-                        component: UserPostsComponent,
-                    },
-                    {
-                        path: 'chat',
-                        component: ChatboxComponent,
-                    },
-
-                    {path: 'pages/map', component: MapComponent},
-                ]
-            },
             {path: 'error', component: AppErrorComponent},
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
@@ -182,7 +161,7 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
             {path: 'new-password', component: NewPasswordComponent},
             {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
-        ], {scrollPositionRestoration: 'enabled'})
+        ])
     ],
     exports: [RouterModule]
 }

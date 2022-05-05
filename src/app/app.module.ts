@@ -178,6 +178,7 @@ import {ChatComponent} from "./forum/chat/chat.component";
 import {ChatboxComponent} from "./chatbox/chatbox.component";
 import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 import { SubscriptionComponent } from './user/subscription/subscription.component';
+import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 
 
 @NgModule({
@@ -353,6 +354,9 @@ import { SubscriptionComponent } from './user/subscription/subscription.componen
         MapComponent,
         ComplaintComponent,
         UserDetailsComponent,
+        CourseBackHomeComponent,
+        SubscriptionComponent,
+        AdminDashboardBackofficeComponent,
         ChatComponent,
         ChatboxComponent,
         CourseBackHomeComponent,

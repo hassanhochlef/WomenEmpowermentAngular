@@ -15,17 +15,7 @@ export class SubscriptionComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
-    if (this.authenticationService.tokenValid()) {
-      this.authenticationService.logOut();
-      this.router.navigate(['/login']).then(() => {
-        window.location.reload();
-      });
-    }
-    if (this.authenticationService.NotLoggedIn()){
-      this.router.navigate(['/login']).then(() => {
-        window.location.reload();
-      });
-    }
+
   }
 
 }

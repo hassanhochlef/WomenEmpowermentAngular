@@ -20,12 +20,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.myLinkElement.rel = "stylesheet";
     this.myLinkElement.id = "pagestyle";
     document.head.appendChild(this.myLinkElement);*/
-    if (this.authenticationService.tokenValid()) {
+   /* if (this.authenticationService.tokenValid()) {
       this.authenticationService.logOut();
       this.router.navigate(['/login']).then(() => {
         window.location.reload();
       });
-    }
+    }*/
   }
 
   ngOnDestroy() {

@@ -1,3 +1,6 @@
+import {User} from './user.model';
+
+
 export class Event {
     eventId?: number;
     eventName?: string;
@@ -8,6 +11,7 @@ export class Event {
     endAt?: string;
     eventType?: string;
     maxPlace?: number;
-    montantCollecte?: number;
+    createurEvent?: User;
+
 
 }

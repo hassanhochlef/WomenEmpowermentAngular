@@ -13,14 +13,14 @@
                     <form>
                         <div class="input-group input-group-outline my-3">
                             <label class="form-label">Post Title</label>
-                            <input type="text" [(ngModel)]= "post.postTitle" class="form-control">
+                            <input type="text" [(ngModel)]= "post.postTitle" name="az" class="form-control">
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label class="form-label">Post Body</label>
-                            <textarea  type="text" [(ngModel)]= "post.body"  class="form-control"></textarea>
+                            <textarea  type="text" [(ngModel)]= "post.body"  name="aab" class="form-control"></textarea>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-outline-success" style="height: 100px">Add pictures</button>
+                            <p-fileUpload type="file" class="btn btn-outline-success" style="height: 100px">Add pictures</p-fileUpload>
 
                         </div>
                     </form>

@@ -1,0 +1,24 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="col-md-9" *ngFor="let qui of quizez">
+        <div class="question-main" *ngFor="let quest of qui.questions; let i=index">
+            <div class="title"><span>{{quest.question}}</span>{{quest.questionId}}
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="answer" *ngFor="let ans of quest.answers" name="questionId" >
+                        <input type="radio" id="{{ans.answerId}}"  value="{{ans.answerId}}" name="konnect" (click)="getQuestionAnswer(quest.questionId,ans.answerId)">
+                        <label for="{{ans.answerId}}"><span>{{ans.answerContent}}</span></label>
+                    </div>
+                </div>
+
+            </div>
+
+         </div>
+        <button (click)="addAnswers()">VALIDE QUIZZ</button>
+    </div>
+</div>

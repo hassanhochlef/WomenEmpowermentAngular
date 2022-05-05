@@ -1,4 +1,10 @@
 import {Role} from "./role.enum";
+import {Course} from "./course.model";
+import {CreatedCourses} from "./created-courses.model";
+
+
+
+
 
 export class User {
     userId!: number;
@@ -17,6 +23,6 @@ export class User {
     nbCasesSolved!: number;
     nbEventsCreated!: number;
     activityDomain!: string;
-
+    createdCourses!: CreatedCourses;
 
 }

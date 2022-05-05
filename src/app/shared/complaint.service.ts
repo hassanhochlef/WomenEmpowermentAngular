@@ -29,10 +29,11 @@ deletcUrl = 'http://localhost:8087/SpringMVC/complaint/delet/';
     const url = `${this.consulturl}/${complaintId}`;
     return this.http.get<Complaint>(url);
   }
-  updateProduit(comp: Complaint): Observable<Complaint>
-  {
-    return this.http.put<Complaint>('http://localhost:8087/SpringMVC/complaint/update/complaintId', comp, httpOptions);
-  }
+  /*
+  UpdateComp(idCom: string , c: Complaint) {
+    return this.http.put<Complaint>('http://localhost:8087/SpringMVC/complaint/update/' + idCom + '/' , c );
+
+  }*/
 
   DeletePost(complaintId: string) {
     return this.http.delete<Complaint>('http://localhost:8087/SpringMVC/complaint/delet/' + complaintId);

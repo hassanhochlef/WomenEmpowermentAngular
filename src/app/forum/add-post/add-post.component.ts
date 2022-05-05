@@ -23,9 +23,7 @@ export class AddPostComponent implements OnInit {
       console.log(p);
 
     });
-    this.router.navigate(['user/forum']).then(() => {
-      window.location.reload();
-    });
+
 
   }
 }

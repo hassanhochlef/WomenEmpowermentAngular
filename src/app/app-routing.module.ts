@@ -38,10 +38,10 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
-
+import {AddCourseComponent} from './course/add-course/add-course.component';
+import {ForumComponent} from './forum/forum.component';
 import {ComplaintComponent} from './complaint/complaint.component';
 import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.component';
-import {ForumComponent} from './forum/forum.component';
 import {RegisterComponent} from './user/register/register.component';
 import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
@@ -50,7 +50,11 @@ import {ServicesComponent} from './services/services.component';
 import {AddServicesComponent} from './services/add-services/add-services.component';
 import {EventComponent} from './event/event.component';
 import {UpdateComplaintComponent} from './complaint/update-complaint/update-complaint.component';
-
+import {QuizComponent} from './course/quiz/quiz.component';
+import {EventFrontComponent} from './event/event-front/event-front.component';
+import {DonationComponent} from './event/donation/donation.component';
+import {UserPostsComponent} from './forum/user-posts/user-posts.component';
+import {ProfilComponent} from './user/profil/profil.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -58,10 +62,7 @@ import {UpdateComplaintComponent} from './complaint/update-complaint/update-comp
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
-                    {
-                        path: 'cour',
-                        component: CourseComponent,
-                    },
+
                     {
                         path: 'complaint',
                         component: ComplaintComponent,
@@ -72,10 +73,22 @@ import {UpdateComplaintComponent} from './complaint/update-complaint/update-comp
 
                     },
                     {
-                        path: 'details/:id',
-                        component : DetailsComponent,
+                        path: 'updatecomp/:complaintId',
+                        component: UpdateComplaintComponent,
                     },
+                    {
+                        path: 'addserv',
+                        component: AddServicesComponent,
+                    },
+                    {
+                        path: 'addcomplaint',
+                        component: AddComplaintComponent,
+                    },
+                    {
+                        path: 'service',
+                        component: ServicesComponent,
 
+                    },
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -108,13 +121,28 @@ import {UpdateComplaintComponent} from './complaint/update-complaint/update-comp
                     {path: 'pages/empty', component: EmptyDemoComponent},
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
+                    {path: 'pages/donation', component: DonationComponent},
+
                 ]
             },
 
             {
                 path: 'user', component: HomeComponent,
                 children: [
-                    {path: 'landing', component: FrontLandingComponent}
+                    {path: 'landing', component: FrontLandingComponent},
+                    {path: 'landing', component: FrontLandingComponent},
+                    {path: 'profil', component: ProfilComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
+                    {path: 'cour', component: CourseComponent},
+                    {path: 'forum', component: ForumComponent},
+                    {path: 'details/:id', component : DetailsComponent},
+                    {path: 'addcourse', component : AddCourseComponent},
+                    {path: 'quiz', component : QuizComponent},
+                    {path: 'eventFront', component: EventFrontComponent},
+             {
+                        path: 'user-post',
+                        component: UserPostsComponent,
+                    },
                 ]
             },
             {path: 'error', component: AppErrorComponent},
@@ -123,23 +151,6 @@ import {UpdateComplaintComponent} from './complaint/update-complaint/update-comp
             {path: 'register', component: RegisterComponent},
             {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
-            {
-                path: 'updatecomp/:complaintId',
-                component: UpdateComplaintComponent,
-            },
-            {
-                path: 'addserv',
-                component: AddServicesComponent,
-            },
-            {
-                path: 'addcomplaint',
-                component: AddComplaintComponent,
-            },
-            {
-                path: 'service',
-                component: ServicesComponent,
-
-            },
         ], {scrollPositionRestoration: 'enabled'})
     ],
     exports: [RouterModule]

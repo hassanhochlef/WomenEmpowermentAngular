@@ -85,6 +85,7 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TreeModule} from 'primeng/tree';
 import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import { LazyLoadEvent } from 'primeng/api';
 
 import {AppCodeModule} from './app.code.component';
 import {AppComponent} from './app.component';
@@ -143,6 +144,7 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { CourseComponent } from './course/course.component';
 import { DetailsComponent } from './course/details/details.component';
+import { AddCourseComponent } from './course/add-course/add-course.component';
 import { EventComponent } from './event/event.component';
 import { FilterPipe } from './event/filter.pipe';
 import { ComplaintComponent } from './complaint/complaint.component';
@@ -156,7 +158,14 @@ import { FrontFooterComponent } from './user/front-footer/front-footer.component
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ServicesComponent } from './services/services.component';
 import { AddServicesComponent } from './services/add-services/add-services.component';
-import { UpdateComplaintComponent } from './complaint/update-complaint/update-complaint.component';
+import { UpdateComplaintComponent } from './complaint/update-complaint/update-complaint.component';import { ProfilComponent } from './user/profil/profil.component';
+import { QuizComponent } from './course/quiz/quiz.component';
+import { AddPostComponent } from './forum/add-post/add-post.component';
+import { UserPostsComponent } from './forum/user-posts/user-posts.component';
+import { PostDetailsComponent } from './forum/post-details/post-details.component';
+import { EventFrontComponent } from './event/event-front/event-front.component';
+import { DonationComponent } from './event/donation/donation.component';
+import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
 
 
 
@@ -247,7 +256,7 @@ import { UpdateComplaintComponent } from './complaint/update-complaint/update-co
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        AppCodeModule
+        AppCodeModule,
     ],
     declarations: [
         AppComponent,
@@ -299,6 +308,7 @@ import { UpdateComplaintComponent } from './complaint/update-complaint/update-co
         ComplaintComponent,
         CourseComponent,
         DetailsComponent,
+        AddCourseComponent,
         ForumComponent,
         EventComponent,
         FilterPipe,
@@ -312,7 +322,22 @@ import { UpdateComplaintComponent } from './complaint/update-complaint/update-co
         FrontLandingComponent,
         ServicesComponent,
         AddServicesComponent,
-        UpdateComplaintComponent
+        UpdateComplaintComponent,
+        ProfilComponent,
+        QuizComponent,
+
+        AddPostComponent,
+        UserPostsComponent,
+        PostDetailsComponent,
+
+        EventFrontComponent,
+
+        DonationComponent,
+
+        PaymentDonationComponent,
+
+
+
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

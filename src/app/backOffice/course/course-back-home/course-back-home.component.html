@@ -1,3 +1,5 @@
+
+
 <div class="p-col-12">
     <div class="card">
         <h4>Courses overview</h4>
@@ -21,10 +23,10 @@
                                 <span class="overview-icon">
                                     <i class="pi pi-user"></i>
                                 </span>
-                    <span class="overview-title">Participants</span>
+                    <span class="overview-title">OnGoing courses</span>
                     <div class="p-grid overview-detail">
                         <div class="p-col-12">
-                            <div class="overview-number">$2,100</div>
+                            <div class="overview-number">{{ this.onGoingCourses.length }}</div>
                             <div class="overview-subtext">Total</div>
                         </div>
                     </div>
@@ -35,10 +37,10 @@
                                 <span class="overview-icon">
                                     <i class="pi pi-dollar"></i>
                                 </span>
-                    <span class="overview-title">Formers</span>
+                    <span class="overview-title">Ended courses</span>
                     <div class="p-grid overview-detail">
                         <div class="p-col-12">
-                            <div class="overview-number">{{ this.getFormersNb()}}</div>
+                            <div class="overview-number">{{this.EndedCourses.length}}</div>
                             <div class="overview-subtext">Total</div>
                         </div>
                     </div>
@@ -62,6 +64,21 @@
         </div>
     </div>
 </div>
+<div class="p-grid p-fluid">
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5 class="centerText">Courses</h5>
+            <p-chart type="doughnut" [data]="pieData"></p-chart>
+        </div>
+
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <div class="card" style="background-color: whitesmoke">
+            <h5 class="centerText">Fields distribution</h5>
+            <p-chart type="radar" [data]="pieData1"></p-chart>
+        </div>
+    </div>
+</div>
 <div class="p-col-12 p-lg-4">
     <div class="card">
         <h4>Formers</h4>
@@ -76,15 +93,68 @@
                 </div>
                 <div class="person-actions" *ngIf="u.role === role[0]">
                     <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope"></button>
-                    <button type="button" class="p-button-rounded p-button-warning" pButton icon="pi pi-cog" ></button>
                 </div>
             </li>
 
         </ul>
     </div>
+
+</div>
+<div class="p-col-12">
     <div class="card">
-        <h5 class="centerText">Doughnut Chart</h5>
-        <p-chart type="doughnut" [data]="pieData"></p-chart>
+        <h5>Customized</h5>
+        <p-table #dtc [value]="courses" [(selection)]="selectedCourse" dataKey="id" selectionMode="single"
+                 styleClass="p-datatable-customers p-datatable-gridlines p-datatable-striped p-datatable-sm"
+                 [scrollable]="true" scrollHeight="600px" [filterDelay]="0" [globalFilterFields]="['courseName','domain','nbHours','onGoing']">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                    Customers
+                    <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dtc.filterGlobal($event.target.valueOf(), 'contains')"
+                           placeholder="Global Search"/>
+                </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Name
+                        <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="country.name">Country
+                        <p-sortIcon field="course.name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="date">Date
+                        <p-sortIcon field="date"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="status">Status
+                        <p-sortIcon field="status"></p-sortIcon>
+                    </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-Course>
+                <tr [pSelectableRow]="Course">
+                    <td>
+                        <span class="p-column-title">Name</span>
+
+                    </td>
+                    <td>
+                        <span class="p-column-title">Date</span>
+
+                    </td>
+                    <td>
+                        <span class="p-column-title">OnGoing</span>
+
+                    </td>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No customers found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
 </div>
-<iframe src="https://calendar.google.com/calendar/embed?src=flo9b3693avoitcsm8st7v1dbc%40group.calendar.google.com&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>

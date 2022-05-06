@@ -19,6 +19,8 @@ import {Router} from '@angular/router';
 })
 export class AdminDashboardBackofficeComponent implements OnInit {
 
+  allAdmins: Array<User> = [];
+
   lineData: any;
 
   countries = Country;
@@ -79,6 +81,10 @@ export class AdminDashboardBackofficeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.userService.getAllAdmins().subscribe( allAdmins => {
+      this.allAdmins = allAdmins;
+    });
 
     this.userService.getCountryList().subscribe(countryList => {
       this.countryList = countryList;
@@ -306,6 +312,14 @@ export class AdminDashboardBackofficeComponent implements OnInit {
 
   lockUser(username: string){
     this.userService.lockUser(username).subscribe();
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
+
+  makeAdmin(username: string){
+    this.userService.makeAdmin(username).subscribe();
     let currentUrl = this.router.url;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';

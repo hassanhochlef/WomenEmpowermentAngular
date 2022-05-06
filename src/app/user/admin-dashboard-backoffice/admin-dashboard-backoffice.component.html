@@ -117,63 +117,25 @@
             </div>
 
             <div class="card">
-                <h4>Best Sellers</h4>
-                <p>Most popular products from your collection.</p>
+                <h4>Administration Squad</h4>
+                <p>Most active admins that work within our team</p>
 
                 <ul class="widget-image-list">
                     <li>
-                        <span>Product</span>
-                        <span>Sales</span>
+                        <span>Member</span>
                     </li>
-                    <li>
+                    <li *ngFor="let admin of allAdmins">
                         <span>
-                            <img src="assets/demo/images/product/bamboo-watch.jpg" alt="diamond-layout"/>
-                            <span>Bamboo Watch</span>
+                            <img src="assets/img/{{admin.profilPic}}" alt="diamond-layout"/>
+                            <span>{{admin.name}}</span>
                         </span>
-                        <span class="listitem-value">82</span>
                     </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/blue-band.jpg" alt="diamond-layout"/>
-                            <span>Blue Band</span>
-                        </span>
-                        <span class="listitem-value">75</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/game-controller.jpg" alt="diamond-layout"/>
-                            <span>Game Controller</span>
-                        </span>
-                        <span class="listitem-value">64</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/lime-band.jpg" alt="diamond-layout"/>
-                            <span>Lime Band</span>
-                        </span>
-                        <span class="listitem-value">62</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/gold-phone-case.jpg" alt="diamond-layout"/>
-                            <span>Phone Case</span>
-                        </span>
-                        <span class="listitem-value">55</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/green-t-shirt.jpg" alt="diamond-layout"/>
-                            <span>Green T-Shirt</span>
-                        </span>
-                        <span class="listitem-value">48</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/purple-t-shirt.jpg" alt="diamond-layout"/>
-                            <span>Purple T-Shirt</span>
-                        </span>
-                        <span class="listitem-value">32</span>
-                    </li>
+
+
+
+
+
+
                 </ul>
             </div>
         </div>
@@ -300,7 +262,7 @@
                                     <button *ngIf="!customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="lockUser(customer.username)"></button>
                                     <button *ngIf="customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="unlockUser(customer.username)"></button>
 
-                                    <button *ngIf="customer.role != 'ADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-plus" (click)="lockUser(customer.username)"></button>
+                                    <button *ngIf="customer.role != 'ADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-plus" (click)="makeAdmin(customer.username)"></button>
                                     <button *ngIf="customer.role === 'ADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-minus" (click)="unlockUser(customer.username)"></button>
                                 </td>
                             </tr>

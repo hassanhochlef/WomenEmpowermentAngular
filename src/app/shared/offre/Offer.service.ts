@@ -16,6 +16,7 @@ export class OfferService extends  RequestBaseService{
     offersUrl = 'http://localhost:8087/SpringMVC/offer/retrieve-all-Offers';
     candidacyUrl = 'http://localhost:8087/SpringMVC/offer/listMyCandidacy';
     candidacyFavoriteUrl = 'http://localhost:8087/SpringMVC/offer/listMyFavoriteCandidacy';
+    AllCandidavcyUrl = 'http://localhost:8087/SpringMVC/offer/get-ALL-Candidacies';
     // tslint:disable-next-line:variable-name
    /* httpOptions = {
         headers: new HttpHeaders({
@@ -31,6 +32,9 @@ export class OfferService extends  RequestBaseService{
     }
     getMyCandidacy(): Observable<Candidacy[]> {
         return this.http.get<Candidacy[]>(this.candidacyUrl, {headers: this.getHeaders});
+    }
+    getAllCandidacy(): Observable<Candidacy[]> {
+        return this.http.get<Candidacy[]>(this.AllCandidavcyUrl);
     }
     getMyFavoriteCandidacy(): Observable<Candidacy[]> {
         return this.http.get<Candidacy[]>(this.candidacyFavoriteUrl, {headers: this.getHeaders});

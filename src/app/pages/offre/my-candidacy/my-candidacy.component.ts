@@ -35,6 +35,6 @@ export class MyCandidacyComponent implements OnInit {
 
   changeText()
   {
-    this.btnVal = '<3 <3 !!';
+    this.btnVal = 'Setted';
   }
 }

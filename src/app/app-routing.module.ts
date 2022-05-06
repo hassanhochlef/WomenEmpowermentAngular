@@ -68,6 +68,7 @@ import {ChatComponent} from './forum/chat/chat.component';
 import {CourseBackHomeComponent} from './backOffice/course/course-back-home/course-back-home.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
 import {MyCandidacyComponent} from './pages/offre/my-candidacy/my-candidacy.component';
+import {CandidacyAreaComponent} from './pages/offre/candidacy-area/candidacy-area.component';
 
 @NgModule({
     imports: [
@@ -127,6 +128,7 @@ import {MyCandidacyComponent} from './pages/offre/my-candidacy/my-candidacy.comp
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
                     {path: 'pages/cour', component: CourseBackHomeComponent},
+                    {path: 'pages/candidacyarea', component: CandidacyAreaComponent},
 
                 ]
             },

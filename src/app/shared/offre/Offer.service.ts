@@ -6,6 +6,7 @@ import {Offre} from '../../models/offre';
 import {CvInfo} from '../../models/CvInfo.model';
 import {AuthenticationService} from '../authentication.service';
 import {RequestBaseService} from '../request-base.service';
+import {Candidacy} from '../../models/Candidacy.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ import {RequestBaseService} from '../request-base.service';
 export class OfferService extends  RequestBaseService{
     // protected baseurl = environment.api_url;
     offersUrl = 'http://localhost:8087/SpringMVC/offer/retrieve-all-Offers';
+    candidacyUrl = 'http://localhost:8087/SpringMVC/offer/listMyCandidacy';
+    candidacyFavoriteUrl = 'http://localhost:8087/SpringMVC/offer/listMyFavoriteCandidacy';
     // tslint:disable-next-line:variable-name
    /* httpOptions = {
         headers: new HttpHeaders({
@@ -25,6 +28,15 @@ export class OfferService extends  RequestBaseService{
     constructor(authenticationService: AuthenticationService, http: HttpClient) {
         super(authenticationService, http);
 
+    }
+    getMyCandidacy(): Observable<Candidacy[]> {
+        return this.http.get<Candidacy[]>(this.candidacyUrl, {headers: this.getHeaders});
+    }
+    getMyFavoriteCandidacy(): Observable<Candidacy[]> {
+        return this.http.get<Candidacy[]>(this.candidacyFavoriteUrl, {headers: this.getHeaders});
+    }
+    setFvorite( id: number){
+        return this.http.put('http://localhost:8087/SpringMVC/offer/Set-Favorite/' + id);
     }
     getAllOffers(): Observable<Offre[]> {
         return this.http.get<Offre[]>(this.offersUrl);
@@ -44,6 +56,18 @@ export class OfferService extends  RequestBaseService{
         return this.http.post<CvInfo>('http://localhost:8087/SpringMVC/Cv/upload/{userId}/{offerId}', +id , {headers: this.getHeaders});
 
     }*/
+
+    postCv(offerid: number, file: File) {
+        const formParams = new FormData();
+        // @ts-ignore
+        formParams.append('file', file);
+        const options: { headers: HttpHeaders } = {
+            headers: new HttpHeaders({
+                'Content-Type': 'multipart/form-data'
+            })
+        };
+        return this.http.post('http://localhost:8087/SpringMVC/Cv/upload/' + offerid, formParams, {headers: this.getHeaders} );
+    }
 
 
 

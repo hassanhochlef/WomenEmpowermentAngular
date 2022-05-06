@@ -67,6 +67,7 @@ import {ChatboxComponent} from './chatbox/chatbox.component';
 import {ChatComponent} from './forum/chat/chat.component';
 import {CourseBackHomeComponent} from './backOffice/course/course-back-home/course-back-home.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
+import {MyCandidacyComponent} from './pages/offre/my-candidacy/my-candidacy.component';
 
 @NgModule({
     imports: [
@@ -172,6 +173,7 @@ import {SubscriptionComponent} from './user/subscription/subscription.component'
                     },
 
                     {path: 'pages/map', component: MapComponent},
+                    {path: 'mycandidacy', component: MyCandidacyComponent}
                 ]
             },
             {path: 'error', component: AppErrorComponent},

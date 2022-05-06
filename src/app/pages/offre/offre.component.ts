@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 export class OffreComponent implements OnInit {
     offre: Offre = new Offre();
     offre2: Offre = new Offre();
+    fileToUpload: File | null = null;
+    offerid: number;
     // tslint:disable-next-line:ban-types
     listOffers: Offre[];
   constructor(private apiOffreService: OfferService , private router: Router) { }
@@ -34,8 +36,16 @@ export class OffreComponent implements OnInit {
     updateOffer(){
         this.apiOffreService.updateOfferById(this.offre2).subscribe(() => this.router.navigateByUrl('/user/offre'));
     }
-    applyOffer(id: number){
-   //     this.apiOffreService.ApplyOffer(id).subscribe(() => this.router.navigateByUrl('/user/offre'));
+    onFileSelcted(event: any){
+        this.fileToUpload = event.target.files[0];
+
+    }
+    onSaveFile(){
+        const formData = new FormData();
+        formData.append('file', this.fileToUpload);
+        // @ts-ignore
+        formData.append('reportProgress', true);
+        return this.apiOffreService.postCv(this.offerid, this.fileToUpload).subscribe();
     }
   /*addOfree(){
     this.apiOffreService.createOffre(this.offre, 11).subscribe(

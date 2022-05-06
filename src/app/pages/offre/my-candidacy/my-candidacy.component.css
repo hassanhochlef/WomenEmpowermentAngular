@@ -1,0 +1,148 @@
+/*
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Alata', sans-serif;
+  background-color: #eceff1;
+  color: #000051;
+}
+*/
+.jobs {
+    margin: 2rem;
+}
+.jobs-title {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+.jobs-description,
+.job-details,
+.job-source {
+    color: #616161;
+}
+.jobs-description a {
+    text-decoration: none;
+    color: #5e35b1;
+}
+
+.jobs-cards {
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.job {
+    width: 30%;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #fafafa;
+    padding: 3rem;
+    border-radius: .25rem;
+    margin-bottom: 4rem;
+    cursor: pointer;
+    transition: all .2s ease-out;
+}
+
+.job:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.1);
+}
+
+.job-category {
+    margin-left: 2rem;
+}
+.job-category:before {
+    content: ' ';
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #311b92;
+    position: absolute;
+    top: 3.2rem;
+    left: 3rem;
+    border-radius: 50%;
+}
+.clorPink{
+    color:#e91e63
+}
+.job-title {
+    margin-top: 1rem;
+}
+
+.job-details {
+    width: 50%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.job-source {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+}
+.job-source img {
+    width: 54px;
+    height: 54px;
+    border-radius: .25rem;
+    margin-right: 1rem;
+}
+.job-source strong {
+    color: #000051;
+}
+
+@media (max-width: 1100px) {
+    .job {
+        width: 45%;
+    }
+    .job-details {
+        width: 60%;
+    }
+}
+
+@media (max-width: 950px) {
+    .job-details {
+        width: 70%;
+    }
+}
+
+@media (max-width: 830px) {
+    .job-details {
+        width: 80%;
+    }
+}
+
+@media (max-width: 760px) {
+    .job {
+        width: 100%;
+    }
+    .job-details {
+        width: 50%;
+    }
+    .jobs-cards {
+        flex-direction: row;
+    }
+}
+/*
+.card-meta {
+  max-height: 0;
+  overflow: hidden;
+  color: #666;
+  font-size: .78em;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 5%;
+  padding: 0 5%;
+  @include transition-property(max-height);
+  @include transition-duration(.4s);
+  @include transition-timing-function(ease-in-out);
+}*/

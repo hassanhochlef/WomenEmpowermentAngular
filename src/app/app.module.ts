@@ -176,6 +176,7 @@ import { CourseBackHomeComponent } from './backOffice/course/course-back-home/co
 import { SubscriptionComponent } from './user/subscription/subscription.component';
 import {AddPostComponent} from './forum/add-post/add-post.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
+import { MyCandidacyComponent } from './pages/offre/my-candidacy/my-candidacy.component';
 
 
 @NgModule({
@@ -355,7 +356,8 @@ import {PostDetailsComponent} from './forum/post-details/post-details.component'
         ChatComponent,
         ChatboxComponent,
         CourseBackHomeComponent,
-        SubscriptionComponent
+        SubscriptionComponent,
+        MyCandidacyComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

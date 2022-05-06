@@ -94,7 +94,7 @@
                                 <input type="text" class="form-control" id="approxSalary" name="name" [(ngModel)]="offre.approxSalary" #email="ngModel" class="form-control" required>
                             </div>
                             <div class="text-center">
-                                <button (click)="addOffer()" type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0">Create</button>
+                                <button (click)="addOffer()" type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0" data-bs-dismiss="modal">Create</button>
                             </div>
                         </form>
                     </div>
@@ -134,7 +134,7 @@
                     <b>Description : </b> <span>{{offre.description}}</span>
                 </li>
                 <li class="align-items-center my-2">
-                    <b>Founders : </b> <span>{{offre.createdAt | date:'fullDate'}}</span>
+                    <b>Creation Date : </b> <span>{{offre.createdAt | date:'fullDate'}}</span>
                 </li>
 
             </ul>
@@ -215,7 +215,7 @@
 
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Edit</button>
+                                <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Edit</button>
                             </div>
                         </form>
 
@@ -228,8 +228,8 @@
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form role="form" #f="ngForm" (ngSubmit)="applyOffer(5) ">
+    <div class="modal-dialog" >
+        <form role="form" #f="ngForm" (ngSubmit)="onSaveFile()">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Apply</h5>
@@ -241,7 +241,7 @@
                     <br>
                 <div class="input-group input-group-static">
                     <div  class="modal-body">Your CV</div>
-                    <input class="form-control" type="file" id="formFile">
+                    <input class="form-control" type="file" id="file"  (change)="onFileSelcted($event)">
                 </div>
                 <br>
             </div>

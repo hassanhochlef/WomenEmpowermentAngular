@@ -1,0 +1,366 @@
+
+
+<header class="position-relative">
+    <section class="py-4 position-relative">
+        <div id="carousel-testimonial-pricing" class="carousel slide carousel-team" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active " >
+                    <!-- START Pricing w/ 2 cards & nav tabs -->
+                    <div class="container"  >
+                        <div class="row align-items-center">
+                            <div class="col-md-5 p-lg-5 ms-lg-auto">
+                                <div class="p-3">
+                                    <div class="col-lg-20 col-md-10 d-flex justify-content-center flex-column">
+                                        <h3 class="mt-3">Choose a plan for your next project</h3>
+                                        <p class="lead">You have Free Unlimited Updates and Premium Support on each package. You also have 20 days to request a refund.</p>
+                                        <div class="nav-wrapper me-auto mt-4 mb-5 mb-lg-0">
+
+                                        </div>
+                                    </div>                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <br> <br>
+                                <br>
+                                <div class="card card-pricing bg-gradient-primary border-0 text-center mb-4 overflow-hidden">
+                                    <img src="../../assets/img/shapes/pattern-lines.svg" alt="pattern-lines" class="position-absolute opacity-6 h-100">
+                                    <div class="card-header bg-transparent">
+                                        <h6 class="text-uppercase text-white ls-1 py-3 mb-0">Premium</h6>
+                                    </div>
+                                    <div class="card-body text-white position-relative">
+                                        <p class="display-2 font-weight-bold mb-0">$59</p>
+                                        <span>per month</span>
+                                        <ul class="list-unstyled my-4">
+                                            <li class="align-items-center">
+                                                <b>50GB</b> <span>File Storage</span>
+                                            </li>
+                                            <li class="align-items-center my-2">
+                                                <b>100</b> <span>Users</span>
+                                            </li>
+                                            <li class="align-items-center">
+                                                <b>Premium</b> <span>Support</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer bg-transparent position-relative">
+                                        <button class="btn btn-white">Request a demo</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Pricing w/ 2 cards & nav tabs -->
+                </div>
+                <div class="carousel-item" *ngFor="let candidacy of listCandidacy" >
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 p-lg-5 ms-lg-auto">
+                                <div class="p-3">
+                                    <div class="col-lg-20 col-md-10 d-flex justify-content-center flex-column">
+                                        <h3 class="mt-3">Choose a plan for your next project</h3>
+                                        <p class="lead">You have Free Unlimited Updates and Premium Support on each package. You also have 20 days to request a refund.</p>
+                                        <div class="nav-wrapper me-auto mt-4 mb-5 mb-lg-0">
+
+                                        </div>
+                                    </div>                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <br> <br>
+                                <br>
+                                <div class="card card-pricing bg-gradient-primary border-0 text-center mb-4 overflow-hidden">
+                                    <img src="../../assets/img/shapes/pattern-lines.svg" alt="pattern-lines" class="position-absolute opacity-6 h-100">
+                                    <div class="card-header bg-transparent">
+                                        <h6 class="text-uppercase text-white ls-1 py-3 mb-0">Premium</h6>
+                                    </div>
+                                    <div class="card-body text-white position-relative">
+                                        <p class="display-2 font-weight-bold mb-0">$59</p>
+                                        <span>per month</span>
+                                        <ul class="list-unstyled my-4">
+                                            <li class="align-items-center">
+                                                <b>50GB</b> <span>File Storage</span>
+                                            </li>
+                                            <li class="align-items-center my-2">
+                                                <b>100</b> <span>Users</span>
+                                            </li>
+                                            <li class="align-items-center">
+                                                <b>Premium</b> <span>Support</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer bg-transparent position-relative">
+                                        <button class="btn btn-white">Request a demo</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev text-dark text-lg" href="#carousel-testimonial-pricing" role="button" data-bs-slide="prev">
+                <i class="fas fa-chevron-left"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next text-dark text-lg" href="#carousel-testimonial-pricing" role="button" data-bs-slide="next">
+                <i class="fas fa-chevron-right"></i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+</header>
+    <section class="py-5 bg-gradient-dark position-relative overflow-hidden">
+    <img src="../../assets/img/shapes/pattern-lines.svg" alt="pattern-lines" class="position-absolute start-0 top-0 w-100 h-100 opacity-6">
+    <div class="container py-5 postion-relative z-index-2">
+        <div class="col-lg-6 col-md-8 mx-auto text-center mb-5">
+            <h3 class="text-white">Pick the best plan for you</h3>
+            <p class="text-white opacity-6">You have Free Unlimited Updates and Premium Support on each package.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ms-lg-auto mb-sm-0 mb-5" *ngFor="let candidacy of listCandidacy">
+                <div class="card text-center">
+                    <div class="card-header bg-transparent">
+                        <h5 class="mt-4 mb-2">{{candidacy.candidacyState}}</h5>
+                        <h2>
+                            TND {{candidacy.offer.approxSalary}} <small class="text-sm text-secondary font-weight-bold">/ month</small>
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled max-width-200 mx-auto">
+                            <li>
+                                <b>{{candidacy.offer.offerId}}</b> Projects
+                            </li>
+                            <hr class="horizontal dark">
+                            <li>
+                                <b>1</b> Team Members
+                            </li>
+                            <hr class="horizontal dark">
+                            <li>
+                                <b>5</b> Personal Contacts
+                            </li>
+                            <hr class="horizontal dark">
+                            <li>
+                                <b>{{candidacy.isBookmarked}}</b> Messages
+                            </li>
+                        </ul>
+                        <button  (click)="Setfavorite(candidacy.candidacyId)" type="button" class=" btn bg-gradient-primary">Set favorite</button>
+                    </div>
+                </div>
+                <br> <br>
+            </div>
+            <!--
+            <div class="col-lg-4 col-md-6 me-lg-auto">
+                <div class="card text-center bg-gradient-warning">
+                    <div class="card-header bg-transparent">
+                        <h5 class="mt-4 mb-2 text-white">Startup</h5>
+                        <h2 class="text-white">
+                            $49 <small class="text-sm">/ month</small>
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled max-width-200 mx-auto text-white">
+                            <li>
+                                <b>100</b> Projects
+                            </li>
+                            <hr class="horizontal light">
+                            <li>
+                                <b>25</b> Team Members
+                            </li>
+                            <hr class="horizontal light">
+                            <li>
+                                <b>15</b> Personal Contacts
+                            </li>
+                            <hr class="horizontal light">
+                            <li>
+                                <b>5K</b> Messages
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-white mt-4">Get Access</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    </section>
+
+
+
+
+
+<!-- Modal -->
+
+<!-- <section class="jobs">
+    <h1 class="jobs-title" align="center">Jobs</h1>
+    <div class="jobs-cards" >
+        <article class="job" *ngFor="let candidacy of listCandidacy" >
+            <h2 class="job-title" class="card-header text-center pt-4 pb-3 bg-transparent">{{candidacy.candidacyState}}</h2>
+            <div class="card-header text-center pt-4 pb-3 bg-transparent">
+                <i class="material-icons text-gradient text-primary text-5xl">savings</i>
+
+                <h1 class="font-weight-bold mt-2 text-blue">
+                    <small class="text-lg align-top me-1">TND</small>{{candidacy.candidacyState}}<small class="text-lg">/mo</small>
+                </h1>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <span class=" clorPink  cursor-pointer ">Details</span>
+
+                <div>
+                    <i class="material-icons text-gradient text-primary text-5xl">room</i>
+                    <span style="margin-top: -50px" >{{candidacy.candidacyId}}</span>
+                </div>
+            </div>
+
+            <ul class="list-unstyled my-4">
+                <li class="align-items-center">
+
+                    <b>Required Candidates:</b> <span>{{candidacy.candidacyId}}</span>
+                </li>
+                <li class="align-items-center my-2">
+                    <b>Description : </b> <span></span>
+                </li>
+                <li class="align-items-center my-2">
+                    <b>Creation Date : </b> <span>{{candidacy.candidacyState }}</span>
+                </li>
+
+            </ul>
+
+
+
+
+
+
+            <div>
+                <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Apply Now
+                    <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </article>
+    </div>
+
+</section>  -->
+<!-- Modal -->
+<!--
+<section class="py-4">
+    <div class="container">
+        <div class="row justify-space-between py-2">
+            <div class="col-6 mx-auto">
+                <div class="rotating-card-container">
+                    <div class="card card-rotate card-background mt-md-0 mt-5">
+                        <div class="front front-background min-height-500" style="background-image: url(https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/toboshar.jpg); background-size: cover;">
+                            <div class="card-body pt-7 text-center">
+                                <p class="text-sm text-white text-uppercase font-weight-normal">Music</p>
+                                <h3 class="text-white mb-0">Find music and play it!</h3>
+                                <p class="text-white opacity-8">Society has put up so many boundaries, so many limitations on what’s right and wrong that it’s almost impossible to get a pure thought out. It’s like a little kid, a little boy, looking at colors, and no one told him what colors are good.</p>
+                            </div>
+                            <div class="card-body text-white position-relative">
+                                <p class="display-2 font-weight-bold mb-0">$59</p>
+                                <span>per month</span>
+                                <ul class="list-unstyled my-4">
+                                    <li class="align-items-center">
+                                        <b>50GB</b> <span>File Storage</span>
+                                    </li>
+                                    <li class="align-items-center my-2">
+                                        <b>100</b> <span>Users</span>
+                                    </li>
+                                    <li class="align-items-center">
+                                        <b>Premium</b> <span>Support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="back back-background min-height-500" style="background-image: url(https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/toboshar.jpg)">
+                            <div class="card-body pt-7 text-center">
+                                <h3 class="text-white mb-0">Manage post</h3>
+                                <p class="text-white opacity-8">As an Admin, you have shortcuts to edit, view or delete the posts.</p>
+                                <div class="buttons-group">
+                                    <button type="button" class="btn btn-white btn-sm mt-3">Edit</button>
+                                    <button type="button" class="btn btn-white btn-sm mt-3">Share</button>
+                                    <button type="button" class="btn btn-white btn-sm mt-3">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+
+<!-- START Pricing w/ 2 cards & nav tabs
+<section class="py-2 bg-gray-200">
+    <div class="container pt-5">
+        <div class="row">
+
+            <div class="col-lg-7 col-md-12 ms-lg-auto me-lg-auto">
+                <div class="tab-content tab-space">
+                    <div class="tab-pane active" id="personal">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card card-pricing bg-white border-0 text-center mb-4">
+                                    <div class="card-header bg-transparent">
+                                        <h6 class="text-uppercase ls-1 py-3 mb-0">Standard</h6>
+                                    </div>
+                                    <div class="card-body text-dark">
+                                        <p class="display-2 font-weight-bold mb-0">$25</p>
+                                        <span>per month</span>
+                                        <ul class="list-unstyled my-4">
+                                            <li class="align-items-center">
+                                                <b>20GB</b> <span>File Storage</span>
+                                            </li>
+                                            <li class="align-items-center my-2">
+                                                <b>15</b> <span>Users</span>
+                                            </li>
+                                            <li class="align-items-center">
+                                                <b>False</b> <span>Support</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer bg-transparent">
+                                        <button class="btn bg-gradient-primary">Request a demo</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-pricing bg-gradient-primary border-0 text-center mb-4 overflow-hidden">
+                                    <img src="../../assets/img/shapes/pattern-lines.svg" alt="pattern-lines" class="position-absolute opacity-6 h-100">
+                                    <div class="card-header bg-transparent">
+                                        <h6 class="text-uppercase text-white ls-1 py-3 mb-0">Premium</h6>
+                                    </div>
+                                    <div class="card-body text-white position-relative">
+                                        <p class="display-2 font-weight-bold mb-0">$59</p>
+                                        <span>per month</span>
+                                        <ul class="list-unstyled my-4">
+                                            <li class="align-items-center">
+                                                <b>50GB</b> <span>File Storage</span>
+                                            </li>
+                                            <li class="align-items-center my-2">
+                                                <b>100</b> <span>Users</span>
+                                            </li>
+                                            <li class="align-items-center">
+                                                <b>Premium</b> <span>Support</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer bg-transparent position-relative">
+                                        <button class="btn btn-white">Request a demo</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+END Pricing w/ 2 cards & nav tabs -->
+
+

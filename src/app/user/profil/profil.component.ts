@@ -68,7 +68,7 @@ export class ProfilComponent implements OnInit {
       this.allEvents = events;
     });
 
-    if (this.authenticationService.NotLoggedIn()){
+   /* if (this.authenticationService.NotLoggedIn()){
       this.router.navigate(['/login']).then(() => {
         window.location.reload();
       });
@@ -79,7 +79,7 @@ export class ProfilComponent implements OnInit {
       this.router.navigate(['/login']).then(() => {
         window.location.reload();
       });
-    }
+    }*/
 
   }
 

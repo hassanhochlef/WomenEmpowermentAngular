@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Post} from '../models/post.model';
 import {Course} from '../models/course.model';
@@ -8,6 +8,9 @@ import {PostComment} from '../models/postComment.model';
 import {Advertising} from '../models/Advertising.model';
 import {RequestBaseService} from './request-base.service';
 import {AuthenticationService} from './authentication.service';
+import {Chatroom} from "../models/chatroom";
+import {User} from "../models/user.model";
+import {Message} from "../models/mess";
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +39,9 @@ export class ForumService extends  RequestBaseService{
 
   addPost(post: Post) {
     return this.http.post<Post>('http://localhost:8087/SpringMVC/forum/add-Post/1', post, {headers: this.getHeaders});
+  }
+  addadv(post: Advertising) {
+    return this.http.post<Advertising>('http://localhost:8087/SpringMVC/forum/add-Advertising/1', post, {headers: this.getHeaders});
   }
 
   addPostLike(id: string, postLike: PostLike) {
@@ -70,12 +76,13 @@ export class ForumService extends  RequestBaseService{
       return this.http.put<PostComment>('http://localhost:8087/SpringMVC/forum/Update-Post/' + idCom + '/' , c , {headers: this.getHeaders});
 
     }
-  addImagePost(idPost: string, image: File) {
+  addImagePost(idPost: string, image: File): Observable<any> {
     const data: FormData = new FormData();
-    data.append('Image', image);
+    data.append('image', image);
 
-    return this.http.post<Post>('localhost:8087/SpringMVC/forum/add-Post-image/' + idPost, data , {headers: this.getHeaders});
+    return this.http.post('localhost:8087/SpringMVC/forum/add-Post-image/' + idPost, data , {headers: this.getHeaders});
   }
+
 
   Like_Dislike(idPost: string): Observable<number> {
 
@@ -89,5 +96,43 @@ export class ForumService extends  RequestBaseService{
   ratePost(idp: string , x: string) {
     return this.http.put<PostComment>('http://localhost:8087/SpringMVC/forum/Give-post-etoile/' + idp + '/'  + x , {headers: this.getHeaders});
 
+  }
+
+  reportPost(idp: string ) {
+    return this.http.get<any>('http://localhost:8087/SpringMVC/forum/Report-Post/' + idp , {headers: this.getHeaders});
+
+  }
+
+  getchatroom(ids: string , idr: string ) {
+    return this.http.get<Chatroom>('http://localhost:8087/SpringMVC/chat/Chatroom/' + ids + '/' + idr , {headers: this.getHeaders});
+
+  }
+
+  GetAllUser() {
+    return this.http.get<User[]>('http://localhost:8087/SpringMVC/chat/ListUser/', {headers: this.getHeaders});
+
+  }
+  sendmsg(id: string, m: Message) {
+    return this.http.post<Message>('http://localhost:8087/SpringMVC/chat/send/' + id, m , {headers: this.getHeaders});
+
+  }
+
+  allchat() {
+    return this.http.get<Chatroom[]>('http://localhost:8087/SpringMVC/chat/allchat' , {headers: this.getHeaders});
+
+  }
+  color(id: string , c: string) {
+    return this.http.post<string>('http://localhost:8087/SpringMVC/chat/color/' + id , c , {headers: this.getHeaders});
+
+  }
+
+  image(file: File, id: string): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('Image', file);
+    const req = new HttpRequest('POST', 'localhost:8087/SpringMVC/forum/add-Post-image/' + id , formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
   }
 }

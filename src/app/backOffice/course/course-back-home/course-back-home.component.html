@@ -1,3 +1,5 @@
+
+
 <div class="p-col-12">
     <div class="card">
         <h4>Courses overview</h4>
@@ -21,10 +23,10 @@
                                 <span class="overview-icon">
                                     <i class="pi pi-user"></i>
                                 </span>
-                    <span class="overview-title">Participants</span>
+                    <span class="overview-title">OnGoing courses</span>
                     <div class="p-grid overview-detail">
                         <div class="p-col-12">
-                            <div class="overview-number">$2,100</div>
+                            <div class="overview-number">{{ this.onGoingCourses.length }}</div>
                             <div class="overview-subtext">Total</div>
                         </div>
                     </div>
@@ -35,10 +37,10 @@
                                 <span class="overview-icon">
                                     <i class="pi pi-dollar"></i>
                                 </span>
-                    <span class="overview-title">Formers</span>
+                    <span class="overview-title">Ended courses</span>
                     <div class="p-grid overview-detail">
                         <div class="p-col-12">
-                            <div class="overview-number">{{ this.getFormersNb()}}</div>
+                            <div class="overview-number">{{this.EndedCourses.length}}</div>
                             <div class="overview-subtext">Total</div>
                         </div>
                     </div>
@@ -62,29 +64,110 @@
         </div>
     </div>
 </div>
-<div class="p-col-12 p-lg-4">
-    <div class="card">
-        <h4>Formers</h4>
-        <ul class="widget-person-list">
-            <li *ngFor="let u of users">
-                <div class="person-item" *ngIf="u.role === role[0]">
-                    <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
-                    <div class="person-info">
-                        <div class="person-name">{{ u.username }}</div>
-                        <div class="person-subtext">{{ u.phoneNumber }}</div>
-                    </div>
-                </div>
-                <div class="person-actions" *ngIf="u.role === role[0]">
-                    <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope"></button>
-                    <button type="button" class="p-button-rounded p-button-warning" pButton icon="pi pi-cog" ></button>
-                </div>
-            </li>
+<div class="p-grid p-fluid">
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5 class="centerText">Courses</h5>
+            <p-chart type="doughnut" [data]="pieData"></p-chart>
+        </div>
 
-        </ul>
     </div>
-    <div class="card">
-        <h5 class="centerText">Doughnut Chart</h5>
-        <p-chart type="doughnut" [data]="pieData"></p-chart>
+    <div class="p-col-12 p-lg-6">
+        <div class="card" style="background-color: whitesmoke">
+            <h5 class="centerText">Fields distribution</h5>
+            <p-chart type="radar" [data]="pieData1"></p-chart>
+        </div>
     </div>
 </div>
-<iframe src="https://calendar.google.com/calendar/embed?src=flo9b3693avoitcsm8st7v1dbc%40group.calendar.google.com&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<div class="p-grid p-fluid">
+    <div class="p-col-12 p-lg-6" style="display: inline-block; margin-left: 5px; ">
+        <div class="card">
+            <h4>Formers</h4>
+            <ul class="widget-person-list">
+                <li *ngFor="let u of users">
+                    <div class="person-item" *ngIf="u.role === role[0]">
+                        <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
+                        <div class="person-info">
+                            <div class="person-name">{{ u.username }}</div>
+                            <div class="person-subtext">{{ u.phoneNumber }}</div>
+                        </div>
+                    </div>
+                    <div class="person-actions" *ngIf="u.role === role[0]">
+                        <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope"></button>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+<div class="p-col-12 p-lg-6" style="display: inline-block;max-width: 600px;max-height: 300px">
+    <div class="card">
+        <div class="revenue-chart-container">
+            <p-chart type="pie" id="revenue-chart" [data]="revenueChart"></p-chart>
+        </div>
+    </div>
+    </div>
+
+</div>
+<div class="p-col-12">
+    <div class="card">
+        <p-table #dtc [value]="courses" [(selection)]="selectedCustomers1" dataKey="id" selectionMode="single"
+                 styleClass="p-datatable-customers p-datatable-gridlines p-datatable-striped p-datatable-sm"
+                 [scrollable]="true" scrollHeight="600px" [rowHover]="true"  [rows]="10" [paginator]="true" [filterDelay]="0" [globalFilterFields]="['courseName','domain','startDate','onGoing']">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                    Courses
+                    <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dtc.filterGlobal($event.target.value, 'contains')"
+                           placeholder="Global Search"/>
+                </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="courseName">Name
+                        <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="domain">Domain
+                        <p-sortIcon field="domain"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="startDate">Date
+                        <p-sortIcon field="startDate"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="onGoing">OnGoing
+                        <p-sortIcon field="onGoing"></p-sortIcon>
+                    </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer>
+                <tr [pSelectableRow]="customer">
+                    <td>
+                        <span class="p-column-title"></span>
+                        {{customer.courseName}}
+                    </td>
+                    <td>
+                        <span class="p-column-title"></span>
+                        {{customer.domain}}
+                    </td>
+                    <td>
+                        <span class="p-column-title"></span>
+                        {{customer.startDate}}
+                    </td>
+                    <td>
+                        <span class="p-column-title"></span>
+                        {{customer.onGoing}}
+                    </td>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No customers found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

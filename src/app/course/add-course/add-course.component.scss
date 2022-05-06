@@ -609,3 +609,6 @@ body {
   pointer-events: none;
   opacity: 0.5;
 }
+input::-webkit-date-and-time-value{
+  display: none !important;
+}

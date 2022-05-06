@@ -24,7 +24,7 @@ export class ChartsDemoComponent implements OnInit {
 
     ngOnInit() {
         this.lineData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
             datasets: [
                 {
                     label: 'First Dataset',

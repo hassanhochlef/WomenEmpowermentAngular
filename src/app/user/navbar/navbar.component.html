@@ -6,12 +6,12 @@
                     <span class="navbar-brand ms-sm-3  d-none d-md-block" data-placement="bottom">
                         Women Empowerment
                     </span>
-                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/user/landing" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
                         <i class="material-icons opacity-6 me-1 text-md">home</i>
                         Home
                     </a>
 
-                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'ADMIN'">
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/admin" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'ADMIN'">
                         <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
                         Dashboard
                     </a>

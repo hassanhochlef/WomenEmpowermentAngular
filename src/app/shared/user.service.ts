@@ -32,6 +32,10 @@ export class UserService extends  RequestBaseService{
     return this.http.get(API_URL + 'all', {headers: this.getHeaders});
   }
 
+  getAllSubscribedUser(): Observable<any> {
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/subscribed', {headers: this.getHeaders});
+  }
+
   getMyPosts(): Observable<any>{
     return this.http.get(API_URL + 'myPosts', {headers: this.getHeaders});
   }
@@ -103,5 +107,31 @@ export class UserService extends  RequestBaseService{
 
   getAllPosts(): Observable<any>{
     return this.http.get(API_URL + 'posts', {headers: this.getHeaders});
+  }
+
+  unlockUser(username: string){
+    return this.http.put('http://localhost:8087/SpringMVC/api/admin/unlock', username, {headers: this.getHeaders});
+  }
+
+  lockUser(username: string){
+    return this.http.put('http://localhost:8087/SpringMVC/api/admin/lock', username, {headers: this.getHeaders});
+  }
+
+  getUsersByMonth(id: string): Observable<any> {
+    let queryParams = {'id': id};
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/usersByMonth', {headers: this.getHeaders, params: queryParams});
+  }
+
+  getSubscribedUsersByMonth(id: string): Observable<any> {
+    let queryParams = {'id': id};
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/subscribedUsersByMonth', {headers: this.getHeaders, params: queryParams});
+  }
+
+  getCountryList(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/countries', {headers: this.getHeaders});
+  }
+
+  getCountriesValues(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/numberByCountry', {headers: this.getHeaders});
   }
 }

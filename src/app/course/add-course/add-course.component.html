@@ -55,28 +55,48 @@ float: right;
 		<div>
 						<div  class="container" >
 							<h2 >Add course</h2>
+							<br>
+
+
+								<br>
 							<form #f1="ngForm" (ngSubmit)="f1.form.valid && addCourse() " xmlns="http://www.w3.org/1999/html">
 								<div class="input-group input-group-outline mb-3" >
-									<label class="form-label">Course name</label>
-									<input type="text"  class="form-control" id="courseName" #courseName="ngModel" name="courseName" minlength="1"  [(ngModel)]="course.courseName" class="form-control" required>
+									<label class="form-label">Course name
+										<span  for="courseName" class="text-danger " *ngIf="courseName.errors?.minlength || f1.form.errors == true " [(ngModel)]="course.courseName" name="courseName">
+									 <font size="1" style="padding-left: 10px">Course name length should be more than 4 characters</font>
+									</span></label>
+									<input type="text"  class="form-control" id="courseName"  name="courseName" #courseName="ngModel" minlength="4"  [(ngModel)]="course.courseName" class="form-control" required>
+
 								</div>
 
 								<div class="input-group input-group-outline mb-3">
-								<label class="form-label">Start date</label>
-								<input type="date" class="form-control" id="startDate" name="startDate"  [(ngModel)]="course.startDate" >
+									<label class="form-label">Start date
+										<span *ngIf="errorMessage" for="startDate" [(ngModel)]="errorMessage" class="text-danger " name="startDate">
+									 <font size="1" style="padding-left: 10px">{{errorMessage}}</font>
+									</span>
+									</label>
+								<input type="date" class="form-control" id="startDate"   name="startDate"  [(ngModel)]="course.startDate" >
 								</div>
 								<div class="input-group input-group-outline mb-3">
-									<label class="form-label">End date</label>
+									<label class="form-label">End date
+									<span  *ngIf="errorMessage" for="endDate" class="text-danger " name="endDate">
+									 <font size="1" style="padding-left: 10px">{{errorMessage}}</font>
+									</span></label>
 									<input type="date" class="form-control" id="endDate" name="endDate"  [(ngModel)]="course.endDate" >
 								</div>
 								<div class="input-group input-group-outline mb-3">
-									<label class="form-label">Hours charge</label>
-									<input class="form-control" type="number"  mode="decimal"  name="nbHours" [(ngModel)]="course.nbHours"/>
+									<label class="form-label">Hours charge
+										<span  for="nbHours" class="text-danger " *ngIf="nbHours.errors?.pattern || f1.form.errors == true " [(ngModel)]="course.nbHours" name="nbHours">
+									 <font size="1" style="padding-left: 10px">Hours charge should be atleast 1 hour</font>
+									</span>
+									</label>
+									<input  type="number" id="nbHours"  mode="decimal" #nbHours="ngModel" pattern="^[1-9]+[0-9]*$" class="form-control" required name="nbHours" [(ngModel)]="course.nbHours"/>
 								</div>
 								<br>
 								<div class="input-group input-group-outline mb-3">
 								<div class="select">
-								<select  class="select-text" name="domain" id="domain" [(ngModel)]="course.domain" >
+
+								<select  class="select-text" name="domain"   id="domain" [(ngModel)]="course.domain" >
 									<option  value="IT" >IT</option>
 									<option  value="MEDICAL">MEDICAL</option>
 									<option value="ARTISANAL">ARTISANAL</option>

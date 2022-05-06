@@ -15,6 +15,7 @@ import {Event} from "../../../models/event.model";
 })
 export class PaymentDonationComponent implements OnInit {
   donation: Donation = new Donation();
+
   private stripe: Stripe;
   idUser;
   myDate = Date.now();
@@ -84,7 +85,13 @@ export class PaymentDonationComponent implements OnInit {
       }
     });
   }
+
 }
+
+
+
+
+
 
     /*  this.stripeService.elements(this.elementsOptions)
         .subscribe(elements => {

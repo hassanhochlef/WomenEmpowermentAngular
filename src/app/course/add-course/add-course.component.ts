@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {Course} from '../../models/course.model';
 import {CourseService} from '../../shared/course.service';
 import {Router} from '@angular/router';
-import {Domain} from "../../models/domain.enum";
-import {Subscription} from "rxjs";
-import {User} from "../../models/user.model";
-import {RequestBaseService} from "../../shared/request-base.service";
-import {AuthenticationService} from "../../shared/authentication.service";
-import {HttpClient} from "@angular/common/http";
+import {Domain} from '../../models/domain.enum';
+import {Subscription} from 'rxjs';
+import {User} from '../../models/user.model';
+import {RequestBaseService} from '../../shared/request-base.service';
+import {AuthenticationService} from '../../shared/authentication.service';
+import {HttpClient} from '@angular/common/http';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -21,14 +22,28 @@ export class AddCourseComponent extends RequestBaseService implements OnInit {
   ccCourses: Course[];
   courseSub: Subscription;
   onlineUser: User;
-  constructor(private cs: CourseService, http: HttpClient, authenticationService: AuthenticationService, private router: Router) {
+  errorMessage = '';
+  constructor(private cs: CourseService, http: HttpClient, authenticationService: AuthenticationService,
+              private router: Router ) {
     super(authenticationService, http);
     this.onlineUser = this.authenticationService.currentUserValue;
     }
   addCourse(){
-    this.cs.addCourse(this.course).subscribe(() => this.router.navigateByUrl('/cour'));
-    console.log(this.course.courseName);
+    this.cs.addCourse(this.course).subscribe(data => { this.router.navigate(['/cour']).then(() => {
+      window.location.reload();
+    }); }, err => {
+                            if (err?.status === 417)
+                            {
+                              this.errorMessage = 'End date cannot be before start date';
+                            }
+                            else if (err?.status === 403)
+                            {
+                              this.errorMessage = 'Maximum ongoing courses limit is 2';
+                            }
+    }
+    );
   }
+
   ngOnInit(): void {
     this.domain = [Domain.AGRICULTURE, Domain.ARTISANAL, Domain.IT, Domain.TECH, Domain.MEDICAL, Domain.SOCIAL];
     this.getCreatedCourses(this.onlineUser.userId.toString());
@@ -42,7 +57,7 @@ export class AddCourseComponent extends RequestBaseService implements OnInit {
 
   }
   openGameDetails(id: string): void {
-    this.router.navigate(['user/details', id]);
+    this.router.navigate(['/details', id]);
   }
 
 

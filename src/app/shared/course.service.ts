@@ -30,7 +30,7 @@ export class CourseService  extends  RequestBaseService {
   }
 
   addCourse(course: Course) {
-    return this.http.post<Course>('http://localhost:8087/SpringMVC/course/addCourse/10', course);
+    return this.http.post<Course>('http://localhost:8087/SpringMVC/course/addCourse/', course, {headers: this.getHeaders});
   }
 
   addSanction(idUser: string, idCourse: string, pena: Penality) {

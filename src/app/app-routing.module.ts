@@ -107,6 +107,7 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                     {path: 'user-post', component: UserPostsComponent},
                     {path: 'pages/map', component: MapComponent},
                     {path: 'chat', component: ChatboxComponent},
+                    {path: 'chatP', component: ChatPriveComponent},
 
 
                 ]
@@ -179,10 +180,7 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                         path: 'chat',
                         component: ChatboxComponent,
                     },
-                    {
-                        path: 'chatP',
-                        component: ChatPriveComponent,
-                    },
+
 
                 ]
             },

@@ -72,6 +72,7 @@ import {AuthGuard} from './guards/auth.guard';
 import {Role} from './models/role.enum';
 import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import {ForumBackComponent} from "./forum-back/forum-back.component";
 
 @NgModule({
     imports: [
@@ -106,6 +107,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                     {path: 'user-post', component: UserPostsComponent},
                     {path: 'pages/map', component: MapComponent},
                     {path: 'chat', component: ChatboxComponent},
+
 
                 ]
             },
@@ -150,6 +152,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
+                    {path: 'forumb', component: ForumBackComponent},
 
                 ]
             },

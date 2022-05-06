@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Post} from '../models/post.model';
 import {Course} from '../models/course.model';
@@ -39,6 +39,9 @@ export class ForumService extends  RequestBaseService{
 
   addPost(post: Post) {
     return this.http.post<Post>('http://localhost:8087/SpringMVC/forum/add-Post/1', post, {headers: this.getHeaders});
+  }
+  addadv(post: Advertising) {
+    return this.http.post<Advertising>('http://localhost:8087/SpringMVC/forum/add-Advertising/1', post, {headers: this.getHeaders});
   }
 
   addPostLike(id: string, postLike: PostLike) {
@@ -121,5 +124,15 @@ export class ForumService extends  RequestBaseService{
   color(id: string , c: string) {
     return this.http.post<string>('http://localhost:8087/SpringMVC/chat/color/' + id , c , {headers: this.getHeaders});
 
+  }
+
+  image(file: File, id: string): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('Image', file);
+    const req = new HttpRequest('POST', 'localhost:8087/SpringMVC/forum/add-Post-image/' + id , formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
   }
 }

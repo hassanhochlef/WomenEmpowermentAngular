@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Message } from '../models/message';
+import {RequestBaseService} from "./request-base.service";
+import {AuthenticationService} from "./authentication.service";
+import {HttpClient} from "@angular/common/http";
 /**
  * Declaring SockJS and Stomp : check the assets/js folder and the index.html script section
  */
@@ -9,14 +12,15 @@ declare var Stomp;
 @Injectable({
   providedIn: 'root'
 })
-export class ChatService {
+export class ChatService extends  RequestBaseService{
   // Store the chat messages
   public messages = [];
 
   public stompClient;
 
-  constructor() {
-    this.initializeWebSocketConnection();
+  constructor(authenticationService: AuthenticationService, http: HttpClient) {
+  super(authenticationService, http);
+  this.initializeWebSocketConnection();
   }
 
   initializeWebSocketConnection() {

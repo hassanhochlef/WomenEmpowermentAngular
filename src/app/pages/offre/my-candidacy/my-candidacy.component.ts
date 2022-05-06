@@ -11,10 +11,15 @@ import {Candidacy} from '../../../models/Candidacy.model';
 })
 
 export class MyCandidacyComponent implements OnInit {
-  listCandidacy: Candidacy[];
-  listFavoriteCandidacy: Candidacy[];
 
   constructor(private apiOffreService: OfferService , private router: Router) { }
+  listCandidacy: Candidacy[];
+  listFavoriteCandidacy: Candidacy[];
+  /*setSaving(element, text){
+    element.textContent = text;
+    element.disabled = true;
+  }*/
+  toggle: any;
 
   ngOnInit(): void {
     this.apiOffreService.getMyCandidacy().subscribe(res => {console.log(res);

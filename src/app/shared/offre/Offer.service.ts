@@ -35,8 +35,8 @@ export class OfferService extends  RequestBaseService{
     getMyFavoriteCandidacy(): Observable<Candidacy[]> {
         return this.http.get<Candidacy[]>(this.candidacyFavoriteUrl, {headers: this.getHeaders});
     }
-    setFvorite( id: number){
-        return this.http.put('http://localhost:8087/SpringMVC/offer/Set-Favorite/' + id);
+    setFvorite( id: number, candidacy ){
+        return this.http.put('http://localhost:8087/SpringMVC/offer/Set-Favorite/'+ id);
     }
     getAllOffers(): Observable<Offre[]> {
         return this.http.get<Offre[]>(this.offersUrl);
@@ -66,7 +66,7 @@ export class OfferService extends  RequestBaseService{
                 'Content-Type': 'multipart/form-data'
             })
         };
-        return this.http.post('http://localhost:8087/SpringMVC/Cv/upload/' + offerid, formParams, {headers: this.getHeaders} );
+        return this.http.post('http://localhost:8087/SpringMVC/Cv/upload/' + offerid, formParams );
     }
 
 

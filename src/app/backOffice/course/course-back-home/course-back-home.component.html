@@ -79,24 +79,34 @@
         </div>
     </div>
 </div>
-<div class="p-col-12 p-lg-4">
-    <div class="card">
-        <h4>Formers</h4>
-        <ul class="widget-person-list">
-            <li *ngFor="let u of users">
-                <div class="person-item" *ngIf="u.role === role[0]">
-                    <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
-                    <div class="person-info">
-                        <div class="person-name">{{ u.username }}</div>
-                        <div class="person-subtext">{{ u.phoneNumber }}</div>
+<div class="p-grid p-fluid">
+    <div class="p-col-12 p-lg-6" style="display: inline-block; margin-left: 5px; ">
+        <div class="card">
+            <h4>Formers</h4>
+            <ul class="widget-person-list">
+                <li *ngFor="let u of users">
+                    <div class="person-item" *ngIf="u.role === role[0]">
+                        <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
+                        <div class="person-info">
+                            <div class="person-name">{{ u.username }}</div>
+                            <div class="person-subtext">{{ u.phoneNumber }}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="person-actions" *ngIf="u.role === role[0]">
-                    <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope"></button>
-                </div>
-            </li>
+                    <div class="person-actions" *ngIf="u.role === role[0]">
+                        <button type="button" class="p-button-rounded p-button-success" pButton icon="pi pi-envelope"></button>
+                    </div>
+                </li>
 
-        </ul>
+            </ul>
+        </div>
+
+    </div>
+<div class="p-col-12 p-lg-6" style="display: inline-block;max-width: 600px;max-height: 300px">
+    <div class="card">
+        <div class="revenue-chart-container">
+            <p-chart type="pie" id="revenue-chart" [data]="revenueChart"></p-chart>
+        </div>
+    </div>
     </div>
 
 </div>

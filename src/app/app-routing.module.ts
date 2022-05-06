@@ -148,6 +148,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                     {path: 'pages/empty', component: EmptyDemoComponent},
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
+                    {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
                     {path: 'cour', component: CourseBackHomeComponent},
 

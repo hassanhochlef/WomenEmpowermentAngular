@@ -16,19 +16,18 @@ export class CourseComponent implements OnInit, OnDestroy {
   listCours: Course[];
   private routeSub: Subscription;
   listUsers: User[];
-
-
+  courseNameSearch = '';
+  p: number = 1;
   constructor(private router: Router, private service: CourseService, private userservice: UserService  ) { }
-
   ngOnInit(): void {
 
     this.routeSub = this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; });
   }
   openGameDetails(id: string): void {
-    this.router.navigate(['user/details', id]);
+    this.router.navigate(['/details', id]);
   }
   btnClick(){
-    this.router.navigate(['user/addcourse']);
+    this.router.navigate(['/addcourse']);
   }
   ngOnDestroy(): void {
     if (this.routeSub){

@@ -14,7 +14,7 @@ import {StreamService} from '../../shared/stream.service';
 import {QuizQuestion} from '../../models/QuizQuestion.model';
 import {Answer} from '../../models/Answer.model';
 import {FormControl} from '@angular/forms';
-import {cFile} from "../../models/file.model";
+import {cFile} from '../../models/file.model';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -68,6 +68,7 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
   courseFiles: cFile[];
   public xx: string = null;
   fileName = '';
+  errorMessage = '';
   private certresp: object;
   private blobres: ArrayBufferView | ArrayBuffer | Blob | string;
   constructor(private activatedRoute: ActivatedRoute,
@@ -165,8 +166,15 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
           this.bannedpart = courseResp;
         });
   }
-  updateCourse(idCourse: string){
-    this.service.updateCourse(this.course.courseId.toString(), this.course).subscribe();
+  updateCourse(idCourse: string){this.service.updateCourse(idCourse, this.course).subscribe(data => { this.router.navigate(['/details/' + idCourse]).then(() => {
+        window.location.reload();
+      }); }, err => {
+        if (err?.status === 417)
+        {
+          this.errorMessage = 'End date cannot be before start date';
+        }
+      }
+  );
   }
   getFiles(){
     this.service.getCourseFiles().subscribe(fileresp => {this.courseFiles = fileresp; });

@@ -43,6 +43,9 @@ pieData1: any;
 onGoingCourses: Course[];
 EndedCourses: Course[];
   rowGroupMetadata: any;
+  ordersChartOptions: any ;
+  ordersChart: any;
+  revenueChart: any;
   constructor(private activatedRoute: ActivatedRoute, authenticationService: AuthenticationService,
               private service: CourseService, private userservice: UserService,
               private router: Router,
@@ -77,6 +80,13 @@ EndedCourses: Course[];
       this.certifiCates = certifResp ;
       this.service.getAquiredCertif().subscribe(resp => {
       this.CertificatesCount = resp ;
+      this.revenueChart = {
+          labels: ['Aquired', 'Not aquired'],
+          datasets: [{
+            data: [this.CertificatesCount, this.certifiCates.length - this.CertificatesCount],
+            backgroundColor: ['#64B5F6', '#7986CB']
+          }]
+        };
       });
     });
     this.service.getCourseByDomain(this.domain[0].toString()).subscribe(domResp => {

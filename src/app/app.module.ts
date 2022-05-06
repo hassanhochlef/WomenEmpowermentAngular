@@ -146,7 +146,6 @@ import { DetailsComponent } from './course/details/details.component';
 import { AddCourseComponent } from './course/add-course/add-course.component';
 import { EventComponent } from './event/event.component';
 import { FilterPipe } from './event/filter.pipe';
-
 import { ComplaintComponent } from './complaint/complaint.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 import { ForumComponent } from './forum/forum.component';
@@ -179,6 +178,7 @@ import {ChatboxComponent} from "./chatbox/chatbox.component";
 import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 import { SubscriptionComponent } from './user/subscription/subscription.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import { filterPipe1} from './course/filter.pipe';
 
 
 @NgModule({
@@ -360,7 +360,8 @@ import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backof
         ChatComponent,
         ChatboxComponent,
         CourseBackHomeComponent,
-        SubscriptionComponent
+        SubscriptionComponent,
+        filterPipe1
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

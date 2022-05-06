@@ -1,0 +1,211 @@
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button  pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew2()"></button>
+            <button style="background-color: red" pButton pRipple label="delete All" icon="pi pi-trash" class="p-button-success p-mr-2 p-mb-2" (click)="openNew2()"></button>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+
+        </ng-template>
+    </p-toolbar>
+
+    <p-table #dt [value]="listAdversting">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                <h5 class="p-m-0">List of Posts</h5>
+                <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                    </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+
+            <tr>
+                <th >
+
+                </th>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="address">Description <p-sortIcon field="address"></p-sortIcon></th>
+                <th pSortableColumn="description">Start Date <p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="createdAt">maxAge <p-sortIcon field="createdAt"></p-sortIcon></th>
+
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-l  >
+
+            <tr>
+                <td>
+
+                </td>
+                <td><span class="p-column-title"></span>
+                    {{l.name}}
+                </td>
+                <td><span class="p-column-title"></span>
+                    {{l.text}}
+                </td>
+                <td><span class="p-column-title"></span>
+                    {{l.startDate}}
+                </td>
+
+                <td><span class="p-column-title"></span>
+                    {{l.maxage}}
+                </td>
+
+
+                <td>
+
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletePost(post.postId)"></button>
+
+                </td>
+
+
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{listAdversting ? listAdversting.length : 0 }} Advertising.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+
+
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button  pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+            <button style="background-color: red" pButton pRipple label="delete All" icon="pi pi-trash" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+
+        </ng-template>
+    </p-toolbar>
+
+    <p-table #dt [value]="listPost">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                <h5 class="p-m-0">List of Posts</h5>
+                <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                    </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+
+            <tr>
+                <th style="width: auto">
+
+                </th>
+                <th pSortableColumn="name">Post tile <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="address">postBody <p-sortIcon field="address"></p-sortIcon></th>
+                <th pSortableColumn="description">Creation Date <p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="createdAt">Numbre of signal <p-sortIcon field="createdAt"></p-sortIcon></th>
+
+                <th pSortableColumn="endAt">numbre of stars <p-sortIcon field="endAt"></p-sortIcon></th>
+                <th pSortableColumn="MaxPlace">Creator name <p-sortIcon field="MaxPlace"></p-sortIcon></th>
+                <th pSortableColumn="montantCollecte">Nb Comments <p-sortIcon field="montantCollecte"></p-sortIcon></th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-post  >
+
+            <tr>
+                <td>
+
+                </td>
+                <td><span class="p-column-title"></span>
+                    {{post.postTitle}}
+                </td>
+                <td><span class="p-column-title"></span>
+                     {{post.body}}
+                </td>
+                <td><span class="p-column-title"></span>
+                    {{post.createdAt}}
+                </td>
+
+                <td><span class="p-column-title"></span>
+                    {{post.nb_Signal}}
+                </td>
+                <td><span class="p-column-title"></span>
+                    {{post.nb_etoil}}
+                </td>
+                <td><span class="p-column-title"></span>
+                    {{post.user.name}}
+                </td>
+                <td><span class="p-column-title"></span>
+                    {{post.postComments.length}}
+                </td>
+
+                <td>
+
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletePost(post.postId)"></button>
+
+                </td>
+
+
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{listPost ? listPost.length : 0 }} Post.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+
+
+<p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Add Post" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="p-field">
+            <label for="eventName">Post Title</label>
+            <input name="title" type="text" pInputText id="eventName" [(ngModel)]="post11.postTitle" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !post.postTitle">Title is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="eventName">Body</label>
+            <input name="bosy" type="text" pInputText id="address" [(ngModel)]="post11.body" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !post.body">Body is required.</small>
+        </div>
+
+        <button pButton pRipple label="Save"(click)="addnewpost()"  icon="pi pi-check" class="p-button-text"></button>
+
+    </ng-template>
+
+
+</p-dialog>
+
+
+<p-dialog [(visible)]="eventDialoga" [style]="{width: '450px'}" header="Add Post" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="p-field">
+            <label for="eventName">Adversting Title</label>
+            <input name="title" type="text" pInputText id="eventName1" [(ngModel)]="adv.name" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !post.postTitle">Title is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="eventName">Description</label>
+            <input name="bosy" type="text" pInputText id="address1" [(ngModel)]="adv.text" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !post.body">Body is required.</small>
+        </div>
+        <div>
+            <label for="startAt">Start Date</label>
+            <p-calendar id="startAt" name="startAt" [showIcon]="true" [(ngModel)]="adv.startDate" ></p-calendar>
+        </div>
+        <button pButton pRipple label="Save"(click)="addnewadv()"  icon="pi pi-check" class="p-button-text" style="margin-top: 10px"></button>
+
+    </ng-template>
+
+
+</p-dialog>

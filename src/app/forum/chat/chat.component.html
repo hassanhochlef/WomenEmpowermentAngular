@@ -65,7 +65,7 @@
                                 <div class="col-auto">
                                     <div class="card ">
                                         <div class="card-body p-2">
-                                            <p class="mb-1"> {{currentUser.name}} :
+                                            <p class="mb-1"> {{message.user.name}} :
                                                 {{message.text}}
                                             </p>
                                             <div class="d-flex align-items-center text-sm opacity-6">
@@ -76,11 +76,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-end text-right mb-4" *ngIf="message.user.name == this.username">
+                            <div class="row justify-content-end text-right mb-4" *ngIf="message.user.name == this.username ">
                                 <div class="col-auto">
                                     <div class="card bg-gradient-primary text-white">
                                         <div class="card-body p-2">
-                                            <p class="mb-1">{{currentUser.name}} :
+                                            <p class="mb-1">{{message.user.name}} :
                                                 {{message.text}}<br>
                                             </p>
                                             <div class="d-flex align-items-center justify-content-end text-sm opacity-6">
@@ -91,8 +91,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            </ng-container>
+                                </ng-container>
                         </div>
 
                         <div class="card-footer d-block">

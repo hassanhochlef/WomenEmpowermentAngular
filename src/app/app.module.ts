@@ -172,13 +172,17 @@ import { DetailEventComponent } from './event/event-front/detail-event/detail-ev
 import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
 import {ChatComponent} from "./forum/chat/chat.component";
 import {ChatboxComponent} from "./chatbox/chatbox.component";
+import { ChatPriveComponent } from './forum/chat-prive/chat-prive.component';
 import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 import { SubscriptionComponent } from './user/subscription/subscription.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 import { filterPipe1} from './course/filter.pipe';
+import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { ForumBackComponent } from './forum-back/forum-back.component';
+
 
 
 @NgModule({
@@ -270,7 +274,8 @@ import { filterPipe1} from './course/filter.pipe';
         AppCodeModule,
         ReactiveFormsModule,
         NgxPaginationModule,
-        NgxQRCodeModule
+        NgxQRCodeModule,
+        Ng2SearchPipeModule
 
     ],
     declarations: [
@@ -359,9 +364,11 @@ import { filterPipe1} from './course/filter.pipe';
         AdminDashboardBackofficeComponent,
         ChatComponent,
         ChatboxComponent,
+        ChatPriveComponent,
         CourseBackHomeComponent,
         SubscriptionComponent,
         filterPipe1
+        ForumBackComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

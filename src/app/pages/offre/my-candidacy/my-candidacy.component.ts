@@ -20,7 +20,7 @@ export class MyCandidacyComponent implements OnInit {
     element.disabled = true;
   }*/
   toggle: any;
-
+  btnVal = 'Set Favorite';
   ngOnInit(): void {
     this.apiOffreService.getMyCandidacy().subscribe(res => {console.log(res);
                                                             this.listCandidacy = res ; });
@@ -30,6 +30,11 @@ export class MyCandidacyComponent implements OnInit {
 
   Setfavorite(id: number): void {
     // tslint:disable-next-line:max-line-length
-    this.apiOffreService.setFvorite(id).subscribe(() => this.router.navigateByUrl('/user/mycandidacy'));
+    this.apiOffreService.setFvorite(id, null).subscribe(() => this.router.navigateByUrl('/user/mycandidacy'));
+  }
+
+  changeText()
+  {
+    this.btnVal = '<3 <3 !!';
   }
 }

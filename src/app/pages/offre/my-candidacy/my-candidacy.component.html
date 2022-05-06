@@ -153,12 +153,11 @@
                                  Creation Date: <b>{{candidacy.offer.createdAt | date:'fullDate'}}</b>
                             </li>
                         </ul>
-                        <button   (click)="Setfavorite(candidacy.candidacyId)"class="btn bg-gradient-primary btn-icon" type="button">
-                            <div class="d-flex align-items-center">
-                                Set Favorite
-                                <i class="material-icons ms-2" aria-hidden="true">favorite</i>
-                            </div>
-                        </button>
+                        <div class="container  text-center mt-5 mb-5">
+                            <button class="btn btn-primary me-3" (click)="Setfavorite(candidacy.candidacyId) ;changeText() ">{{btnVal}} <i class="material-icons ms-2" aria-hidden="true"> favorite</i></button>
+                        </div>
+
+
                     </div>
                 </div>
                 <br> <br>

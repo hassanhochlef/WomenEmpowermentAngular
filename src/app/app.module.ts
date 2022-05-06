@@ -177,6 +177,7 @@ import { SubscriptionComponent } from './user/subscription/subscription.componen
 import {AddPostComponent} from './forum/add-post/add-post.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import { MyCandidacyComponent } from './pages/offre/my-candidacy/my-candidacy.component';
+import { CandidacyAreaComponent } from './pages/offre/candidacy-area/candidacy-area.component';
 
 
 @NgModule({
@@ -357,7 +358,8 @@ import { MyCandidacyComponent } from './pages/offre/my-candidacy/my-candidacy.co
         ChatboxComponent,
         CourseBackHomeComponent,
         SubscriptionComponent,
-        MyCandidacyComponent
+        MyCandidacyComponent,
+        CandidacyAreaComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

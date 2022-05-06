@@ -80,6 +80,30 @@ export class EventService extends  RequestBaseService{
     getEventFile(): Observable<EventFile[]> {
         return this.http.get<EventFile[]>('http://localhost:8087/SpringMVC/file/files');
     }
+    /*updateEvent(idEvent: number, event: Event) {
+        return this.http.put<Event>('http://localhost:8087/SpringMVC/Event/editEvent/' + idEvent, event, {headers: this.getHeaders});
+    }*/
+
+
+    updateEvent(idEvent: string , event: Event) {
+        return this.http.put<Event>('http://localhost:8087/SpringMVC/Event/editEvent/' + idEvent + '/' , event , {headers: this.getHeaders});
+
+    }
+
+
+    getListCommentEvent(): Observable<EventcommentModel[]>{
+        return this.httpClient.get<EventcommentModel[]>('http://localhost:8087/SpringMVC/Event/getEventComment', {headers: this.getHeaders});
+    }
+
+
+
+    // uploadfileEvent(idEvent: number, file: File) {
+    //     const formParams = new FormData();
+    //     // @ts-ignore
+    //
+    //     return this.http.post('http://localhost:8087/SpringMVC/Event/IMAGEEVENT/' + idEvent, formParams, {headers: this.getHeaders});
+    // }
+
 
 
 }

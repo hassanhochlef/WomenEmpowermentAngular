@@ -106,6 +106,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                     {path: 'user-post', component: UserPostsComponent},
                     {path: 'pages/map', component: MapComponent},
                     {path: 'chat', component: ChatboxComponent},
+                    {path: 'chatP', component: ChatPriveComponent},
 
                 ]
             },
@@ -176,10 +177,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                         path: 'chat',
                         component: ChatboxComponent,
                     },
-                    {
-                        path: 'chatP',
-                        component: ChatPriveComponent,
-                    },
+
 
                 ]
             },

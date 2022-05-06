@@ -190,6 +190,16 @@
                                 </div>
                                 <div class="card-body pb-3">
                                     <form #f="ngForm" role="form text-start" (ngSubmit)="f.form.valid && updateCourse(courseId.toString())" xmlns="http://www.w3.org/1999/html">
+                                        <div class="container py-10" *ngIf="f.form.valid && updateCourse(courseId.toString())">
+                                            <div class="row">
+                                                <div class="alert alert-success text-white" role="alert">
+                                                    <h4 class="alert-heading">Good job!</h4>
+                                                    <p>That’s the main thing people are controlled by! Thoughts- their perception of themselves! They&#39;re slowed down by their perception of themselves. If you&#39;re taught you can&#39;t do anything, you won&#39;t do anything. I was taught I could do everything.</p>
+                                                    <hr class="horizontal light">
+                                                    <p class="mb-0">What else could rust the heart more over time? Blackgold.</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Course name</label>
                                             <input type="text" class="form-control" id="courseName" name="courseName"  [(ngModel)]="course.courseName" class="form-control" required>
@@ -289,16 +299,18 @@
                     <div class="table-responsive">
                        <table class="table align-items-center mb-0">
                             <thead>
+                            <div *ngFor="let cert of certificate">
+                               <div> <button class="btn btn-light" (click)="getCourseResult(cert.user.userId.toString(), courseId)">Generate Certificates</button>
+                            </div></div>
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Username</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Certificate status</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Download certificate</th>
-                                <th class="text-secondary opacity-7"></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody *ngFor="let cert of certificate">
-                            <div><button class="btn btn-light" (click)="getCourseResult(cert.user.userId.toString(), courseId)">Generate certificates</button></div>
                             <tr>
                                 <td>
                                     <div class="d-flex px-2 py-1">
@@ -321,17 +333,15 @@
                                 <td *ngIf="cert.aquired==true" class="align-middle text-center text-sm">
                                     <a style="cursor: pointer" (click)="getCert(cert.certificateId)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
                                 </td>
-                                <td class="align-middle" *ngFor="let cc of ccCourses" >
-                                    <div class="btn-group btn-group-sm" aria-label="Basic example" *ngIf="courseId === cc.courseId.toString()">
+                                <td class="align-middle" *ngFor="let cc of ccCourses"  >
+                                    <div class="btn-group btn-group-sm" aria-label="Basic example" *ngIf="(courseId === cc.courseId.toString()) == true">
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[2])" class="btn btn-outline-info">Sanction</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[1])" class="btn btn-outline-warning">Warn</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[0])" class="btn btn-outline-danger">Kick</button>
                                     </div>
                                 </td>
                             </tr>
-
                             </tbody>
-
                         </table>
                     </div>
                 </div>
@@ -554,9 +564,9 @@
                 <div class="col-md-5 me-auto my-auto ms-md-5">
                     <div class="p-3 info-horizontal d-flex">
 
-<!--                        <div class="app" style="height: 400px;width: 300px">-->
-<!--                            <nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>-->
-<!--                        </div>-->
+                       <div class="app" style="height: 400px;width: 300px">
+                           <nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>
+                       </div>
 
                 </div>
             </div>
@@ -568,9 +578,10 @@
     </section>
 
 </section>
+
 <div *ngFor="let certif of certificate" >
-    <div *ngFor="let cc of ccCourses">
-<section *ngIf="certif.user.userId == onlineUser.userId || cc.courseId.toString() === courseId ">
+
+<section *ngIf="certif.user.userId == onlineUser.userId">
     <div class="row">
         <div class="col-md-5 ms-auto me-auto text-center">
             <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
@@ -591,6 +602,28 @@
     </div>
 </section>
 </div>
+<div *ngFor="let cc of ccCourses" >
+
+    <section *ngIf="cc.courseId.toString() === courseId">
+        <div class="row">
+            <div class="col-md-5 ms-auto me-auto text-center">
+                <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                    <i class="material-icons opacity-10">smart_display</i>
+                </div>
+            </div>
+        </div>
+        <h2 class="text-gradient text-primary text-center">Live stream</h2>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card">
+
+                        <div [attr.data-hesp-live-id]="course.channelId"  style="width: 1000px; height: 700px ;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 <section>
     <div class="container py-4">

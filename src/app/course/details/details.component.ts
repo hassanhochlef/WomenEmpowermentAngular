@@ -209,11 +209,11 @@ export class DetailsComponent  extends RequestBaseService implements OnInit, OnD
     this.service.getCourseResult(idUser, idCourse);
   }
   gotoQuiz(id: string){
-    this.router.navigate(['user/quiz', id]);
+    this.router.navigate(['/quiz', id]);
   }
   deleteCourse(id: string): void{
     this.service.deleteCourse(id).subscribe(() => this.service.getCourses().subscribe(res => {console.log(res); this.listCours = res; }));
-    this.router.navigate(['user/cour']);
+    this.router.navigate(['/cour']);
   }
   getChannel(id: string): void {
     this.chanelService.getChannel(id).subscribe(chanelResp =>

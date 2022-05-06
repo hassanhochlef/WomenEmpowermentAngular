@@ -110,7 +110,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
             },
 
             {
-                path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
+                path: 'admin', component: AppMainComponent, canActivate: [Auth2Guard], data: {roles: [Role.ADMIN]},
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'user', component: AdminDashboardBackofficeComponent},
@@ -149,6 +149,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
+                    {path: 'cour', component: CourseBackHomeComponent},
 
                 ]
             },

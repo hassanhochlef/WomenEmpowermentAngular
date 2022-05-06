@@ -11,6 +11,7 @@ import {Course} from 'src/app/models/course.model';
 import {Certificate} from "../../../models/certificate.model";
 import {Observable} from "rxjs";
 import {Domain} from "../../../models/domain.enum";
+import {Customer} from "../../../demo/domain/customer";
 
 @Component({
   selector: 'app-course-back-home',
@@ -37,7 +38,8 @@ goingcNumber: number;
 formers: number ;
 pieData: any;
 pieData1: any;
-selectedCourse: Course[];
+  selectedCustomers1: Customer[];
+  selectedCustomer: Customer;
 onGoingCourses: Course[];
 EndedCourses: Course[];
   rowGroupMetadata: any;

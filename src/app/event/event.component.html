@@ -36,12 +36,12 @@
 
                         </th>
                         <th pSortableColumn="name">event Name <p-sortIcon field="name"></p-sortIcon></th>
-                        <th pSortableColumn="address">address <p-sortIcon field="address"></p-sortIcon></th>
+
                         <th pSortableColumn="description">description <p-sortIcon field="description"></p-sortIcon></th>
                         <th pSortableColumn="createdAt">createdAt <p-sortIcon field="createdAt"></p-sortIcon></th>
 
                         <th pSortableColumn="endAt">endAt <p-sortIcon field="endAt"></p-sortIcon></th>
-                        <th pSortableColumn="MaxPlace">MaxPlace <p-sortIcon field="MaxPlace"></p-sortIcon></th>
+
                         <th pSortableColumn="montantCollecte">montantCollecte <p-sortIcon field="montantCollecte"></p-sortIcon></th>
 
                         </tr>
@@ -55,9 +55,7 @@
                         <td><span class="p-column-title"></span>
                             {{event.eventName}}
                         </td>
-                        <td><span class="p-column-title"></span>
-                            {{event.address}}
-                        </td>
+
                         <td><span class="p-column-title"></span>
                             {{event.description}}
                         </td>
@@ -68,9 +66,7 @@
                         <td><span class="p-column-title"></span>
                             {{event.endAt}}
                         </td>
-                        <td><span class="p-column-title"></span>
-                            {{event.maxPlace}}
-                        </td>
+
                         <td><span class="p-column-title"></span>
                             {{event.montantCollecte}}
                         </td>
@@ -172,7 +168,7 @@
 
 
 
-        <h5>Vertical</h5>
+        <h5>List of donation</h5>
         <p-table [value]="donations" [scrollable]="true" scrollHeight="400px">
             <ng-template pTemplate="header">
                 <tr>
@@ -195,7 +191,29 @@
 
 
 
+    <div class="card">
+        <h5>Vertical</h5>
+        <p-table [value]="eventCom" [scrollable]="true" scrollHeight="400px">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="min-width:200px">name of user</th>
+                    <th style="min-width:200px">comment of user</th>
 
+                    <th style="min-width:200px">comment for event</th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-eventCom>
+                <tr>
+                    <td style="min-width:200px">{{eventCom.user.username}}</td>
+                    <td style="min-width:200px">{{eventCom.commentBody}}</td>
+                    <td style="min-width:200px">eventMalek</td>
+                    <td style="min-width:200px"></td>
+
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 
 
 

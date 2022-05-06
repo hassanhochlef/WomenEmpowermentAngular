@@ -107,13 +107,14 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                     {path: 'user-post', component: UserPostsComponent},
                     {path: 'pages/map', component: MapComponent},
                     {path: 'chat', component: ChatboxComponent},
+                    {path: 'chatP', component: ChatPriveComponent},
 
 
                 ]
             },
 
             {
-                path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
+                path: 'admin', component: AppMainComponent, canActivate: [Auth2Guard], data: {roles: [Role.ADMIN]},
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'user', component: AdminDashboardBackofficeComponent},
@@ -151,7 +152,9 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                     {path: 'pages/empty', component: EmptyDemoComponent},
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
+                    {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
+                    {path: 'cour', component: CourseBackHomeComponent},
                     {path: 'forumb', component: ForumBackComponent},
 
                 ]
@@ -179,10 +182,8 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                         path: 'chat',
                         component: ChatboxComponent,
                     },
-                    {
-                        path: 'chatP',
-                        component: ChatPriveComponent,
-                    },
+
+
 
                 ]
             },

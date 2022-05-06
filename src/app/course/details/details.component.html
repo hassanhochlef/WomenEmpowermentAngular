@@ -54,6 +54,7 @@
             </div>
 </header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div *ngFor="let cc of ccCourses">
     <div *ngIf="courseId === cc.courseId.toString() " class="row mt-5">
         <div class="col-sm-3 col-6 mx-auto" >
@@ -189,24 +190,43 @@
                                     </div>
                                 </div>
                                 <div class="card-body pb-3">
+                                    <div class="row">
+                                        <div class="alert alert-dismissible text-danger font-weight-bold" role="alert" *ngIf="errorMessage">
+                                            {{errorMessage}}
+                                        </div>
+                                    </div>
                                     <form #f="ngForm" role="form text-start" (ngSubmit)="f.form.valid && updateCourse(courseId.toString())" xmlns="http://www.w3.org/1999/html">
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Course name</label>
-                                            <input type="text" class="form-control" id="courseName" name="courseName"  [(ngModel)]="course.courseName" class="form-control" required>
+                                            <label class="form-label">Course name
+                                                <span  for="courseName" class="text-danger " *ngIf="courseName.errors?.minlength || f.form.errors == true " [(ngModel)]="course.courseName" name="courseName">
+									 <font size="1" style="padding-left: 10px">Course name length should be more than 4 characters</font>
+									</span></label>
+                                            <input type="text"  class="form-control" id="courseName"  name="courseName" #courseName="ngModel" minlength="4"  [(ngModel)]="course.courseName" class="form-control" required>
+
+
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Start date</label>
-                                            <input type="date" class="form-control" id="startDate" name="startDate"  [(ngModel)]="course.startDate" >
+                                            <label class="form-label">Start date
+                                                <span *ngIf="errorMessage" for="startDate" [(ngModel)]="errorMessage" class="text-danger " name="startDate">
+									 <font size="1" style="padding-left: 10px">{{errorMessage}}</font>
+									</span>
+                                            </label>
+                                            <input type="date" class="form-control" id="startDate"   name="startDate"  [(ngModel)]="course.startDate" >
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">End date</label>
+                                            <label class="form-label">End date
+                                                <span  *ngIf="errorMessage" for="endDate" class="text-danger " name="endDate">
+									 <font size="1" style="padding-left: 10px">{{errorMessage}}</font>
+									</span></label>
                                             <input type="date" class="form-control" id="endDate" name="endDate"  [(ngModel)]="course.endDate" >
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label" *ngIf="course.nbHours === null">Number</label>
-                                            <label class="form-label" *ngIf="course.nbHours !== null"></label>
-
-                                            <input class="form-control" type="number"  mode="decimal"  name="nbHours" [(ngModel)]="course.nbHours"/>
+                                            <label class="form-label">Hours charge
+                                                <span  for="nbHours" class="text-danger " *ngIf="nbHours.errors?.pattern || f.form.errors == true " [(ngModel)]="course.nbHours" name="nbHours">
+									 <font size="1" style="padding-left: 10px">Hours charge should be atleast 1 hour</font>
+									</span>
+                                            </label>
+                                            <input  type="number" id="nbHours"  mode="decimal" #nbHours="ngModel" pattern="^[1-9]+[0-9]*$" class="form-control" required name="nbHours" [(ngModel)]="course.nbHours"/>
                                         </div>
                                         <br>
                                         <div class="input-group input-group-outline mb-3">
@@ -289,16 +309,18 @@
                     <div class="table-responsive">
                        <table class="table align-items-center mb-0">
                             <thead>
+                            <div *ngFor="let cert of certificate">
+                               <div> <button class="btn btn-light" (click)="getCourseResult(cert.user.userId.toString(), courseId)">Generate Certificates</button>
+                            </div></div>
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Username</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Certificate status</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Download certificate</th>
-                                <th class="text-secondary opacity-7"></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody *ngFor="let cert of certificate">
-                            <div><button class="btn btn-light" (click)="getCourseResult(cert.user.userId.toString(), courseId)">Generate certificates</button></div>
                             <tr>
                                 <td>
                                     <div class="d-flex px-2 py-1">
@@ -321,17 +343,15 @@
                                 <td *ngIf="cert.aquired==true" class="align-middle text-center text-sm">
                                     <a style="cursor: pointer" (click)="getCert(cert.certificateId)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">download</i></a>
                                 </td>
-                                <td class="align-middle" *ngFor="let cc of ccCourses" >
-                                    <div class="btn-group btn-group-sm" aria-label="Basic example" *ngIf="courseId === cc.courseId.toString()">
+                                <td class="align-middle" *ngFor="let cc of ccCourses"  >
+                                    <div class="btn-group btn-group-sm" aria-label="Basic example" *ngIf="(courseId === cc.courseId.toString()) == true">
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[2])" class="btn btn-outline-info">Sanction</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[1])" class="btn btn-outline-warning">Warn</button>
                                         <button type="button" (click)="addSanction(cert.user.userId.toString(),courseId.toString(),pen[0])" class="btn btn-outline-danger">Kick</button>
                                     </div>
                                 </td>
                             </tr>
-
                             </tbody>
-
                         </table>
                     </div>
                 </div>
@@ -554,9 +574,9 @@
                 <div class="col-md-5 me-auto my-auto ms-md-5">
                     <div class="p-3 info-horizontal d-flex">
 
-<!--                        <div class="app" style="height: 400px;width: 300px">-->
-<!--                            <nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>-->
-<!--                        </div>-->
+                       <div class="app" style="height: 400px;width: 300px">
+				<nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>
+                       </div>
 
                 </div>
             </div>
@@ -568,9 +588,10 @@
     </section>
 
 </section>
+
 <div *ngFor="let certif of certificate" >
-    <div *ngFor="let cc of ccCourses">
-<section *ngIf="certif.user.userId == onlineUser.userId || cc.courseId.toString() === courseId ">
+
+<section *ngIf="certif.user.userId == onlineUser.userId">
     <div class="row">
         <div class="col-md-5 ms-auto me-auto text-center">
             <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
@@ -591,8 +612,31 @@
     </div>
 </section>
 </div>
+<div *ngFor="let cc of ccCourses" >
+
+    <section *ngIf="cc.courseId.toString() === courseId">
+        <div class="row">
+            <div class="col-md-5 ms-auto me-auto text-center">
+                <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
+                    <i class="material-icons opacity-10">smart_display</i>
+                </div>
+            </div>
+        </div>
+        <h2 class="text-gradient text-primary text-center">Live stream</h2>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card">
+
+                        <div [attr.data-hesp-live-id]="course.channelId"  style="width: 1000px; height: 700px ;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-<section>
+<div *ngFor="let cc of ccCourses">
+<section *ngIf="cc.courseId.toString() === courseId">
     <div class="container py-4">
         <div class="row" >
             <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
@@ -747,7 +791,7 @@
         </div>
     </div>
 </section>
-
+</div>
 <div id="deployform" class="deployform" (click)="gotoQuiz(courseId.toString())">
     <h6 style="color: white; padding-left: 12px">Quiz</h6>
     <i class="fa fa-question icon" aria-hidden="true"></i>

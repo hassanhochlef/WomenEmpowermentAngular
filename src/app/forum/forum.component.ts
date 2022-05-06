@@ -21,6 +21,8 @@ export class ForumComponent implements OnInit {
   listPost: Post[];
   listAdversting: Advertising[];
   xl: number;
+  fileToUpload: File | null = null;
+
   listComments: Comment[];
   post: Post;
   postLike: PostLike = new PostLike();
@@ -41,7 +43,7 @@ export class ForumComponent implements OnInit {
   errorComment: string = "";
   commenttest: string = "";
   term: string;
-
+  imagenMin: File;
 
   constructor(private router: Router, private service: ForumService, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(data => {
@@ -72,27 +74,28 @@ export class ForumComponent implements OnInit {
   addLikePost(id: string) {
     this.service.addPostLike(id, this.postLike).subscribe(p => {
       console.log(this.postLike);
-      let currentUrl = this.router.url;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate([currentUrl]);
+      this.routeSub = this.service.getPosts().subscribe(res => {
+        console.log(res);
+        this.listPost = res;
+      });
     });
   }
 
   addDisLikePost(id: string) {
     this.service.addPostDisLike(id, this.postLike).subscribe(p => {
       console.log(this.postLike);
-      let currentUrl = this.router.url;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate([currentUrl]);
+      this.routeSub = this.service.getPosts().subscribe(res => {
+        console.log(res);
+        this.listPost = res;
+      });
     });
   }
 
   addComment(id: string) {
     this.service.addCommentPst(id, this.comment).subscribe(data => {
-          this.router.navigate(['/user/forum']).then(() => {
-            window.location.reload();
+          this.routeSub = this.service.getPosts().subscribe(res => {
+            console.log(res);
+            this.listPost = res;
           });
         },
         err => {
@@ -122,16 +125,6 @@ export class ForumComponent implements OnInit {
     });
   }
 
-  onFileSelcted(event: any) {
-    console.log(event);
-    this.image = event.target.files[0];
-  }
-
-  addimagePost(id: string) {
-    this.service.addImagePost(id, this.image).subscribe(p => {
-      console.log(this.image);
-    });
-  }
 
   Like_Dislike(id: string) {
     this.service.Like_Dislike(id).subscribe(p => {
@@ -149,12 +142,13 @@ export class ForumComponent implements OnInit {
   deletePost(id: string) {
     this.service.DeletePost(id).subscribe(p => {
       console.log('delete');
-
+        this.router.navigate(['user/forum']).then(() => {
+          window.location.reload();
+        });
     });
     this.router.navigate(['user/forum']).then(() => {
       window.location.reload();
     });
-
   }
 
   deleteCom(id: string) {
@@ -162,8 +156,9 @@ export class ForumComponent implements OnInit {
       console.log('delete');
 
     });
-    this.router.navigate(['user/forum']).then(() => {
-      window.location.reload();
+    this.routeSub = this.service.getPosts().subscribe(res => {
+      console.log(res);
+      this.listPost = res;
     });
 
   }
@@ -187,8 +182,9 @@ export class ForumComponent implements OnInit {
   UpdateComm(id: string) {
     this.service.UpdateCom(id, this.comment2).subscribe(p => {
       console.log(this.comment2);
-      this.router.navigate(['user/forum']).then(() => {
-        window.location.reload();
+      this.routeSub = this.service.getPosts().subscribe(res => {
+        console.log(res);
+        this.listPost = res;
       });
     });
   }
@@ -215,8 +211,9 @@ export class ForumComponent implements OnInit {
   ratePost(id: string, x: string) {
     this.service.ratePost(id, x).subscribe(p => {
       console.log(this.post1);
-      this.router.navigate(['user/forum']).then(() => {
-        window.location.reload();
+      this.routeSub = this.service.getPosts().subscribe(res => {
+        console.log(res);
+        this.listPost = res;
       });
     });
   }
@@ -230,41 +227,36 @@ export class ForumComponent implements OnInit {
     });
   }
 
-  message = '';
 
-  imageu(): void {
-    this.progress = 0;
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-      if (file) {
-        this.currentFile = file;
-        this.service.image(this.currentFile, '4').subscribe(
-            (event: any) => {
-              console.log("*******");
-              console.log(event);
-              if (event.type === HttpEventType.UploadProgress) {
-                this.progress = Math.round(100 * event.loaded / event.total);
-              } else if (event instanceof HttpResponse) {
-                this.message = event.body.message;
-
-                console.log(event);
-                alert(event.body.reponse);
-              }
-            },
-            (err: any) => {
-              console.log(err);
-              this.progress = 0;
-              if (err.error && err.error.message) {
-                this.message = err.error.message;
-              } else {
-                this.message = 'Could not upload the file!';
-              }
-              this.currentFile = undefined;
+  onFileSelcted(event: any){
+    this.fileToUpload = event.target.files[0];
+    const fr = new FileReader();
+    fr.onload = (evento: any) => {
+      this.imagenMin = evento.target.result;
+    };
+    fr.readAsDataURL(this.fileToUpload);
+  }
+  onSaveFile() {
+    const formData = new FormData();
+    formData.append('image', this.fileToUpload);
+    // @ts-ignore
+    formData.append('reportProgress', true);
+    return this.service.postFile(this.post2.postId.toString(), this.fileToUpload).subscribe(p => {
+          this.router.navigate(['user/forum']).then(() => {
+            window.location.reload();
+          });
+        },
+        err => {
+          if (err?.status === 424) {
+            this.errorMessage = 'Bad Word used in your pucture';
+          } else if (err?.status === 404) {
+            this.errorMessage = 'Bad Word used';
+          } else if (err?.status === 200) {
+            this.router.navigate(['user/forum']).then(() => {
+              window.location.reload();
             });
-      }
-      this.selectedFiles = undefined;
-
-    }
+          }
+        });
   }
 
 }

@@ -1,3 +1,5 @@
+import {PostMedia} from "./PostMedia.model";
+
 export class Advertising {
     advertisingId: number ;
 
@@ -10,5 +12,6 @@ export class Advertising {
     endDate: string ;
     text: string;
     name: string;
+    medias: PostMedia[];
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Post} from '../models/post.model';
 import {Course} from '../models/course.model';
@@ -135,4 +135,16 @@ export class ForumService extends  RequestBaseService{
     });
     return this.http.request(req);
   }
+  postFile(courseId: string, file: File) {
+    const formParams = new FormData();
+    // @ts-ignore
+    formParams.append('image', file);
+    const options: { headers: HttpHeaders } = {
+      headers: new HttpHeaders({
+        'Content-Type': 'multipart/form-data'
+      })
+    };
+    return this.http.post('http://localhost:8087/SpringMVC/forum/add-Post-image/' + courseId, formParams );
+  }
+
 }

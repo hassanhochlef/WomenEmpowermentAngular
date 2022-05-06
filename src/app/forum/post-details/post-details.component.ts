@@ -48,19 +48,13 @@ export class PostDetailsComponent extends RequestBaseService implements OnInit {
   addComment(id: string) {
     this.service.addCommentPst(id, this.comment).subscribe(p => {
       console.log(this.comment);
-      let currentUrl = this.router.url;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate([currentUrl]);
+      this.getpostDetails(this.postid);
     });
   }
   addCommentReply(id: string) {
     this.service.addCommentReply(id, this.comment).subscribe(p => {
       console.log(this.comment);
-      let currentUrl = this.router.url;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate([currentUrl]);
+      this.getpostDetails(this.postid);
     });
   }
   openCom(cc: PostComment): void {
@@ -80,10 +74,8 @@ export class PostDetailsComponent extends RequestBaseService implements OnInit {
   deleteCom(id: string) {
     this.service.DeleteCom(id).subscribe(p => {
       console.log('delete');
-      let currentUrl = this.router.url;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate([currentUrl]);
+      this.getpostDetails(this.postid);
+
     });
   }
   deletePost(id: string) {

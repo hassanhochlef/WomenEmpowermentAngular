@@ -5,7 +5,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
-
 import {AccordionModule} from 'primeng/accordion';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {AvatarModule} from 'primeng/avatar';
@@ -146,7 +145,6 @@ import { DetailsComponent } from './course/details/details.component';
 import { AddCourseComponent } from './course/add-course/add-course.component';
 import { EventComponent } from './event/event.component';
 import { FilterPipe } from './event/filter.pipe';
-
 import { ComplaintComponent } from './complaint/complaint.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 import { ForumComponent } from './forum/forum.component';
@@ -178,6 +176,17 @@ import {AddPostComponent} from './forum/add-post/add-post.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import { MyCandidacyComponent } from './pages/offre/my-candidacy/my-candidacy.component';
 import { CandidacyAreaComponent } from './pages/offre/candidacy-area/candidacy-area.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {ChatComponent} from "./forum/chat/chat.component";
+import {ChatboxComponent} from "./chatbox/chatbox.component";
+import { ChatPriveComponent } from './forum/chat-prive/chat-prive.component';
+import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
+import { SubscriptionComponent } from './user/subscription/subscription.component';
+import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { ForumBackComponent } from './forum-back/forum-back.component';
+
 
 
 @NgModule({
@@ -268,6 +277,10 @@ import { CandidacyAreaComponent } from './pages/offre/candidacy-area/candidacy-a
         VirtualScrollerModule,
         AppCodeModule,
         ReactiveFormsModule,
+        NgxPaginationModule,
+        NgxQRCodeModule,
+        Ng2SearchPipeModule
+
     ],
     declarations: [
         AppComponent,
@@ -344,22 +357,24 @@ import { CandidacyAreaComponent } from './pages/offre/candidacy-area/candidacy-a
         EventFrontComponent,
         DonationComponent,
         PaymentDonationComponent,
-
-
         AddEventComponent,
-
         DetailEventComponent,
-
         MapComponent,
-
         ComplaintComponent,
         UserDetailsComponent,
+        CourseBackHomeComponent,
+        SubscriptionComponent,
+        AdminDashboardBackofficeComponent,
         ChatComponent,
         ChatboxComponent,
         CourseBackHomeComponent,
         SubscriptionComponent,
         MyCandidacyComponent,
         CandidacyAreaComponent
+        ChatPriveComponent,
+        CourseBackHomeComponent,
+        SubscriptionComponent,
+        ForumBackComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

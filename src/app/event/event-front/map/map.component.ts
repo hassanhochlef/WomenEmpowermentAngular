@@ -8,20 +8,26 @@ import * as L from 'leaflet';
 })
 export class MapComponent implements AfterViewInit  {
   private map;
-  @Input() forCreate: boolean;
+  @Input() using: string;
   @Input() event: any;
+  @Input() events: any;
   century21icon;
   @Output() longLat = new EventEmitter<any>();
   private initMap(): void {
-    if (this.forCreate){
+    if (this.using === 'create'){
       this.map = L.map('map', {
         center: [ 32.93333, 10.45000 ],
         zoom: 6
       });
-    }else {
+    }else if (this.using === 'displayOne') {
       this.map = L.map('map', {
         center: [ this.event.latitude, this.event.lang ],
         zoom: 9
+      });
+    }else{
+      this.map = L.map('map', {
+        center: [ 32.93333, 10.45000 ],
+        zoom: 6
       });
     }
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -35,14 +41,22 @@ export class MapComponent implements AfterViewInit  {
       iconUrl: 'https://i.ibb.co/sJrMTdz/favicon-32x32.png',
       iconSize: [20, 20]
     });
-    if (this.forCreate){
+    if (this.using === 'create'){
       this.map.on('click', e => {
         const newMarker = new L.marker([e.latlng.lat, e.latlng.lng], {icon: this.century21icon}).addTo(this.map);
         this.revertToParent(e.latlng);
       });
-    }else{
+    }else if (this.using === 'displayOne'){
       console.log(this.event);
       const newMarker = new L.marker([this.event.latitude, this.event.lang], {icon: this.century21icon}).addTo(this.map);
+    }else{
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+      console.log(this.events)
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+      this.events.forEach((eventStruct: any) => {
+        console.log(eventStruct)
+        const newMarker = new L.marker([eventStruct.latitude, eventStruct.lang], {icon: this.century21icon}).addTo(this.map);
+      });
     }
   }
 

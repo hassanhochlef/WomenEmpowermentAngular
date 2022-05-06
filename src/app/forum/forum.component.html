@@ -139,7 +139,7 @@
 <!-- End Navbar -->
 
 
-<div class=" z-index-5">
+<div class=" z-index-5" >
 <section class="py-3 z-index-5" >
     <div class="col-lg-3 mb-lg-0 mb-5 mt-8 mt-md-5 mt-lg-0" style="width: 250px;position: -webkit-sticky;
 float: left;
@@ -193,7 +193,7 @@ float: left;
         </ul>
     </div>
 
-    <div style="  position: -webkit-sticky;
+    <div style="      position: -webkit-sticky;
 float: right;
   position: sticky;
   width: 400px;
@@ -234,8 +234,50 @@ float: right;
         </ng-container>
 
     </div>
-    <ng-container *ngFor="let p of listPost">
-            <div class="card z-index-2" data-animation="true" style="width: 100%; ">
+
+    <div class="row border-radius-md py-4 p-3 ps-0" style="margin-left: 25%">
+        <div class="col-md-10 mb-md-0 mb-2">
+            <div class="input-group input-group-outline">
+                <label class="form-label">Search for your answer</label>
+                <input type="text" name="search" [(ngModel)]="term" class="form-control">
+            </div>
+        </div>
+
+    </div>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto text-center">
+                    <h6 class="text-gradient text-warning"></h6>
+                    <h2>Best womaen for the week</h2>
+                </div>
+            </div>
+            <div class="row mt-5"style="margin-left: 30%; width: 1400px; height: 500px ">
+                <div class="col-lg-3 col-6 mb-lg-0 mb-4">
+                    <div class="card shadow-lg">
+                        <div class="card-header mt-n4 mx-3 p-0 bg-transparent position-relative z-index-2">
+                            <a class="d-block blur-shadow-image">
+                                <img src="https://images.unsplash.com/photo-1536321115970-5dfa13356211?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                            </a>
+                        </div>
+                        <div class="card-body text-center bg-white border-radius-lg p-3 pt-0">
+                            <h5 class="mt-3 mb-1 d-md-block d-none">Miriam Lendra</h5>
+                            <p class="mb-1 d-md-none d-block text-sm font-weight-bold text-darker">Miriam Lendra</p>
+                            <p class="mb-0 text-xs font-weight-bolder text-warning text-gradient text-uppercase">Desktop Publisher</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- END Teams w/ 4 cards w/ image on left & descriptio/social link on right -->
+
+
+    <ng-container *ngFor ="let p of listPost ">
+            <div class="card z-index-2" data-animation="true" style="width: 100%; height: 100%">
             <div class="card-header p-0 position-relative mt-n2 mx-3 z-index-2">
     <div class="container">
 
@@ -259,7 +301,7 @@ float: right;
                                 <ng-container *ngIf="p.user.userId == currentUser.userId">
 
                                 <li>
-                                    <a class="dropdown-item" (click)="deletePost(p.postId.toString())" style="color: darkred">
+                                    <a class="dropdown-item"  (click)="openPostdel(p)" data-bs-toggle="modal" data-bs-target="#exampleModalNotification" style="color: darkred">
                                         <img  /> Delete
                                     </a>
                                 </li>
@@ -317,24 +359,68 @@ float: right;
                         </div>
                     </div>
 
-                    <div class="rating mt-3">
+                        <div class="rating mt-3" *ngIf="p.nb_etoil == 5">
+                            <a type="button" (click)="ratePost(p.postId.toString(),'1')"> <i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'2')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'3')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'4')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'5')"><i class="fas fa-star"></i></a>
+                        </div>
+                    <div class="rating mt-3" *ngIf="p.nb_etoil == 4">
                        <a type="button" (click)="ratePost(p.postId.toString(),'1')"> <i class="fas fa-star"></i></a>
-                        <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
-                            <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
-                                <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="fas fa-star"></i></a>
-                                    <a type="button" (click)="ratePost(p.postId.toString(),'1')"><i class="far fa-star"></i></a>
+                        <a type="button" (click)="ratePost(p.postId.toString(),'2')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'3')"><i class="fas fa-star"></i></a>
+                                <a type="button" (click)="ratePost(p.postId.toString(),'4')"><i class="fas fa-star"></i></a>
+                                    <a type="button" (click)="ratePost(p.postId.toString(),'5')"><i class="far fa-star"></i></a>
                     </div>
+                        <div class="rating mt-3" *ngIf="p.nb_etoil == 3">
+                            <a type="button" (click)="ratePost(p.postId.toString(),'1')"> <i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'2')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'3')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'4')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'5')"><i class="far fa-star"></i></a>
+                        </div>
+                        <div class="rating mt-3" *ngIf="p.nb_etoil == 2">
+                            <a type="button" (click)="ratePost(p.postId.toString(),'1')"> <i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'2')"><i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'3')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'4')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'5')"><i class="far fa-star"></i></a>
+                        </div>
+                        <div class="rating mt-3" *ngIf="p.nb_etoil == 1">
+                            <a type="button" (click)="ratePost(p.postId.toString(),'1')"> <i class="fas fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'2')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'3')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'4')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'5')"><i class="far fa-star"></i></a>
+                        </div>
+                        <div class="rating mt-3" *ngIf="p.nb_etoil == 0">
+                            <a type="button" (click)="ratePost(p.postId.toString(),'1')"> <i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'2')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'3')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'4')"><i class="far fa-star"></i></a>
+                            <a type="button" (click)="ratePost(p.postId.toString(),'5')"><i class="far fa-star"></i></a>
+                        </div>
+                        <style>
+                            .far:hover {
+                                transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+                            }
+                            .fas:hover {
+                                transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+                            }
+                        </style>
+
                     </div>
                     <ng-container *ngFor="let l of p.postLikes">
                         <ng-container *ngIf="l.user.userId == currentUser.userId">
                     <button class="btn bg-gradient-primary btn-icon btn-" type="button" *ngIf="l.isLiked==true" >
                         <div class="d-flex align-items-center">
-                            Like
+                            {{p.postLikes.length}} Like
                         </div>
                     </button>
                              <button class="btn bg-gradient-faded-dark btn-icon btn- text-white" type="button" *ngIf="l.isLiked==false" >
                                 <div class="d-flex align-items-center">
-                                    Dislike
+                                    {{p.postLikes.length}} Dislike
                                 </div>
                             </button>
                         </ng-container>
@@ -362,7 +448,7 @@ float: right;
                     <button type="button" (click)="addDisLikePost(p.postId.toString())" class="btn zob btn-secondary btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
                         <span class="btn-inner--icon"><i class="fa fa-thumbs-down"></i></span>
                     </button>
-                    <button type="button" class="btn zob btn-dark btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
+                    <button type="button" name="zaty" (click)="reportPost(p.postId.toString())" class="btn zob btn-dark btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
                         <span class="btn-inner--icon"><i class="fa fa-skull-crossbones"></i></span>
                     </button>
                     <button type="button" class="btn zob  bg-success btn-icon-only rounded-circle" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  style="margin-left: 20px; margin-right: 400px">
@@ -381,7 +467,36 @@ float: right;
 
                     <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="width: 700px; margin-left: 24% ">
                         <div class="card card-body">
+                            {{p.postComments.length}} comments
+                            <div class="row">
+                                <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorComment">
+                                    {{errorComment}}
+                                </div>
+                            </div>
+                            <div class="" *ngIf="commenttest">
+                                <div class="p-3 info-horizontal">
+                                    <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle">
+                                            <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                                        </a>                                    </div>
+                                    <div class="description ps-3">
 
+                                        <small class="mb-0" style="font-size: 5mm">{{currentUser.name}}</small>                                         <ng-container *ngIf="p.user.userId == currentUser.userId">
+                                        <a href="#" class="btn dropdown-toggle " data-bs-toggle="dropdown" id="cxxc" style="float: right;"></a>
+
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" aria-labelledby="navbarDropdownMenuLink22">
+                                        </ul>
+                                    </ng-container>
+                                        <p class="mb-0" style="font-size: 4mm">{{commenttest}}</p>
+                                        <div><small class="txtsm"   type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-right: 30px; margin-left: 20px; font-size: 4mm"> replay</small>  <small class="txtsm" style="font-size: 4mm">Like</small></div>
+                                        <style>
+                                            .txtsm:hover{color: #dd2567; }
+                                            .txtsm{text-decoration: underline;}
+                                        </style>
+                                    </div>
+                                </div>
+
+                            </div>
                         <ng-container *ngFor="let c of p.postComments">
 
                             <div class="" >
@@ -418,7 +533,7 @@ float: right;
                             <form class="align-items-center">
                                 <div class="input-group input-group-outline  is-filled">
                                     <label class="form-label">Type your Comment</label>
-                                    <input type="text" [(ngModel)]= "comment.commentBody" name="{{p.postId.toString()}}" class="form-control ">
+                                    <input type="text" [(ngModel)]= "commenttest" [(ngModel)]= "comment.commentBody" name="{{p.postId.toString()}}" class="form-control ">
                                     <button class="btn bg-gradient-primary mb-0" (click)="addComment(p.postId.toString())" >
                                         <i class="material-icons">send</i>
                                     </button>
@@ -529,15 +644,23 @@ float: right;
 
 <!-- Modal Update post -->
 <div class="modal fade" id="exampleModal231" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
     <div class="modal-dialog modal-dialog-centered" role="document">
+
         <div class="modal-content">
+
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel23">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel23">Update Post</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorMessage">
+                        {{errorMessage}}
+                    </div>
+                </div>
                 <div class="p-4">
                     <form>
                         <div class="input-group input-group-outline  is-filled">
@@ -591,7 +714,51 @@ float: right;
 </div>
 
 
+<div class="container py-7">
+    <div class="row mt-5">
+        <div class="col-sm-3 col-6 mx-auto">
 
 
+            <!-- deletebalert -->
+            <div class="modal fade" id="exampleModalNotification" tabindex="-1" aria-labelledby="exampleModalNotification" aria-hidden="true">
+                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                    <div class="modal-content bg-gradient-danger">
+                        <div class="modal-header border-0">
+                            <h6 class="modal-title text-white" id="modal-title-notification">Your attention is required</h6>
+                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
+                        </div>
+                        <hr class="horizontal light mt-0">
+                        <div class="modal-body">
+                            <div class="py-3 text-center text-white">
+                                <i class="material-icons text-3xl">notifications_active</i>
+                                <h4 class="heading mt-4 text-white">You should read this!</h4>
+                                <p class="text-white opacity-8">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                            </div>
+                        </div>
+                        <hr class="horizontal light mb-0">
+                        <div class="modal-footer justify-content-between border-0">
+                            <button type="button" class="btn btn-white my-1" (click)="deletePost(post2.postId.toString())">Ok, Got it</button>
+                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input class="x" type="file" id="avatar" name="avatar" (change)="selectFile($event)"
+       accept="image/png, image/jpg">
 
+
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="imageu()">ADD RECU</button>
+<!--<form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addimagePost('3')">
+
+<div class="input-group input-group-outline mb-3">
+    <label class="form-label"></label>
+    <input class="form-control" name="file" type="file" id="formFile" (change)="onFileSelcted($event)">
+</div>
+    <div class="text-center">
+        <button type="submit" name="ddd" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+    </div>
+</form>-->
 </body>

@@ -62,6 +62,10 @@ import {AddEventComponent} from './event/event-front/add-event/add-event.compone
 import {MapComponent} from './event/event-front/map/map.component';
 import {PaymentDonationComponent} from './event/event-front/payment-donation/payment-donation.component';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
+import {ChatboxComponent} from "./chatbox/chatbox.component";
+import {ChatComponent} from "./forum/chat/chat.component";
+import {ChatPriveComponent} from "./forum/chat-prive/chat-prive.component";
+import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {ChatboxComponent} from './chatbox/chatbox.component';
 import {ChatComponent} from './forum/chat/chat.component';
@@ -69,31 +73,57 @@ import {CourseBackHomeComponent} from './backOffice/course/course-back-home/cour
 import {SubscriptionComponent} from './user/subscription/subscription.component';
 import {MyCandidacyComponent} from './pages/offre/my-candidacy/my-candidacy.component';
 import {CandidacyAreaComponent} from './pages/offre/candidacy-area/candidacy-area.component';
+import {AuthGuard} from './guards/auth.guard';
+import {Role} from './models/role.enum';
+import {Auth2Guard} from './guards/auth2.guard';
+import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import {ForumBackComponent} from "./forum-back/forum-back.component";
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            {
+                path: '', component: HomeComponent,
+                children: [
+                    {path: '', component: FrontLandingComponent},
+                    {path: 'profil', component: ProfilComponent, canActivate: [Auth2Guard]},
+                    {path: 'cour', component: CourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'forum', component: ForumComponent, canActivate: [Auth2Guard]},
+                    {path: 'details/:id', component : DetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'addcourse', component : AddCourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'quiz/:id', component : QuizComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'offre', component : OffreComponent, canActivate: [Auth2Guard]},
+                    {path: 'addoffer', component : AddOfferComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'detailEvent/:id', component: DetailEventComponent, canActivate: [Auth2Guard]},
+                    {path: 'addEvent', component: AddEventComponent, canActivate: [Auth2Guard]},
+                    {path: 'payment', component: PaymentDonationComponent, canActivate: [Auth2Guard]},
+                    {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'subscribe', component: SubscriptionComponent, canActivate: [Auth2Guard]},
+                    {path: 'cour', component: CourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'forum', component: ForumComponent, canActivate: [Auth2Guard]},
+                    {path: 'post-detais/:id', component: PostDetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'details/:id', component : DetailsComponent, canActivate: [Auth2Guard]},
+                    {path: 'addcourse', component : AddCourseComponent, canActivate: [Auth2Guard]},
+                    {path: 'quiz', component : QuizComponent, canActivate: [Auth2Guard]},
+                    {path: 'eventFront', component: EventFrontComponent, canActivate: [Auth2Guard]},
+                    {path: 'user-post', component: UserPostsComponent},
+                    {path: 'pages/map', component: MapComponent},
+                    {path: 'chat', component: ChatboxComponent},
 
-          /*  {
-                path: 'profile',
-                component: UserPostsComponent,
+
+                ]
             },
-                    {path: '', component: DashboardDemoComponent},*/
 
             {
-                path: '', component: AppMainComponent,
+                path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
                 children: [
                     {path: '', component: DashboardDemoComponent},
-
-                    {
-                        path: 'complaint',
-                        component: ComplaintComponent,
-                    },
-                    {
-                        path: 'addcomplaint',
-                        component: AddComplaintComponent,
-                    },
-
+                    {path: 'user', component: AdminDashboardBackofficeComponent},
+                    {path: 'complaint', component: ComplaintComponent},
+                    {path: 'addcomplaint', component: AddComplaintComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
@@ -129,6 +159,7 @@ import {CandidacyAreaComponent} from './pages/offre/candidacy-area/candidacy-are
                     {path: 'pages/donation', component: DonationComponent},
                     {path: 'pages/cour', component: CourseBackHomeComponent},
                     {path: 'pages/candidacyarea', component: CandidacyAreaComponent},
+                    {path: 'forumb', component: ForumBackComponent},
 
                 ]
             },
@@ -138,26 +169,8 @@ import {CandidacyAreaComponent} from './pages/offre/candidacy-area/candidacy-are
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent},
-                    {path: 'cour', component: CourseComponent},
-                    {path: 'forum', component: ForumComponent},
-                    {path: 'details/:id', component : DetailsComponent},
-                    {path: 'addcourse', component : AddCourseComponent},
-                    {path: 'quiz/:id', component : QuizComponent},
-                    {path: 'eventFront', component: EventFrontComponent},
-                    {path: 'offre', component : OffreComponent},
-                    {path: 'addoffer', component : AddOfferComponent},
-                    {path: 'eventFront', component: EventFrontComponent},
-                    {path: 'detailEvent/:id', component: DetailEventComponent},
-                    {path: 'addEvent', component: AddEventComponent},
-                    {path: 'payment', component: PaymentDonationComponent},
-                    {
-                        path: 'forum',
-                        component: ForumComponent,
-                    },
-
                     {path: 'profil/:id', component: UserDetailsComponent},
                     {path: 'eventFront', component: EventFrontComponent},
-                    {path: 'subscribe', component: SubscriptionComponent},
                     {path: 'cour', component: CourseComponent},
                     {path: 'forum', component: ForumComponent},
                     {path: 'post-detais/:id', component: PostDetailsComponent},
@@ -173,11 +186,17 @@ import {CandidacyAreaComponent} from './pages/offre/candidacy-area/candidacy-are
                         path: 'chat',
                         component: ChatboxComponent,
                     },
+                    {
+                        path: 'chatP',
+                        component: ChatPriveComponent,
+                    },
 
                     {path: 'pages/map', component: MapComponent},
                     {path: 'mycandidacy', component: MyCandidacyComponent}
+
                 ]
             },
+
             {path: 'error', component: AppErrorComponent},
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
@@ -186,7 +205,7 @@ import {CandidacyAreaComponent} from './pages/offre/candidacy-area/candidacy-are
             {path: 'new-password', component: NewPasswordComponent},
             {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
-        ], {scrollPositionRestoration: 'enabled'})
+        ])
     ],
     exports: [RouterModule]
 }

@@ -17,10 +17,15 @@ export class ChatComponent implements OnInit {
   theme: string = '';
   avatar: string = '';
   currentUser: User = new User();
-
-  @Input('username')
-  set setUsername(value: string) {
-    this.username = value;
+  m: string;
+  a: string;
+  @Input('m')
+  set setsender(value: string) {
+    this.m = value;
+  }
+  @Input('a')
+  set setreciver(value: string) {
+    this.a = value;
   }
 
 
@@ -31,6 +36,7 @@ export class ChatComponent implements OnInit {
   }
   ngOnInit(): void {
     this.username = this.currentUser.username;
+    console.log(this.a, this.m);
   }
 
   // Prepare the chat message then call the chatService method 'sendMessage' to actually send the message
@@ -38,8 +44,11 @@ export class ChatComponent implements OnInit {
     let obj: Message = {
       text: this.messages,
       avatar: avatar,
-      username: this.username
+      username: this.username,
+      sender: '1',
+      idchat: '2'
     };
+    console.log(this.a, this.m);
 
     this.chatService.sendMessage(obj);
   }

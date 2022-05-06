@@ -19,8 +19,12 @@ export class DonationService extends  RequestBaseService {
   getDonationList(): Observable<Donation[]>{
     return this.httpClient.get<Donation[]>('http://localhost:8087/SpringMVC/Donation/Get-all-Donation');
   }
+
+
+
   donationEvent(idEvent: string, donation: Donation ){
     return this.httpClient.post<Event>(`http://localhost:8087/SpringMVC/Donation/add-Donation-Event/${idEvent}`, donation, {headers: this.getHeaders});
   }
+
 
 }

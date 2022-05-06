@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import {User} from "../models/user.model";
 import { Donation } from '../models/donation.model';
 import { DonationService } from '../shared/donation.service';
+import {PostComment} from "../models/postComment.model";
+import {EventcommentModel} from "../models/eventcomment.model";
 
 @Component({
   selector: 'app-event',
@@ -43,6 +45,7 @@ export class EventComponent implements OnInit {
   selectedEvent: Event[];
   submitted: boolean;
   dispalyChart = false;
+  eventCom: EventcommentModel[];
 
 d: Donation;
 //donation bloc
@@ -68,6 +71,7 @@ d: Donation;
   }
 
   ngOnInit() {
+    this.getcommentEvent();
     this.getDonation();
     this.getEvent();
     this.eventService.getStatistic().subscribe(data => {
@@ -109,6 +113,12 @@ d: Donation;
       console.log(this.events);
     });
 
+  }
+  private getcommentEvent() {
+    this.eventService.getListCommentEvent().subscribe(commentRslt => {
+      this.eventCom = commentRslt;
+      console.log(this.eventCom);
+    });
   }
 
   openNew() {
@@ -154,6 +164,25 @@ d: Donation;
   }
 
 
+
+/*
+  addnewpost() {
+    this.cs.addPost(this.post).subscribe(data => {
+          this.router.navigate(['/user/forum']).then(() => {
+            window.location.reload();
+          });
+        },
+        err => {
+          if (err?.status === 424) {
+            this.errorMessage = 'Bad Word used';
+          } else if (err?.status === 400) {
+            this.errorMessage = 'Email already exists';
+          }
+        }
+    );
+  }
+
+*/
 
 }
 

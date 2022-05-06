@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {Post} from '../models/post.model';
-import {ForumService} from '../shared/forum.service';
-import {Observable, Subscription} from 'rxjs';
-import {Router} from '@angular/router';
-import {MenuItem} from 'primeng/api';
-import {PostLike} from '../models/postLike.model';
-import {PostComment} from '../models/postComment.model';
-import {Advertising} from '../models/Advertising.model';
-import {AuthenticationService} from '../shared/authentication.service';
-import {User} from '../models/user.model';
+import {MenuItem} from "primeng/api";
+import {Post} from "../models/post.model";
+import {Advertising} from "../models/Advertising.model";
+import {PostLike} from "../models/postLike.model";
+import {Subscription} from "rxjs";
+import {PostComment} from "../models/postComment.model";
+import {User} from "../models/user.model";
+import {Router} from "@angular/router";
+import {ForumService} from "../shared/forum.service";
+import {AuthenticationService} from "../shared/authentication.service";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
 
 @Component({
-  selector: 'app-forum',
-  templateUrl: './forum.component.html',
-  styleUrls: ['./forum.component.scss']
+  selector: 'app-forum-back',
+  templateUrl: './forum-back.component.html',
+  styleUrls: ['./forum-back.component.scss']
 })
-export class ForumComponent implements OnInit {
+export class ForumBackComponent implements OnInit {
   menuItems: MenuItem[];
   listPost: Post[];
+  adv: Advertising = new Advertising();
   listAdversting: Advertising[];
   xl: number;
   listComments: Comment[];
@@ -41,6 +42,11 @@ export class ForumComponent implements OnInit {
   errorComment: string = "";
   commenttest: string = "";
   term: string;
+  submitted: boolean;
+  eventDialog: boolean;
+  eventDialoga: boolean;
+
+  post11: Post = new Post();
 
 
   constructor(private router: Router, private service: ForumService, private authenticationService: AuthenticationService) {
@@ -48,7 +54,16 @@ export class ForumComponent implements OnInit {
       this.currentUser = data;
     });
   }
-
+  openNew() {
+    this.post = null;
+    this.submitted = false;
+    this.eventDialog = true;
+  }
+  openNew2() {
+    this.post = null;
+    this.submitted = false;
+    this.eventDialoga = true;
+  }
   ngOnInit(): void {
     this.routeSub = this.service.getPosts().subscribe(res => {
       console.log(res);
@@ -151,7 +166,7 @@ export class ForumComponent implements OnInit {
       console.log('delete');
 
     });
-    this.router.navigate(['user/forum']).then(() => {
+    this.router.navigate(['admin/forumb']).then(() => {
       window.location.reload();
     });
 
@@ -266,5 +281,34 @@ export class ForumComponent implements OnInit {
 
     }
   }
-
+  addnewpost() {
+    this.service.addPost(this.post11).subscribe(data => {
+          this.router.navigate(['/admin/forumb']).then(() => {
+            window.location.reload();
+          });
+        },
+        err => {
+          if (err?.status === 424) {
+            this.errorMessage = 'Bad Word used';
+          } else if (err?.status === 400) {
+            this.errorMessage = 'Email already exists';
+          }
+        }
+    );
+  }
+  addnewadv() {
+    this.service.addadv(this.adv).subscribe(data => {
+          this.router.navigate(['/admin/forumb']).then(() => {
+            window.location.reload();
+          });
+        },
+        err => {
+          if (err?.status === 424) {
+            this.errorMessage = 'Bad Word used';
+          } else if (err?.status === 400) {
+            this.errorMessage = 'Email already exists';
+          }
+        }
+    );
+  }
 }

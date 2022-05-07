@@ -15,6 +15,7 @@ import {User} from '../models/user.model';
   templateUrl: './forum.component.html',
   styleUrls: ['./forum.component.scss']
 })
+
 export class ForumComponent implements OnInit {
   menuItems: MenuItem[];
   listPost: Post[];
@@ -93,12 +94,6 @@ export class ForumComponent implements OnInit {
         }
     );
   }
-  addCommentReply(id: string) {
-    this.service.addCommentPst(id, this.comment).subscribe(p => {
-      console.log(this.comment);
-
-    });
-
   /*    .subscribe(p => {
       console.log(this.comment);
       let currentUrl = this.router.url;
@@ -107,13 +102,13 @@ export class ForumComponent implements OnInit {
       this.router.navigate([currentUrl]);
     });
   }*/
-    addCommentReply(id: string) {
-      this.service.addCommentReply(id, this.comment1).subscribe(p => {
-        console.log(this.comment1);
-        this.router.navigate(['user/forum']).then(() => {
-          window.location.reload();
-        });
+  addCommentReply(id: string) {
+    this.service.addCommentReply(id, this.comment1).subscribe(p => {
+      console.log(this.comment1);
+      this.router.navigate(['user/forum']).then(() => {
+        window.location.reload();
       });
+    });
   }
   onFileSelcted(event: any){
     console.log(event);
@@ -142,7 +137,6 @@ export class ForumComponent implements OnInit {
     });
 
   }
-}
   deleteCom(id: string) {
     this.service.DeleteCom(id).subscribe(p => {
       console.log('delete');
@@ -154,8 +148,8 @@ export class ForumComponent implements OnInit {
 
   }
   openPostDetails(id: string): void {
-  this.router.navigate(['user/post-detais', id]);
-}
+    this.router.navigate(['user/post-detais', id]);
+  }
   openCom(cc: PostComment): void {
     this.comm2 = cc;
   }

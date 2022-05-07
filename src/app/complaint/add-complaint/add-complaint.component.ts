@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ComplaintService} from '../../shared/complaint.service';
 import {Complaint} from '../../models/complaint.model';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-add-complaint',
@@ -11,7 +12,8 @@ import {Complaint} from '../../models/complaint.model';
 })
 export class AddComplaintComponent implements OnInit {
 newComplaint = new Complaint();
-  constructor(private router: Router , private ComplaintService : ComplaintService) { }
+  constructor(private router: Router , private ComplaintService: ComplaintService , http: HttpClient) {
+  }
 
   ngOnInit(): void {
   }
@@ -20,8 +22,6 @@ newComplaint = new Complaint();
       console.log(comp);
 
     });
-    this.router.navigate(['complaint']).then(() => {
-      window.location.reload();
-    });
+
 
 }}

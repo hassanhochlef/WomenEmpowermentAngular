@@ -19,7 +19,7 @@ newService = new Service();
     this.servService.ajouterService(this.newService).subscribe(serv => {
       console.log(serv);
     });
-    this.router.navigate(['service']).then(() => {
+    this.router.navigate(['user/Service']).then(() => {
       window.location.reload();
     });
 

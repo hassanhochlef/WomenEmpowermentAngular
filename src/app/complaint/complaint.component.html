@@ -10,8 +10,8 @@
             <Th>id</Th>
             <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
                 <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>title</th>
-         <th>   <div _ngcontent-mrk-c180="" class="p-d-flex p-jc-between p-ai-center"> content
-</div></th>
+            <th>   <div _ngcontent-mrk-c180="" class="p-d-flex p-jc-between p-ai-center"> content
+            </div></th>
             <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
                 <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>status</th>
             <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
@@ -19,38 +19,24 @@
             <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
                 <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>update</th>
         </thead>
-    <tbody class="p-datatable-tbody" *ngFor="let comp of listcomp ">
-    <tr>
-        <td>{{comp.complaintId}}</td>
-        <td _ngcontent-gbj-c180> {{ comp.complaintTitle }} </td>
-        <td _ngcontent-gbj-c180>  {{ comp.content }}</td>
-        <td _ngcontent-gbj-c180>  {{ comp.isTreated }} </td>
-        <td _ngcontent-gbj-c180><button (click)="deletePost(comp.complaintId.toString())"  pbutton="" pripple="" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined p-mr-2 p-mb-2 p-ripple p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-times">
-            <span class="p-button-icon pi pi-times" aria-hidden="true"></span>
-            <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span>
-            <span class="p-ink"></span></button></td>
-        <td _ngcontent-gbj-c180><button [routerLink]="['/updatecomp',comp.complaintId]" _ngcontent-gyv-c180="" pbutton="" type="button" icon="pi pi-cog" class="p-button-secondary p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-cog">
-            <span class="p-button-icon pi pi-cog" aria-hidden="true"></span>
-            <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span></button></td>
-    </tr>
-    </tbody>
+        <tbody class="p-datatable-tbody" *ngFor="let comp of listcomp ">
+        <tr>
+            <td>{{comp.complaintId}}</td>
+            <td _ngcontent-gbj-c180> {{ comp.complaintTitle }} </td>
+            <td _ngcontent-gbj-c180>  {{ comp.content }}</td>
+            <td _ngcontent-gbj-c180>  {{ comp.isTreated }} </td>
+            <td _ngcontent-gbj-c180><button (click)="deletePost(comp.complaintId.toString())"  pbutton="" pripple="" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined p-mr-2 p-mb-2 p-ripple p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-times">
+                <span class="p-button-icon pi pi-times" aria-hidden="true"></span>
+                <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span>
+                <span class="p-ink"></span></button></td>
+            <td _ngcontent-gbj-c180><button [routerLink]="['/updatecomp',comp.complaintId]" _ngcontent-gyv-c180="" pbutton="" type="button" icon="pi pi-cog" class="p-button-secondary p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-cog">
+                <span class="p-button-icon pi pi-cog" aria-hidden="true"></span>
+                <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span></button></td>
+        </tr>
+        </tbody>
     </table>
-    <button [routerLink]="['/addcomplaint']" _ngcontent-afu-c112="" pbutton="" type="button" label="New" icon="pi pi-plus" ng-reflect-label="New" ng-reflect-icon="pi pi-plus" class="p-button p-component">
+    <button [routerLink]="['/addC']" _ngcontent-afu-c112="" pbutton="" type="button" label="New" icon="pi pi-plus" ng-reflect-label="New" ng-reflect-icon="pi pi-plus" class="p-button p-component">
         <span class="p-button-icon p-button-icon-left pi pi-plus" aria-hidden="true"></span>
         <span  class="p-button-label" >New</span>
     </button>
-    <div _ngcontent-arv-c92="" class="overview-chart"><p-chart _ngcontent-arv-c92="" type="line" id="order-chart" ng-reflect-type="line" ng-reflect-data="[object Object]" ng-reflect-options="[object Object]">
-        <div style="position: relative;"><div class="chartjs-size-monitor" style="position: absolute; inset: 1px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
-
-                </div></div>
-            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                <div style="position:absolute;width:200%;height:200%;left:0; top:0">
-
-                </div></div></div><canvas width="1092" height="546" style="display: block; height: 437px; width: 874px;" class="chartjs-render-monitor">
-
-        </canvas></div></p-chart></div>
-
-</div>
-
+    </div>

@@ -14,6 +14,8 @@ import {compareNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_v
 })
 export class ComplaintComponent implements OnInit {
 listcomp: Complaint[];
+  complaint1: Complaint = new Complaint();
+  complaint2: Complaint = new Complaint();
   private routeSub: Subscription;
   constructor(private router: Router, private service: ComplaintService) { }
 
@@ -54,9 +56,15 @@ listcomp: Complaint[];
       console.log('delete');
 
     });
-    this.router.navigate(['complaint']).then(() => {
-      window.location.reload();
-    });
 
+
+  }
+  UpdatePost(id: string) {
+    if (this.complaint1.content === ''){this.complaint1.content = this.complaint2.content; }
+    this.service.UpdateComp(id, this.complaint1).subscribe(data => {
+          this.router.navigate(['complaint']).then(() => {
+            window.location.reload();
+          });
+        },);
   }
 }

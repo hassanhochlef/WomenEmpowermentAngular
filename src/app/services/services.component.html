@@ -1,40 +1,79 @@
-<p>services works!</p>
-<div _ngcontent-tvm-c92 class="card">
-    <div class="p-datatable-header ng-star-inserted"><div _ngcontent-fwi-c180="" class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header ng-star-inserted"> Complaint <span _ngcontent-fwi-c180="" class="p-input-icon-left"><i _ngcontent-fwi-c180="" class="pi pi-search"></i><input _ngcontent-fwi-c180="" pinputtext="" type="text" placeholder="Global Search" class="p-inputtext p-component"></span></div><!--bindings={
-  "ng-reflect-ng-template-outlet": "[object Object]"
-}-->
-    </div>
-    <table>
+<section class="pt-5 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+
+
+
         <thead >
-        <tr _ngcontent-pdn-c180="" class="ng-star-inserted">
-            <th>Job</th>
-            <th>startDate</th>
-            <th>endDate</th>
+
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Job</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">startDate</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">endDate</th>
             <th>delete</th>
-            <th>update</th></tr>
+            <th>update</th>
+            <th>Book an appointment</th>
         </thead>
-        <tbody class="p-datatable-tbody" *ngFor="let serv of listServ ">
+        <tbody *ngFor="let serv of listServ ">
         <tr>
-            <td _ngcontent-gbj-c180><span _ngcontent-hos-c180 class="p-column-title"> {{ serv.Job }} </span></td>
-            <td _ngcontent-gbj-c180> <span _ngcontent-hos-c180 class="p-column-title"> {{ serv.startDate }}</span></td>
-            <td _ngcontent-gbj-c180> <span _ngcontent-hos-c180 class="p-column-title"> {{ serv.endDate }}</span> </td>
-            <td _ngcontent-gbj-c180><button pbutton="" pripple="" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined p-mr-2 p-mb-2 p-ripple p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-times">
-                <span class="p-button-icon pi pi-times" aria-hidden="true"></span>
-                <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span>
-                <span class="p-ink"></span></button></td>
-            <td _ngcontent-gbj-c180><button _ngcontent-gyv-c180="" pbutton="" type="button" icon="pi pi-cog" class="p-button-secondary p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-cog">
-                <span class="p-button-icon pi pi-cog" aria-hidden="true"></span>
-                <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span></button></td>
+            <td >{{ serv.Job }} </td>
+            <td > {{ serv.startDate }}</td>
+            <td> {{ serv.endDate }}</td>
+            <td ><button type="button" (click)="deletePost(serv.serviceId.toString())" class="btn btn-danger mt-2 me-2">
+                Delete</button></td>
+            <td ><button type="button" class="btn btn-warning mt-2 me-2">
+                Update
+            </button></td>
+            <td ><button (click)="openad(serv)"  lass="btn bg-gradient-info btn-block" data-bs-toggle="modal" data-bs-target="#exampleModalSignUp">
+                Book
+            </button></td>
         </tr>
         </tbody>
     </table>
-    <button  _ngcontent-afu-c112="" pbutton="" type="button" label="New" icon="pi pi-plus" ng-reflect-label="New" ng-reflect-icon="pi pi-plus" class="p-button p-component">
-        <span class="p-button-icon p-button-icon-left pi pi-plus" aria-hidden="true"></span>
-        <span [routerLink]="['/addserv']" class="p-button-label" >New</span>
-    </button>
+                      <button routerLink="/user/addS" type="button" class="btn btn-success mt-2 me-2">
+                            New
+                        </button>
 
 
+
+
+
+</div></div></div></div></div></section>
+
+
+
+<div class="col-md-4">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalSignUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="card card-plain">
+                        <div class="card-header pb-0 text-left">
+                            <h3 class="font-weight-bolder text-primary text-gradient">Join us today</h3>
+                            <p class="mb-0">Enter your email and password to register</p>
+                        </div>
+                        <div class="card-body pb-3">
+                            <form role="form text-left">
+                                <label>Name</label>
+                                <div class="input-group mb-3">
+                                    <input name="appdate" [(ngModel)]= "a.appointmentDate" type="date" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="name-addon">
+                                </div>
+                                <div class="text-center">
+                                    <button (click)="resrv()" type="button" class="btn bg-gradient-primary btn-lg btn-rounded w-100 mt-4 mb-0">Sign up</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 

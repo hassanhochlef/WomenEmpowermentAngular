@@ -158,7 +158,7 @@ import { FrontFooterComponent } from './user/front-footer/front-footer.component
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
 import { ServicesComponent } from './services/services.component';
 import { AddServicesComponent } from './services/add-services/add-services.component';
-import { UpdateComplaintComponent } from './complaint/update-complaint/update-complaint.component';import { ProfilComponent } from './user/profil/profil.component';
+import { UpdateComplaintComponent } from './complaint/update-complaint/update-complaint.component';
 import { ProfilComponent } from './user/profil/profil.component';
 import {OffreComponent} from './pages/offre/offre.component';
 import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';

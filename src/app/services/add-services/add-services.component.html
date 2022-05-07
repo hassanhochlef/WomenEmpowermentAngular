@@ -1,0 +1,25 @@
+<form>
+        <div class="ct-example" style="
+              position: relative;
+              border: 2px solid #f5f7ff !important;
+              border-bottom: none !important;
+              padding: 1rem 1rem 2rem 1rem;
+              margin-bottom: -1.25rem;
+            ">
+        <div class="input-group input-group-static my-3">
+                <label>Date start</label>
+                <input type="date" class="form-control" [(ngModel)]= "newService.startDate" name="servicestartDate">
+        </div>
+        <div class="input-group input-group-static my-3">
+                <label>Date</label>
+                <input type="date" class="form-control"  [(ngModel)]= "newService.endDate" name="serviceendDate ">
+        </div>
+
+        <div >
+                <button (click)="addService()" type="button" class="btn btn-success mt-2 me-2">
+                        Done</button>
+
+        </div>
+        </div>
+
+</form>

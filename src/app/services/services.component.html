@@ -1,0 +1,79 @@
+<section class="pt-5 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+
+
+
+        <thead >
+
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Job</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">startDate</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">endDate</th>
+            <th>delete</th>
+            <th>update</th>
+            <th>Book an appointment</th>
+        </thead>
+        <tbody *ngFor="let serv of listServ ">
+        <tr>
+            <td >{{ serv.Job }} </td>
+            <td > {{ serv.startDate }}</td>
+            <td> {{ serv.endDate }}</td>
+            <td ><button type="button" (click)="deletePost(serv.serviceId.toString())" class="btn btn-danger mt-2 me-2">
+                Delete</button></td>
+            <td ><button type="button" class="btn btn-warning mt-2 me-2">
+                Update
+            </button></td>
+            <td ><button (click)="openad(serv)"  lass="btn bg-gradient-info btn-block" data-bs-toggle="modal" data-bs-target="#exampleModalSignUp">
+                Book
+            </button></td>
+        </tr>
+        </tbody>
+    </table>
+                      <button routerLink="/user/addS" type="button" class="btn btn-success mt-2 me-2">
+                            New
+                        </button>
+
+
+
+
+
+</div></div></div></div></div></section>
+
+
+
+<div class="col-md-4">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalSignUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="card card-plain">
+                        <div class="card-header pb-0 text-left">
+                            <h3 class="font-weight-bolder text-primary text-gradient">Join us today</h3>
+                            <p class="mb-0">Enter your email and password to register</p>
+                        </div>
+                        <div class="card-body pb-3">
+                            <form role="form text-left">
+                                <label>Name</label>
+                                <div class="input-group mb-3">
+                                    <input name="appdate" [(ngModel)]= "a.appointmentDate" type="date" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="name-addon">
+                                </div>
+                                <div class="text-center">
+                                    <button (click)="resrv()" type="button" class="btn bg-gradient-primary btn-lg btn-rounded w-100 mt-4 mb-0">Sign up</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

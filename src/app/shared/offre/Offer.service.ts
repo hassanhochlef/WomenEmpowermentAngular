@@ -30,6 +30,12 @@ export class OfferService extends  RequestBaseService{
         super(authenticationService, http);
 
     }
+    restrainCandidacy(id: number){
+        return this.http.delete('http://localhost:8087/SpringMVC/offer/Restrain-Cnadidacy/' + id);
+    }
+    HoldCandidacy( id: number ){
+        return this.http.put('http://localhost:8087/SpringMVC/offer/Hold-Cnadidacy/' + id,  null);
+    }
     getMyCandidacy(): Observable<Candidacy[]> {
         return this.http.get<Candidacy[]>(this.candidacyUrl, {headers: this.getHeaders});
     }

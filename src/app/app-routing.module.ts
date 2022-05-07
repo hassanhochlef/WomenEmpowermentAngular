@@ -62,14 +62,11 @@ import {AddEventComponent} from './event/event-front/add-event/add-event.compone
 import {MapComponent} from './event/event-front/map/map.component';
 import {PaymentDonationComponent} from './event/event-front/payment-donation/payment-donation.component';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
-import {ChatboxComponent} from "./chatbox/chatbox.component";
-import {ChatComponent} from "./forum/chat/chat.component";
-import {ChatPriveComponent} from "./forum/chat-prive/chat-prive.component";
-import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
+import {ChatPriveComponent} from './forum/chat-prive/chat-prive.component';
+import {CourseBackHomeComponent} from './backOffice/course/course-back-home/course-back-home.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {ChatboxComponent} from './chatbox/chatbox.component';
 import {ChatComponent} from './forum/chat/chat.component';
-import {CourseBackHomeComponent} from './backOffice/course/course-back-home/course-back-home.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
 import {MyCandidacyComponent} from './pages/offre/my-candidacy/my-candidacy.component';
 import {CandidacyAreaComponent} from './pages/offre/candidacy-area/candidacy-area.component';
@@ -77,7 +74,7 @@ import {AuthGuard} from './guards/auth.guard';
 import {Role} from './models/role.enum';
 import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
-import {ForumBackComponent} from "./forum-back/forum-back.component";
+import {ForumBackComponent} from './forum-back/forum-back.component';
 
 @NgModule({
     imports: [
@@ -178,6 +175,8 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},
                     {path: 'eventFront', component: EventFrontComponent},
+                    {path: 'offre', component: OffreComponent},
+
                     {
                         path: 'user-post',
                         component: UserPostsComponent,

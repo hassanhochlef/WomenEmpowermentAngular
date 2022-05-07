@@ -4,7 +4,7 @@ import {OfferService} from '../../../shared/offre/Offer.service';
 import {Offre} from '../../../models/offre';
 import {Interview} from '../../../models/Interview.model';
 import {User} from '../../../models/user.model';
-import {MenuItem} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
 import {Table} from 'primeng/table';
 import {Product} from '../../../demo/domain/product';
 import {Customer, Representative} from '../../../demo/domain/customer';
@@ -22,7 +22,7 @@ import {Router} from '@angular/router';
 })
 export class CandidacyAreaComponent implements OnInit {
 
- // countries = Country;
+  countries = Location;
 
   allCandidacy: Array<Candidacy> = [];
 
@@ -64,8 +64,8 @@ export class CandidacyAreaComponent implements OnInit {
 
   revenueChart: any;
 
-  constructor( private offerservice: OfferService , private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService,
-               private userService: UserService, private customerService: CustomerService, private router: Router) {
+  constructor( private apiOffreService: OfferService , private offerservice: OfferService , private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService,
+               private userService: UserService, private customerService: CustomerService, private router: Router ) {
     this.breadcrumbService.setItems([
       {label: 'Dashboard', routerLink: ['/']}
     ]);
@@ -145,8 +145,32 @@ export class CandidacyAreaComponent implements OnInit {
 
 
   }
+  /*
+  showInfoViaToast() {
+    this.service.add({key: 'tst', severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks'});
+  }
 
+  showWarnViaToast() {
+    this.service.add({key: 'tst', severity: 'warn', summary: 'Warn Message', detail: 'There are unsaved changes'});
+  }
 
+  showErrorViaToast() {
+    this.apiOffreService.add({ key: 'tst', severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+  }
+
+  showSuccessViaToast() {
+    this.service.add({ key: 'tst', severity: 'success', summary: 'Success Message', detail: 'Message sent' });
+  }
+  */
+  holdCandidacy(id: number): void {
+    // tslint:disable-next-line:max-line-length
+    this.apiOffreService.HoldCandidacy(id).subscribe(() => this.router.navigateByUrl('/admin/pages/candidacyarea'));
+  }
+  restrainCandidacy(id: number): void {
+    // tslint:disable-next-line:max-line-length
+    this.apiOffreService.restrainCandidacy(id).subscribe(() => this.apiOffreService.getAllCandidacy().subscribe(res => {console.log(res); this.allCandidacy = res ; }));
+    this.router.navigate(['/admin/pages/candidacyarea']);
+  }
 
   recentSales(event) {
     if (event.value.code === '0') {
@@ -208,6 +232,4 @@ export class CandidacyAreaComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
   }*/
-
-
 }

@@ -168,23 +168,19 @@ import { AddEventComponent } from './event/event-front/add-event/add-event.compo
 import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
 import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
-import {ChatComponent} from './forum/chat/chat.component';
-import {ChatboxComponent} from './chatbox/chatbox.component';
-import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
-import { SubscriptionComponent } from './user/subscription/subscription.component';
 import {AddPostComponent} from './forum/add-post/add-post.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import { MyCandidacyComponent } from './pages/offre/my-candidacy/my-candidacy.component';
 import { CandidacyAreaComponent } from './pages/offre/candidacy-area/candidacy-area.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {ChatComponent} from "./forum/chat/chat.component";
-import {ChatboxComponent} from "./chatbox/chatbox.component";
+import {ChatComponent} from './forum/chat/chat.component';
+import {ChatboxComponent} from './chatbox/chatbox.component';
 import { ChatPriveComponent } from './forum/chat-prive/chat-prive.component';
 import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 import { SubscriptionComponent } from './user/subscription/subscription.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
-import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
-import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { ForumBackComponent } from './forum-back/forum-back.component';
 
 
@@ -370,7 +366,7 @@ import { ForumBackComponent } from './forum-back/forum-back.component';
         CourseBackHomeComponent,
         SubscriptionComponent,
         MyCandidacyComponent,
-        CandidacyAreaComponent
+        CandidacyAreaComponent,
         ChatPriveComponent,
         CourseBackHomeComponent,
         SubscriptionComponent,

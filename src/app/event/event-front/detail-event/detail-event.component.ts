@@ -78,7 +78,7 @@ export class DetailEventComponent implements OnInit {
   }
 
   redirectToPayement() {
-    this.router.navigate(['user/payment/', this.id]);
+    this.router.navigate(['/payment/', this.id]);
 
   }
 

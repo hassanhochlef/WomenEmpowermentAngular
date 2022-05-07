@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {Notification} from '../models/natification.model';
 import {User} from '../models/user.model';
+import {Subscription} from '../models/subscription.model';
 
 const API_URL = `${environment.BASE_URL}/api/user/`;
 
@@ -133,5 +134,26 @@ export class UserService extends  RequestBaseService{
 
   getCountriesValues(): Observable<any>{
     return this.http.get('http://localhost:8087/SpringMVC/api/admin/numberByCountry', {headers: this.getHeaders});
+  }
+
+  makeAdmin(username: string): Observable<any> {
+    const userUrl = `http://localhost:8087/SpringMVC/api/admin/makeAdmin/${username}`;
+    return this.http.put(userUrl, null,  {headers: this.getHeaders});
+  }
+
+  addSubscription(): Observable<any> {
+    return this.http.post(API_URL + 'subscription/save', null, {headers: this.getHeaders});
+  }
+
+  getAllAdmins(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/admins', {headers: this.getHeaders});
+  }
+
+  getAllTransaction(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/transactionsNumber', {headers: this.getHeaders});
+  }
+
+  getAllComments(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/allComments', {headers: this.getHeaders});
   }
 }

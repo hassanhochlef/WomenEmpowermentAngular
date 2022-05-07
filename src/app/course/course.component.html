@@ -46,7 +46,7 @@
     </div>
     <section class="card-area"  >
         <section class="card-section wrapper" style="margin-left: 150px">
-            <div *ngFor="let cour of listCours | filter:courseNameSearch | paginate: { itemsPerPage: 6, currentPage: p }">
+            <div *ngFor="let cour of listCours | filter1:courseNameSearch | paginate: { itemsPerPage: 6, currentPage: p }">
                 <div *ngIf="cour.domain=='IT'">
                     <div class="card p-mr-3 p-mb-3">
                         <div class="flip-card">

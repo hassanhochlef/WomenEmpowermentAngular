@@ -1,14 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filter11'
 })
 export class FilterPipe implements PipeTransform {
 
   transform(value: any, searchTerm: any): any {
     return value.filter(function (search){
-      return search.eventName.indexOf(searchTerm) > -1
-    })
+      return search.eventName.indexOf(searchTerm) > -1;
+    });
   }
 
 }

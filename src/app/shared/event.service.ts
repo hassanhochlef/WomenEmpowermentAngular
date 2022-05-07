@@ -36,7 +36,7 @@ export class EventService extends  RequestBaseService{
         return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/findEventYear');
     }
     getEventById(id: number): Observable<Event>{
-        return this.http.get<Event>(`http://localhost:8087/SpringMVC/Event/getEvent/${id}`);
+        return this.http.get<Event>(`http://localhost:8087/SpringMVC/Event/getEvent/${id}`, {headers: this.getHeaders});
     }
     cancelParticipation(id: string): Observable<any> {
         return this.http.delete('http://localhost:8087/SpringMVC/Event/cancelParticipation/' + id, {headers: this.getHeaders} );
@@ -68,7 +68,7 @@ export class EventService extends  RequestBaseService{
 
     //backoffice
     getListBackallEvent(): Observable<Event[]>{
-        return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/Get-all-Event');
+        return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/Get-all-Event', {headers: this.getHeaders});
     }
     GetBestDonorOfEvent(): Observable<any[]>{
         return this.httpClient.get<any[]>('http://localhost:8087/SpringMVC/Donation/bestDoner');

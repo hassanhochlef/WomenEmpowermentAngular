@@ -12,11 +12,11 @@
                 <span class="overview-title">Customers</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">8272</div>
+                        <div class="overview-number">{{subscribedUsers.length}}</div>
                         <div class="overview-subtext">Subscribed</div>
                     </div>
                     <div class="p-col-6">
-                        <div class="overview-number">25402</div>
+                        <div class="overview-number">{{allUsers.length}}</div>
                         <div class="overview-subtext">Registered</div>
                     </div>
                 </div>
@@ -30,12 +30,12 @@
                 <span class="overview-title">Events</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">640</div>
-                        <div class="overview-subtext">Pending</div>
+                        <div class="overview-number">{{allEvents.length}}</div>
+                        <div class="overview-subtext">Created</div>
                     </div>
                     <div class="p-col-6">
-                        <div class="overview-number">1420</div>
-                        <div class="overview-subtext">Completed</div>
+                        <div class="overview-number">{{allTransaction.length}}</div>
+                        <div class="overview-subtext">Transactions</div>
                     </div>
                 </div>
             </div>
@@ -48,12 +48,12 @@
                 <span class="overview-title">Forums</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">$2,100</div>
-                        <div class="overview-subtext">Expenses</div>
+                        <div class="overview-number">{{allPosts.length}}</div>
+                        <div class="overview-subtext">Posts</div>
                     </div>
                     <div class="p-col-6">
-                        <div class="overview-number">$9,640</div>
-                        <div class="overview-subtext">Income</div>
+                        <div class="overview-number">{{allComments.length}}</div>
+                        <div class="overview-subtext">Comments</div>
                     </div>
                 </div>
             </div>
@@ -67,11 +67,11 @@
                 <span class="overview-title">Complaints</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">12</div>
+                        <div class="overview-number">0</div>
                         <div class="overview-subtext">New</div>
                     </div>
                     <div class="p-col-6">
-                        <div class="overview-number">85</div>
+                        <div class="overview-number">0</div>
                         <div class="overview-subtext">Responded</div>
                     </div>
                 </div>
@@ -117,63 +117,25 @@
             </div>
 
             <div class="card">
-                <h4>Best Sellers</h4>
-                <p>Most popular products from your collection.</p>
+                <h4>Administration Squad</h4>
+                <p>Most active admins that work within our team</p>
 
                 <ul class="widget-image-list">
                     <li>
-                        <span>Product</span>
-                        <span>Sales</span>
+                        <span>Member</span>
                     </li>
-                    <li>
+                    <li *ngFor="let admin of allAdmins">
                         <span>
-                            <img src="assets/demo/images/product/bamboo-watch.jpg" alt="diamond-layout"/>
-                            <span>Bamboo Watch</span>
+                            <img src="assets/img/{{admin.profilPic}}" alt="diamond-layout"/>
+                            <span>{{admin.name}}</span>
                         </span>
-                        <span class="listitem-value">82</span>
                     </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/blue-band.jpg" alt="diamond-layout"/>
-                            <span>Blue Band</span>
-                        </span>
-                        <span class="listitem-value">75</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/game-controller.jpg" alt="diamond-layout"/>
-                            <span>Game Controller</span>
-                        </span>
-                        <span class="listitem-value">64</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/lime-band.jpg" alt="diamond-layout"/>
-                            <span>Lime Band</span>
-                        </span>
-                        <span class="listitem-value">62</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/gold-phone-case.jpg" alt="diamond-layout"/>
-                            <span>Phone Case</span>
-                        </span>
-                        <span class="listitem-value">55</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/green-t-shirt.jpg" alt="diamond-layout"/>
-                            <span>Green T-Shirt</span>
-                        </span>
-                        <span class="listitem-value">48</span>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="assets/demo/images/product/purple-t-shirt.jpg" alt="diamond-layout"/>
-                            <span>Purple T-Shirt</span>
-                        </span>
-                        <span class="listitem-value">32</span>
-                    </li>
+
+
+
+
+
+
                 </ul>
             </div>
         </div>
@@ -216,7 +178,7 @@
                                 <th style="width: 3rem">
                                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                                 </th>
-                                <th pSortableColumn="name">
+                                <th pSortableColumn="name" style="width: 18rem">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         Name
                                         <p-sortIcon field="name"></p-sortIcon>
@@ -267,7 +229,7 @@
                                     <p-tableCheckbox [value]="customer"></p-tableCheckbox>
                                 </td>
                                 <td>
-                                    <img src="assets/img/{{customer.profilPic}}" width="32"
+                                    <img src="assets/img/{{customer.profilPic}}" width="32" height="32"
                                          style="vertical-align: middle" class="profil-pic-round"/>
                                     <span class="p-column-title">Name</span>
                                     {{customer.name}}
@@ -300,7 +262,7 @@
                                     <button *ngIf="!customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="lockUser(customer.username)"></button>
                                     <button *ngIf="customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="unlockUser(customer.username)"></button>
 
-                                    <button *ngIf="customer.role != 'ADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-plus" (click)="lockUser(customer.username)"></button>
+                                    <button *ngIf="customer.role != 'ADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-plus" (click)="makeAdmin(customer.username)"></button>
                                     <button *ngIf="customer.role === 'ADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-minus" (click)="unlockUser(customer.username)"></button>
                                 </td>
                             </tr>

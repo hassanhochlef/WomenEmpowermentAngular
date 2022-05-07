@@ -34,7 +34,7 @@ export class AddEventComponent implements OnInit {
     this.eventService.createEvent2(this.event).subscribe(data => {
       console.log(data);
     });
-    this.router.navigate(['user/eventFront']).then(() => {
+    this.router.navigate(['/eventFront']).then(() => {
       window.location.reload();
     });
   }

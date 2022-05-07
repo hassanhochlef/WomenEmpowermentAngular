@@ -367,7 +367,7 @@ import { ForumBackComponent } from './forum-back/forum-back.component';
         ChatPriveComponent,
         CourseBackHomeComponent,
         SubscriptionComponent,
-        filterPipe1
+        filterPipe1,
         ForumBackComponent
     ],
     providers: [

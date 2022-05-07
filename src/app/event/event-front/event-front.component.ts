@@ -64,19 +64,19 @@ export class EventFrontComponent implements OnInit {
       console.log('delete');
 
     });
-    this.router.navigate(['user/eventFront']).then(() => {
+    this.router.navigate(['/eventFront']).then(() => {
       window.location.reload();
     });
 
   }
   openDetails(id: number): void {
-    this.router.navigate(['user/detailEvent/', id]);
+    this.router.navigate(['/detailEvent/', id]);
   }
   updateEvent(idEvent: string){
     this.eventService.updateEvent(this.idd.toString(), this.event).subscribe(p =>{
       console.log();
     });
-    this.router.navigate(['user/eventFront']).then(() => {
+    this.router.navigate(['/eventFront']).then(() => {
       window.location.reload();
     });
   }

@@ -13,7 +13,7 @@
                         </form>
                         <div class="card-body p-2">
                         <ng-container *ngFor="let c of users">
-                            <a href="javascript:;" class="d-block p-2 uss" type="button" (click)="ref(currentUser.userId.toString(),c.userId.toString(),c.name)">
+                            <a href="javascript:;" class="d-block p-2 uss" type="button" (click)="ref(currentUser.userId.toString(),c.userId.toString(),c.name,c.profilPic)">
                                 <div class="d-flex p-2">
                                     <img alt="Image" src="assets/img/{{c.profilPic}}" class="avatar shadow">
                                     <div class="ms-3">
@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="d-flex align-items-center">
-                                            <img alt="Image" src="../assets/img/team-2.jpg" class="avatar">
+                                            <img alt="Image" src="assets/img/{{map3.get(currentUser.userId)}}" class="avatar">
                                             <div class="ms-3">
                                                 <h6 class="mb-0 d-block text-white">{{map2.get(currentUser.userId)}}</h6>
                                                 <span class="text-sm text-white opacity-8"></span>
@@ -78,7 +78,7 @@
                             <ng-container *ngIf="chhh">
                                     <div *ngIf="map2.get(currentUser.userId)">
                                 <a href="javascript:;" class="avatar avatar-xl rounded-circle" style="margin-left: 45%">
-                                    <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                                    <img alt="Image placeholder" src="assets/img/{{map3.get(currentUser.userId)}}">
 
                                 </a><br>
                                 <h7 style="margin-left: 38%">Start Chat with {{map2.get(currentUser.userId)}}</h7></div>

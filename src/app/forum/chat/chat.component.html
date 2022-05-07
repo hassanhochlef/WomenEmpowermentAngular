@@ -61,6 +61,7 @@
                         </div>
                         <div class="card-body overflow-auto overflow-x-hidden" style="height: 600px">
                             <ng-container *ngFor="let message of chatService.messages" >
+
                             <div class="row justify-content-start mb-4" *ngIf="message.user.name != this.username ">
                                 <div class="col-auto">
                                     <div class="card ">
@@ -76,7 +77,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-end text-right mb-4" *ngIf="message.user.name == this.username ">
+                            <div class="row justify-content-end text-right mb-4" *ngIf="message.user.name == this.username  ">
                                 <div class="col-auto">
                                     <div class="card bg-gradient-primary text-white">
                                         <div class="card-body p-2">

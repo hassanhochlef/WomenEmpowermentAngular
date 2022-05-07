@@ -151,15 +151,15 @@ float: left;
           overflow-x: hidden;">
         <ul class="nav flex-column bg-white border-radius-lg p-3 position-sticky top-10 shadow-lg">
             <li class="nav-item">
-                <button style="width: 200px; margin-top: 60px" type="button" class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                <button  style="width: 200px; margin-top: 60px" type="button" class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
                     Add Post            </button>
             </li>
             <li class="nav-item">
-                <button style="width: 200px" type="button" class="btn bg-gradient-primary btn-block mb-3" >
+                <button routerLink="/chatP" style="width: 200px" type="button" class="btn bg-gradient-primary btn-block mb-3" >
                     Chat            </button>
             </li>
             <li class="nav-item">
-                <button style="width: 200px" type="button" class="btn bg-gradient-primary btn-block mb-3" >
+                <button routerLink="/chat" style="width: 200px" type="button" class="btn bg-gradient-primary btn-block mb-3" >
                     Group            </button>
             </li>
 
@@ -293,7 +293,7 @@ float: right;
                             </ul>
 
                         </div>
-                        <img src="../../assets/img/team-3.jpg" alt="..." class="avatar avatar-lg border-radius-lg shadow mt-n5">
+                        <img src="assets/img/{{p.user.profilPic}}" alt="..." class="avatar avatar-lg border-radius-lg shadow mt-n5">
 
                         <div class="author">
                             <div class="name">
@@ -450,7 +450,7 @@ float: right;
                                 <div class="p-3 info-horizontal">
                                     <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
                                         <a href="javascript:;" class="avatar avatar-xs rounded-circle">
-                                            <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                                            <img alt="Image placeholder" src="assets/img/{{currentUser.profilPic}}">
                                         </a>                                    </div>
                                     <div class="description ps-3">
 
@@ -476,7 +476,7 @@ float: right;
                                 <div class="p-3 info-horizontal">
                                     <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
                                         <a href="javascript:;" class="avatar avatar-xs rounded-circle">
-                                            <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                                            <img alt="Image placeholder" src="assets/img/{{c.user.profilPic}}">
                                         </a>                                    </div>
                                     <div class="description dropdown ps-3">
 
@@ -552,7 +552,7 @@ float: right;
                         <div class="col-lg-4 ">
                             <a href="javascript:;">
                                 <div class="p-3 pe-md-0">
-                                    <img class="w-60 border-radius-md shadow-lg" src="../../assets/img/team-5.jpg" alt="image">
+                                    <img class="w-60 border-radius-md shadow-lg" src="assets/img/{{comm2.user.profilPic}}" alt="image">
                                 </div>
                             </a>
                         </div>
@@ -576,7 +576,7 @@ float: right;
                             <div class="p-3 info-horizontal">
                                 <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle">
-                                        <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                                        <img alt="Image placeholder" src="assets/img/{{c.user.profilPic}}">
                                     </a>                                    </div>
                                 <div class="description ps-3">
                                     <small class="mb-0" style="font-size: 3mm">{{c.user.name}}</small>   <a *ngIf="c.user.userId == currentUser.userId" class="txtsm"  type="button"   (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: green;margin-right: 30px; margin-left: 20px; font-size: 4mm"> update</a>  <a *ngIf="c.user.userId == currentUser.userId" class="txtsm" (click)="deleteCom(c.postCommentId.toString())" type="button" style="color: red; font-size: 4mm">delete</a>                                      <ng-container *ngIf="c.user.userId == currentUser.userId">

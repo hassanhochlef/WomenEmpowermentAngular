@@ -1,27 +1,31 @@
-<div class="container">
-    <div>
-        <h2>add complaint :</h2>
-    </div>
+<div class="col-md-4">
+    <!-- Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
-    <form >
+                    <form>
+                        <div class="input-group input-group-outline my-3">
 
+                            <label class="form-label">Complaint Title</label>
 
-        <div class="col-sm-4 col-md-4 col-lg-4" >
-            <label >title complaint</label>
-            <input type="text"[(ngModel)]= "newComplaint.complaintTitle" name="complaintTitle " class="form-control">
+                            <input type="text" [(ngModel)]= "newComplaint.complaintTitle" name="az" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+                            <label class="form-label">complaint Body</label>
+                            <textarea  type="text" [(ngModel)]= "newComplaint.content"  name="aab" class="form-control"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" (click)="addComplaint()" class="btn bg-gradient-primary">Add Complaint</button>
+                </div>
+            </div>
         </div>
-
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <label > content</label>
-            <input type="text" [(ngModel)]= "newComplaint.content" name="content" class="form-control">
-        </div>
-
-
-
-        <div class="mt-2">
-            <button type="submit" (click)="addComplaint()" class="btn btn-success">Ajouter</button>
-
-
-        </div>
-    </form>
-</div>

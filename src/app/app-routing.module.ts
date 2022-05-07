@@ -40,7 +40,7 @@ import {AppHelpComponent} from './pages/app.help.component';
 import {CourseComponent} from './course/course.component';
 import {DetailsComponent} from './course/details/details.component';
 import {AddCourseComponent} from './course/add-course/add-course.component';
-import {ForumComponent} from "./forum/forum.component";
+import {ForumComponent} from './forum/forum.component';
 import {ComplaintComponent} from './complaint/complaint.component';
 import {AddComplaintComponent} from './complaint/add-complaint/add-complaint.component';
 import {RegisterComponent} from './user/register/register.component';
@@ -53,26 +53,28 @@ import {NewPasswordComponent} from './user/new-password/new-password.component';
 import {EventComponent} from './event/event.component';
 import {OffreComponent} from './pages/offre/offre.component';
 import {AddOfferComponent} from './pages/offre/add-offer/add-offer.component';
-import {QuizComponent} from "./course/quiz/quiz.component";
+import {QuizComponent} from './course/quiz/quiz.component';
 import {EventFrontComponent} from './event/event-front/event-front.component';
 import {DonationComponent} from './event/donation/donation.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
-import {DetailEventComponent} from "./event/event-front/detail-event/detail-event.component";
-import {AddEventComponent} from "./event/event-front/add-event/add-event.component";
-import {MapComponent} from "./event/event-front/map/map.component";
-import {PaymentDonationComponent} from "./event/event-front/payment-donation/payment-donation.component";
+import {DetailEventComponent} from './event/event-front/detail-event/detail-event.component';
+import {AddEventComponent} from './event/event-front/add-event/add-event.component';
+import {MapComponent} from './event/event-front/map/map.component';
+import {PaymentDonationComponent} from './event/event-front/payment-donation/payment-donation.component';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
-import {ChatboxComponent} from "./chatbox/chatbox.component";
-import {ChatComponent} from "./forum/chat/chat.component";
-import {ChatPriveComponent} from "./forum/chat-prive/chat-prive.component";
-import {CourseBackHomeComponent} from "./backOffice/course/course-back-home/course-back-home.component";
+import {ChatPriveComponent} from './forum/chat-prive/chat-prive.component';
+import {CourseBackHomeComponent} from './backOffice/course/course-back-home/course-back-home.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
+import {ChatboxComponent} from './chatbox/chatbox.component';
+import {ChatComponent} from './forum/chat/chat.component';
 import {SubscriptionComponent} from './user/subscription/subscription.component';
+import {MyCandidacyComponent} from './pages/offre/my-candidacy/my-candidacy.component';
+import {CandidacyAreaComponent} from './pages/offre/candidacy-area/candidacy-area.component';
 import {AuthGuard} from './guards/auth.guard';
 import {Role} from './models/role.enum';
 import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
-import {ForumBackComponent} from "./forum-back/forum-back.component";
+import {ForumBackComponent} from './forum-back/forum-back.component';
 
 @NgModule({
     imports: [
@@ -153,6 +155,8 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
+                    {path: 'pages/cour', component: CourseBackHomeComponent},
+                    {path: 'pages/candidacyarea', component: CandidacyAreaComponent},
                     {path: 'cour', component: CourseBackHomeComponent},
                     {path: 'forumb', component: ForumBackComponent},
 
@@ -173,6 +177,8 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                     {path: 'addcourse', component : AddCourseComponent},
                     {path: 'quiz', component : QuizComponent},
                     {path: 'eventFront', component: EventFrontComponent},
+                    {path: 'offre', component: OffreComponent},
+
                     {
                         path: 'user-post',
                         component: UserPostsComponent,
@@ -183,6 +189,9 @@ import {ForumBackComponent} from "./forum-back/forum-back.component";
                     },
 
 
+
+                    {path: 'pages/map', component: MapComponent},
+                    {path: 'mycandidacy', component: MyCandidacyComponent}
 
                 ]
             },

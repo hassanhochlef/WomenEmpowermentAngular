@@ -5,7 +5,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
-
 import {AccordionModule} from 'primeng/accordion';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {AvatarModule} from 'primeng/avatar';
@@ -155,15 +154,16 @@ import { HomeComponent } from './user/home/home.component';
 import { NavbarComponent } from './user/navbar/navbar.component';
 import { FrontFooterComponent } from './user/front-footer/front-footer.component';
 import { FrontLandingComponent } from './user/front-landing/front-landing.component';
+import { ServicesComponent } from './services/services.component';
+import { AddServicesComponent } from './services/add-services/add-services.component';
+import { UpdateComplaintComponent } from './complaint/update-complaint/update-complaint.component';
 import { ProfilComponent } from './user/profil/profil.component';
 import {OffreComponent} from './pages/offre/offre.component';
 import { AddOfferComponent } from './pages/offre/add-offer/add-offer.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './user/new-password/new-password.component';
 import { QuizComponent } from './course/quiz/quiz.component';
-import { AddPostComponent } from './forum/add-post/add-post.component';
 import { UserPostsComponent } from './forum/user-posts/user-posts.component';
-import { PostDetailsComponent } from './forum/post-details/post-details.component';
 import { EventFrontComponent } from './event/event-front/event-front.component';
 import { DonationComponent } from './event/donation/donation.component';
 import { PaymentDonationComponent } from './event/event-front/payment-donation/payment-donation.component';
@@ -171,13 +171,19 @@ import { AddEventComponent } from './event/event-front/add-event/add-event.compo
 import { DetailEventComponent } from './event/event-front/detail-event/detail-event.component';
 import { MapComponent } from './event/event-front/map/map.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import {AddPostComponent} from './forum/add-post/add-post.component';
+import {PostDetailsComponent} from './forum/post-details/post-details.component';
+import { MyCandidacyComponent } from './pages/offre/my-candidacy/my-candidacy.component';
+import { CandidacyAreaComponent } from './pages/offre/candidacy-area/candidacy-area.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {ChatComponent} from "./forum/chat/chat.component";
-import {ChatboxComponent} from "./chatbox/chatbox.component";
+import {ChatComponent} from './forum/chat/chat.component';
+import {ChatboxComponent} from './chatbox/chatbox.component';
 import { ChatPriveComponent } from './forum/chat-prive/chat-prive.component';
 import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 import { SubscriptionComponent } from './user/subscription/subscription.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { filterPipe1} from './course/filter.pipe';
 import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
@@ -340,6 +346,9 @@ import { ForumBackComponent } from './forum-back/forum-back.component';
         NavbarComponent,
         FrontFooterComponent,
         FrontLandingComponent,
+        ServicesComponent,
+        AddServicesComponent,
+        UpdateComplaintComponent,
         ProfilComponent,
         OffreComponent,
         AddOfferComponent,
@@ -350,7 +359,6 @@ import { ForumBackComponent } from './forum-back/forum-back.component';
         QuizComponent,
         AddPostComponent,
         UserPostsComponent,
-        PostDetailsComponent,
         EventFrontComponent,
         DonationComponent,
         PaymentDonationComponent,
@@ -364,6 +372,10 @@ import { ForumBackComponent } from './forum-back/forum-back.component';
         AdminDashboardBackofficeComponent,
         ChatComponent,
         ChatboxComponent,
+        CourseBackHomeComponent,
+        SubscriptionComponent,
+        MyCandidacyComponent,
+        CandidacyAreaComponent,
         ChatPriveComponent,
         CourseBackHomeComponent,
         SubscriptionComponent,

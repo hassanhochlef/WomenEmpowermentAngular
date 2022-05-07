@@ -6,118 +6,108 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 text-center mx-auto mt-md-n7">
-                    <h4 class="text-white fadeIn1 fadeInBottom">Join Our Team</h4>
-                    <h1 class="text-white fadeIn2 fadeInBottom">Work with the rockets</h1>
-                    <p class="lead mb-5 fadeIn3 fadeInBottom text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
-                    <button type="submit" class="btn bg-white me-2 fadeIn1 fadeInBottom">Get started</button>
-                    <button type="submit" class="btn bg-white btn-icon-only rounded-circle fadeIn1 fadeInBottom"><i class="fas fa-play"></i></button>
+                    <h4 class="text-white fadeIn1 fadeInBottom">Join Our Family</h4>
+                    <h1 class="text-white fadeIn2 fadeInBottom">Find a job you love</h1>
+                    <p class="lead mb-5 fadeIn3 fadeInBottom text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to help this community</p>
+                    <div class="row">
+                        <div class="col-lg-6 d-flex align-items-center ms-auto">
+                            <div class="input-group input-group-outline">
+                                <label class="form-label">Type here</label>
+                                <input class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 d-flex align-items-center me-auto">
+                            <button type="button" class="btn bg-gradient-dark w-100 mb-0 mt-3 mt-lg-0">Search</button>
+
+
+                        </div>
+                        <div class="col-lg-4 d-flex align-items-center mt-3">
+                            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModalSignup">
+                                Add New Offer
+                            </button>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </header>
-<body>
-<div class="row mb-5 border-radius-xl mt-5 pb-4 w-100 w-md-75 p-0 p-md-3 mx-auto">
-    <div class="col-lg-6 d-flex align-items-center ms-auto">
-        <div class="input-group input-group-outline">
-            <label class="form-label">Type here</label>
-            <input class="form-control" type="text">
-        </div>
-    </div>
-    <div class="col-lg-3 d-flex align-items-center me-auto">
-        <button type="button" class="btn bg-gradient-dark w-100 mb-0 mt-3 mt-lg-0">Search</button>
-    </div>
-    <div class="container py-7">
-        <div class="row mt-5">
-            <div class="col-sm-3 col-6 mx-auto">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModalSignup">
-                    Add New Offer
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalSignup" tabindex="-1" aria-labelledby="exampleModalSignup" aria-hidden="true">
-                    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body p-0">
-                                <div class="card card-plain">
-                                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 text-center py-4">
-                                            <h4 class="font-weight-bolder text-white mt-1">New offer</h4>
-                                            <p class="mb-1 text-white text-sm">Create a new offer and help her to shine</p>
-                                        </div>
-                                    </div>
-                                    <div class="card-body pb-3">
-                                        <form role="form text-start">
-                                            <div class="input-group input-group-outline mb-3">
-                                                <label class="form-label">Offer Title</label>
-                                                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="offre.title" #name="ngModel" required>
-                                            </div>
-
-                                            <div class="input-group input-group-outline mb-3">
-                                                <label class="form-label">Location</label>
-
-                                                        <div class="input-group input-group-outline mb-3">
-                                                            <select class="form-control" name="name" [(ngModel)]="offre.location"  #name="ngModel" id="choice-button" placeholder="Language" required>
-                                                                <option value="Choice 1" selected>Brazil</option>
-                                                                <option value="Choice 2">Bucharest</option>
-                                                                <option value="Choice 3">London</option>
-                                                                <option value="Choice 4">Washington</option>
-                                                            </select>
-                                                        </div>
 
 
 
-                                                <!-- mandatory scripts -->
-                                                <script src="./assets/js/plugins/choices.min.js"></script>
-                                                <script>
-                                                    if (document.getElementById("choices-button")) {
-                                                        var element = document.getElementById("choices-button");
-                                                        const example = new Choices(element, {});
-                                                    }
-                                                </script>
-                                            </div>
 
-                                            <div class="input-group input-group-outline mb-3">
-                                                <label class="form-label">description</label>
-                                                <input type="text" class="form-control" id="description" name="name" [(ngModel)]="offre.description" #email="ngModel" class="form-control" required>
-                                            </div>
-                                            <div class="input-group input-group-outline mb-3">
-                                                <label class="form-label">requiredCandidates</label>
-                                                <input type="text" class="form-control" id="requiredCandidates" name="name" [(ngModel)]="offre.requiredCandidates" #email="ngModel" class="form-control" required>
-                                            </div>
-                                            <div class="input-group input-group-outline mb-3">
-                                                <label class="form-label">approxSalary</label>
-                                                <input type="text" class="form-control" id="approxSalary" name="name" [(ngModel)]="offre.approxSalary" #email="ngModel" class="form-control" required>
-                                            </div>
-                                            <div class="text-center">
-                                                <button (click)="addOffer()" type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0">Create</button>
-                                            </div>
-                                        </form>
-                                </div>
-                            </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalSignup" tabindex="-1" aria-labelledby="exampleModalSignup" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="card card-plain">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 text-center py-4">
+                            <h4 class="font-weight-bolder text-white mt-1">New offer</h4>
+                            <p class="mb-1 text-white text-sm">Create a new offer and help her to shine</p>
                         </div>
+                    </div>
+                    <div class="card-body pb-3">
+                        <form role="form text-start">
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label">Offer Title</label>
+                                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="offre.title" #name="ngModel" required>
+                            </div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label">Location</label>
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <select class="form-control" name="name" [(ngModel)]="offre.location"  #name="ngModel" id="choice-button" placeholder="Language" required>
+                                        <option value="Choice 1" selected>Tunis</option>
+                                        <option value="Choice 2">Sousse</option>
+                                        <option value="Choice 3">Sfax</option>
+                                        <option value="Choice 4">Djerba</option>
+                                    </select>
+                                </div>
+
+
+
+                                <!-- mandatory scripts -->
+                                <script src="./assets/js/plugins/choices.min.js"></script>
+                                <script>
+                                    if (document.getElementById("choices-button")) {
+                                        var element = document.getElementById("choices-button");
+                                        const example = new Choices(element, {});
+                                    }
+                                </script>
+                            </div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label">description</label>
+                                <input type="text" class="form-control" id="description" name="name" [(ngModel)]="offre.description" #email="ngModel" class="form-control" required>
+                            </div>
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label">requiredCandidates</label>
+                                <input type="text" class="form-control" id="requiredCandidates" name="name" [(ngModel)]="offre.requiredCandidates" #email="ngModel" class="form-control" required>
+                            </div>
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label">approxSalary</label>
+                                <input type="text" class="form-control" id="approxSalary" name="name" [(ngModel)]="offre.approxSalary" #email="ngModel" class="form-control" required>
+                            </div>
+                            <div class="text-center">
+                                <button (click)="addOffer()" type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0" data-bs-dismiss="modal">Create</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 <section class="jobs">
-    <h1 class="jobs-title">Jobs</h1>
-    <p class="jobs-description">Find a job you love. <a href="#">Set career interests.</a></p>
-    
+    <h1 class="jobs-title" align="center">Jobs</h1>
     <div class="jobs-cards" >
         <article class="job" *ngFor="let offre of listOffers" >
-            <div class="card-header text-center pt-4 pb-3 bg-transparent"><td >
-                <tr><span><div><i class="material-icons text-gradient text-primary text-5xl">room</i>
-                    </div></span></tr>
-                <tr>{{offre.location}}</tr>
-            </td>
-
-            </div>
-            <h2 class="job-title" class="card-header text-center pt-4 pb-3 bg-transparent">{{offre.title}}</h2>
+           <h2 class="job-title" class="card-header text-center pt-4 pb-3 bg-transparent">{{offre.title}}</h2>
             <div class="card-header text-center pt-4 pb-3 bg-transparent">
                 <i class="material-icons text-gradient text-primary text-5xl">savings</i>
 
@@ -125,82 +115,143 @@
                     <small class="text-lg align-top me-1">TND</small>{{offre.approxSalary}}<small class="text-lg">/mo</small>
                 </h1>
             </div>
-            <i class="material-icons text-gradient text-primary text-5xl">record_voice_over</i>
+
+<div class="d-flex justify-content-between">
+       <span class=" clorPink  cursor-pointer ">Details</span>
+
+    <div>
+        <i class="material-icons text-gradient text-primary text-5xl">room</i>
+        <span style="margin-top: -50px" >{{offre.location}}</span>
+    </div>
+</div>
+
             <ul class="list-unstyled my-4">
                 <li class="align-items-center">
 
                     <b>Required Candidates:</b> <span>{{offre.requiredCandidates}}</span>
                 </li>
                 <li class="align-items-center my-2">
-                    <b>Description :</b> <span>{{offre.description}}</span>
+                    <b>Description : </b> <span>{{offre.description}}</span>
+                </li>
+                <li class="align-items-center my-2">
+                    <b>Creation Date : </b> <span>{{offre.createdAt | date:'fullDate'}}</span>
                 </li>
 
             </ul>
 
-            <div class="job-source">
-                <img src="
-https://www.thispersondoesnotexist.com/image" alt="Founders">
-                <p><strong>Founders</strong>,{{offre.createdAt}}</p>
-            </div>
-            <span class="card-meta">
-        Published: June 18th, 2015
+
+
+            <div class="card-meta d-flex justify-content-between">
                 <button (click)="deleteOffer(offre.offerId)" type="button" class="btn btn-primary">DELETE</button>
-      </span>
-            <br>
+                <button    data-bs-toggle="modal"  data-bs-target="#editOfferModal"   (click)="getOfferById(offre)"  type="button" class="btn btn-primary">EDIT</button>
+
+
+               </div>
+
+
             <div>
-            <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+            <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Apply Now
                 <i class="fas fa-arrow-right ms-1"></i>
             </a>
             </div>
+
         </article>
     </div>
-    <div class="col-lg-4 mb-lg-0 mb-4">
-        <div class="card bg-gradient-dark shadow-lg">
-            <span class="badge rounded-pill bg-primary w-30 mx-auto">Premium</span>
-            <div class="card-header text-center pt-4 pb-3 bg-transparent">
-                <h1 class="font-weight-bold mt-2 text-white">
-                    <small class="text-lg align-top me-1">TND </small>159<small class="text-lg">/mo</small>
-                </h1>
-            </div>
 
-            <div class="card-body text-lg-start text-center pt-0">
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">done</i>
-                    <span class="ps-3 text-white">10 team members</span>
+</section>
+<!-- Modal -->
+
+<div class="modal fade" id="editOfferModal" tabindex="-1" aria-labelledby="editProfileModal" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="card card-plain">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 text-center py-4">
+                            <h4 class="font-weight-bolder text-white mt-1">Edit Offer</h4>
+                            <p class="mb-1 text-white text-sm">Change your Offer informations</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form role="form" #f="ngForm" (ngSubmit)=" updateOffer()">
+                            <div class="row justify-space-between text-center py-2">
+
+                                <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
+                                    Offer informations
+                                </p>
+                            </div>
+
+
+                            <div class="input-group input-group-static">
+
+                                <label >Offer title</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Title" [(ngModel)]="offre2.title" #title="ngModel" required>
+                            </div>
+
+                            <div class="input-group input-group-static">
+                                <label>Location</label>
+                                <input type="email" class="form-control" id="email" name="location" placeholder="Email" [(ngModel)]="offre2.location" #location="ngModel" >
+                            </div>
+
+                            <div class="input-group input-group-static" >
+                                <label>Approx Salary</label>
+                                <input type="text" id="birthDate" class="form-control" name="approxSalary" placeholder="Birth Date"  [(ngModel)]="offre2.approxSalary" #approxSalary="ngModel" required>
+                            </div>
+
+                            <div class="input-group input-group-static" >
+                                <label>Creation Date</label>
+                                <input type="date" id="establishmentDate" class="form-control" name="createdAt" placeholder="Establishment Date"  [(ngModel)]="offre.createdAt" #createdAt="ngModel" required>                                </div>
+
+                            <div class="input-group input-group-static">
+                                <label>Required candidates</label>
+                                <input type="phone" id="phone" name="requiredCandidates" placeholder="Phone Number"  [(ngModel)]="offre2.requiredCandidates" #requiredCandidates="ngModel" class="form-control" required>
+                            </div>
+
+                            <div class="input-group input-group-static">
+                                <label> Description</label>
+                                <input type="text" id="activityDomain" class="form-control" name="description" placeholder="Activity Domain"  [(ngModel)]="offre2.description" #description="ngModel" required>
+                            </div>
+
+
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Edit</button>
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">done</i>
-                    <span class="ps-3 text-white">40GB Cloud storage </span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">done</i>
-                    <span class="ps-3 text-white">Integration help </span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">done</i>
-                    <span class="ps-3 text-white">Sketch Files </span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">remove</i>
-                    <span class="ps-3 text-white">API Access </span>
-                </div>
-
-                <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                    <i class="material-icons my-auto text-white">remove</i>
-                    <span class="ps-3 text-white">Complete documentation </span>
-                </div>
-
-                <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
-                    Try Premium
-                    <i class="fas fa-arrow-right ms-1"></i>
-                </a>
             </div>
         </div>
     </div>
-</section>
-</body>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <form role="form" #f="ngForm" (ngSubmit)="onSaveFile()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apply</h5>
+            </div>
+            <div>
+                <br>
+                <label> To confirm your application, you should send your Curriculum Vitae.
+                </label>
+                    <br>
+                <div class="input-group input-group-static">
+                    <div  class="modal-body">Your CV</div>
+                    <input class="form-control" type="file" id="file"  (change)="onFileSelcted($event)">
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn bg-gradient-dark mb-0" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn bg-gradient-primary mb-0">Confirm Application</button>
+            </div>
+        </div>
+        </form>
+
+    </div>
+</div>

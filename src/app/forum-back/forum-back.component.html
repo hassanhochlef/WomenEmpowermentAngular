@@ -1,3 +1,121 @@
+<div class="p-grid">
+
+
+
+
+    <div class="p-col-12 p-md-6 p-xl-3">
+        <div class="card no-gutter widget-overview-box widget-overview-box-3">
+                            <span class="overview-icon">
+                                <i class="pi pi-users"></i>
+                            </span>
+            <span class="overview-title">Reacts</span>
+            <div class="p-grid overview-detail">
+                <div class="p-col-6">
+                    <div class="overview-number">8272</div>
+                    <div class="overview-subtext">Like</div>
+                </div>
+                <div class="p-col-6">
+                    <div class="overview-number">25402</div>
+                    <div class="overview-subtext">Dislike</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-xl-3">
+        <div class="card no-gutter widget-overview-box widget-overview-box-1">
+                            <span class="overview-icon">
+                                <i class="pi pi-shopping-cart"></i>
+                            </span>
+            <span class="overview-title">Adverstings</span>
+            <div class="p-grid overview-detail">
+                <div class="p-col-6">
+                    <div class="overview-number">{{listAdversting.length}}</div>
+                    <div class="overview-subtext"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-xl-3">
+        <div class="card no-gutter widget-overview-box widget-overview-box-2">
+                            <span class="overview-icon">
+                                <i class="pi pi-dollar"></i>
+                            </span>
+            <span class="overview-title">Posts</span>
+            <div class="p-grid overview-detail">
+                <div class="p-col-6">
+                    <div class="overview-number">{{listPost.length}}</div>
+                    <div class="overview-subtext">Users</div>
+                </div>
+                <div class="p-col-6">
+                    <div class="overview-number">0</div>
+                    <div class="overview-subtext">admins</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-6 p-xl-3">
+        <div class="card no-gutter widget-overview-box widget-overview-box-4">
+                            <span class="overview-icon">
+                                <i class="pi pi-comment"></i>
+                            </span>
+            <span class="overview-title">Comments</span>
+            <div class="p-grid overview-detail">
+                <div class="p-col-6">
+                    <div class="overview-number">12</div>
+                    <div class="overview-subtext">Post C</div>
+                </div>
+                <div class="p-col-6">
+                    <div class="overview-number">85</div>
+                    <div class="overview-subtext">Reply</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="p-grid p-fluid">
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5 class="centerText">Linear Chart</h5>
+            <p-chart type="line" [data]="lineData"></p-chart>
+        </div>
+
+        <div class="card">
+            <h5 class="centerText">Likes / Dislikes</h5>
+            <p-chart type="pie" [data]="pieData"></p-chart>
+        </div>
+
+        <div class="card">
+            <h5 class="centerText">Polar Area Chart</h5>
+            <p-chart type="polarArea" [data]="polarData"></p-chart>
+        </div>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5 class="centerText">Bar Chart</h5>
+            <p-chart type="bar" [data]="barData"></p-chart>
+        </div>
+
+        <div class="card">
+            <h5 class="centerText">Doughnut Chart</h5>
+            <p-chart type="doughnut" [data]="pieData"></p-chart>
+        </div>
+
+        <div class="card">
+            <h5 class="centerText">Radar Chart</h5>
+            <p-chart type="radar" [data]="radarData"></p-chart>
+        </div>
+    </div>
+</div>
+
+
+
+
 <div class="card">
     <p-toolbar styleClass="p-mb-4">
         <ng-template pTemplate="left">

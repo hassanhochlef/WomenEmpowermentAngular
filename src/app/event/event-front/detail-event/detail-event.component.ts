@@ -30,34 +30,39 @@ export class DetailEventComponent implements OnInit {
   display = false;
   fileToUpload: File | null = null;
   eventFiles: EventFile[];
-  constructor(private eventService: EventService, private route: ActivatedRoute , private router: Router ) { }
+
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) {
+  }
+
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.event = new Event();
-    this.eventService.getEventById(this.id).subscribe(data =>{
+    this.eventService.getEventById(this.id).subscribe(data => {
       this.event = data;
       this.display = true;
       console.log(data);
     });
   }
-  cancelParticipation(id: string){
+
+  cancelParticipation(id: string) {
     this.eventService.cancelParticipation(id).subscribe();
     this.router.navigate(['user/eventFront']).then(() => {
       window.location.reload();
     });
   }
- /* getAdressMap(id: number){
-    this.eventService.getAdressByMAP(id).subscribe(data => {
-      this.event = data;
-      this.display = true;
-      console.log(data);
-    });
-  }*/
+
+  /* getAdressMap(id: number){
+     this.eventService.getAdressByMAP(id).subscribe(data => {
+       this.event = data;
+       this.display = true;
+       console.log(data);
+     });
+   }*/
 
 
-  particper(id: string){
-  this.eventService.joindEvent(id).subscribe();
-  this.router.navigate(['user/eventFront']).then(() => {
+  particper(id: string) {
+    this.eventService.joindEvent(id).subscribe();
+    this.router.navigate(['user/eventFront']).then(() => {
       window.location.reload();
     });
   }
@@ -71,15 +76,22 @@ export class DetailEventComponent implements OnInit {
       this.router.navigate([currentUrl]);
     });
   }
-  redirectToPayement(){
-    this.router.navigate(['user/payment', this.id]);
+
+  redirectToPayement() {
+    this.router.navigate(['/payment/', this.id]);
+
   }
 
-  onFileSelcted(event: any){
+
+
+
+
+  onFileSelcted(event: any) {
     this.fileToUpload = event.target.files[0];
     console.log(this.fileToUpload.name);
   }
-  onSaveFile(){
+
+  onSaveFile() {
     const formData = new FormData();
     formData.append('file', this.fileToUpload);
     // @ts-ignore
@@ -87,6 +99,8 @@ export class DetailEventComponent implements OnInit {
     return this.eventService.postFile(this.event.eventId, this.fileToUpload).subscribe();
   }
 
-
-
 }
+
+
+
+

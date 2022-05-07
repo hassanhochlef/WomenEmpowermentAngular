@@ -10,7 +10,9 @@ import {Router} from '@angular/router';
 })
 export class AddPostComponent implements OnInit {
   post: Post = new Post();
-  errorMessage: string = "";
+  errorMessage: string = 'null';
+  fileToUpload: File | null = null;
+  imagenMin: File;
 
   constructor(private cs: ForumService, private router: Router) {
   }
@@ -26,10 +28,9 @@ export class AddPostComponent implements OnInit {
 
   addnewpost() {
     this.cs.addPost(this.post).subscribe(data => {
-          this.router.navigate(['/user/forum']).then(() => {
-            window.location.reload();
-          });
-        },
+      this.post = data ,
+          console.log(data);
+          this.errorMessage = 'valide'; },
         err => {
           if (err?.status === 424) {
             this.errorMessage = 'Bad Word used';
@@ -37,9 +38,40 @@ export class AddPostComponent implements OnInit {
             this.errorMessage = 'Email already exists';
           }
         }
+
         );
   }
 
+  onFileSelcted(event: any){
+    this.fileToUpload = event.target.files[0];
+    const fr = new FileReader();
+    fr.onload = (evento: any) => {
+      this.imagenMin = evento.target.result;
+    };
+    fr.readAsDataURL(this.fileToUpload);
+  }
+  onSaveFile() {
+    const formData = new FormData();
+    formData.append('image', this.fileToUpload);
+    // @ts-ignore
+    formData.append('reportProgress', true);
+    return this.cs.postFile(this.post.postId.toString(), this.fileToUpload).subscribe(p => {
+      this.router.navigate(['user/forum']).then(() => {
+        window.location.reload();
+      });
+    },
+        err => {
+          if (err?.status === 424) {
+            this.errorMessage = 'Bad Word used in your pucture';
+          } else if (err?.status === 404) {
+            this.errorMessage = 'Bad Word used';
+          } else if (err?.status === 200) {
+            this.router.navigate(['user/forum']).then(() => {
+              window.location.reload();
+            });
+          }
+        });
+  }
 
 }
 

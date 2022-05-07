@@ -36,7 +36,7 @@ export class EventService extends  RequestBaseService{
         return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/findEventYear');
     }
     getEventById(id: number): Observable<Event>{
-        return this.http.get<Event>(`http://localhost:8087/SpringMVC/Event/getEvent/${id}`);
+        return this.http.get<Event>(`http://localhost:8087/SpringMVC/Event/getEvent/${id}`, {headers: this.getHeaders});
     }
     cancelParticipation(id: string): Observable<any> {
         return this.http.delete('http://localhost:8087/SpringMVC/Event/cancelParticipation/' + id, {headers: this.getHeaders} );
@@ -68,7 +68,7 @@ export class EventService extends  RequestBaseService{
 
     //backoffice
     getListBackallEvent(): Observable<Event[]>{
-        return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/Get-all-Event');
+        return this.httpClient.get<Event[]>('http://localhost:8087/SpringMVC/Event/Get-all-Event', {headers: this.getHeaders});
     }
     GetBestDonorOfEvent(): Observable<any[]>{
         return this.httpClient.get<any[]>('http://localhost:8087/SpringMVC/Donation/bestDoner');
@@ -80,6 +80,30 @@ export class EventService extends  RequestBaseService{
     getEventFile(): Observable<EventFile[]> {
         return this.http.get<EventFile[]>('http://localhost:8087/SpringMVC/file/files');
     }
+    /*updateEvent(idEvent: number, event: Event) {
+        return this.http.put<Event>('http://localhost:8087/SpringMVC/Event/editEvent/' + idEvent, event, {headers: this.getHeaders});
+    }*/
+
+
+    updateEvent(idEvent: string , event: Event) {
+        return this.http.put<Event>('http://localhost:8087/SpringMVC/Event/editEvent/' + idEvent + '/' , event , {headers: this.getHeaders});
+
+    }
+
+
+    getListCommentEvent(): Observable<EventcommentModel[]>{
+        return this.httpClient.get<EventcommentModel[]>('http://localhost:8087/SpringMVC/Event/getEventComment', {headers: this.getHeaders});
+    }
+
+
+
+    // uploadfileEvent(idEvent: number, file: File) {
+    //     const formParams = new FormData();
+    //     // @ts-ignore
+    //
+    //     return this.http.post('http://localhost:8087/SpringMVC/Event/IMAGEEVENT/' + idEvent, formParams, {headers: this.getHeaders});
+    // }
+
 
 
 }

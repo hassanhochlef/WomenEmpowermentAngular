@@ -6,8 +6,8 @@ export class Donation{
     donationDate: string;
     codePayement: string;
     amountForEvent: number;
-    donor?: User[];
-    event?: Event[];
+    donor?: User;
+    event?: Event;
 
 
 }

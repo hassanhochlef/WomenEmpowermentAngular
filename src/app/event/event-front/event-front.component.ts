@@ -14,8 +14,12 @@ export class EventFrontComponent implements OnInit {
   nameSearch: string= '';
   events: Event[];
   event: Event = new Event();
+  imagen: File;
+  imagenMin: File;
   bestdonor: any[];
   display = false;
+  fileToUpload: File | null = null;
+  idEvent: number;
   constructor(private eventService: EventService, private router: Router) {
   }
 
@@ -60,14 +64,39 @@ export class EventFrontComponent implements OnInit {
       console.log('delete');
 
     });
-    this.router.navigate(['user/eventFront']).then(() => {
+    this.router.navigate(['/eventFront']).then(() => {
       window.location.reload();
     });
 
   }
   openDetails(id: number): void {
-    this.router.navigate(['user/detailEvent/', id]);
+    this.router.navigate(['/detailEvent/', id]);
+  }
+  updateEvent(idEvent: string){
+    this.eventService.updateEvent(this.idd.toString(), this.event).subscribe(p =>{
+      console.log();
+    });
+    this.router.navigate(['/eventFront']).then(() => {
+      window.location.reload();
+    });
+  }
+  idd: string;
+  openupdate(id: string){this.idd = id;}
+
+
+
+  onFileSelcted(event: any){
+    this.fileToUpload = event.target.files[0];
+
+  }
+  onSaveFile(){
+    const formData = new FormData();
+    formData.append('file', this.fileToUpload);
+    // @ts-ignore
+    formData.append('reportProgress', true);
+    return this.eventService.postFile(this.idEvent, this.fileToUpload).subscribe();
   }
 
-
 }
+
+

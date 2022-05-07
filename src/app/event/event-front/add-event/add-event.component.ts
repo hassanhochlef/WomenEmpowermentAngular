@@ -9,8 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./add-event.component.scss']
 })
 export class AddEventComponent implements OnInit {
-  imagen: File;
-  imagenMin: File;
+
   event: Event = new Event();
   latLng;
   constructor( private eventService: EventService, private router: Router) { }
@@ -35,7 +34,7 @@ export class AddEventComponent implements OnInit {
     this.eventService.createEvent2(this.event).subscribe(data => {
       console.log(data);
     });
-    this.router.navigate(['user/eventFront']).then(() => {
+    this.router.navigate(['/eventFront']).then(() => {
       window.location.reload();
     });
   }
@@ -64,6 +63,11 @@ export class AddEventComponent implements OnInit {
   redirectToDashborEvent(){
     this.router.navigate(['user/eventFront']);
   }
+
+
+
+
+
 
 
 }

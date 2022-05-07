@@ -45,8 +45,8 @@ export class ChatComponent implements OnInit {
       text: this.messages,
       avatar: avatar,
       username: this.username,
-      sender: '1',
-      idchat: '2'
+      sender: '0',
+      idchat: '0'
     };
     console.log(this.a, this.m);
 

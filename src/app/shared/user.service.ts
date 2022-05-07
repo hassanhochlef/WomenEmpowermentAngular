@@ -116,4 +116,22 @@ export class UserService extends  RequestBaseService{
   lockUser(username: string){
     return this.http.put('http://localhost:8087/SpringMVC/api/admin/lock', username, {headers: this.getHeaders});
   }
+
+  getUsersByMonth(id: string): Observable<any> {
+    let queryParams = {'id': id};
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/usersByMonth', {headers: this.getHeaders, params: queryParams});
+  }
+
+  getSubscribedUsersByMonth(id: string): Observable<any> {
+    let queryParams = {'id': id};
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/subscribedUsersByMonth', {headers: this.getHeaders, params: queryParams});
+  }
+
+  getCountryList(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/countries', {headers: this.getHeaders});
+  }
+
+  getCountriesValues(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/numberByCountry', {headers: this.getHeaders});
+  }
 }

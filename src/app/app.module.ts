@@ -146,7 +146,6 @@ import { DetailsComponent } from './course/details/details.component';
 import { AddCourseComponent } from './course/add-course/add-course.component';
 import { EventComponent } from './event/event.component';
 import { FilterPipe } from './event/filter.pipe';
-
 import { ComplaintComponent } from './complaint/complaint.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 import { ForumComponent } from './forum/forum.component';
@@ -182,7 +181,10 @@ import { ChatPriveComponent } from './forum/chat-prive/chat-prive.component';
 import { CourseBackHomeComponent } from './backOffice/course/course-back-home/course-back-home.component';
 import { SubscriptionComponent } from './user/subscription/subscription.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import { filterPipe1} from './course/filter.pipe';
 import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { ForumBackComponent } from './forum-back/forum-back.component';
 
 
 
@@ -275,7 +277,8 @@ import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
         AppCodeModule,
         ReactiveFormsModule,
         NgxPaginationModule,
-        NgxQRCodeModule
+        NgxQRCodeModule,
+        Ng2SearchPipeModule
 
     ],
     declarations: [
@@ -369,7 +372,9 @@ import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
         ChatboxComponent,
         ChatPriveComponent,
         CourseBackHomeComponent,
-        SubscriptionComponent
+        SubscriptionComponent,
+        filterPipe1
+        ForumBackComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

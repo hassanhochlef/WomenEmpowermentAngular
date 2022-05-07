@@ -78,127 +78,6 @@
             </div>
         </div>
 
-
-        <div class="p-grid table-demo">
-            <div class="p-col-12">
-                <div class="card">
-                    <p-table #dt [value]="allUsers" [(selection)]="selectedCustomers1" dataKey="id"
-                             styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
-                             [filterDelay]="0" [globalFilterFields]="['name','email','phone','status']">
-                        <ng-template pTemplate="caption">
-                            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
-                                Customers
-                                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-                           placeholder="Global Search"/>
-                </span>
-                            </div>
-                        </ng-template>
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th style="width: 3rem">
-                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                                </th>
-                                <th pSortableColumn="name">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Name
-                                        <p-sortIcon field="name"></p-sortIcon>
-                                        <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
-                                <th pSortableColumn="country.name">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Country
-                                        <p-sortIcon field="country.name"></p-sortIcon>
-                                        <p-columnFilter type="text" field="country.name" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
-                                <th pSortableColumn="email" style="width: 20rem">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Email
-                                        <p-sortIcon field="email"></p-sortIcon>
-                                        <p-columnFilter type="text" field="email" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
-                                <th pSortableColumn="date">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Date
-                                        <p-sortIcon field="date"></p-sortIcon>
-                                        <p-columnFilter type="date" field="date" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
-                                <th pSortableColumn="contact">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Contact
-                                        <p-sortIcon field="contact"></p-sortIcon>
-                                        <p-columnFilter type="text" field="contact" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
-                                <th pSortableColumn="status">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Status
-                                        <p-sortIcon field="status"></p-sortIcon>
-                                        <p-columnFilter type="text" field="status" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
-                                <th style="width: 8rem"></th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-customer>
-                            <tr class="p-selectable-row">
-                                <td>
-                                    <p-tableCheckbox [value]="customer"></p-tableCheckbox>
-                                </td>
-                                <td>
-                                    <img src="assets/img/{{customer.profilPic}}" width="32"
-                                         style="vertical-align: middle" class="profil-pic-round"/>
-                                    <span class="p-column-title">Name</span>
-                                    {{customer.name}}
-                                </td>
-                                <td>
-                                    <span class="p-column-title">Country</span>
-                                    <img src="assets/demo/flags/flag_placeholder.png"
-                                         [class]="'flag flag-' + countries[customer.country]|lowercase" width="30">
-                                    <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.country}}</span>
-                                </td>
-                                <td>
-                                    <span class="p-column-title">Email</span>
-                                    <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.email}}</span>
-                                </td>
-                                <td>
-                                    <span class="p-column-title">Date</span>
-                                    <div *ngIf="customer.role === 'USER' || customer.role === 'ADMIN' || customer.role === 'EXPERT' || customer.role === 'FORMER'">{{customer.birthDate | date: 'MM/dd/yyyy'}}</div>
-                                    <div *ngIf="customer.role === 'COMPANY' || customer.role === 'ASSOCIATION'">{{customer.establishmentDate | date: 'MM/dd/yyyy'}}</div>
-                                </td>
-                                <td>
-                                    <span class="p-column-title">Contact</span>
-                                    {{customer.phoneNumber}}
-                                </td>
-                                <td>
-                                    <span class="p-column-title">Status</span>
-                                    <span *ngIf="customer.locked" [class]="'customer-badge status-unqualified'">Locked</span>
-                                    <span *ngIf="!customer.locked" [class]="'customer-badge status-proposal'">Active</span>
-                                </td>
-                                <td style="text-align: center">
-                                    <button *ngIf="!customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="lockUser(customer.username)"></button>
-                                    <button *ngIf="customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="unlockUser(customer.username)"></button>
-                                </td>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="emptymessage">
-                            <tr>
-                                <td colspan="8">No customers found.</td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
-                </div>
-            </div>
-
-        </div>
-
-
-
         <div class="p-col-12 p-lg-4">
             <div class="card widget-tasks">
                 <h4>Tasks</h4>
@@ -301,83 +180,143 @@
 
         <div class="p-col-12 p-lg-8">
             <div class="card revenue">
-                <h4>User Activities</h4>
-                <p>Comparison of customer activities.</p>
+                <h4>Users origins</h4>
+                <p>Comparison of users nations by country</p>
                 <div class="revenue-chart-container">
                     <p-chart type="pie" id="revenue-chart" [data]="revenueChart"></p-chart>
                 </div>
             </div>
 
             <div class="card">
-                <h4>Team Members</h4>
-                <ul class="widget-person-list">
-                    <li>
-                        <div class="person-item">
-                            <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
-                            <div class="person-info">
-                                <div class="person-name">Amy Elsner</div>
-                                <div class="person-subtext">Accounting</div>
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button pButton type="button" class="p-button-rounded p-button-success" icon="pi pi-envelope"></button>
-                            <button pButton type="button" class="p-button-rounded p-button-warning" icon="pi pi-cog"></button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="person-item">
-                            <img src="assets/demo/images/avatar/annafali.png" alt="diamond-layout" />
-                            <div class="person-info">
-                                <div class="person-name">Anna Fali</div>
-                                <div class="person-subtext">Procurement</div>
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button pButton type="button" class="p-button-rounded p-button-success" icon="pi pi-envelope" ></button>
-                            <button pButton type="button" class="p-button-rounded p-button-warning" icon="pi pi-cog" ></button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="person-item">
-                            <img src="assets/demo/images/avatar/bernardodominic.png" alt="diamond-layout" />
-                            <div class="person-info">
-                                <div class="person-name">Bernardo Dominic</div>
-                                <div class="person-subtext">Finance</div>
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button pButton type="button" class="p-button-rounded p-button-success" icon="pi pi-envelope" ></button>
-                            <button pButton type="button" class="p-button-rounded p-button-warning" icon="pi pi-cog" ></button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="person-item">
-                            <img src="assets/demo/images/avatar/ivanmagalhaes.png" alt="diamond-layout" />
-                            <div class="person-info">
-                                <div class="person-name">Ivan Magalhaes</div>
-                                <div class="person-subtext">Sales</div>
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button pButton type="button" class="p-button-rounded p-button-success" icon="pi pi-envelope" ></button>
-                            <button pButton type="button" class="p-button-rounded p-button-warning" icon="pi pi-cog" ></button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="person-item">
-                            <img src="assets/demo/images/avatar/xuxuefeng.png" alt="diamond-layout" />
-                            <div class="person-info">
-                                <div class="person-name">Xuxue Feng</div>
-                                <div class="person-subtext">Management</div>
-                            </div>
-                        </div>
-                        <div class="person-actions">
-                            <button pButton type="button" class="p-button-rounded p-button-success" icon="pi pi-envelope" ></button>
-                            <button pButton type="button" class="p-button-rounded p-button-warning" icon="pi pi-cog" ></button>
-                        </div>
-                    </li>
-                </ul>
+                <h5 class="centerText">Subscription rate along the year</h5>
+                <p-chart type="line" [data]="lineData"></p-chart>
             </div>
         </div>
+
+
+
+        <div class="p-grid table-demo">
+            <div class="p-col-12">
+                <div class="card">
+                    <p-table #dt [value]="allUsers" [(selection)]="selectedCustomers1" dataKey="id"
+                             styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                             [filterDelay]="0" [globalFilterFields]="['name','country', 'email', 'birthDate', 'phoneNumber','locked']">
+                        <ng-template pTemplate="caption">
+                            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                                Customers
+                                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                           placeholder="Global Search"/>
+                </span>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="width: 3rem">
+                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                </th>
+                                <th pSortableColumn="name">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Name
+                                        <p-sortIcon field="name"></p-sortIcon>
+                                        <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="country">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Country
+                                        <p-sortIcon field="country"></p-sortIcon>
+                                        <p-columnFilter type="text" field="country" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="email" style="width: 20rem">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Email
+                                        <p-sortIcon field="email"></p-sortIcon>
+                                        <p-columnFilter type="text" field="email" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="birthDate">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Date
+                                        <p-sortIcon field="birthDate"></p-sortIcon>
+                                        <p-columnFilter type="date" field="birthDate" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="phoneNumber">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Contact
+                                        <p-sortIcon field="phoneNumber"></p-sortIcon>
+                                        <p-columnFilter type="text" field="phoneNumber" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="locked">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Status
+                                        <p-sortIcon field="locked"></p-sortIcon>
+                                        <p-columnFilter type="text" field="locked" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th style="width: 8rem"></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-customer>
+                            <tr class="p-selectable-row">
+                                <td>
+                                    <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                                </td>
+                                <td>
+                                    <img src="assets/img/{{customer.profilPic}}" width="32"
+                                         style="vertical-align: middle" class="profil-pic-round"/>
+                                    <span class="p-column-title">Name</span>
+                                    {{customer.name}}
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Country</span>
+                                    <img src="assets/demo/flags/flag_placeholder.png"
+                                         [class]="'flag flag-' + countries[customer.country]|lowercase" width="30">
+                                    <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.country}}</span>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Email</span>
+                                    <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.email}}</span>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Date</span>
+                                    <div *ngIf="customer.role === 'USER' || customer.role === 'ADMIN' || customer.role === 'EXPERT' || customer.role === 'FORMER'">{{customer.birthDate | date: 'MM/dd/yyyy'}}</div>
+                                    <div *ngIf="customer.role === 'COMPANY' || customer.role === 'ASSOCIATION'">{{customer.establishmentDate | date: 'MM/dd/yyyy'}}</div>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Contact</span>
+                                    {{customer.phoneNumber}}
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Status</span>
+                                    <span *ngIf="customer.locked" [class]="'customer-badge status-unqualified'">Locked</span>
+                                    <span *ngIf="!customer.locked" [class]="'customer-badge status-proposal'">Active</span>
+                                </td>
+                                <td style="text-align: center">
+                                    <button *ngIf="!customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="lockUser(customer.username)"></button>
+                                    <button *ngIf="customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="unlockUser(customer.username)"></button>
+
+                                    <button *ngIf="customer.role != 'ADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-plus" (click)="lockUser(customer.username)"></button>
+                                    <button *ngIf="customer.role === 'ADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-minus" (click)="unlockUser(customer.username)"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="8">No customers found.</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+
+        </div>
+
+
+
     </div>
 </div>

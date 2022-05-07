@@ -148,4 +148,12 @@ export class UserService extends  RequestBaseService{
   getAllAdmins(): Observable<any>{
     return this.http.get('http://localhost:8087/SpringMVC/api/admin/admins', {headers: this.getHeaders});
   }
+
+  getAllTransaction(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/transactionsNumber', {headers: this.getHeaders});
+  }
+
+  getAllComments(): Observable<any>{
+    return this.http.get('http://localhost:8087/SpringMVC/api/admin/allComments', {headers: this.getHeaders});
+  }
 }

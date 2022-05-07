@@ -11,6 +11,10 @@ import {CustomerService} from '../../demo/service/customerservice';
 import {User} from '../../models/user.model';
 import {Country} from '../../models/country.enum';
 import {Router} from '@angular/router';
+import {Event} from '../../models/event.model';
+import {Donation} from '../../models/donation.model';
+import {Post} from '../../models/post.model';
+import {PostComment} from '../../models/postComment.model';
 
 @Component({
   selector: 'app-admin-dashboard-backoffice',
@@ -18,6 +22,16 @@ import {Router} from '@angular/router';
   styleUrls: ['./admin-dashboard-backoffice.component.scss'],
 })
 export class AdminDashboardBackofficeComponent implements OnInit {
+
+  subscribedUsers: Array<User> = [];
+
+  allPosts: Array<Post> = [];
+
+  allComments: Array<PostComment> = [];
+
+  allEvents: Array<Event> = [];
+
+  allTransaction: Array<Donation> = [];
 
   allAdmins: Array<User> = [];
 
@@ -81,6 +95,28 @@ export class AdminDashboardBackofficeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.userService.getAllSubscribedUser().subscribe( subsribed => {
+      this.subscribedUsers = subsribed;
+    })
+
+    this.userService.getAllPosts().subscribe( posts => {
+      this.allPosts = posts;
+    });
+
+    this.userService.getAllComments().subscribe( comments => {
+      this.allComments = comments;
+    });
+
+    this.userService.getAllEvents().subscribe( events => {
+      this.allEvents = events;
+      console.log(this.allEvents);
+    });
+
+    this.userService.getAllTransaction().subscribe( transactions => {
+      this.allTransaction = transactions;
+      console.log(this.allTransaction);
+    });
 
     this.userService.getAllAdmins().subscribe( allAdmins => {
       this.allAdmins = allAdmins;

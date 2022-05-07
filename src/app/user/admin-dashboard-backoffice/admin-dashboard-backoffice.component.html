@@ -12,11 +12,11 @@
                 <span class="overview-title">Customers</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">8272</div>
+                        <div class="overview-number">{{subscribedUsers.length}}</div>
                         <div class="overview-subtext">Subscribed</div>
                     </div>
                     <div class="p-col-6">
-                        <div class="overview-number">25402</div>
+                        <div class="overview-number">{{allUsers.length}}</div>
                         <div class="overview-subtext">Registered</div>
                     </div>
                 </div>
@@ -30,12 +30,12 @@
                 <span class="overview-title">Events</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">640</div>
-                        <div class="overview-subtext">Pending</div>
+                        <div class="overview-number">{{allEvents.length}}</div>
+                        <div class="overview-subtext">Created</div>
                     </div>
                     <div class="p-col-6">
-                        <div class="overview-number">1420</div>
-                        <div class="overview-subtext">Completed</div>
+                        <div class="overview-number">{{allTransaction.length}}</div>
+                        <div class="overview-subtext">Transactions</div>
                     </div>
                 </div>
             </div>
@@ -48,12 +48,12 @@
                 <span class="overview-title">Forums</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">$2,100</div>
-                        <div class="overview-subtext">Expenses</div>
+                        <div class="overview-number">{{allPosts.length}}</div>
+                        <div class="overview-subtext">Posts</div>
                     </div>
                     <div class="p-col-6">
-                        <div class="overview-number">$9,640</div>
-                        <div class="overview-subtext">Income</div>
+                        <div class="overview-number">{{allComments.length}}</div>
+                        <div class="overview-subtext">Comments</div>
                     </div>
                 </div>
             </div>
@@ -67,11 +67,11 @@
                 <span class="overview-title">Complaints</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">12</div>
+                        <div class="overview-number">0</div>
                         <div class="overview-subtext">New</div>
                     </div>
                     <div class="p-col-6">
-                        <div class="overview-number">85</div>
+                        <div class="overview-number">0</div>
                         <div class="overview-subtext">Responded</div>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                                 <th style="width: 3rem">
                                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                                 </th>
-                                <th pSortableColumn="name">
+                                <th pSortableColumn="name" style="width: 18rem">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         Name
                                         <p-sortIcon field="name"></p-sortIcon>
@@ -229,7 +229,7 @@
                                     <p-tableCheckbox [value]="customer"></p-tableCheckbox>
                                 </td>
                                 <td>
-                                    <img src="assets/img/{{customer.profilPic}}" width="32"
+                                    <img src="assets/img/{{customer.profilPic}}" width="32" height="32"
                                          style="vertical-align: middle" class="profil-pic-round"/>
                                     <span class="p-column-title">Name</span>
                                     {{customer.name}}

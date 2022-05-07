@@ -54,7 +54,7 @@
 
         <div class="container">
             <div class="row">
-                <ng-container *ngFor="let event of events | filter:nameSearch  | paginate: { itemsPerPage: 3, currentPage: p }">
+                <ng-container *ngFor="let event of events | filter11:nameSearch  | paginate: { itemsPerPage: 3, currentPage: p }">
                 <div class="col-lg-4 col-md-6">
                     <div class="card mt-5 mt-md-0">
 
@@ -88,8 +88,7 @@
                 </div>
 
 
-
-                    </ng-container>
+</ng-container>
 
                 <div class="col-sm-7 ms-auto text-end" style="margin-right: 550px">
                     <ul class="pagination pagination-primary mt-7">
@@ -266,7 +265,7 @@
                 <div class="col-lg-7 d-flex justify-content-center flex-column">
                     <div class="card card-body d-flex justify-content-center shadow-lg p-sm-5 blur align-items-center">
                         <h3 class="text-center">create Event</h3>
-                        <button type="button" class="btn btn-link" routerLink="/user/addEvent">Link</button>
+                        <button type="button" class="btn btn-link" routerLink="/addEvent">Link</button>
                     </div>
                 </div>
             </div>

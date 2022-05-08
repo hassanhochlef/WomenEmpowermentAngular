@@ -380,7 +380,7 @@
 
                                     </td>
                                     <td>
-                                        <a class="file"  id="upload"(click)="onSaveFile()"></a>
+                                        <button class="file"  id="upload"(click)="onSaveFile()"></button>
                                         <label for="upload">Upload<p class="file-name"></p></label>
                                     </td>
 
@@ -575,6 +575,7 @@
                     <div class="p-3 info-horizontal d-flex">
 
                        <div class="app" style="height: 400px;width: 300px">
+                           <nylas-agenda id="c12bdf48-1293-4d56-a707-878d5e1abfb4"  [attr.calendar_ids]="course.calendarId"></nylas-agenda>
                        </div>
 
                 </div>

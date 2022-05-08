@@ -19,7 +19,9 @@ newComplaint = new Complaint();
   }
   addComplaint(){
     this.ComplaintService.ajouterComplaint(this.newComplaint).subscribe(comp => {
-      console.log(comp);
+      this.router.navigate(['']).then(() => {
+        window.location.reload();
+      });
 
     });
 

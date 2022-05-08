@@ -25,16 +25,15 @@ export class NewPasswordComponent implements OnInit {
   updatePassword(){
     let token = this.router.url.substring(20);
     this.authenticationService.updatePassword(this.password, token).subscribe( data => {
+            this.router.navigate(['/login']).then(() => {
+                window.location.reload();
+            });
     }, err => {
         if (err?.status === 406){
             this.errorMessage = 'Password must:\n\tHave 8 or more characters' +
                 '\n\tContain 1 or more uppercase characters' +
                 '\n\tContain 1 or more digit characters\n\tContain 1 or more special characters';
           }
-        else{
-          this.errorMessage = 'Unexpected error occurred : ' + err?.errorMessage;
-          console.log(err);
-        }
         }
         );
   }

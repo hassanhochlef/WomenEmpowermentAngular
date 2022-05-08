@@ -62,10 +62,14 @@
 
                                 <div class="input-group input-group-outline mb-3">
                                     <select class="form-control" name="name" [(ngModel)]="offre.location"  #name="ngModel" id="choice-button" placeholder="Language" required>
-                                        <option value="Choice 1" selected>Tunis</option>
-                                        <option value="Choice 2">Sousse</option>
-                                        <option value="Choice 3">Sfax</option>
-                                        <option value="Choice 4">Djerba</option>
+                                        <option value="Tunis" selected>Tunis</option>
+                                        <option value="Sousse">Sousse</option>
+                                        <option value="Sfax">Sfax</option>
+                                        <option value="Beja">Beja</option>
+                                        <option value="Bizerte" selected>Bizerte</option>
+                                        <option value="Monastir">Monastir</option>
+                                        <option value="Tozeur">Tozeur</option>
+                                        <option value="Douz">Douz</option>
                                     </select>
                                 </div>
 
@@ -247,8 +251,7 @@
                 <br>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn bg-gradient-dark mb-0" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn bg-gradient-primary mb-0">Confirm Application</button>
+                <button type="submit" class="btn bg-gradient-primary mb-0" data-bs-dismiss="modal">Confirm Application</button>
             </div>
         </div>
         </form>

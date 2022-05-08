@@ -30,6 +30,8 @@ export class ChatPriveComponent implements OnInit {
   users: User[];
   map: Map<number, Chatroom> = new Map();
   map2: Map<number, string> = new Map();
+  map3: Map<number, string> = new Map();
+
 
   constructor(private router: Router, public chatService: ChatService, private service: ForumService, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(data => {
@@ -51,6 +53,7 @@ export class ChatPriveComponent implements OnInit {
     this.ch.color = '#EC407A';
     this.map.set(this.currentUser.userId, this.ch);
     this.map2.set(this.currentUser.userId, 'Start Chat');
+    this.map3.set(this.currentUser.userId, 'profile_user.jpg');
 
   }
 
@@ -68,12 +71,13 @@ export class ChatPriveComponent implements OnInit {
     this.chatService.sendMessage(obj);
   }
 
-  ref(id1: string, id2: string, xx: string) {
+  ref(id1: string, id2: string, xx: string,yy) {
     this.routeSub = this.service.getchatroom(id1, id2).subscribe(res => {
       console.log(res);
       this.ch = res;
       this.map.set(this.currentUser.userId, this.ch);
       this.map2.set(this.currentUser.userId, xx);
+      this.map3.set(this.currentUser.userId, yy);
 
       console.log(this.chatLists[res.chatroomId]);
       console.log(this.currentUser.userId);

@@ -41,7 +41,7 @@ newAppointment = new Appointment();
       console.log('delete');
 
     });
-    this.router.navigate(['user/Service']).then(() => {
+    this.router.navigate(['/Service']).then(() => {
       window.location.reload();
     });
 
@@ -53,7 +53,7 @@ newAppointment = new Appointment();
       console.log('delete');
 
     });
-    this.router.navigate(['user/Service']).then(() => {
+    this.router.navigate(['/Service']).then(() => {
       window.location.reload();
     });
 

@@ -75,6 +75,8 @@ import {Role} from './models/role.enum';
 import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 import {ForumBackComponent} from './forum-back/forum-back.component';
+import {AddServicesComponent} from './services/add-services/add-services.component';
+import {ServicesComponent} from './services/services.component';
 
 @NgModule({
     imports: [
@@ -110,13 +112,18 @@ import {ForumBackComponent} from './forum-back/forum-back.component';
                     {path: 'pages/map', component: MapComponent},
                     {path: 'chat', component: ChatboxComponent},
                     {path: 'chatP', component: ChatPriveComponent},
+                    {path: 'addC', component: AddComplaintComponent},
+                    {path: 'addS', component: AddServicesComponent},
+                    {path: 'Service', component: ServicesComponent},
+                    {path: 'mycandidacy', component: MyCandidacyComponent}
+
 
 
                 ]
             },
 
             {
-                path: 'admin', component: AppMainComponent, canActivate: [Auth2Guard], data: {roles: [Role.ADMIN]},
+                path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
                 children: [
                     {path: '', component: AdminDashboardBackofficeComponent},
                     {path: 'complaint', component: ComplaintComponent},
@@ -153,12 +160,13 @@ import {ForumBackComponent} from './forum-back/forum-back.component';
                     {path: 'pages/empty', component: EmptyDemoComponent},
                     {path: 'documentation', component: DocumentationComponent},
                     {path: 'pages/event', component: EventComponent},
-                    {path: 'pages/event', component: EventComponent},
+                    {path: 'event', component: EventComponent},
                     {path: 'pages/donation', component: DonationComponent},
                     {path: 'pages/cour', component: CourseBackHomeComponent},
-                    {path: 'pages/candidacyarea', component: CandidacyAreaComponent},
+                    {path: 'candidacyarea', component: CandidacyAreaComponent},
                     {path: 'cour', component: CourseBackHomeComponent},
                     {path: 'forumb', component: ForumBackComponent},
+                    {path: 'complaint', component: ComplaintComponent},
 
                 ]
             },
@@ -191,7 +199,6 @@ import {ForumBackComponent} from './forum-back/forum-back.component';
 
 
                     {path: 'pages/map', component: MapComponent},
-                    {path: 'mycandidacy', component: MyCandidacyComponent}
 
                 ]
             },

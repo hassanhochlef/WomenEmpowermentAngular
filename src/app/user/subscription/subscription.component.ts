@@ -23,6 +23,7 @@ export class SubscriptionComponent implements OnInit {
 
   subscribe(){
     this.userService.addSubscription().subscribe();
+    this.router.navigate(['/profil']);
   }
 
 }

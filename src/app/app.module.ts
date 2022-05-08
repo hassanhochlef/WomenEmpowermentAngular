@@ -183,9 +183,7 @@ import { CourseBackHomeComponent } from './backOffice/course/course-back-home/co
 import { SubscriptionComponent } from './user/subscription/subscription.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { filterPipe1} from './course/filter.pipe';
-import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { ForumBackComponent } from './forum-back/forum-back.component';
 

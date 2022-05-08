@@ -53,6 +53,7 @@ export class ChatPriveComponent implements OnInit {
     this.ch.color = '#EC407A';
     this.map.set(this.currentUser.userId, this.ch);
     this.map2.set(this.currentUser.userId, 'Start Chat');
+    this.map3.set(this.currentUser.userId, 'profile_user.jpg');
 
   }
 

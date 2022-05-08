@@ -30,7 +30,7 @@ export class MyCandidacyComponent implements OnInit {
 
   Setfavorite(id: number): void {
     // tslint:disable-next-line:max-line-length
-    this.apiOffreService.setFvorite(id, null).subscribe(() => this.router.navigateByUrl('/user/mycandidacy'));
+    this.apiOffreService.setFvorite(id, null).subscribe(() => this.router.navigateByUrl('/mycandidacy'));
   }
 
   changeText()

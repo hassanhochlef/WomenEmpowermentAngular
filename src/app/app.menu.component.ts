@@ -25,10 +25,10 @@ export class AppMenuComponent implements OnInit {
                 label: 'Sections', icon: 'pi pi-fw pi-star', routerLink: ['/uikit'],
                 items: [
                     {label: 'Courses', icon: 'pi pi-fw pi-id-card', routerLink: ['cour']},
-                    {label: 'Forum', icon: 'pi pi-fw pi-comment', routerLink: ['forum']},
+                    {label: 'Forum', icon: 'pi pi-fw pi-comment', routerLink: ['forumb']},
                     {label: 'Events', icon: 'pi pi-fw pi-star-o', routerLink: ['event']},
-                    {label: 'Job Offers', icon: 'pi pi-fw pi-file', routerLink: ['offers']},
-                    {label: 'Complaints', icon: 'pi pi-exclamation-circle', routerLink: ['complaints']},
+                    {label: 'Job Managment', icon: 'pi pi-fw pi-file', routerLink: ['candidacyarea']},
+                    {label: 'Complaints', icon: 'pi pi-exclamation-circle', routerLink: ['complaint']},
 
                 ]
             },
